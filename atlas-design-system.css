@@ -890,7 +890,24 @@ body { animation: pageIn .4s var(--ease-out) both; }
   #progress { animation: none; background: var(--blue); }
 }
 
-/* ── 30. Homepage-Specific ────────────────────────────── */
+/* ── 32. Skip Link (Accessibility) ───────────────────── */
+.skip-link {
+  position: absolute; top: -100px; left: 16px;
+  background: var(--tx); color: #fff;
+  padding: 12px 24px; border-radius: 0 0 var(--r-s) var(--r-s);
+  font-size: var(--t-small); font-weight: 600;
+  z-index: 10000; text-decoration: none;
+  transition: top .2s var(--ease-out);
+}
+.skip-link:focus { top: 0; }
+
+/* ── 33. Content Visibility (Performance) ────────────── */
+section:not(.hero):not(.page-hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+/* ── 34. Homepage-Specific ───────────────────────────── */
 
 /* Hero stat pills */
 .hero-stats {

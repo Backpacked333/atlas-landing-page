@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="atlas-design-system.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 <div id="progress" style="width:0%"></div>
 
 <nav>
@@ -26,6 +27,7 @@
 </div>
 </nav>
 
+<main id="main">
 <!-- ═══════════════════════════════════ PAGE HERO ═══════════════════════════════════ -->
 <section class="page-hero" style="background:var(--bg2)">
 <div class="page-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(0,122,255,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 30%, rgba(255,159,10,.08) 0%, transparent 50%);"></div>
@@ -586,6 +588,8 @@
 </div>
 </section>
 
+</main>
+
 <footer>
 <div class="con">
   <div class="footer-grid">
@@ -603,12 +607,6 @@
 
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
-<script>
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -80px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
-const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});
-document.querySelectorAll('details.deep').forEach(d=>{d.addEventListener('toggle',()=>{if(d.open)setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),120)})});
-</script>
+<script src="atlas.js" defer></script>
 </body>
 </html>

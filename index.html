@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="atlas-design-system.css">
 </head>
 <body>
+<a href="#main" class="skip-link">Skip to main content</a>
 <div id="progress" style="width:0%"></div>
 
 <!-- ═══════════════════════════════════ NAVIGATION ═══════════════════════════════════ -->
@@ -28,6 +29,7 @@
 </nav>
 
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+<main id="main">
 <section class="hero" id="hero">
 <div class="hero-bg" style="background:
   radial-gradient(ellipse at 25% 20%, rgba(0,122,255,.12) 0%, transparent 50%),
@@ -650,6 +652,8 @@
 </div>
 </section>
 
+</main>
+
 <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
 <footer>
 <div class="con">
@@ -670,92 +674,6 @@
 
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
-<!-- ═══════════════════════════════════ JAVASCRIPT ═══════════════════════════════════ -->
-<script>
-// ── Scroll Reveal ──
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-  });
-}, { threshold: 0.06, rootMargin: '0px 0px -80px 0px' });
-document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// ── Progress Bar ──
-let ticking = false;
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(() => {
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      if (h > 0) document.getElementById('progress').style.width = (window.scrollY / h * 100) + '%';
-      ticking = false;
-    });
-    ticking = true;
-  }
-});
-
-// ── Back to Top ──
-const topBtn = document.getElementById('top-btn');
-let topT = false;
-window.addEventListener('scroll', () => {
-  if (!topT) {
-    requestAnimationFrame(() => { topBtn.classList.toggle('show', window.scrollY > 600); topT = false; });
-    topT = true;
-  }
-});
-
-// ── Counter Animation ──
-function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
-const animateCounters = () => {
-  document.querySelectorAll('.stat-num').forEach(el => {
-    const target = parseInt(el.dataset.target);
-    if (!target) return;
-    const prefix = el.dataset.prefix || '';
-    const suffix = el.dataset.suffix || '';
-    const duration = 2000;
-    const start = performance.now();
-    function step(now) {
-      const t = Math.min((now - start) / duration, 1);
-      el.textContent = prefix + Math.round(easeOutExpo(t) * target) + suffix;
-      if (t < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  });
-};
-const statObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statObs.unobserve(e.target); } });
-}, { threshold: 0.3 });
-const statRow = document.querySelector('.stat-row');
-if (statRow) statObs.observe(statRow);
-
-// ── Hero Parallax ──
-const heroBg = document.querySelector('.hero-bg');
-if (heroBg) {
-  let heroT = false;
-  window.addEventListener('scroll', () => {
-    if (!heroT) {
-      requestAnimationFrame(() => {
-        if (window.scrollY < 1000) heroBg.style.transform = `translateY(${window.scrollY * 0.1}px)`;
-        heroT = false;
-      });
-      heroT = true;
-    }
-  });
-}
-
-// ── Smooth anchor scrolling ──
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
-    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-  });
-});
-
-// ── Details auto-scroll ──
-document.querySelectorAll('details.deep').forEach(d => {
-  d.addEventListener('toggle', () => {
-    if (d.open) setTimeout(() => d.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
-  });
-});
-</script>
+<script src="atlas.js" defer></script>
 </body>
 </html>

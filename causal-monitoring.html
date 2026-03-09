@@ -28,12 +28,13 @@
 </nav>
 
 <main id="main">
-<!-- ═══════════════════════════════════ PAGE HERO ═══════════════════════════════════ -->
+
+<!-- ═══════════════════════════ PAGE HERO ═══════════════════════════ -->
 <section class="page-hero" style="background:var(--bg2)">
 <div class="page-bg" style="background:radial-gradient(ellipse at 60% 40%, rgba(52,199,89,.1) 0%, transparent 60%),radial-gradient(ellipse at 30% 60%, rgba(123,97,255,.08) 0%, transparent 50%);"></div>
 <div class="con">
-  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Causal &amp; Monitoring</div>
-  <h1 class="page-title reveal">Causal Analysis &amp; <span class="grad-green">Monitoring</span></h1>
+  <p class="sec-label reveal" style="color:var(--green)">Causal Analysis</p>
+  <h1 class="page-title reveal">From correlation to <span class="grad-green">causation</span></h1>
   <p class="page-sub reveal">Five causal inference methods separate correlation from causation. CUSUM divergence detection and Bayesian growth projections close the feedback loop from intervention to outcome.</p>
   <div class="pills reveal">
     <span class="mp" style="background:var(--green-bg);color:var(--green)">5 Causal Methods</span>
@@ -44,77 +45,44 @@
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ WHY CAUSAL ═══════════════════════════════════ -->
+<!-- ═══════════════════════════ MAIN CONTENT ═══════════════════════════ -->
 <section>
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--green)">The Causal Imperative</p>
-  <h2 class="sec-title reveal">From correlation to <span class="grad-green">causation</span></h2>
-  <p class="sec-sub reveal">Predictive models tell you <em>who</em> is at risk. Causal models tell you <em>why</em> and <em>what will work</em>. ATLAS uses five complementary methods to build causal understanding at every level of the system.</p>
 
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Correlation vs Causation comparison -->
+  <div class="ba reveal">
+    <div class="ba-col ba-before">
+      <div class="ba-label">Correlation Only</div>
+      <ul>
+        <li>Students who miss school have lower grades</li>
+        <li>Tutoring recipients show improvement</li>
+        <li>Smaller classes correlate with higher scores</li>
+        <li>No way to distinguish cause from selection bias</li>
+        <li>Cannot inform interventions reliably</li>
+      </ul>
+    </div>
+    <div class="ba-col ba-after">
+      <div class="ba-label">Causal Understanding</div>
+      <ul>
+        <li>Each absence causes 0.3&sigma; decline in math (IV)</li>
+        <li>Tutoring causes +0.45&sigma; gain after selection control (PSM)</li>
+        <li>Class size reduction causes +0.2&sigma; gain in K-3 (DiD)</li>
+        <li>Actionable interventions with quantified effect sizes</li>
+        <li>Evidence-based decisions with confidence intervals</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5 Causal Methods Diagram -->
+  <div class="dia dia-hero reveal" style="margin-top:40px">
+    <svg viewBox="0 0 1120 320" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
       </defs>
-      <rect width="1120" height="300" rx="20" fill="#FAFAFA"/>
-
-      <!-- Correlation side -->
-      <g class="svg-fade stagger-1">
-        <rect x="40" y="30" width="480" height="240" rx="16" fill="#FFF" stroke="#AEAEB2" stroke-width="1" filter="url(#ds)"/>
-        <text x="280" y="60" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#8E8E93">CORRELATION ONLY</text>
-        <line x1="80" y1="75" x2="480" y2="75" stroke="#E5E5EA" stroke-width="1"/>
-        <circle cx="80" cy="105" r="6" fill="#AEAEB2"/>
-        <text x="100" y="110" font-family="Inter" font-size="11" fill="#6E6E73">Students who miss school have lower grades</text>
-        <circle cx="80" cy="140" r="6" fill="#AEAEB2"/>
-        <text x="100" y="145" font-family="Inter" font-size="11" fill="#6E6E73">Tutoring recipients show improvement</text>
-        <circle cx="80" cy="175" r="6" fill="#AEAEB2"/>
-        <text x="100" y="180" font-family="Inter" font-size="11" fill="#6E6E73">Smaller classes correlate with higher scores</text>
-        <circle cx="80" cy="210" r="6" fill="#AEAEB2"/>
-        <text x="100" y="215" font-family="Inter" font-size="11" fill="#6E6E73">No way to distinguish cause from selection bias</text>
-        <text x="280" y="250" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Cannot inform interventions reliably</text>
-      </g>
-
-      <!-- Arrow -->
-      <g class="svg-fade stagger-2">
-        <text x="560" y="155" text-anchor="middle" font-family="Inter" font-size="24" fill="var(--green)">&rarr;</text>
-      </g>
-
-      <!-- Causation side -->
-      <g class="svg-fade stagger-3">
-        <rect x="600" y="30" width="480" height="240" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5" filter="url(#ds)"/>
-        <text x="840" y="60" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">CAUSAL UNDERSTANDING</text>
-        <line x1="640" y1="75" x2="1040" y2="75" stroke="rgba(52,199,89,.2)" stroke-width="1"/>
-        <circle cx="640" cy="105" r="6" fill="var(--green)"/>
-        <text x="660" y="110" font-family="Inter" font-size="11" fill="#6E6E73">Each absence causes 0.3&#963; decline in math (IV)</text>
-        <circle cx="640" cy="140" r="6" fill="var(--green)"/>
-        <text x="660" y="145" font-family="Inter" font-size="11" fill="#6E6E73">Tutoring causes +0.45&#963; gain after selection control (PSM)</text>
-        <circle cx="640" cy="175" r="6" fill="var(--green)"/>
-        <text x="660" y="180" font-family="Inter" font-size="11" fill="#6E6E73">Class size reduction causes +0.2&#963; gain in K-3 (DiD)</text>
-        <circle cx="640" cy="210" r="6" fill="var(--green)"/>
-        <text x="660" y="215" font-family="Inter" font-size="11" fill="#6E6E73">Actionable interventions with quantified effect sizes</text>
-        <text x="840" y="250" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--green)">Evidence-based decisions with confidence intervals</text>
-      </g>
-    </svg>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ 5 CAUSAL METHODS ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--purple)">Causal Methods</p>
-  <h2 class="sec-title reveal">Five methods for <span class="grad-purple">causal inference</span></h2>
-  <p class="sec-sub reveal">Each method addresses different data structures and identification strategies. The system automatically selects the appropriate method based on available data and the question being asked.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 320" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds2"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
       <rect width="1120" height="320" rx="20" fill="#FAFAFA"/>
 
-      <!-- 5 method cards arranged in an arc -->
-      <g class="svg-fade stagger-1" filter="url(#ds2)">
+      <!-- 5 method cards -->
+      <g class="svg-fade stagger-1" filter="url(#ds)">
         <rect x="30" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
         <circle cx="70" cy="72" r="16" fill="rgba(52,199,89,.1)"/>
         <text x="70" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">1</text>
@@ -124,17 +92,17 @@
         <text x="50" y="136" font-family="Inter" font-size="9" fill="#8E8E93">AIC/BIC lag selection</text>
         <text x="50" y="162" font-family="Inter" font-size="8.5" fill="var(--green)">&#10003; Screening tool for candidates</text>
       </g>
-      <g class="svg-fade stagger-2" filter="url(#ds2)">
+      <g class="svg-fade stagger-2" filter="url(#ds)">
         <rect x="240" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
         <circle cx="280" cy="72" r="16" fill="rgba(123,97,255,.08)"/>
         <text x="280" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--purple)">2</text>
         <text x="305" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">PSM</text>
         <text x="260" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Propensity Score Matching</text>
-        <text x="260" y="118" font-family="Inter" font-size="9" fill="#8E8E93">Nearest-neighbor, caliper=0.2&#963;</text>
+        <text x="260" y="118" font-family="Inter" font-size="9" fill="#8E8E93">Nearest-neighbor, caliper=0.2&sigma;</text>
         <text x="260" y="136" font-family="Inter" font-size="9" fill="#8E8E93">ATT with Rosenbaum bounds</text>
         <text x="260" y="162" font-family="Inter" font-size="8.5" fill="var(--purple)">&#10003; Observational quasi-experiments</text>
       </g>
-      <g class="svg-fade stagger-2" filter="url(#ds2)">
+      <g class="svg-fade stagger-2" filter="url(#ds)">
         <rect x="450" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
         <circle cx="490" cy="72" r="16" fill="rgba(0,122,255,.08)"/>
         <text x="490" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--blue)">3</text>
@@ -144,7 +112,7 @@
         <text x="470" y="136" font-family="Inter" font-size="9" fill="#8E8E93">LATE estimand</text>
         <text x="470" y="162" font-family="Inter" font-size="8.5" fill="var(--blue)">&#10003; Weather, distance, lottery instruments</text>
       </g>
-      <g class="svg-fade stagger-3" filter="url(#ds2)">
+      <g class="svg-fade stagger-3" filter="url(#ds)">
         <rect x="660" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
         <circle cx="700" cy="72" r="16" fill="rgba(255,159,10,.1)"/>
         <text x="700" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--amber)">4</text>
@@ -154,7 +122,7 @@
         <text x="680" y="136" font-family="Inter" font-size="9" fill="#8E8E93">Staggered DiD extensions</text>
         <text x="680" y="162" font-family="Inter" font-size="8.5" fill="var(--amber)">&#10003; Program rollout evaluation</text>
       </g>
-      <g class="svg-fade stagger-3" filter="url(#ds2)">
+      <g class="svg-fade stagger-3" filter="url(#ds)">
         <rect x="870" y="40" width="220" height="140" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
         <circle cx="910" cy="72" r="16" fill="rgba(52,199,89,.08)"/>
         <text x="910" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">5</text>
@@ -165,13 +133,12 @@
         <text x="890" y="162" font-family="Inter" font-size="8.5" fill="var(--green)">&#10003; Full causal web + what-if queries</text>
       </g>
 
-      <!-- Central selector label -->
+      <!-- Automatic method selection -->
       <g class="svg-fade stagger-4">
         <rect x="360" y="220" width="400" height="60" rx="14" fill="rgba(123,97,255,.05)" stroke="var(--purple)" stroke-width="1"/>
         <text x="560" y="248" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--purple)">Automatic Method Selection</text>
         <text x="560" y="268" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">System selects method based on data structure, question type, and identification strategy</text>
       </g>
-      <!-- Lines from methods to selector -->
       <line x1="125" y1="180" x2="400" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
       <line x1="335" y1="180" x2="440" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
       <line x1="545" y1="180" x2="540" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
@@ -180,456 +147,333 @@
     </svg>
   </div>
 
-  <details class="deep reveal">
-    <summary>1. Granger Causality &mdash; Temporal Precedence</summary>
+  <!-- Causal Method Deep Dives -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Causal method deep dives &mdash; all 5 methods</summary>
     <div class="deep-body">
-      <div class="g2" style="gap:20px">
-        <div>
-          <p><strong>Temporal precedence test</strong> &mdash; Does knowing X&rsquo;s past improve prediction of Y beyond Y&rsquo;s own past?</p>
-          <ul style="margin:16px 0;padding-left:20px;font-size:14px">
-            <li><strong>Use case:</strong> Do attendance dips Granger-cause grade declines?</li>
-            <li><strong>Method:</strong> VAR model with F-test on lagged coefficients</li>
-            <li><strong>Lag selection:</strong> AIC/BIC with max lag of 6 grading periods</li>
-            <li><strong>Output:</strong> Directed temporal influence graph with p-values</li>
-          </ul>
+      <h4>1. Granger Causality &mdash; Temporal Precedence</h4>
+      <p><strong>Does knowing X&rsquo;s past improve prediction of Y beyond Y&rsquo;s own past?</strong> Use case: Do attendance dips Granger-cause grade declines? VAR model with F-test on lagged coefficients, AIC/BIC lag selection with max lag of 6 grading periods. Output: directed temporal influence graph with p-values. Limitation: establishes temporal precedence, not true causation &mdash; used as a screening tool.</p>
+
+      <h4 style="margin-top:20px">2. Propensity Score Matching (PSM)</h4>
+      <p><strong>Match treated and untreated learners on observable characteristics.</strong> Use case: Causal effect of tutoring on math scores. Nearest-neighbor matching with caliper = 0.2&sigma; of logit propensity. Balance check: standardized mean differences &lt;0.1 on all covariates. Estimand: ATT. Sensitivity: Rosenbaum bounds for hidden bias. Covariates include 48+ features from the feature store.</p>
+
+      <h4 style="margin-top:20px">3. Instrumental Variables (IV)</h4>
+      <p><strong>Use an instrument that affects treatment but not outcome directly.</strong> Use case: Causal effect of absences on achievement (weather as instrument). Two-stage least squares: regress attendance on instrument + controls, then outcome on predicted attendance. Validity: first-stage F &gt; 10, exclusion restriction argument. Example instruments: weather severity, distance to school, lottery-assigned programs.</p>
+
+      <h4 style="margin-top:20px">4. Difference-in-Differences (DiD)</h4>
+      <p><strong>Compare pre/post changes between treatment and control groups.</strong> Use case: Impact of new reading curriculum adopted by some schools. Assumption: parallel trends in pre-treatment period. Validation: placebo test with pseudo-treatment dates. Extensions: staggered DiD (Callaway-Sant&rsquo;Anna) for rollout programs. System automatically tests parallel trends with event-study plots.</p>
+
+      <h4 style="margin-top:20px">5. Bayesian Networks &mdash; Structural Causal Models</h4>
+      <p><strong>Learn directed acyclic graphs (DAGs) representing causal relationships.</strong> Use case: Map full causal structure among attendance, behavior, grades, and home factors. Structure learning via PC algorithm + domain expert priors. Parameter learning via Bayesian estimation with Dirichlet priors. Inference: do-calculus for interventional queries P(Y | do(X)). Unlike single-equation methods, captures the entire web of causal relationships simultaneously.</p>
+    </div>
+  </details>
+
+  <!-- CUSUM Detection -->
+  <details class="deep reveal">
+    <summary>CUSUM change-point detection</summary>
+    <div class="deep-body">
+      <p>Cumulative Sum control charts detect the moment a learner&rsquo;s trajectory diverges from their projected growth path &mdash; 3&ndash;5 weeks earlier than traditional threshold alerts.</p>
+      <div class="dia dia-hero" style="margin:20px 0">
+        <svg viewBox="0 0 1120 380" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ds2"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+          </defs>
+          <rect width="1120" height="380" rx="20" fill="#FAFAFA"/>
+          <text x="560" y="30" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="var(--tx)">CUSUM Divergence Detection</text>
+
+          <line x1="100" y1="50" x2="100" y2="300" stroke="#E5E5EA" stroke-width="1"/>
+          <text x="55" y="180" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93" transform="rotate(-90 55 180)">Performance Score</text>
+          <line x1="100" y1="300" x2="1040" y2="300" stroke="#E5E5EA" stroke-width="1"/>
+          <text x="570" y="330" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Time (weeks)</text>
+
+          <line x1="100" y1="100" x2="1040" y2="100" stroke="#F0F0F0" stroke-width=".5"/>
+          <line x1="100" y1="150" x2="1040" y2="150" stroke="#F0F0F0" stroke-width=".5"/>
+          <line x1="100" y1="200" x2="1040" y2="200" stroke="#F0F0F0" stroke-width=".5"/>
+          <line x1="100" y1="250" x2="1040" y2="250" stroke="#F0F0F0" stroke-width=".5"/>
+
+          <!-- Expected trajectory -->
+          <g class="svg-fade stagger-1">
+            <path d="M120 260 L240 240 L360 220 L480 200 L600 180 L720 160 L840 140 L960 120" stroke="var(--green)" stroke-width="2" stroke-dasharray="8,5" fill="none"/>
+            <text x="975" y="115" font-family="Inter" font-size="10" fill="var(--green)" font-weight="600">Expected</text>
+          </g>
+
+          <!-- Confidence band -->
+          <g class="svg-fade stagger-1" opacity=".15">
+            <path d="M120 250 L240 228 L360 206 L480 184 L600 162 L720 140 L840 118 L960 96 L960 144 L840 162 L720 180 L600 198 L480 216 L360 234 L240 252 L120 270 Z" fill="var(--green)"/>
+          </g>
+
+          <!-- Actual trajectory -->
+          <g class="svg-fade stagger-2">
+            <path d="M120 260 L240 242 L360 228 L420 226 L480 238 L540 254 L600 266 L640 270 L680 265 L720 255 L780 240 L840 225 L900 210 L960 200" stroke="var(--blue)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
+            <text x="975" y="196" font-family="Inter" font-size="10" fill="var(--blue)" font-weight="600">Actual</text>
+          </g>
+
+          <!-- CUSUM alert point -->
+          <g class="svg-fade stagger-3">
+            <circle cx="480" cy="238" r="12" fill="rgba(255,59,48,.12)">
+              <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="480" cy="238" r="5" fill="#FF3B30"/>
+            <line x1="480" y1="50" x2="480" y2="300" stroke="#FF3B30" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
+            <text x="480" y="66" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">CUSUM Alert</text>
+            <text x="480" y="82" text-anchor="middle" font-family="Inter" font-size="9" fill="#FF3B30">Week 12</text>
+          </g>
+
+          <!-- Intervention marker -->
+          <g class="svg-fade stagger-4">
+            <line x1="600" y1="50" x2="600" y2="300" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
+            <text x="600" y="66" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Intervention</text>
+            <text x="600" y="82" text-anchor="middle" font-family="Inter" font-size="9" fill="var(--green)">Week 16</text>
+          </g>
+
+          <!-- Recovery zone -->
+          <g class="svg-fade stagger-4">
+            <rect x="600" y="90" width="440" height="205" rx="6" fill="rgba(52,199,89,.03)"/>
+            <text x="820" y="108" text-anchor="middle" font-family="Inter" font-size="10" fill="var(--green)">Recovery Phase</text>
+          </g>
+
+          <!-- Legend -->
+          <g class="svg-fade stagger-5">
+            <line x1="140" y1="355" x2="170" y2="355" stroke="var(--green)" stroke-width="2" stroke-dasharray="6,4"/>
+            <text x="180" y="359" font-family="Inter" font-size="10" fill="#6E6E73">Expected Growth</text>
+            <line x1="330" y1="355" x2="360" y2="355" stroke="var(--blue)" stroke-width="2.5"/>
+            <text x="370" y="359" font-family="Inter" font-size="10" fill="#6E6E73">Actual Performance</text>
+            <circle cx="510" cy="355" r="4" fill="#FF3B30"/>
+            <text x="522" y="359" font-family="Inter" font-size="10" fill="#6E6E73">CUSUM Alert</text>
+            <rect x="640" y="349" width="30" height="12" rx="2" fill="rgba(52,199,89,.1)"/>
+            <text x="680" y="359" font-family="Inter" font-size="10" fill="#6E6E73">95% Confidence Band</text>
+          </g>
+        </svg>
+      </div>
+      <div class="g3" style="gap:16px">
+        <div class="card" style="padding:20px;border-left:3px solid var(--amber)">
+          <h4 style="margin-bottom:4px;color:var(--amber)">Detection Speed</h4>
+          <p style="font-size:13px;color:var(--tx2)">CUSUM detects trajectory changes 3&ndash;5 weeks earlier than traditional threshold alerts by accumulating small deviations.</p>
         </div>
-        <div class="card" style="padding:20px;background:var(--bg)">
-          <p style="font-size:12px;color:var(--tx2);margin-bottom:8px">Limitations</p>
-          <p style="font-size:13px;color:var(--tx2)">Granger causality establishes temporal precedence, not true causation. Used as a screening tool to identify candidate causal relationships for deeper analysis.</p>
+        <div class="card" style="padding:20px;border-left:3px solid var(--blue)">
+          <h4 style="margin-bottom:4px;color:var(--blue)">Adaptive Thresholds</h4>
+          <p style="font-size:13px;color:var(--tx2)">Decision boundaries adapt to each learner&rsquo;s historical variance. High-variance learners get wider bands to reduce false positives.</p>
+        </div>
+        <div class="card" style="padding:20px;border-left:3px solid var(--green)">
+          <h4 style="margin-bottom:4px;color:var(--green)">Bidirectional</h4>
+          <p style="font-size:13px;color:var(--tx2)">Both negative divergence (decline) and positive divergence (unexpected growth) are monitored.</p>
         </div>
       </div>
     </div>
   </details>
 
+  <!-- Bayesian Growth Modeling -->
   <details class="deep reveal">
-    <summary>2. Propensity Score Matching (PSM)</summary>
+    <summary>Bayesian growth modeling &mdash; hierarchical projections</summary>
     <div class="deep-body">
-      <div class="g2" style="gap:20px">
-        <div>
-          <p><strong>Observational quasi-experiment</strong> &mdash; Match treated and untreated learners on observable characteristics to estimate treatment effects.</p>
-          <ul style="margin:16px 0;padding-left:20px;font-size:14px">
-            <li><strong>Use case:</strong> What is the causal effect of tutoring on math scores?</li>
-            <li><strong>Matching:</strong> Nearest-neighbor with caliper = 0.2&sigma; of logit propensity</li>
-            <li><strong>Balance check:</strong> Standardized mean differences &lt; 0.1 on all covariates</li>
-            <li><strong>Estimand:</strong> Average Treatment Effect on the Treated (ATT)</li>
-            <li><strong>Sensitivity:</strong> Rosenbaum bounds for hidden bias</li>
-          </ul>
+      <p>Hierarchical Bayesian models project each learner&rsquo;s growth trajectory with uncertainty quantification. Projections incorporate learner history, peer trajectories, and intervention effects.</p>
+      <div class="dia dia-hero" style="margin:20px 0">
+        <svg viewBox="0 0 1120 340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ds3"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+          </defs>
+          <rect width="1120" height="340" rx="20" fill="#FAFAFA"/>
+
+          <!-- Three hierarchical levels -->
+          <g filter="url(#ds3)">
+            <rect x="40" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
+            <text x="200" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Level 1: Within-Student</text>
+            <text x="200" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Repeated measures over time</text>
+            <text x="200" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Individual growth trajectory</text>
+            <text x="200" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">y&#7522;&#8342; = &#946;&#8320;&#7522; + &#946;&#8321;&#7522;t + &#949;&#7522;&#8342;</text>
+          </g>
+          <g filter="url(#ds3)">
+            <rect x="400" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
+            <text x="560" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">Level 2: Between-Student</text>
+            <text x="560" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Random intercepts + slopes</text>
+            <text x="560" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Student-level covariates</text>
+            <text x="560" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">&#946;&#8320;&#7522; = &#947;&#8320;&#8320; + &#947;&#8320;&#8321;X&#7522; + u&#8320;&#7522;</text>
+          </g>
+          <g filter="url(#ds3)">
+            <rect x="760" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
+            <text x="920" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Level 3: School Effects</text>
+            <text x="920" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Nested random effects</text>
+            <text x="920" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">School-level covariates</text>
+            <text x="920" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">MCMC via Stan: 4 chains &times; 2K iterations</text>
+          </g>
+
+          <line x1="360" y1="90" x2="398" y2="90" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="720" y1="90" x2="758" y2="90" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="3,3"/>
+
+          <!-- Output artifacts -->
+          <text x="560" y="190" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#8E8E93">OUTPUT ARTIFACTS</text>
+          <g filter="url(#ds3)">
+            <rect x="40" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--blue)" stroke-width="1"/>
+            <text x="140" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--blue)">&#956;</text>
+            <text x="140" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Point Estimate</text>
+            <text x="140" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Posterior median growth rate</text>
+          </g>
+          <g filter="url(#ds3)">
+            <rect x="270" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--purple)" stroke-width="1"/>
+            <text x="370" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--purple)">CI</text>
+            <text x="370" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Uncertainty</text>
+            <text x="370" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">80% and 95% credible intervals</text>
+          </g>
+          <g filter="url(#ds3)">
+            <rect x="500" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--green)" stroke-width="1"/>
+            <text x="600" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--green)">P</text>
+            <text x="600" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">On-Track Probability</text>
+            <text x="600" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">P(grade-level by EOY)</text>
+          </g>
+          <g filter="url(#ds3)">
+            <rect x="730" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--amber)" stroke-width="1"/>
+            <text x="830" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--amber)">&#916;</text>
+            <text x="830" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Counterfactual</text>
+            <text x="830" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">With vs. without intervention</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </details>
+
+  <!-- Closed-Loop Learning System -->
+  <details class="deep reveal">
+    <summary>Closed-loop learning system &mdash; 6-step feedback cycle</summary>
+    <div class="deep-body">
+      <p>ATLAS doesn&rsquo;t just recommend &mdash; it tracks outcomes, updates its models, and learns which interventions actually work for which learner profiles.</p>
+      <div class="dia dia-hero" style="margin:20px 0">
+        <svg viewBox="0 0 1120 440" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <filter id="ds4"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+            <marker id="cla" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--blue)"/></marker>
+          </defs>
+          <rect width="1120" height="440" rx="20" fill="#FAFAFA"/>
+
+          <!-- 1. Signal Detection -->
+          <g filter="url(#ds4)">
+            <rect x="80" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="120" cy="92" r="18" fill="rgba(255,159,10,.1)"/>
+            <text x="120" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--amber)">1</text>
+            <text x="200" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Signal Detection</text>
+            <text x="180" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CUSUM or threshold alert</text>
+            <text x="180" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">identifies divergence</text>
+          </g>
+
+          <!-- 2. Causal Analysis -->
+          <g filter="url(#ds4)">
+            <rect x="420" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
+            <circle cx="460" cy="92" r="18" fill="rgba(123,97,255,.08)"/>
+            <text x="460" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--purple)">2</text>
+            <text x="540" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">Causal Analysis</text>
+            <text x="520" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Select method, generate</text>
+            <text x="520" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">ranked hypotheses</text>
+          </g>
+
+          <!-- 3. Recommendation -->
+          <g filter="url(#ds4)">
+            <rect x="760" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
+            <circle cx="800" cy="92" r="18" fill="rgba(0,122,255,.08)"/>
+            <text x="800" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--blue)">3</text>
+            <text x="880" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Recommendation</text>
+            <text x="860" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">eROI + constraint engine</text>
+            <text x="860" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">validates feasibility</text>
+          </g>
+
+          <!-- 4. Implementation -->
+          <g filter="url(#ds4)">
+            <rect x="760" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
+            <circle cx="800" cy="302" r="18" fill="rgba(52,199,89,.08)"/>
+            <text x="800" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--green)">4</text>
+            <text x="880" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Implementation</text>
+            <text x="860" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Educator approves, system</text>
+            <text x="860" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">tracks fidelity</text>
+          </g>
+
+          <!-- 5. Outcome Monitoring -->
+          <g filter="url(#ds4)">
+            <rect x="420" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
+            <circle cx="460" cy="302" r="18" fill="rgba(0,122,255,.08)"/>
+            <text x="460" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--blue)">5</text>
+            <text x="540" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Monitor Outcome</text>
+            <text x="520" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Bayesian growth + CUSUM</text>
+            <text x="520" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">track recovery trajectory</text>
+          </g>
+
+          <!-- 6. Model Update -->
+          <g filter="url(#ds4)">
+            <rect x="80" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
+            <circle cx="120" cy="302" r="18" fill="rgba(255,159,10,.1)"/>
+            <text x="120" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--amber)">6</text>
+            <text x="200" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Model Update</text>
+            <text x="180" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Outcomes feed back into</text>
+            <text x="180" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">eROI, risk, and causal models</text>
+          </g>
+
+          <!-- Connecting arrows -->
+          <line x1="280" y1="110" x2="418" y2="110" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+          <line x1="620" y1="110" x2="758" y2="110" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+          <line x1="860" y1="160" x2="860" y2="268" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+          <line x1="758" y1="320" x2="622" y2="320" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+          <line x1="418" y1="320" x2="282" y2="320" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+          <line x1="180" y1="270" x2="180" y2="162" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
+
+          <!-- Center label -->
+          <g>
+            <circle cx="520" cy="215" r="40" fill="rgba(52,199,89,.06)" stroke="var(--green)" stroke-width="1"/>
+            <text x="520" y="210" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Closed</text>
+            <text x="520" y="226" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Loop</text>
+            <circle cx="520" cy="215" r="48" fill="none" stroke="var(--green)" stroke-width=".5" opacity=".3">
+              <animate attributeName="r" values="48;56;48" dur="4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".3;.08;.3" dur="4s" repeatCount="indefinite"/>
+            </circle>
+          </g>
+
+          <!-- Animated particle -->
+          <circle r="4" fill="var(--green)" opacity=".5">
+            <animateMotion dur="8s" repeatCount="indefinite" path="M180,110 L520,110 L860,110 L860,320 L520,320 L180,320 L180,110"/>
+          </circle>
+
+          <text x="560" y="420" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Each cycle generates a labeled training example &mdash; the system gets smarter with every intervention</text>
+        </svg>
+      </div>
+      <div style="padding:16px 20px;border-radius:12px;background:rgba(52,199,89,.05);border:1px solid rgba(52,199,89,.12)">
+        <strong style="color:var(--green)">Continuous Improvement:</strong> Each complete cycle (signal &rarr; intervention &rarr; outcome) generates a labeled training example. After 30+ observations per intervention type, the system can estimate causal effects with confidence intervals narrow enough for actionable decision-making.
+      </div>
+    </div>
+  </details>
+
+  <!-- Operational Health Metrics -->
+  <details class="deep reveal">
+    <summary>Operational health metrics &mdash; system monitoring</summary>
+    <div class="deep-body">
+      <p>Real-time dashboards track both student outcomes and system performance, ensuring the platform operates within its design parameters.</p>
+      <div class="g4" style="gap:16px;margin-top:16px">
+        <div class="card" style="padding:20px;text-align:center;border-top:3px solid var(--green)">
+          <div style="font-size:32px;font-weight:800;color:var(--green)">99.9%</div>
+          <p style="font-size:12px;color:var(--tx2);margin-top:6px">Pipeline Uptime SLA</p>
         </div>
-        <div class="card" style="padding:20px;background:var(--bg)">
-          <p style="font-size:12px;color:var(--tx2);margin-bottom:8px">Covariates</p>
-          <p style="font-size:13px;color:var(--tx2)">Prior achievement, attendance rate, FRL status, ELL status, IEP flag, grade level, school, prior year teacher effectiveness rating. 48+ features available from the feature store.</p>
+        <div class="card" style="padding:20px;text-align:center;border-top:3px solid var(--blue)">
+          <div style="font-size:32px;font-weight:800;color:var(--blue)">&lt;5m</div>
+          <p style="font-size:12px;color:var(--tx2);margin-top:6px">Signal Latency (P95)</p>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;border-top:3px solid var(--amber)">
+          <div style="font-size:32px;font-weight:800;color:var(--amber)">&lt;2%</div>
+          <p style="font-size:12px;color:var(--tx2);margin-top:6px">False Positive Rate</p>
+        </div>
+        <div class="card" style="padding:20px;text-align:center;border-top:3px solid var(--purple)">
+          <div style="font-size:32px;font-weight:800;color:var(--purple)">4h</div>
+          <p style="font-size:12px;color:var(--tx2);margin-top:6px">Disaster Recovery RTO</p>
         </div>
       </div>
     </div>
   </details>
 
-  <details class="deep reveal">
-    <summary>3. Instrumental Variables (IV)</summary>
-    <div class="deep-body">
-      <div class="g2" style="gap:20px">
-        <div>
-          <p><strong>Exogenous variation exploitation</strong> &mdash; Use an instrument that affects the treatment but not the outcome directly to estimate causal effects.</p>
-          <ul style="margin:16px 0;padding-left:20px;font-size:14px">
-            <li><strong>Use case:</strong> Causal effect of absences on achievement (weather as instrument)</li>
-            <li><strong>First stage:</strong> Regress attendance on instrument + controls</li>
-            <li><strong>Second stage:</strong> Regress outcome on predicted attendance</li>
-            <li><strong>Validity tests:</strong> First-stage F &gt; 10, exclusion restriction argument</li>
-            <li><strong>Estimand:</strong> Local Average Treatment Effect (LATE)</li>
-          </ul>
-        </div>
-        <div class="card" style="padding:20px;background:var(--bg)">
-          <p style="font-size:12px;color:var(--tx2);margin-bottom:8px">Example Instruments</p>
-          <p style="font-size:13px;color:var(--tx2)">Weather severity for attendance, distance to school for transportation effects, lottery-assigned programs for program evaluation, policy discontinuities for class size effects.</p>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <details class="deep reveal">
-    <summary>4. Difference-in-Differences (DiD)</summary>
-    <div class="deep-body">
-      <div class="g2" style="gap:20px">
-        <div>
-          <p><strong>Policy evaluation design</strong> &mdash; Compare pre/post changes between treatment and control groups to estimate program impact.</p>
-          <ul style="margin:16px 0;padding-left:20px;font-size:14px">
-            <li><strong>Use case:</strong> Impact of new reading curriculum adopted by some schools</li>
-            <li><strong>Assumption:</strong> Parallel trends in pre-treatment period</li>
-            <li><strong>Validation:</strong> Placebo test with pseudo-treatment dates</li>
-            <li><strong>Extensions:</strong> Staggered DiD (Callaway-Sant&rsquo;Anna) for rollout programs</li>
-            <li><strong>Estimand:</strong> Average Treatment Effect (ATE)</li>
-          </ul>
-        </div>
-        <div class="card" style="padding:20px;background:var(--bg)">
-          <p style="font-size:12px;color:var(--tx2);margin-bottom:8px">Parallel Trends</p>
-          <p style="font-size:13px;color:var(--tx2)">The system automatically tests parallel trends with event-study plots and reports pre-treatment coefficient magnitudes. If trends diverge, results are flagged with a credibility warning.</p>
-        </div>
-      </div>
-    </div>
-  </details>
-
-  <details class="deep reveal">
-    <summary>5. Bayesian Networks &mdash; Structural Causal Models</summary>
-    <div class="deep-body">
-      <div class="g2" style="gap:20px">
-        <div>
-          <p><strong>Structural causal models</strong> &mdash; Learn directed acyclic graphs (DAGs) representing causal relationships among variables.</p>
-          <ul style="margin:16px 0;padding-left:20px;font-size:14px">
-            <li><strong>Use case:</strong> Map the full causal structure among attendance, behavior, grades, and home factors</li>
-            <li><strong>Structure learning:</strong> PC algorithm + domain expert priors</li>
-            <li><strong>Parameter learning:</strong> Bayesian estimation with Dirichlet priors</li>
-            <li><strong>Inference:</strong> do-calculus for interventional queries P(Y | do(X))</li>
-            <li><strong>Visualization:</strong> Interactive DAG explorer for administrators</li>
-          </ul>
-        </div>
-        <div class="card" style="padding:20px;background:var(--bg)">
-          <p style="font-size:12px;color:var(--tx2);margin-bottom:8px">Advantages</p>
-          <p style="font-size:13px;color:var(--tx2)">Unlike single-equation methods, Bayesian Networks capture the entire web of causal relationships simultaneously. They answer &ldquo;what if&rdquo; questions and identify mediating pathways between intervention and outcome.</p>
-        </div>
-      </div>
-    </div>
-  </details>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ CUSUM DETECTION ═══════════════════════════════════ -->
-<section>
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--amber)">Divergence Detection</p>
-  <h2 class="sec-title reveal">CUSUM <span class="grad-blue">change-point detection</span></h2>
-  <p class="sec-sub reveal">Cumulative Sum control charts detect the moment a learner&rsquo;s trajectory diverges from their projected growth path. Faster than waiting for end-of-quarter reports.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 380" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds3"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="380" rx="20" fill="#FAFAFA"/>
-      <text x="560" y="30" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="var(--tx)">CUSUM Divergence Detection</text>
-
-      <!-- Y axis -->
-      <line x1="100" y1="50" x2="100" y2="300" stroke="#E5E5EA" stroke-width="1"/>
-      <text x="55" y="180" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93" transform="rotate(-90 55 180)">Performance Score</text>
-      <!-- X axis -->
-      <line x1="100" y1="300" x2="1040" y2="300" stroke="#E5E5EA" stroke-width="1"/>
-      <text x="570" y="330" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Time (weeks)</text>
-
-      <!-- Grid lines -->
-      <line x1="100" y1="100" x2="1040" y2="100" stroke="#F0F0F0" stroke-width=".5"/>
-      <line x1="100" y1="150" x2="1040" y2="150" stroke="#F0F0F0" stroke-width=".5"/>
-      <line x1="100" y1="200" x2="1040" y2="200" stroke="#F0F0F0" stroke-width=".5"/>
-      <line x1="100" y1="250" x2="1040" y2="250" stroke="#F0F0F0" stroke-width=".5"/>
-
-      <!-- Expected trajectory (dashed green) -->
-      <g class="svg-fade stagger-1">
-        <path d="M120 260 L240 240 L360 220 L480 200 L600 180 L720 160 L840 140 L960 120" stroke="var(--green)" stroke-width="2" stroke-dasharray="8,5" fill="none"/>
-        <text x="975" y="115" font-family="Inter" font-size="10" fill="var(--green)" font-weight="600">Expected</text>
-      </g>
-
-      <!-- Confidence band -->
-      <g class="svg-fade stagger-1" opacity=".15">
-        <path d="M120 250 L240 228 L360 206 L480 184 L600 162 L720 140 L840 118 L960 96 L960 144 L840 162 L720 180 L600 198 L480 216 L360 234 L240 252 L120 270 Z" fill="var(--green)"/>
-      </g>
-
-      <!-- Actual trajectory (blue line) -->
-      <g class="svg-fade stagger-2">
-        <path d="M120 260 L240 242 L360 228 L420 226 L480 238 L540 254 L600 266 L640 270 L680 265 L720 255 L780 240 L840 225 L900 210 L960 200" stroke="var(--blue)" stroke-width="2.5" fill="none" stroke-linejoin="round"/>
-        <text x="975" y="196" font-family="Inter" font-size="10" fill="var(--blue)" font-weight="600">Actual</text>
-      </g>
-
-      <!-- CUSUM alert point with pulse -->
-      <g class="svg-fade stagger-3">
-        <circle cx="480" cy="238" r="12" fill="rgba(255,59,48,.12)">
-          <animate attributeName="r" values="12;18;12" dur="2s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values="1;.3;1" dur="2s" repeatCount="indefinite"/>
-        </circle>
-        <circle cx="480" cy="238" r="5" fill="#FF3B30"/>
-        <line x1="480" y1="50" x2="480" y2="300" stroke="#FF3B30" stroke-width="1" stroke-dasharray="4,3" opacity=".4"/>
-        <text x="480" y="66" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">CUSUM Alert</text>
-        <text x="480" y="82" text-anchor="middle" font-family="Inter" font-size="9" fill="#FF3B30">Week 12</text>
-      </g>
-
-      <!-- Intervention marker -->
-      <g class="svg-fade stagger-4">
-        <line x1="600" y1="50" x2="600" y2="300" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
-        <text x="600" y="66" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Intervention</text>
-        <text x="600" y="82" text-anchor="middle" font-family="Inter" font-size="9" fill="var(--green)">Week 16</text>
-      </g>
-
-      <!-- Recovery zone -->
-      <g class="svg-fade stagger-4">
-        <rect x="600" y="90" width="440" height="205" rx="6" fill="rgba(52,199,89,.03)"/>
-        <text x="820" y="108" text-anchor="middle" font-family="Inter" font-size="10" fill="var(--green)">Recovery Phase</text>
-      </g>
-
-      <!-- Legend -->
-      <g class="svg-fade stagger-5">
-        <line x1="140" y1="355" x2="170" y2="355" stroke="var(--green)" stroke-width="2" stroke-dasharray="6,4"/>
-        <text x="180" y="359" font-family="Inter" font-size="10" fill="#6E6E73">Expected Growth</text>
-        <line x1="330" y1="355" x2="360" y2="355" stroke="var(--blue)" stroke-width="2.5"/>
-        <text x="370" y="359" font-family="Inter" font-size="10" fill="#6E6E73">Actual Performance</text>
-        <circle cx="510" cy="355" r="4" fill="#FF3B30"/>
-        <text x="522" y="359" font-family="Inter" font-size="10" fill="#6E6E73">CUSUM Alert</text>
-        <rect x="640" y="349" width="30" height="12" rx="2" fill="rgba(52,199,89,.1)"/>
-        <text x="680" y="359" font-family="Inter" font-size="10" fill="#6E6E73">95% Confidence Band</text>
-      </g>
-    </svg>
-  </div>
-
-  <div class="g3 reveal" style="gap:20px;margin-top:32px">
-    <div class="card" style="position:relative;overflow:hidden;padding:24px">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
-      <h4 style="margin-bottom:8px;color:var(--amber)">Detection Speed</h4>
-      <p style="font-size:13px;color:var(--tx2)">CUSUM detects trajectory changes 3&ndash;5 weeks earlier than traditional threshold alerts. The cumulative sum accumulates small deviations that individually fall below alarm thresholds.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <h4 style="margin-bottom:8px;color:var(--blue)">Adaptive Thresholds</h4>
-      <p style="font-size:13px;color:var(--tx2)">Decision boundaries adapt to each learner&rsquo;s historical variance. High-variance learners get wider bands to reduce false positives; stable learners get tighter bands for faster detection.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <h4 style="margin-bottom:8px;color:var(--green)">Bidirectional Monitoring</h4>
-      <p style="font-size:13px;color:var(--tx2)">Both negative divergence (decline) and positive divergence (unexpected growth) are monitored. Positive divergence identifies students who may be ready for accelerated challenges.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ BAYESIAN GROWTH ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--blue)">Growth Projections</p>
-  <h2 class="sec-title reveal">Bayesian <span class="grad-blue">growth modeling</span></h2>
-  <p class="sec-sub reveal">Hierarchical Bayesian models project each learner&rsquo;s growth trajectory with uncertainty quantification. Projections incorporate learner history, peer trajectories, and intervention effects.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 340" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds4"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="340" rx="20" fill="#FAFAFA"/>
-
-      <!-- Three hierarchical levels -->
-      <g class="svg-fade stagger-1" filter="url(#ds4)">
-        <rect x="40" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="200" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Level 1: Within-Student</text>
-        <text x="200" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Repeated measures over time</text>
-        <text x="200" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Individual growth trajectory</text>
-        <text x="200" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">y&#7522;&#8342; = &#946;&#8320;&#7522; + &#946;&#8321;&#7522;t + &#949;&#7522;&#8342;</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds4)">
-        <rect x="400" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <text x="560" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">Level 2: Between-Student</text>
-        <text x="560" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Random intercepts + slopes</text>
-        <text x="560" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Student-level covariates</text>
-        <text x="560" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">&#946;&#8320;&#7522; = &#947;&#8320;&#8320; + &#947;&#8320;&#8321;X&#7522; + u&#8320;&#7522;</text>
-      </g>
-      <g class="svg-fade stagger-3" filter="url(#ds4)">
-        <rect x="760" y="30" width="320" height="120" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <text x="920" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Level 3: School Effects</text>
-        <text x="920" y="82" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Nested random effects</text>
-        <text x="920" y="100" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">School-level covariates</text>
-        <text x="920" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">MCMC via Stan: 4 chains &times; 2K iterations</text>
-      </g>
-
-      <!-- Arrow between levels -->
-      <line x1="360" y1="90" x2="398" y2="90" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="720" y1="90" x2="758" y2="90" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="3,3"/>
-
-      <!-- Output cards -->
-      <text x="560" y="190" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#8E8E93">OUTPUT ARTIFACTS</text>
-      <g class="svg-fade stagger-4" filter="url(#ds4)">
-        <rect x="40" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--blue)" stroke-width="1"/>
-        <text x="140" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--blue)">&#956;</text>
-        <text x="140" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Point Estimate</text>
-        <text x="140" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Posterior median growth rate</text>
-      </g>
-      <g class="svg-fade stagger-4" filter="url(#ds4)">
-        <rect x="270" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--purple)" stroke-width="1"/>
-        <text x="370" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--purple)">CI</text>
-        <text x="370" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Uncertainty</text>
-        <text x="370" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">80% and 95% credible intervals</text>
-      </g>
-      <g class="svg-fade stagger-5" filter="url(#ds4)">
-        <rect x="500" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--green)" stroke-width="1"/>
-        <text x="600" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--green)">P</text>
-        <text x="600" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">On-Track Probability</text>
-        <text x="600" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">P(grade-level by EOY)</text>
-      </g>
-      <g class="svg-fade stagger-5" filter="url(#ds4)">
-        <rect x="730" y="210" width="200" height="100" rx="12" fill="#FFF" stroke="var(--amber)" stroke-width="1"/>
-        <text x="830" y="242" text-anchor="middle" font-family="Inter" font-size="24" font-weight="800" fill="var(--amber)">&#916;</text>
-        <text x="830" y="264" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--tx)">Counterfactual</text>
-        <text x="830" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">With vs. without intervention</text>
-      </g>
-    </svg>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ CLOSED LOOP ═══════════════════════════════════ -->
-<section>
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--green)">Feedback Loop</p>
-  <h2 class="sec-title reveal">Closed-loop <span class="grad-green">learning system</span></h2>
-  <p class="sec-sub reveal">ATLAS doesn&rsquo;t just recommend &mdash; it tracks outcomes, updates its models, and learns which interventions actually work for which learner profiles.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 440" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds5"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-        <marker id="cla" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--blue)"/></marker>
-      </defs>
-      <rect width="1120" height="440" rx="20" fill="#FAFAFA"/>
-
-      <!-- Cycle nodes arranged in hexagon pattern -->
-      <!-- 1. Signal Detection (top left) -->
-      <g class="svg-fade stagger-1" filter="url(#ds5)">
-        <rect x="80" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="120" cy="92" r="18" fill="rgba(255,159,10,.1)"/>
-        <text x="120" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--amber)">1</text>
-        <text x="200" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Signal Detection</text>
-        <text x="180" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CUSUM or threshold alert</text>
-        <text x="180" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">identifies divergence</text>
-      </g>
-
-      <!-- 2. Causal Analysis (top right) -->
-      <g class="svg-fade stagger-2" filter="url(#ds5)">
-        <rect x="420" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <circle cx="460" cy="92" r="18" fill="rgba(123,97,255,.08)"/>
-        <text x="460" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--purple)">2</text>
-        <text x="540" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">Causal Analysis</text>
-        <text x="520" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Select method, generate</text>
-        <text x="520" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">ranked hypotheses</text>
-      </g>
-
-      <!-- 3. Recommendation (right) -->
-      <g class="svg-fade stagger-2" filter="url(#ds5)">
-        <rect x="760" y="60" width="200" height="100" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <circle cx="800" cy="92" r="18" fill="rgba(0,122,255,.08)"/>
-        <text x="800" y="97" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--blue)">3</text>
-        <text x="880" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Recommendation</text>
-        <text x="860" y="115" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">eROI + constraint engine</text>
-        <text x="860" y="132" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">validates feasibility</text>
-      </g>
-
-      <!-- 4. Implementation (bottom right) -->
-      <g class="svg-fade stagger-3" filter="url(#ds5)">
-        <rect x="760" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <circle cx="800" cy="302" r="18" fill="rgba(52,199,89,.08)"/>
-        <text x="800" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--green)">4</text>
-        <text x="880" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Implementation</text>
-        <text x="860" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Educator approves, system</text>
-        <text x="860" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">tracks fidelity</text>
-      </g>
-
-      <!-- 5. Outcome Monitoring (bottom left) -->
-      <g class="svg-fade stagger-3" filter="url(#ds5)">
-        <rect x="420" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <circle cx="460" cy="302" r="18" fill="rgba(0,122,255,.08)"/>
-        <text x="460" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--blue)">5</text>
-        <text x="540" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Monitor Outcome</text>
-        <text x="520" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Bayesian growth + CUSUM</text>
-        <text x="520" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">track recovery trajectory</text>
-      </g>
-
-      <!-- 6. Model Update (bottom far left) -->
-      <g class="svg-fade stagger-4" filter="url(#ds5)">
-        <rect x="80" y="270" width="200" height="100" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="120" cy="302" r="18" fill="rgba(255,159,10,.1)"/>
-        <text x="120" y="307" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="var(--amber)">6</text>
-        <text x="200" y="302" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Model Update</text>
-        <text x="180" y="325" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Outcomes feed back into</text>
-        <text x="180" y="342" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">eROI, risk, and causal models</text>
-      </g>
-
-      <!-- Connecting arrows (clockwise) -->
-      <line x1="280" y1="110" x2="418" y2="110" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-      <line x1="620" y1="110" x2="758" y2="110" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-      <line x1="860" y1="160" x2="860" y2="268" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-      <line x1="758" y1="320" x2="622" y2="320" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-      <line x1="418" y1="320" x2="282" y2="320" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-      <line x1="180" y1="270" x2="180" y2="162" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#cla)"/>
-
-      <!-- Center label -->
-      <g class="svg-fade stagger-5">
-        <circle cx="520" cy="215" r="40" fill="rgba(52,199,89,.06)" stroke="var(--green)" stroke-width="1"/>
-        <text x="520" y="210" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Closed</text>
-        <text x="520" y="226" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">Loop</text>
-        <circle cx="520" cy="215" r="48" fill="none" stroke="var(--green)" stroke-width=".5" opacity=".3">
-          <animate attributeName="r" values="48;56;48" dur="4s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".3;.08;.3" dur="4s" repeatCount="indefinite"/>
-        </circle>
-      </g>
-
-      <!-- Animated particle flowing through cycle -->
-      <circle r="4" fill="var(--green)" opacity=".5">
-        <animateMotion dur="8s" repeatCount="indefinite" path="M180,110 L520,110 L860,110 L860,320 L520,320 L180,320 L180,110"/>
-      </circle>
-
-      <!-- Bottom label -->
-      <text x="560" y="420" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Each cycle generates a labeled training example &mdash; the system gets smarter with every intervention</text>
-    </svg>
-  </div>
-
-  <div style="margin-top:28px;padding:20px 28px;border-radius:16px;background:rgba(52,199,89,.05);border:1px solid rgba(52,199,89,.12)" class="reveal">
-    <strong style="color:var(--green)">Continuous Improvement:</strong> Each complete cycle (signal &rarr; intervention &rarr; outcome) generates a labeled training example. After 30+ observations per intervention type, the system can estimate causal effects with confidence intervals narrow enough for actionable decision-making.
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ MONITORING DASHBOARD ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--purple)">System Monitoring</p>
-  <h2 class="sec-title reveal">Operational <span class="grad-purple">health metrics</span></h2>
-  <p class="sec-sub reveal">Real-time dashboards track both student outcomes and system performance, ensuring the platform operates within its design parameters.</p>
-
-  <div class="g4 reveal" style="gap:16px;margin-top:40px">
-    <div class="card" style="position:relative;overflow:hidden;padding:24px;text-align:center">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <div style="font-size:36px;font-weight:800;color:var(--green)">99.9%</div>
-      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Pipeline Uptime SLA</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px;text-align:center">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <div style="font-size:36px;font-weight:800;color:var(--blue)">&lt;5m</div>
-      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Signal Latency (P95)</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px;text-align:center">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
-      <div style="font-size:36px;font-weight:800;color:var(--purple)">&lt;2%</div>
-      <p style="font-size:13px;color:var(--tx2);margin-top:8px">False Positive Rate</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px;text-align:center">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
-      <div style="font-size:36px;font-weight:800;color:var(--amber)">0.85</div>
-      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Model AUC Target</p>
-    </div>
-  </div>
-
-  <div class="g2 reveal" style="gap:20px;margin-top:24px">
-    <div class="card" style="position:relative;overflow:hidden;padding:24px">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
-      <h4 style="margin-bottom:8px;color:var(--purple)">Model Drift Detection</h4>
-      <p style="font-size:14px;color:var(--tx2)">Population Stability Index (PSI) monitored weekly on feature distributions. PSI &gt; 0.2 triggers automatic model retraining. Concept drift detected via ADWIN windowed comparison.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden;padding:24px">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <h4 style="margin-bottom:8px;color:var(--green)">Fairness Monitoring</h4>
-      <p style="font-size:14px;color:var(--tx2)">Equalized odds and demographic parity checked per model refresh. Disparate impact ratio monitored across race, gender, FRL status, ELL, and IEP subgroups. Violations trigger bias review board notification.</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ NEXT ═══════════════════════════════════ -->
+<!-- ═══════════════════════════ NEXT ═══════════════════════════ -->
 <section style="padding:60px 0">
 <div class="con">
   <a href="security-roadmap.html" class="next-topic reveal">
     <div>
       <div class="next-label">Next Chapter</div>
-      <div class="next-title">Security &amp; Roadmap &rarr; FERPA Compliance + 30-Week Plan</div>
+      <div class="next-title">Security &amp; Roadmap &rarr; FERPA/COPPA, 30-Week Implementation</div>
     </div>
     <span class="next-arrow">&rarr;</span>
   </a>
@@ -649,12 +493,11 @@
     <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
     <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
   </div>
-  <div class="footer-bottom">ATLAS Education Operating System &mdash; See every student. Miss nothing.</div>
+  <div class="footer-bottom">ATLAS Education Operating System &mdash; From 47 disconnected systems to one intelligence layer.</div>
 </div>
 </footer>
 
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
-
 <script src="atlas.js" defer></script>
 </body>
 </html>

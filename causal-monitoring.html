@@ -444,23 +444,37 @@ Step 5: If SST needed: schedule meeting, gather data packet, invite team</div>
   <details class="deep reveal" style="margin-top:32px">
     <summary>CUSUM divergence detection &mdash; mathematical formulation</summary>
     <div class="deep-body">
-      <h4>CUSUM Statistic</h4>
+      <h4>Cumulative Sum Control Chart</h4>
       <div class="code-block" style="margin:12px 0 24px">
-S_t = max(0, S_{t-1} + (x_t - &mu;_0 - k))
+Parameters: k = 0.5 (allowance), h = 4.5 (decision interval)
 
-Where:
-  x_t    = observed score at time t
-  &mu;_0    = expected score from Bayesian growth model
-  k      = allowance parameter (typically 0.5&sigma;)
+Upper accumulator (exceeding): S&#8314;_t = max(0, S&#8314;_{t-1} + (x_t - &mu;&#8320; - k))
+Lower accumulator (falling):    S&#8315;_t = max(0, S&#8315;_{t-1} + (&mu;&#8320; - k - x_t))
 
-Alert when S_t &gt; h (decision interval, typically 4&ndash;5&sigma;)
-Adaptive h per learner based on historical variance</div>
+Alert when: S&#8314;_t &gt; h (positive divergence) OR S&#8315;_t &gt; h (negative divergence)
 
-      <h4>Bidirectional Monitoring</h4>
-      <p>Both upward CUSUM (positive divergence &mdash; unexpected growth) and downward CUSUM (negative divergence &mdash; decline) are tracked simultaneously. Positive divergence triggers step-down consideration; negative divergence triggers the fidelity &rarr; dosage &rarr; futility gate sequence.</p>
+Properties:
+- ~1 false alarm per year with weekly monitoring
+- Detects 0.5&sigma; shifts within 8-12 observations
+- Separate accumulators for exceeding and falling behind</div>
 
-      <div style="margin-top:20px;padding:16px 20px;border-radius:12px;background:rgba(52,199,89,.06);border:1px solid rgba(52,199,89,.15)">
-        <strong style="color:var(--green)">Detection Speed:</strong> CUSUM accumulates small deviations that individually fall below threshold. This detects trajectory shifts 3&ndash;5 weeks earlier than traditional &ldquo;below grade level&rdquo; threshold alerts, enabling earlier intervention and better outcomes.
+      <h4>Bayesian Growth Projection</h4>
+      <p>Conjugate Normal-Normal model with population prior from intervention evidence base (tighter for Tier 1, wider for Tier 4). Individual posterior updates as each progress monitoring data point arrives. Confidence bands widen with time. The projection is a living entity updated with every observation.</p>
+    </div>
+  </details>
+
+  <!-- Impact Ledger & Learning Loop -->
+  <details class="deep reveal">
+    <summary>Impact Ledger &amp; Learning Loop</summary>
+    <div class="deep-body">
+      <p>The Impact Ledger is an immutable record linking every resource allocation decision to its measured outcome. Each entry tracks: the action plan, the decision provenance chain, resources consumed (staff hours, direct cost, materials, facilities, training, opportunity cost &mdash; fully loaded via Ingredients Method), expected outcomes (metric, baseline, target, projected), actual outcomes (as monitoring data arrives), and computed eROI.</p>
+
+      <h4 style="margin-top:20px">The Learning Loop</h4>
+      <p>Every completed intervention cycle produces an <code>OutcomeLearningRecord</code> that:</p>
+      <p style="margin-top:8px">1. Updates the intervention&rsquo;s effectiveness estimates for this learner profile cluster. 2. Improves the risk prediction model&rsquo;s feature importance weights. 3. Refines the matching algorithm&rsquo;s Thompson Sampling distributions. 4. Adds to the evidence base for similar-case retrieval. 5. Feeds the federated learning pipeline (cross-district knowledge transfer).</p>
+
+      <div class="co" style="margin-top:20px;border-left:3px solid var(--green);background:rgba(52,199,89,.04)">
+        <p><strong style="color:var(--green)">Compounding intelligence:</strong> The system gets measurably smarter with every intervention cycle. This is the data moat &mdash; each cycle of recommend &rarr; deliver &rarr; measure &rarr; learn makes the next recommendation better.</p>
       </div>
     </div>
   </details>

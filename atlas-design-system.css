@@ -771,24 +771,123 @@ footer a:hover { text-decoration: underline; color: #fff; }
 .stagger-9  { animation-delay: .9s !important; }
 .stagger-10 { animation-delay: 1.0s !important; }
 
-/* ── 28. Print Styles ─────────────────────────────────── */
-@media print {
-  nav, #progress, #top-btn { display: none !important; }
-  body { font-size: 12px; }
-  .card, .persona-card, .preview-card, details.deep { break-inside: avoid; }
-  .reveal { opacity: 1 !important; transform: none !important; }
+/* ── 28. Page Transitions ────────────────────────────── */
+@keyframes pageIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+body { animation: pageIn .4s var(--ease-out) both; }
+
+/* ── 29. Mobile Responsive Polish ────────────────────── */
+@media (max-width: 768px) {
+  section { padding: 80px 0; }
+  .con { padding: 0 20px; }
+  .con-narrow, .con-wide { padding: 0 20px; }
+  .page-hero { padding: 100px 0 60px; }
+  .hero { padding: 120px 0 80px; min-height: auto; }
+  .hero-title { font-size: clamp(36px, 8vw, 56px); }
+  .page-title { font-size: clamp(28px, 6vw, 48px); }
+  .sec-title { font-size: clamp(24px, 5vw, 40px); }
+  .sec-sub { font-size: 17px; margin-bottom: 36px; }
+  .pills { gap: 8px; }
+  .mp { font-size: 12px; padding: 6px 12px; }
+  .card { padding: 24px; border-radius: var(--r-m); }
+  .persona-card { padding: 28px; border-radius: var(--r-l); }
+  .stat-row { gap: 28px; }
+
+  /* Diagram containers: allow horizontal scroll on mobile */
+  .dia, .dia-hero {
+    margin-left: -20px; margin-right: -20px;
+    border-radius: var(--r-m);
+    overflow-x: auto; overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .dia svg, .dia-hero svg {
+    min-width: 700px;
+  }
+
+  /* Table horizontal scroll */
+  .tbl { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tbl thead, .tbl tbody, .tbl tr, .tbl th, .tbl td { white-space: nowrap; }
+
+  /* Before/After */
+  .ba { grid-template-columns: 1fr; }
+
+  /* Footer */
+  footer { padding: 48px 0 32px; }
+  .footer-grid { gap: 8px; }
+  .footer-pill { font-size: 12px; padding: 6px 12px; }
+
+  /* Next topic link */
+  .next-topic { padding: 24px; border-radius: var(--r-l); }
+  .next-title { font-size: 17px; }
+
+  /* Hero illustration */
+  .hero-illustration { margin-top: 48px; border-radius: var(--r-l); }
+
+  /* Deep-dive details */
+  details.deep summary { padding: 14px 20px; font-size: 15px; }
+  .deep-body { padding: 20px; }
 }
 
-/* ── 29. Reduced Motion ───────────────────────────────── */
+@media (max-width: 480px) {
+  .con { padding: 0 16px; }
+  section { padding: 60px 0; }
+  .hero { padding: 100px 0 60px; }
+  .page-hero { padding: 80px 0 48px; }
+  .card { padding: 20px; }
+  .g2, .g3, .g4 { gap: 16px; }
+  .hero-actions { flex-direction: column; }
+  .hero-actions .cta-btn { width: 100%; justify-content: center; }
+  .problem-side { padding: 32px 24px; }
+  .flow-icon { width: 56px; height: 56px; border-radius: 16px; font-size: 24px; }
+}
+
+/* ── 30. Print Styles ────────────────────────────────── */
+@media print {
+  nav, #progress, #top-btn, .hero-bg, .page-bg { display: none !important; }
+  body { font-size: 11pt; color: #000; background: #fff; animation: none !important; }
+  a { color: #000; text-decoration: underline; }
+  .card, .persona-card, .preview-card, details.deep, .dia, .dia-hero { break-inside: avoid; }
+  .card, .persona-card { border: 1px solid #ccc; box-shadow: none; backdrop-filter: none; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  section { padding: 40px 0; }
+  .page-hero { padding: 60px 0 30px; }
+  .hero { padding: 60px 0 30px; min-height: auto; }
+  footer { background: #fff; color: #333; border-top: 1px solid #ccc; padding: 20px 0; }
+  footer a { color: #333; }
+  .footer-pill { border-color: #ccc; }
+  .footer-bottom { color: #666; }
+  .grad-blue, .grad-purple, .grad-green, .grad-amber, .grad-red, .grad-multi {
+    -webkit-text-fill-color: currentColor; background: none;
+  }
+  .dia, .dia-hero { box-shadow: none; border: 1px solid #ddd; overflow: visible; }
+  .next-topic { border: 1px solid #ccc; box-shadow: none; }
+  details.deep { border: 1px solid #ccc; }
+  details.deep[open] { box-shadow: none; }
+}
+
+/* ── 31. Reduced Motion ──────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+  body { animation: none !important; }
   .reveal { opacity: 1; transform: none; }
   html { scroll-behavior: auto; }
   .hero-bg { animation: none; }
+  /* Disable all SVG animations */
+  svg animate, svg animateMotion, svg animateTransform {
+    display: none;
+  }
+  .svg-fade, .svg-scale, .svg-float, .svg-pulse, .svg-draw, .svg-spin {
+    animation: none !important;
+    opacity: 1 !important;
+  }
+  #progress { animation: none; background: var(--blue); }
 }
 
 /* ── 30. Homepage-Specific ────────────────────────────── */

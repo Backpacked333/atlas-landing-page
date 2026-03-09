@@ -263,6 +263,50 @@
       <p>Contracted therapists, tutoring agencies, community partners with credentials, availability, service areas, and cost structures.</p>
     </div>
   </details>
+
+  <!-- Relationship Types -->
+  <details class="deep reveal">
+    <summary>Relationship types &mdash; how domains connect</summary>
+    <div class="deep-body">
+      <p>The value of ATLAS lies in connections between domains. Key relationships:</p>
+      <table class="tbl">
+        <thead><tr><th>Edge Type</th><th>Source &rarr; Target</th><th>Cardinality</th></tr></thead>
+        <tbody>
+          <tr><td><code>ENROLLED_IN</code></td><td>Learner &rarr; CourseSection</td><td>M:N (temporal)</td></tr>
+          <tr><td><code>ASSESSED_BY</code></td><td>Learner &rarr; AssessmentEvent</td><td>1:N</td></tr>
+          <tr><td><code>GOVERNED_BY</code></td><td>Learner &rarr; SupportPlan</td><td>1:N (temporal)</td></tr>
+          <tr><td><code>RECEIVES_SERVICE</code></td><td>Learner &rarr; ServiceDelivery</td><td>1:N</td></tr>
+          <tr><td><code>ASSIGNED_TO</code></td><td>Learner &rarr; Staff</td><td>M:N (advisor, counselor, case mgr)</td></tr>
+          <tr><td><code>TAUGHT_BY</code></td><td>CourseSection &rarr; Staff</td><td>N:1</td></tr>
+          <tr><td><code>MEETS_AT</code></td><td>CourseSection &rarr; ScheduleBlock</td><td>1:N</td></tr>
+          <tr><td><code>LOCATED_IN</code></td><td>CourseSection &rarr; Space</td><td>N:1</td></tr>
+          <tr><td><code>MEASURES</code></td><td>AssessmentInstrument &rarr; Standard</td><td>M:N</td></tr>
+          <tr><td><code>FUNDED_BY</code></td><td>Program &rarr; FundingSource</td><td>M:N</td></tr>
+          <tr><td><code>ADDRESSES</code></td><td>InstructionalMaterial &rarr; Standard</td><td>M:N</td></tr>
+          <tr><td><code>MEMBER_OF</code></td><td>Learner &rarr; Household</td><td>M:N</td></tr>
+        </tbody>
+      </table>
+      <div class="co" style="background:rgba(52,199,89,.06);border-left-color:var(--green);margin-top:24px">
+        <strong><em>Cross-domain query example:</em></strong> &ldquo;For a student with declining math scores, find: their current math teacher, the curriculum materials being used, any recent attendance changes, any active interventions, and whether their IEP specifies math service minutes.&rdquo; &mdash; This is a single graph traversal across 5 domains.
+      </div>
+    </div>
+  </details>
+
+  <!-- Temporal Modeling -->
+  <details class="deep reveal">
+    <summary>Temporal modeling &mdash; bitemporal everything</summary>
+    <div class="deep-body">
+      <p>ATLAS maintains two time dimensions for every fact using XTDB v2:</p>
+      <p><strong>Valid-time:</strong> When a fact was true in the real world (e.g., student enrolled on Sept 1).</p>
+      <p><strong>System-time:</strong> When the system learned about it (e.g., data ingested on Sept 3).</p>
+      <p>This enables &ldquo;as-of&rdquo; queries: &ldquo;What did the system know about this student on October 15?&rdquo; &mdash; critical for FERPA compliance, audit trails, and understanding how decisions were made with the information available at the time.</p>
+      <div class="code-block">-- XTDB temporal query: what was true at a specific moment
+SELECT * FROM learner_enrollment
+FOR VALID_TIME AS OF DATE '2025-10-15'
+FOR SYSTEM_TIME AS OF TIMESTAMP '2025-10-16T09:00:00Z'
+WHERE learner_id = 'abc123'</div>
+    </div>
+  </details>
 </div>
 </section>
 

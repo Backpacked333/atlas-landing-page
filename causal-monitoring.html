@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Causal Analysis &amp; Monitoring — ATLAS</title>
-<meta name="description" content="ATLAS causal analysis: 5 inference methods, CUSUM anomaly detection, and Bayesian growth modeling powering a closed-loop monitoring system for education.">
+<title>Causal Inference &amp; Pattern Discovery — ATLAS</title>
+<meta name="description" content="ATLAS causal inference: 6 methods from Granger causality to emergent pattern discovery, CUSUM anomaly detection, and Bayesian growth modeling for education.">
 <link rel="stylesheet" href="atlas-design-system.css">
 </head>
 <body>
@@ -33,14 +33,14 @@
 <section class="page-hero" style="background:var(--bg2)">
 <div class="page-bg" style="background:radial-gradient(ellipse at 60% 40%, rgba(52,199,89,.1) 0%, transparent 60%),radial-gradient(ellipse at 30% 60%, rgba(123,97,255,.08) 0%, transparent 50%);"></div>
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--green)">Causal Analysis</p>
-  <h1 class="page-title reveal">From correlation to <span class="grad-green">causation</span></h1>
-  <p class="page-sub reveal">Five causal inference methods separate correlation from causation. CUSUM divergence detection and Bayesian growth projections close the feedback loop from intervention to outcome.</p>
+  <p class="sec-label reveal" style="color:var(--green)">Causal Inference &amp; Pattern Discovery</p>
+  <h1 class="page-title reveal">Finding what nobody programmed <span class="grad-green">the system to find</span></h1>
+  <p class="page-sub reveal">A bus route change &rarr; late arrivals &rarr; missed first-period instruction &rarr; math score decline. The system discovers causal chains that no analyst thought to look for, using 6 inference methods from Granger causality to emergent pattern detection.</p>
   <div class="pills reveal">
-    <span class="mp" style="background:var(--green-bg);color:var(--green)">5 Causal Methods</span>
+    <span class="mp" style="background:var(--green-bg);color:var(--green)">6 Causal Methods</span>
     <span class="mp" style="background:var(--purple-bg);color:var(--purple)">CUSUM Detection</span>
     <span class="mp" style="background:var(--blue-bg);color:var(--blue)">Bayesian Projections</span>
-    <span class="mp" style="background:var(--amber-bg);color:var(--amber)">Closed-Loop Learning</span>
+    <span class="mp" style="background:var(--amber-bg);color:var(--amber)">Emergent Patterns</span>
   </div>
 </div>
 </section>
@@ -49,107 +49,128 @@
 <section>
 <div class="con">
 
-  <!-- Correlation vs Causation comparison -->
-  <div class="ba reveal">
-    <div class="ba-col ba-before">
-      <div class="ba-label">Correlation Only</div>
-      <ul>
-        <li>Students who miss school have lower grades</li>
-        <li>Tutoring recipients show improvement</li>
-        <li>Smaller classes correlate with higher scores</li>
-        <li>No way to distinguish cause from selection bias</li>
-        <li>Cannot inform interventions reliably</li>
-      </ul>
-    </div>
-    <div class="ba-col ba-after">
-      <div class="ba-label">Causal Understanding</div>
-      <ul>
-        <li>Each absence causes 0.3&sigma; decline in math (IV)</li>
-        <li>Tutoring causes +0.45&sigma; gain after selection control (PSM)</li>
-        <li>Class size reduction causes +0.2&sigma; gain in K-3 (DiD)</li>
-        <li>Actionable interventions with quantified effect sizes</li>
-        <li>Evidence-based decisions with confidence intervals</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 5 Causal Methods Diagram -->
-  <div class="dia dia-hero reveal" style="margin-top:40px">
-    <svg viewBox="0 0 1120 320" xmlns="http://www.w3.org/2000/svg">
+  <!-- Causal Structure Discovery SVG -->
+  <div class="dia dia-hero reveal">
+    <svg viewBox="0 0 1120 400" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--green)"/></marker>
+        <marker id="arrow-b" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--blue)"/></marker>
+        <marker id="arrow-r" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--red)"/></marker>
       </defs>
-      <rect width="1120" height="320" rx="20" fill="#FAFAFA"/>
+      <rect width="1120" height="400" rx="20" fill="#FAFAFA"/>
+      <text x="560" y="30" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="var(--tx)">Causal Structure Discovery &mdash; Emergent Chain Example</text>
 
-      <!-- 5 method cards -->
+      <!-- Bus Route Change node -->
       <g class="svg-fade stagger-1" filter="url(#ds)">
-        <rect x="30" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <circle cx="70" cy="72" r="16" fill="rgba(52,199,89,.1)"/>
-        <text x="70" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">1</text>
-        <text x="95" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Granger Causality</text>
-        <text x="50" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Temporal precedence test</text>
-        <text x="50" y="118" font-family="Inter" font-size="9" fill="#8E8E93">VAR model + F-test</text>
-        <text x="50" y="136" font-family="Inter" font-size="9" fill="#8E8E93">AIC/BIC lag selection</text>
-        <text x="50" y="162" font-family="Inter" font-size="8.5" fill="var(--green)">&#10003; Screening tool for candidates</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds)">
-        <rect x="240" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <circle cx="280" cy="72" r="16" fill="rgba(123,97,255,.08)"/>
-        <text x="280" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--purple)">2</text>
-        <text x="305" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">PSM</text>
-        <text x="260" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Propensity Score Matching</text>
-        <text x="260" y="118" font-family="Inter" font-size="9" fill="#8E8E93">Nearest-neighbor, caliper=0.2&sigma;</text>
-        <text x="260" y="136" font-family="Inter" font-size="9" fill="#8E8E93">ATT with Rosenbaum bounds</text>
-        <text x="260" y="162" font-family="Inter" font-size="8.5" fill="var(--purple)">&#10003; Observational quasi-experiments</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds)">
-        <rect x="450" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <circle cx="490" cy="72" r="16" fill="rgba(0,122,255,.08)"/>
-        <text x="490" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--blue)">3</text>
-        <text x="515" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Instrumental Variables</text>
-        <text x="470" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Exogenous variation (2SLS)</text>
-        <text x="470" y="118" font-family="Inter" font-size="9" fill="#8E8E93">First-stage F &gt; 10 required</text>
-        <text x="470" y="136" font-family="Inter" font-size="9" fill="#8E8E93">LATE estimand</text>
-        <text x="470" y="162" font-family="Inter" font-size="8.5" fill="var(--blue)">&#10003; Weather, distance, lottery instruments</text>
-      </g>
-      <g class="svg-fade stagger-3" filter="url(#ds)">
-        <rect x="660" y="40" width="190" height="140" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="700" cy="72" r="16" fill="rgba(255,159,10,.1)"/>
-        <text x="700" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--amber)">4</text>
-        <text x="725" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Difference-in-Diff</text>
-        <text x="680" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Policy evaluation design</text>
-        <text x="680" y="118" font-family="Inter" font-size="9" fill="#8E8E93">Parallel trends assumption</text>
-        <text x="680" y="136" font-family="Inter" font-size="9" fill="#8E8E93">Staggered DiD extensions</text>
-        <text x="680" y="162" font-family="Inter" font-size="8.5" fill="var(--amber)">&#10003; Program rollout evaluation</text>
-      </g>
-      <g class="svg-fade stagger-3" filter="url(#ds)">
-        <rect x="870" y="40" width="220" height="140" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <circle cx="910" cy="72" r="16" fill="rgba(52,199,89,.08)"/>
-        <text x="910" y="77" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">5</text>
-        <text x="935" y="77" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Bayesian Networks</text>
-        <text x="890" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Structural causal models (DAG)</text>
-        <text x="890" y="118" font-family="Inter" font-size="9" fill="#8E8E93">PC algorithm + expert priors</text>
-        <text x="890" y="136" font-family="Inter" font-size="9" fill="#8E8E93">do-calculus: P(Y | do(X))</text>
-        <text x="890" y="162" font-family="Inter" font-size="8.5" fill="var(--green)">&#10003; Full causal web + what-if queries</text>
+        <rect x="40" y="140" width="180" height="80" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
+        <text x="130" y="172" text-anchor="middle" font-family="Inter" font-size="20">&#128652;</text>
+        <text x="130" y="196" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Bus Route Change</text>
       </g>
 
-      <!-- Automatic method selection -->
-      <g class="svg-fade stagger-4">
-        <rect x="360" y="220" width="400" height="60" rx="14" fill="rgba(123,97,255,.05)" stroke="var(--purple)" stroke-width="1"/>
-        <text x="560" y="248" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--purple)">Automatic Method Selection</text>
-        <text x="560" y="268" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">System selects method based on data structure, question type, and identification strategy</text>
+      <!-- Late Arrivals node -->
+      <g class="svg-fade stagger-2" filter="url(#ds)">
+        <rect x="290" y="140" width="180" height="80" rx="14" fill="#FFF" stroke="var(--red)" stroke-width="1.5"/>
+        <text x="380" y="172" text-anchor="middle" font-family="Inter" font-size="20">&#9200;</text>
+        <text x="380" y="196" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--red)">Late Arrivals (+12min)</text>
       </g>
-      <line x1="125" y1="180" x2="400" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
-      <line x1="335" y1="180" x2="440" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
-      <line x1="545" y1="180" x2="540" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
-      <line x1="755" y1="180" x2="640" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
-      <line x1="980" y1="180" x2="720" y2="220" stroke="#AEAEB2" stroke-width=".75" stroke-dasharray="3,3"/>
+
+      <!-- Missed 1st Period node -->
+      <g class="svg-fade stagger-2" filter="url(#ds)">
+        <rect x="540" y="140" width="180" height="80" rx="14" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
+        <text x="630" y="172" text-anchor="middle" font-family="Inter" font-size="20">&#128218;</text>
+        <text x="630" y="196" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">Missed 1st Period</text>
+      </g>
+
+      <!-- Math Score Decline node -->
+      <g class="svg-fade stagger-3" filter="url(#ds)">
+        <rect x="790" y="140" width="200" height="80" rx="14" fill="#FFF" stroke="var(--red)" stroke-width="2"/>
+        <text x="890" y="172" text-anchor="middle" font-family="Inter" font-size="20">&#128200;</text>
+        <text x="890" y="196" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--red)">Math Score &minus;0.3&sigma;</text>
+      </g>
+
+      <!-- Arrows -->
+      <g class="svg-fade stagger-2">
+        <line x1="220" y1="180" x2="288" y2="180" stroke="var(--amber)" stroke-width="2" marker-end="url(#arrow)"/>
+        <text x="254" y="170" text-anchor="middle" font-family="Inter" font-size="8" fill="#8E8E93">causes</text>
+      </g>
+      <g class="svg-fade stagger-2">
+        <line x1="470" y1="180" x2="538" y2="180" stroke="var(--red)" stroke-width="2" marker-end="url(#arrow-r)"/>
+        <text x="504" y="170" text-anchor="middle" font-family="Inter" font-size="8" fill="#8E8E93">causes</text>
+      </g>
+      <g class="svg-fade stagger-3">
+        <line x1="720" y1="180" x2="788" y2="180" stroke="var(--purple)" stroke-width="2" marker-end="url(#arrow-r)"/>
+        <text x="754" y="170" text-anchor="middle" font-family="Inter" font-size="8" fill="#8E8E93">causes</text>
+      </g>
+
+      <!-- Discovery method labels -->
+      <g class="svg-fade stagger-4">
+        <rect x="120" y="250" width="160" height="36" rx="8" fill="rgba(52,199,89,.06)" stroke="var(--green)" stroke-width="1"/>
+        <text x="200" y="273" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="var(--green)">Granger Causality</text>
+        <line x1="200" y1="250" x2="200" y2="222" stroke="var(--green)" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>
+      </g>
+      <g class="svg-fade stagger-4">
+        <rect x="350" y="250" width="160" height="36" rx="8" fill="rgba(123,97,255,.06)" stroke="var(--purple)" stroke-width="1"/>
+        <text x="430" y="273" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="var(--purple)">Instrumental Variables</text>
+        <line x1="430" y1="250" x2="430" y2="222" stroke="var(--purple)" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>
+      </g>
+      <g class="svg-fade stagger-4">
+        <rect x="590" y="250" width="160" height="36" rx="8" fill="rgba(0,122,255,.06)" stroke="var(--blue)" stroke-width="1"/>
+        <text x="670" y="273" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="var(--blue)">Bayesian Network</text>
+        <line x1="670" y1="250" x2="670" y2="222" stroke="var(--blue)" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>
+      </g>
+      <g class="svg-fade stagger-4">
+        <rect x="830" y="250" width="160" height="36" rx="8" fill="rgba(255,59,48,.06)" stroke="var(--red)" stroke-width="1"/>
+        <text x="910" y="273" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="var(--red)">PSM Validation</text>
+        <line x1="910" y1="250" x2="910" y2="222" stroke="var(--red)" stroke-width="1" stroke-dasharray="3,3" opacity=".5"/>
+      </g>
+
+      <!-- Bottom insight -->
+      <g class="svg-fade stagger-5">
+        <rect x="280" y="320" width="560" height="50" rx="12" fill="rgba(52,199,89,.06)" stroke="var(--green)" stroke-width="1.5"/>
+        <text x="560" y="342" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--green)">&#10003; Discovered automatically &mdash; no analyst hypothesized this chain</text>
+        <text x="560" y="360" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Fix: adjust bus route departure &minus;12 min &rarr; math scores recover within 6 weeks</text>
+      </g>
     </svg>
+  </div>
+
+  <!-- 6 Causal Methods - 3x2 Card Grid -->
+  <div class="g3 reveal" style="gap:20px;margin-top:40px">
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(52,199,89,.08);margin-bottom:16px">&#128200;</div>
+      <h4 style="margin-bottom:8px">Granger Causality</h4>
+      <p style="font-size:14px;color:var(--tx2)">Temporal precedence testing via VAR models. Does knowing X&rsquo;s past improve prediction of Y? Screening tool for causal candidates.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(123,97,255,.08);margin-bottom:16px">&#128101;</div>
+      <h4 style="margin-bottom:8px">Propensity Score Matching</h4>
+      <p style="font-size:14px;color:var(--tx2)">Match treated/untreated learners on 48+ observable features. Nearest-neighbor with caliper = 0.2&sigma;. ATT with Rosenbaum bounds.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);margin-bottom:16px">&#127919;</div>
+      <h4 style="margin-bottom:8px">Instrumental Variables</h4>
+      <p style="font-size:14px;color:var(--tx2)">Exploit exogenous variation (weather, distance, lottery) via 2SLS. First-stage F &gt; 10 required. LATE estimand for compliers.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);margin-bottom:16px">&#128202;</div>
+      <h4 style="margin-bottom:8px">Difference-in-Differences</h4>
+      <p style="font-size:14px;color:var(--tx2)">Policy evaluation comparing pre/post changes. Parallel trends validated with event-study plots. Staggered DiD for rollouts.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(123,97,255,.08);margin-bottom:16px">&#128300;</div>
+      <h4 style="margin-bottom:8px">Bayesian Networks</h4>
+      <p style="font-size:14px;color:var(--tx2)">DAG structure learning via PC algorithm + expert priors. do-calculus for interventional queries P(Y | do(X)). Full causal web.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(52,199,89,.08);margin-bottom:16px">&#129504;</div>
+      <h4 style="margin-bottom:8px">Emergent Pattern Discovery</h4>
+      <p style="font-size:14px;color:var(--tx2)">Unsupervised causal chain detection across the knowledge graph. Finds relationships no analyst hypothesized. Bus route example above.</p>
+    </div>
   </div>
 
   <!-- Causal Method Deep Dives -->
   <details class="deep reveal" style="margin-top:32px">
-    <summary>Causal method deep dives &mdash; all 5 methods</summary>
+    <summary>Causal method deep dives &mdash; all 6 methods</summary>
     <div class="deep-body">
       <h4>1. Granger Causality &mdash; Temporal Precedence</h4>
       <p><strong>Does knowing X&rsquo;s past improve prediction of Y beyond Y&rsquo;s own past?</strong> Use case: Do attendance dips Granger-cause grade declines? VAR model with F-test on lagged coefficients, AIC/BIC lag selection with max lag of 6 grading periods. Output: directed temporal influence graph with p-values. Limitation: establishes temporal precedence, not true causation &mdash; used as a screening tool.</p>
@@ -165,6 +186,9 @@
 
       <h4 style="margin-top:20px">5. Bayesian Networks &mdash; Structural Causal Models</h4>
       <p><strong>Learn directed acyclic graphs (DAGs) representing causal relationships.</strong> Use case: Map full causal structure among attendance, behavior, grades, and home factors. Structure learning via PC algorithm + domain expert priors. Parameter learning via Bayesian estimation with Dirichlet priors. Inference: do-calculus for interventional queries P(Y | do(X)). Unlike single-equation methods, captures the entire web of causal relationships simultaneously.</p>
+
+      <h4 style="margin-top:20px">6. Emergent Pattern Discovery</h4>
+      <p><strong>Unsupervised detection of causal chains across the knowledge graph.</strong> The system traverses relationships between entities &mdash; bus routes, attendance, instruction time, assessment scores &mdash; and applies Granger + Bayesian methods at each edge to validate causality. Discovers multi-hop chains like the bus route example: no human configured these connections. Runs nightly as a batch job, surfacing new discoveries ranked by effect size and population affected.</p>
     </div>
   </details>
 

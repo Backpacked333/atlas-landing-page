@@ -406,6 +406,58 @@
     </div>
   </details>
 
+  <!-- Additional Model Cards -->
+  <div class="g3 reveal" style="gap:20px;margin-top:40px">
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);margin-bottom:16px">&#128100;</div>
+      <h4 style="margin-bottom:8px">Substitute Forecasting</h4>
+      <p style="font-size:14px;color:var(--tx2)">Predict daily substitute needs from historical patterns, weather, flu season, day-of-week effects. Proactive hiring.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);margin-bottom:16px">&#129309;</div>
+      <h4 style="margin-bottom:8px">Paraprofessional Assignment</h4>
+      <p style="font-size:14px;color:var(--tx2)">Match paraprofessionals to students by certification, language, schedule, and student-specific needs.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(123,97,255,.08);margin-bottom:16px">&#127970;</div>
+      <h4 style="margin-bottom:8px">Space Allocation</h4>
+      <p style="font-size:14px;color:var(--tx2)">Optimize room assignments: capacity utilization, accessibility, equipment needs, proximity to related services.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(52,199,89,.08);margin-bottom:16px">&#128218;</div>
+      <h4 style="margin-bottom:8px">PD Scheduling</h4>
+      <p style="font-size:14px;color:var(--tx2)">Professional development scheduling that minimizes classroom coverage disruption while meeting training mandates.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);margin-bottom:16px">&#128203;</div>
+      <h4 style="margin-bottom:8px">Assessment Windows</h4>
+      <p style="font-size:14px;color:var(--tx2)">Schedule assessment periods minimizing instructional disruption while meeting state and district testing mandates.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,59,48,.08);margin-bottom:16px">&#128200;</div>
+      <h4 style="margin-bottom:8px">Program eROI</h4>
+      <p style="font-size:14px;color:var(--tx2)">Educational Return on Investment: true cost (Ingredients Method) &divide; causal impact (PSM). Expand, optimize, or terminate.</p>
+    </div>
+  </div>
+
+  <!-- Master Scheduling Formulation -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Master scheduling &mdash; mathematical formulation</summary>
+    <div class="deep-body">
+      <h4>Decision Variables</h4>
+      <div class="code-block">x[c,t,r] &isin; {0,1} : course section c scheduled at time slot t in room r</div>
+      <h4 style="margin-top:20px">Objective</h4>
+      <div class="code-block">min &Sigma;_h w_h &middot; violation_h + &Sigma;_s w_s &middot; violation_s</div>
+      <h4 style="margin-top:20px">Hard Constraints</h4>
+      <p>Teacher conflicts (one location per slot), room conflicts (one section per room per slot), room capacity (enrollment &le; capacity), student conflicts (no simultaneous sections), IEP service minutes (pull-out blocks must exist), teacher certification (valid cert for subject).</p>
+      <h4 style="margin-top:20px">Soft Constraints (weighted)</h4>
+      <p>Student preference satisfaction, teacher schedule compactness, equitable access to advanced courses, pedagogical sequencing (lab follows lecture), planning period distribution per contract.</p>
+      <div style="margin-top:20px;padding:16px 20px;border-radius:12px;background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.15)">
+        <strong style="color:var(--amber)">Solver:</strong> Google OR-Tools CP-SAT with hot-start from prior year schedule. Decomposed into teacher assignment + room assignment + student scheduling sub-problems. Large Neighborhood Search for refinement.
+      </div>
+    </div>
+  </details>
+
   <!-- Solver Deep Dives -->
   <details class="deep reveal">
     <summary>Solver deep dives &mdash; CP-SAT, Gurobi, Timefold, Z3</summary>
@@ -424,76 +476,55 @@
 
   <!-- eROI Engine -->
   <details class="deep reveal">
-    <summary>The eROI engine &mdash; expected return on investment</summary>
+    <summary>eROI engine &mdash; know which programs actually work</summary>
     <div class="deep-body">
-      <p>Every recommendation carries an expected ROI score computed from historical outcomes, implementation costs, and opportunity costs. This moves education decisions from intuition to evidence.</p>
-      <div class="dia dia-hero" style="margin:20px 0">
-        <svg viewBox="0 0 1120 340" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <filter id="ds3"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-          </defs>
-          <rect width="1120" height="340" rx="20" fill="#FAFAFA"/>
+      <p>Every program and intervention carries an expected Return on Investment computed from true cost, causal impact, and outcome probability. This moves education spending decisions from intuition to evidence.</p>
 
-          <!-- Three input factors -->
-          <g filter="url(#ds3)">
-            <rect x="60" y="40" width="240" height="130" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-            <text x="180" y="80" text-anchor="middle" font-family="Inter" font-size="36" font-weight="800" fill="var(--green)">P(s)</text>
-            <text x="180" y="108" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--tx)">Success Probability</text>
-            <text x="180" y="128" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">LightGBM-predicted likelihood</text>
-            <text x="180" y="145" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Calibrated via Platt scaling</text>
-          </g>
-          <g filter="url(#ds3)">
-            <rect x="340" y="40" width="240" height="130" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-            <text x="460" y="80" text-anchor="middle" font-family="Inter" font-size="36" font-weight="800" fill="var(--blue)">&Delta;O</text>
-            <text x="460" y="108" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--tx)">Expected Outcome Gain</text>
-            <text x="460" y="128" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Projected metric improvement</text>
-            <text x="460" y="145" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Attendance, grades, behavior</text>
-          </g>
-          <g filter="url(#ds3)">
-            <rect x="620" y="40" width="240" height="130" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-            <text x="740" y="80" text-anchor="middle" font-family="Inter" font-size="36" font-weight="800" fill="var(--amber)">C<tspan baseline-shift="sub" font-size="20">t</tspan></text>
-            <text x="740" y="108" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--tx)">Total Cost</text>
-            <text x="740" y="128" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Staff + materials + opportunity cost</text>
-            <text x="740" y="145" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Amortized over duration window</text>
-          </g>
+      <h4 style="margin-top:24px">True Cost (Ingredients Method)</h4>
+      <div class="code-block" style="margin:12px 0 24px">
+True_Cost = &Sigma; (Personnel_hours &times; loaded_rate)
+           + &Sigma; (Materials &times; unit_cost)
+           + &Sigma; (Facilities &times; sq_ft_rate)
+           + &Sigma; (Training &times; per_session)
+           + Opportunity_Cost(student_time_pulled)
+           + Admin_Overhead(15% default)</div>
 
-          <line x1="180" y1="170" x2="490" y2="220" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-          <line x1="460" y1="170" x2="490" y2="220" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-          <line x1="740" y1="170" x2="630" y2="220" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
+      <h4>Causal Attribution via PSM</h4>
+      <div class="code-block" style="margin:12px 0 24px">
+ATT = E[Y(1) | T=1] - E[Y(0) | T=1]
 
-          <!-- Formula box -->
-          <g filter="url(#ds3)">
-            <rect x="380" y="210" width="360" height="70" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="2"/>
-            <text x="560" y="242" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" fill="var(--tx)">eROI = P(s) &times; &Delta;O / C&#x2080;</text>
-            <text x="560" y="268" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#8E8E93">Bootstrap CI from n &ge; 30 historical outcomes</text>
-            <rect x="376" y="206" width="368" height="78" rx="20" fill="none" stroke="var(--green)" stroke-width=".75" opacity=".25">
-              <animate attributeName="opacity" values=".25;.08;.25" dur="3s" repeatCount="indefinite"/>
-            </rect>
-          </g>
+1. Estimate propensity score: P(T=1 | X) via logistic regression
+2. Match treated to nearest-neighbor controls (caliper = 0.2&sigma;)
+3. Validate balance: standardized mean difference &lt; 0.1 on all X
+4. Compute ATT with Abadie-Imbens standard errors
+5. Sensitivity analysis: Rosenbaum bounds &Gamma; &isin; [1, 2]</div>
 
-          <line x1="560" y1="280" x2="560" y2="310" stroke="var(--green)" stroke-width="1.5"/>
-          <text x="560" y="330" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="var(--green)">Ranked intervention recommendations with confidence intervals</text>
+      <h4>eROI Calculation</h4>
+      <div class="code-block" style="margin:12px 0 24px">
+eROI = P(success) &times; ATT / True_Cost
 
-          <!-- Feedback loop -->
-          <g filter="url(#ds3)">
-            <rect x="880" y="40" width="200" height="130" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-            <text x="980" y="70" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="var(--green)">FEEDBACK LOOP</text>
-            <text x="980" y="95" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Actual outcomes feed</text>
-            <text x="980" y="112" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">back quarterly. Under-</text>
-            <text x="980" y="129" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">performers flagged for</text>
-            <text x="980" y="146" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">review &amp; deprecation.</text>
-          </g>
-        </svg>
-      </div>
-      <div class="g2" style="gap:16px">
-        <div class="card" style="padding:20px;border-left:3px solid var(--green)">
-          <h4 style="margin-bottom:4px;color:var(--green)">Portfolio Optimization</h4>
-          <p style="font-size:13px;color:var(--tx2)">Given a fixed budget, the system selects the portfolio of interventions that maximizes total eROI across all flagged learners, subject to staff and scheduling constraints.</p>
-        </div>
-        <div class="card" style="padding:20px;border-left:3px solid var(--green)">
-          <h4 style="margin-bottom:4px;color:var(--green)">Diminishing Returns</h4>
-          <p style="font-size:13px;color:var(--tx2)">The model accounts for diminishing returns &mdash; adding a 3rd intervention for a student may yield less marginal eROI than a 1st intervention for an unserved student.</p>
-        </div>
+Where:
+  P(success) = LightGBM calibrated probability (Platt scaling)
+  ATT        = Average Treatment Effect on the Treated (PSM)
+  True_Cost  = Ingredients Method total (annualized)
+
+Bootstrap 95% CI from n &ge; 30 historical cohorts</div>
+
+      <h4 style="margin-top:24px">Stop / Continue / Expand Decision Matrix</h4>
+      <table class="tbl" style="margin-top:12px">
+        <thead>
+          <tr><th>eROI Range</th><th>Decision</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&lt; 0.5</td><td style="color:var(--red);font-weight:600">Stop</td><td>Phase out program. Redirect funding to higher-eROI alternatives.</td></tr>
+          <tr><td>0.5 &ndash; 1.5</td><td style="color:var(--amber);font-weight:600">Optimize</td><td>Identify cost drivers. A/B test delivery modifications. Re-evaluate in 1 semester.</td></tr>
+          <tr><td>1.5 &ndash; 3.0</td><td style="color:var(--blue);font-weight:600">Continue</td><td>Maintain current funding. Monitor for regression. Share best practices.</td></tr>
+          <tr><td>&gt; 3.0</td><td style="color:var(--green);font-weight:600">Expand</td><td>Increase enrollment capacity. Request additional funding. Replicate across sites.</td></tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:20px;padding:16px 20px;border-radius:12px;background:rgba(52,199,89,.06);border:1px solid rgba(52,199,89,.15)">
+        <strong style="color:var(--green)">Feedback Loop:</strong> Actual outcomes feed back quarterly. eROI recalculated with fresh ATT estimates. Under-performers flagged automatically. Portfolio re-optimized across all active programs to maximize district-wide impact per dollar.
       </div>
     </div>
   </details>

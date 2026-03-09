@@ -27,7 +27,7 @@
 
 <!-- ═══════════════════════════════════ PAGE HERO ═══════════════════════════════════ -->
 <section class="page-hero" style="background:var(--bg2)">
-<div class="page-bg" style="background:radial-gradient(ellipse at 30% 40%, rgba(52,199,89,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 60%, rgba(0,122,255,.08) 0%, transparent 50%);"></div>
+<div class="page-bg" style="background:radial-gradient(ellipse at 30% 40%, rgba(52,199,89,.1) 0%, transparent 55%),radial-gradient(ellipse at 70% 60%, rgba(0,122,255,.07) 0%, transparent 50%);"></div>
 <div class="con">
   <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Ontology</div>
   <h1 class="page-title reveal">Semantic <span class="grad-green">Ontology</span></h1>
@@ -36,124 +36,180 @@
     <span class="mp" style="background:var(--green-bg);color:var(--green)">9 Domains</span>
     <span class="mp" style="background:var(--blue-bg);color:var(--blue)">200+ Entities</span>
     <span class="mp" style="background:var(--purple-bg);color:var(--purple)">Bitemporal</span>
-    <span class="mp" style="background:var(--orange-bg);color:var(--orange)">Ed-Fi Aligned</span>
+    <span class="mp" style="background:var(--amber-bg);color:var(--amber)">Ed-Fi Aligned</span>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ FOUNDATIONAL PREMISE ═══════════════════════════════════ -->
+<!-- ═══════════════════════════════════ FOUNDATION ═══════════════════════════════════ -->
 <section>
 <div class="con">
   <p class="sec-label reveal" style="color:var(--green)">Foundation</p>
   <h2 class="sec-title reveal">A <span class="grad-green">reasoning substrate,</span> not a database</h2>
-  <p class="sec-sub reveal">The ontology encodes what exists, how things relate, why decisions were made, what was expected, and what actually happened. Every recommendation is a graph traversal.</p>
+  <p class="sec-sub reveal">The ontology encodes what exists, how things relate, why decisions were made, what was expected, and what actually happened.</p>
 
-  <div class="g3 reveal" style="margin-top:32px">
-    <div class="card">
+  <div class="g3 reveal" style="margin-top:40px">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
       <div class="card-icon" style="background:var(--blue-bg)">&#128279;</div>
       <h3>Cross-Domain Traversal</h3>
-      <p>A scheduling change affects service delivery affects compliance affects projected outcomes. The graph connects everything.</p>
+      <p>A scheduling change affects service delivery affects compliance affects projected outcomes. The graph connects everything so the system reasons across all dimensions simultaneously.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
       <div class="card-icon" style="background:var(--purple-bg)">&#128270;</div>
       <h3>Decision Provenance</h3>
-      <p>Every recommendation is a reified subgraph showing which data points were used, which constraints evaluated, and which reasoning path followed.</p>
+      <p>Every recommendation is a reified subgraph showing which data points were used, which constraints evaluated, and which reasoning path was followed. Fully auditable.</p>
     </div>
-    <div class="card">
-      <div class="card-icon" style="background:var(--orange-bg)">&#128202;</div>
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
+      <div class="card-icon" style="background:var(--amber-bg)">&#128202;</div>
       <h3>Projection &amp; Monitoring</h3>
-      <p>The system models what it expects to happen and compares against reality. Divergence triggers automatic re-evaluation.</p>
+      <p>The system models what it expects to happen and compares against reality. Divergence triggers automatic re-evaluation and adaptation.</p>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══════════════════════════════════ NINE DOMAINS ═══════════════════════════════════ -->
-<section>
+<section class="section-alt">
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--indigo)">Domain Map</p>
+  <p class="sec-label reveal" style="color:var(--purple)">Domain Map</p>
   <h2 class="sec-title reveal">Nine <span class="grad-purple">operational domains</span></h2>
   <p class="sec-sub reveal">Each domain is a facet of educational operations. The connections between domains are where ATLAS creates value no point solution can replicate.</p>
 
-  <!-- Domain visualization -->
-  <div class="dia dia-lg reveal">
-    <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
-      <defs><filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity=".06"/></filter></defs>
-      <rect width="900" height="400" rx="20" fill="#FAFAFA"/>
+  <div class="dia dia-hero reveal">
+    <svg viewBox="0 0 1000 440" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+        <linearGradient id="grad-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#34C759" stop-opacity=".25"/>
+          <stop offset="100%" stop-color="#007AFF" stop-opacity=".08"/>
+        </linearGradient>
+      </defs>
+      <rect width="1000" height="440" fill="#FAFAFA"/>
+
+      <!-- Title -->
+      <text x="500" y="30" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#1D1D1F">9 Operational Domains &mdash; Learner at Center</text>
+
       <!-- Center: Learner -->
       <g filter="url(#ds)">
-        <circle cx="450" cy="200" r="50" fill="#EBF5FF" stroke="#007AFF" stroke-width="2.5"/>
-        <text x="450" y="193" text-anchor="middle" font-family="Inter" font-size="22">&#127891;</text>
-        <text x="450" y="215" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#007AFF">LEARNER</text>
+        <circle cx="500" cy="220" r="56" fill="#E8F9ED" stroke="#34C759" stroke-width="2.5"/>
+        <text x="500" y="210" text-anchor="middle" font-size="28">&#127891;</text>
+        <text x="500" y="236" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#34C759">LEARNER</text>
       </g>
-      <!-- Surrounding domains -->
-      <g class="svg-fade-in stagger-1" filter="url(#ds)">
-        <rect x="290" y="30" width="130" height="50" rx="14" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
-        <text x="355" y="52" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">Instructional</text>
-        <text x="355" y="67" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">Program</text>
-      </g>
-      <line x1="380" y1="80" x2="430" y2="155" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-2" filter="url(#ds)">
-        <rect x="490" y="30" width="120" height="50" rx="14" fill="#FFF" stroke="#AF52DE" stroke-width="1.5"/>
-        <text x="550" y="52" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#AF52DE">People</text>
-        <text x="550" y="67" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Capacities</text>
-      </g>
-      <line x1="530" y1="80" x2="475" y2="155" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-3" filter="url(#ds)">
-        <rect x="660" y="110" width="120" height="50" rx="14" fill="#FFF" stroke="#5856D6" stroke-width="1.5"/>
-        <text x="720" y="132" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#5856D6">Time</text>
-        <text x="720" y="147" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Scheduling</text>
-      </g>
-      <line x1="660" y1="140" x2="500" y2="190" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-4" filter="url(#ds)">
-        <rect x="670" y="230" width="120" height="50" rx="14" fill="#FFF" stroke="#FF9500" stroke-width="1.5"/>
-        <text x="730" y="252" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF9500">Space</text>
-        <text x="730" y="267" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Resources</text>
-      </g>
-      <line x1="670" y1="255" x2="500" y2="215" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-5" filter="url(#ds)">
-        <rect x="505" y="320" width="120" height="50" rx="14" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
-        <text x="565" y="342" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">Finance</text>
-        <text x="565" y="357" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Economics</text>
-      </g>
-      <line x1="530" y1="320" x2="465" y2="248" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-6" filter="url(#ds)">
-        <rect x="285" y="320" width="120" height="50" rx="14" fill="#FFF" stroke="#FF2D55" stroke-width="1.5"/>
-        <text x="345" y="342" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF2D55">Governance</text>
-        <text x="345" y="357" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Compliance</text>
-      </g>
-      <line x1="370" y1="320" x2="435" y2="248" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-7" filter="url(#ds)">
-        <rect x="110" y="230" width="130" height="50" rx="14" fill="#FFF" stroke="#5AC8FA" stroke-width="1.5"/>
-        <text x="175" y="252" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#5AC8FA">Relationships</text>
-        <text x="175" y="267" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Communication</text>
-      </g>
-      <line x1="240" y1="250" x2="400" y2="210" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade-in stagger-8" filter="url(#ds)">
-        <rect x="110" y="110" width="130" height="50" rx="14" fill="#FFF" stroke="#007AFF" stroke-width="1.5"/>
-        <text x="175" y="132" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF">Interventions</text>
-        <text x="175" y="147" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">&amp; Support</text>
-      </g>
-      <line x1="240" y1="140" x2="400" y2="185" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <!-- Pulsing ring -->
-      <circle cx="450" cy="200" r="68" fill="none" stroke="var(--blue)" stroke-width="1" opacity=".15">
-        <animate attributeName="r" values="68;80;68" dur="3s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".15;.05;.15" dur="3s" repeatCount="indefinite"/>
+
+      <!-- Pulsing rings -->
+      <circle cx="500" cy="220" r="76" fill="none" stroke="url(#grad-ring)" stroke-width="1.5">
+        <animate attributeName="r" values="76;90;76" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".25;.06;.25" dur="3.5s" repeatCount="indefinite"/>
       </circle>
+      <circle cx="500" cy="220" r="100" fill="none" stroke="url(#grad-ring)" stroke-width="1">
+        <animate attributeName="r" values="100;115;100" dur="4s" begin=".5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".12;.03;.12" dur="4s" begin=".5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Domain 1: Instructional (top) -->
+      <line x1="500" y1="163" x2="500" y2="108" stroke="#34C759" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-1" filter="url(#ds)">
+        <rect x="415" y="52" width="170" height="54" rx="16" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
+        <text x="500" y="74" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">&#128218; Instructional</text>
+        <text x="500" y="93" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Curriculum &#183; Courses &#183; Assessments</text>
+      </g>
+
+      <!-- Domain 2: People (top-right) -->
+      <line x1="545" y1="178" x2="640" y2="115" stroke="#7B61FF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin=".3s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-2" filter="url(#ds)">
+        <rect x="630" y="52" width="170" height="54" rx="16" fill="#FFF" stroke="#7B61FF" stroke-width="1.5"/>
+        <text x="715" y="74" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#7B61FF">&#128100; People</text>
+        <text x="715" y="93" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Staff &#183; Guardians &#183; Providers</text>
+      </g>
+
+      <!-- Domain 3: Time (right) -->
+      <line x1="556" y1="213" x2="660" y2="195" stroke="#5856D6" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin=".6s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-3" filter="url(#ds)">
+        <rect x="680" y="168" width="170" height="54" rx="16" fill="#FFF" stroke="#5856D6" stroke-width="1.5"/>
+        <text x="765" y="190" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#5856D6">&#128338; Time</text>
+        <text x="765" y="209" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Calendars &#183; Schedules &#183; Blocks</text>
+      </g>
+
+      <!-- Domain 4: Space (right-bottom) -->
+      <line x1="548" y1="248" x2="660" y2="290" stroke="#FF9F0A" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin=".9s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-4" filter="url(#ds)">
+        <rect x="680" y="270" width="170" height="54" rx="16" fill="#FFF" stroke="#FF9F0A" stroke-width="1.5"/>
+        <text x="765" y="292" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF9F0A">&#127970; Space</text>
+        <text x="765" y="311" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Facilities &#183; Rooms &#183; Transport</text>
+      </g>
+
+      <!-- Domain 5: Finance (bottom-right) -->
+      <line x1="520" y1="270" x2="565" y2="350" stroke="#FF3B30" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-5" filter="url(#ds)">
+        <rect x="510" y="365" width="170" height="54" rx="16" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
+        <text x="595" y="387" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF3B30">&#128176; Finance</text>
+        <text x="595" y="406" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Budgets &#183; Funding &#183; Cost Models</text>
+      </g>
+
+      <!-- Domain 6: Governance (bottom-left) -->
+      <line x1="480" y1="270" x2="435" y2="350" stroke="#FF2D55" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-6" filter="url(#ds)">
+        <rect x="320" y="365" width="170" height="54" rx="16" fill="#FFF" stroke="#FF2D55" stroke-width="1.5"/>
+        <text x="405" y="387" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF2D55">&#128220; Governance</text>
+        <text x="405" y="406" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Compliance &#183; Policy &#183; Audit</text>
+      </g>
+
+      <!-- Domain 7: Relationships (left-bottom) -->
+      <line x1="452" y1="248" x2="340" y2="290" stroke="#5AC8FA" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin="1.8s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-7" filter="url(#ds)">
+        <rect x="150" y="270" width="170" height="54" rx="16" fill="#FFF" stroke="#5AC8FA" stroke-width="1.5"/>
+        <text x="235" y="292" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#5AC8FA">&#128172; Relationships</text>
+        <text x="235" y="311" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Formal &#183; Communication &#183; Partners</text>
+      </g>
+
+      <!-- Domain 8: Interventions (left) -->
+      <line x1="444" y1="213" x2="340" y2="195" stroke="#007AFF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="opacity" values=".2;.5;.2" dur="3s" begin="2.1s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-8" filter="url(#ds)">
+        <rect x="150" y="168" width="170" height="54" rx="16" fill="#FFF" stroke="#007AFF" stroke-width="1.5"/>
+        <text x="235" y="190" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#007AFF">&#127919; Interventions</text>
+        <text x="235" y="209" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Catalog &#183; Delivery &#183; Monitoring</text>
+      </g>
+
+      <!-- Domain 0 (top-left): unlabeled connecting to overall -->
+      <line x1="458" y1="178" x2="360" y2="115" stroke="#34C759" stroke-width="1.2" stroke-dasharray="5,4" opacity=".15"/>
+      <g class="svg-fade stagger-9" filter="url(#ds)">
+        <rect x="200" y="52" width="170" height="54" rx="16" fill="#FFF" stroke="#34C759" stroke-width="1.2" opacity=".8"/>
+        <text x="285" y="74" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">&#128301; Discovery</text>
+        <text x="285" y="93" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Patterns &#183; Communities &#183; Causal</text>
+      </g>
     </svg>
   </div>
 
   <!-- Domain deep dives -->
   <details class="deep reveal">
-    <summary><span class="tag" style="background:var(--blue-bg);color:var(--blue)">Domain 1</span> The Learner</summary>
+    <summary>Domain 1 &mdash; The Learner</summary>
     <div class="deep-body">
-      <p>The gravitational center of the entire ontology. Every other domain exists in service of the learner's development. Not a row in a database &mdash; a rich, evolving, multi-dimensional representation.</p>
+      <p>The gravitational center of the entire ontology. Every other domain exists in service of the learner&rsquo;s development. Not a row in a database &mdash; a rich, evolving, multi-dimensional representation.</p>
       <h4>Core Entities</h4>
       <p><strong>Learner</strong> &mdash; Identity, enrollment, program associations, external ID mappings for entity resolution across systems.</p>
       <p><strong>LearnerAcademicProfile</strong> &mdash; Domain mastery map decomposed across every academic subdomain. Not a single &ldquo;reading level&rdquo; but phonemic awareness, decoding, fluency, vocabulary, comprehension.</p>
       <p><strong>LearnerBehavioralProfile</strong> &mdash; SEL assessments (DESSA, SAEBRS), behavior event history, engagement patterns.</p>
-      <p><strong>LearnerWellnessProfile</strong> &mdash; Attendance patterns (not just present/absent), circumstantial factors (homelessness, foster care), with strict access controls.</p>
-      <p><strong>LearnerSupportPlan</strong> &mdash; Universal abstraction for IEPs, 504 plans, intervention plans, gifted plans, EL plans, and private school learning agreements.</p>
+      <p><strong>LearnerWellnessProfile</strong> &mdash; Attendance patterns, circumstantial factors (homelessness, foster care), with strict access controls.</p>
+      <p><strong>LearnerSupportPlan</strong> &mdash; Universal abstraction for IEPs, 504 plans, intervention plans, gifted plans, EL plans.</p>
       <h4>Key Relationships</h4>
       <div class="code-block">Learner &rarr; ENROLLED_AT &rarr; School (temporal)
 Learner &rarr; GOVERNED_BY &rarr; SupportPlan (zero to many)
@@ -164,7 +220,7 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
   </details>
 
   <details class="deep reveal">
-    <summary><span class="tag" style="background:var(--green-bg);color:var(--green)">Domain 2</span> Instructional Program</summary>
+    <summary>Domain 2 &mdash; Instructional Program</summary>
     <div class="deep-body">
       <p>What is being taught, according to what framework, using what materials, assessed how, and with what expected outcomes. Framework-agnostic &mdash; supports Common Core, IB, Montessori, Waldorf, Classical, and custom frameworks.</p>
       <h4>Core Entities</h4>
@@ -175,67 +231,71 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
   </details>
 
   <details class="deep reveal">
-    <summary><span class="tag" style="background:var(--purple-bg);color:var(--purple)">Domain 3</span> People &amp; Capacities</summary>
+    <summary>Domain 3 &mdash; People &amp; Capacities</summary>
     <div class="deep-body">
       <p>Every human in the system &mdash; their roles, credentials, availability, effectiveness, and workload. A single person may occupy multiple roles.</p>
-      <p><strong>Staff</strong> &mdash; Certifications, competencies, workload tracking (max vs. current hours/caseload), availability patterns, multi-school assignments for itinerant providers.</p>
+      <p><strong>Staff</strong> &mdash; Certifications, competencies, workload tracking (max vs. current hours/caseload), availability patterns, multi-school assignments.</p>
       <p><strong>Guardian</strong> &mdash; Contact info, language preferences, consent records, engagement history.</p>
       <p><strong>ExternalProvider</strong> &mdash; Contracted therapists, tutoring agencies, community partners with credentials and availability.</p>
     </div>
   </details>
 
   <details class="deep reveal">
-    <summary><span class="tag" style="background:var(--indigo-bg);color:var(--indigo)">Domains 4&ndash;6</span> Time, Space &amp; Finance</summary>
+    <summary>Domains 4&ndash;6 &mdash; Time, Space &amp; Finance</summary>
     <div class="deep-body">
       <h4>Time &amp; Scheduling (Domain 4)</h4>
       <p>Academic calendars, bell schedules, master schedules, schedule blocks, intervention windows. Time is the most constrained resource &mdash; every recommendation is gated by temporal constraints.</p>
       <h4>Space &amp; Resources (Domain 5)</h4>
       <p>Facilities, rooms (with capacity, equipment, suitability), transportation assets with route optimization, technology resources, material inventories.</p>
       <h4>Finance &amp; Economics (Domain 6)</h4>
-      <p>Funding sources (with restrictions and clawback risk), budgets, expenditures, cost models (Ingredients Method), and revenue recovery tracking. The &ldquo;Moneyball&rdquo; layer.</p>
+      <p>Funding sources (with restrictions and clawback risk), budgets, expenditures, cost models (Ingredients Method), and revenue recovery tracking.</p>
     </div>
   </details>
 
   <details class="deep reveal">
-    <summary><span class="tag" style="background:var(--red-bg);color:var(--red)">Domains 7&ndash;9</span> Governance, Relationships &amp; Interventions</summary>
+    <summary>Domains 7&ndash;9 &mdash; Governance, Relationships &amp; Interventions</summary>
     <div class="deep-body">
       <h4>Governance &amp; Compliance (Domain 7)</h4>
       <p>Machine-evaluable constraints from federal law (IDEA, 504, FERPA), state regulations, union contracts, board policies, accreditation standards. Each constraint has severity, scope, and enforcement mechanism.</p>
       <h4>Relationships &amp; Communication (Domain 8)</h4>
       <p>Formal relationships (teacher-student, advisor-advisee), communication events across all channels, community partners with referral processes and capacity.</p>
       <h4>Interventions &amp; Support Systems (Domain 9)</h4>
-      <p>Intervention catalog with evidence tiers, assignment workflow (12-state machine), service delivery tracking, progress monitoring, and the complete intervention lifecycle from identification through adaptation.</p>
+      <p>Intervention catalog with evidence tiers, assignment workflow (12-state machine), service delivery tracking, progress monitoring, and the complete intervention lifecycle.</p>
     </div>
   </details>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ FOUR REASONING PATTERNS ═══════════════════════════════════ -->
+<!-- ═══════════════════════════════════ REASONING PATTERNS ═══════════════════════════════════ -->
 <section>
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--orange)">Reasoning Patterns</p>
-  <h2 class="sec-title reveal">Four universal <span class="grad-orange">patterns of thought</span></h2>
+  <p class="sec-label reveal" style="color:var(--amber)">Reasoning Patterns</p>
+  <h2 class="sec-title reveal">Four universal <span class="grad-amber">patterns of thought</span></h2>
   <p class="sec-sub reveal">Every feature ATLAS builds is an instantiation of one or more of these patterns.</p>
 
-  <div class="g2 reveal" style="margin-top:32px">
-    <div class="card">
+  <div class="g2 reveal" style="margin-top:40px">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--red)"></div>
       <div class="card-icon" style="background:var(--red-bg)">&#128680;</div>
-      <h3>Pattern 1: Signal &rarr; Root Cause</h3>
+      <h3>Signal &rarr; Root Cause</h3>
       <p>Something changes in the data. The system detects it, evaluates significance, and traces causal pathways across domains to identify what is actually going on.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
       <div class="card-icon" style="background:var(--blue-bg)">&#127919;</div>
-      <h3>Pattern 2: Need &rarr; Resource Match</h3>
-      <p>Given an identified need, enumerate all resources that could address it, evaluate against all constraints, and propose the optimal match with tradeoff analysis.</p>
+      <h3>Need &rarr; Resource Match</h3>
+      <p>Given an identified need, enumerate resources that could address it, evaluate against constraints, and propose the optimal match with tradeoff analysis.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
       <div class="card-icon" style="background:var(--green-bg)">&#128260;</div>
-      <h3>Pattern 3: Act &rarr; Monitor &rarr; Adapt</h3>
+      <h3>Act &rarr; Monitor &rarr; Adapt</h3>
       <p>Once approved, orchestrate execution, monitor fidelity and outcomes against projections, and trigger adaptation when reality diverges from expectations.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
       <div class="card-icon" style="background:var(--purple-bg)">&#128200;</div>
-      <h3>Pattern 4: Optimize &rarr; Maximize Impact</h3>
+      <h3>Optimize &rarr; Maximize Impact</h3>
       <p>Given finite resources (people, time, money, space), determine the allocation that maximizes aggregate educational outcomes, weighted by equity.</p>
     </div>
   </div>
@@ -243,21 +303,36 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
 </section>
 
 <!-- ═══════════════════════════════════ DECISION PROVENANCE ═══════════════════════════════════ -->
-<section>
+<section class="section-alt">
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--indigo)">Auditability</p>
+  <p class="sec-label reveal" style="color:var(--purple)">Auditability</p>
   <h2 class="sec-title reveal">Decision <span class="grad-purple">provenance</span></h2>
   <p class="sec-sub reveal">Every recommendation is a reified subgraph &mdash; a first-class, inspectable, auditable object. Any stakeholder can see exactly why a recommendation was made.</p>
 
   <div class="journey reveal">
-    <h4>What a provenance chain captures</h4>
-    <div class="steps">
-      <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Trigger</strong> &mdash; What data point or event started the analysis</div></div>
-      <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Traversal path</strong> &mdash; Every node visited, every relationship followed, every data point inspected</div></div>
-      <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Constraints evaluated</strong> &mdash; Which rules were checked, which passed, which failed</div></div>
-      <div class="step"><div class="step-num">4</div><div class="step-text"><strong>Alternatives considered</strong> &mdash; What other options were evaluated and why they were not selected</div></div>
-      <div class="step"><div class="step-num">5</div><div class="step-text"><strong>Conclusion</strong> &mdash; The recommendation with confidence score and human-readable reasoning</div></div>
-      <div class="step"><div class="step-num">6</div><div class="step-text"><strong>Review trail</strong> &mdash; Who approved, when, and any modifications or disputes</div></div>
+    <div class="journey-step">
+      <div class="journey-num">1</div>
+      <div><strong>Trigger</strong><p>What data point or event started the analysis</p></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-num">2</div>
+      <div><strong>Traversal Path</strong><p>Every node visited, every relationship followed, every data point inspected</p></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-num">3</div>
+      <div><strong>Constraints Evaluated</strong><p>Which rules were checked, which passed, which failed</p></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-num">4</div>
+      <div><strong>Alternatives Considered</strong><p>What other options were evaluated and why they were not selected</p></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-num">5</div>
+      <div><strong>Conclusion</strong><p>The recommendation with confidence score and human-readable reasoning</p></div>
+    </div>
+    <div class="journey-step">
+      <div class="journey-num">6</div>
+      <div><strong>Review Trail</strong><p>Who approved, when, and any modifications or disputes</p></div>
     </div>
   </div>
 </div>
@@ -266,22 +341,25 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
 <!-- ═══════════════════════════════════ SCALE VARIANCE ═══════════════════════════════════ -->
 <section>
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--teal)">Adaptability</p>
+  <p class="sec-label reveal" style="color:var(--blue)">Adaptability</p>
   <h2 class="sec-title reveal">One ontology, <span class="grad-blue">any context</span></h2>
   <p class="sec-sub reveal">The same structure serves a 200-student Montessori school and an 80,000-student urban district. Variance is in configuration, not architecture.</p>
 
-  <div class="g3 reveal" style="margin-top:32px">
-    <div class="card">
+  <div class="g3 reveal" style="margin-top:40px">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
       <div class="card-icon" style="background:var(--green-bg)">&#127979;</div>
       <h3>Small Private School</h3>
       <p>200 students, 30 staff. Non-standard frameworks (Montessori, Waldorf). Accreditation standards replace legal mandates. Same ontology, different constraint content.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
       <div class="card-icon" style="background:var(--blue-bg)">&#127961;</div>
       <h3>Large Urban District</h3>
       <p>60K students, 4K staff, 80 schools. Full federal/state regulatory framework. Complex union contracts. Itinerant staff routing across dozens of sites.</p>
     </div>
-    <div class="card">
+    <div class="card" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
       <div class="card-icon" style="background:var(--purple-bg)">&#128101;</div>
       <h3>Charter Network</h3>
       <p>15 schools, 8K students. Hybrid context: public funding with operational flexibility. Network-level optimization across schools.</p>
@@ -296,7 +374,7 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
   <a href="data-intelligence.html" class="next-topic reveal">
     <div>
       <div class="next-label">Next Chapter</div>
-      <div class="next-title">Data Pipeline &amp; Signal Detection</div>
+      <div class="next-title">Data Pipeline &amp; Signal Detection &rarr; 5 Stages, 48+ Features</div>
     </div>
     <span class="next-arrow">&rarr;</span>
   </a>
@@ -314,14 +392,14 @@ Learner &rarr; ASSIGNED_TO &rarr; Staff (advisor, counselor, case manager)</div>
     <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
     <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
   </div>
-  <div class="footer-bottom">ATLAS Education Operating System</div>
+  <div class="footer-bottom">ATLAS Education Operating System &mdash; See every student. Miss nothing.</div>
 </div>
 </footer>
 
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
 <script>
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.06,rootMargin:'0px 0px -80px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
 const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});

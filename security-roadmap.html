@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security &amp; Roadmap — ATLAS</title>
+<link rel="stylesheet" href="atlas-design-system.css">
+</head>
+<body>
+<div id="progress" style="width:0%"></div>
+
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo">ATLAS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="data-intelligence.html">Data &amp; Signals</a>
+    <a href="optimization.html">Optimization</a>
+    <a href="causal-monitoring.html">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html" class="active">Security &amp; Roadmap</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<section class="page-hero" style="background:var(--bg2)">
+<div class="page-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(255,59,48,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 40%, rgba(0,122,255,.08) 0%, transparent 50%);"></div>
+<div class="con">
+  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Security &amp; Roadmap</div>
+  <h1 class="page-title reveal">Security &amp; <span class="grad-red">Roadmap</span></h1>
+  <p class="page-sub reveal">FERPA/COPPA-compliant security architecture with ABAC+ReBAC access control, per-district encryption, and crypto-shredding. Plus a 30-week, 6-phase implementation plan from foundation to full autonomy.</p>
+  <div class="pills reveal">
+    <span class="mp" style="background:var(--red-bg);color:var(--red)">FERPA/COPPA</span>
+    <span class="mp" style="background:var(--blue-bg);color:var(--blue)">ABAC + ReBAC</span>
+    <span class="mp" style="background:var(--purple-bg);color:var(--purple)">6 Phases</span>
+    <span class="mp" style="background:var(--green-bg);color:var(--green)">30 Weeks</span>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ COMPLIANCE FRAMEWORK ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Compliance</p>
+  <h2 class="sec-title reveal">Built for <span class="grad-red">student data privacy</span></h2>
+  <p class="sec-sub reveal">Education data is among the most sensitive. ATLAS is designed from the ground up to comply with federal and state privacy requirements.</p>
+
+  <div class="g3 reveal" style="gap:20px">
+    <div class="card" style="padding:28px;border-top:3px solid var(--red)">
+      <h4 style="margin-bottom:12px">FERPA</h4>
+      <p style="font-size:13px;color:var(--tx2);margin-bottom:12px">Family Educational Rights and Privacy Act</p>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Legitimate educational interest enforcement</li>
+        <li>Directory information vs. PII separation</li>
+        <li>Parent/guardian access rights implementation</li>
+        <li>Annual notification compliance tracking</li>
+        <li>Audit trail for every record access</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:28px;border-top:3px solid var(--orange)">
+      <h4 style="margin-bottom:12px">COPPA</h4>
+      <p style="font-size:13px;color:var(--tx2);margin-bottom:12px">Children&rsquo;s Online Privacy Protection Act</p>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Verifiable parental consent workflows</li>
+        <li>Data minimization for under-13 learners</li>
+        <li>No behavioral advertising or profiling</li>
+        <li>Right to review and delete child data</li>
+        <li>Third-party vendor consent management</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:28px;border-top:3px solid var(--blue)">
+      <h4 style="margin-bottom:12px">State Laws</h4>
+      <p style="font-size:13px;color:var(--tx2);margin-bottom:12px">State-specific student privacy regulations</p>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Configurable per-state policy engine</li>
+        <li>Data residency requirements by jurisdiction</li>
+        <li>Breach notification timeline compliance</li>
+        <li>Vendor agreement template management</li>
+        <li>Annual security assessment scheduling</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ ACCESS CONTROL ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Access Control</p>
+  <h2 class="sec-title reveal">ABAC + ReBAC: <span class="grad-blue">dual-layer authorization</span></h2>
+  <p class="sec-sub reveal">Attribute-Based Access Control defines what you can see based on your role and attributes. Relationship-Based Access Control refines it based on your actual relationships to students and schools.</p>
+
+  <div class="g2 reveal" style="gap:24px">
+    <div class="card" style="padding:28px">
+      <h4 style="margin-bottom:12px;color:var(--blue)">ABAC Layer</h4>
+      <p style="font-size:14px;color:var(--tx2);margin-bottom:16px">OPA Rego policies evaluate requests against user attributes, resource attributes, and environmental context.</p>
+      <div class="card" style="padding:16px;background:var(--bg2);margin-bottom:12px">
+        <code style="font-size:12px;color:var(--tx2);display:block;white-space:pre;font-family:'JetBrains Mono',monospace">allow {
+  input.user.role == "teacher"
+  input.resource.type == "learner_record"
+  input.user.district == input.resource.district
+  is_active_school_year(input.context.date)
+}</code>
+      </div>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Role hierarchy: district admin &gt; principal &gt; counselor &gt; teacher &gt; para</li>
+        <li>Temporal scoping: access expires with employment and school year</li>
+        <li>Data classification levels: public, internal, confidential, restricted</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:28px">
+      <h4 style="margin-bottom:12px;color:var(--blue)">ReBAC Layer</h4>
+      <p style="font-size:14px;color:var(--tx2);margin-bottom:16px">Graph-based relationship checks ensure users can only access data for students they have a legitimate educational relationship with.</p>
+      <div class="card" style="padding:16px;background:var(--bg2);margin-bottom:12px">
+        <code style="font-size:12px;color:var(--tx2);display:block;white-space:pre;font-family:'JetBrains Mono',monospace">has_relationship {
+  # Teacher → teaches → Section → enrolls → Student
+  path_exists(input.user, "teaches",
+    "section", "enrolls", input.resource.student)
+}</code>
+      </div>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Relationship types: teaches, counsels, administers, parents</li>
+        <li>Transitive closure for principal &rarr; school &rarr; all students</li>
+        <li>Emergency access with mandatory justification logging</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="co reveal" style="margin-top:24px;border-left-color:var(--blue)">
+    <strong>Defense in Depth:</strong> Both ABAC and ReBAC must pass for any data access. A teacher with the right role attributes but no relationship to a student is denied. A related user without proper attributes is also denied. This dual-gate eliminates entire classes of data leakage.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ ENCRYPTION & DATA PROTECTION ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--purple)">Data Protection</p>
+  <h2 class="sec-title reveal">Encryption &amp; <span class="grad-purple">crypto-shredding</span></h2>
+  <p class="sec-sub reveal">Per-district encryption keys with hardware-backed key management. When a district leaves, crypto-shredding ensures complete, verifiable data destruction.</p>
+
+  <div class="g2 reveal" style="gap:24px">
+    <details class="deep">
+      <summary>Encryption Architecture</summary>
+      <div class="deep-body">
+        <ul style="margin:16px 0;padding-left:20px;font-size:14px">
+          <li><strong>At rest:</strong> AES-256-GCM with per-district DEKs (Data Encryption Keys)</li>
+          <li><strong>In transit:</strong> TLS 1.3 with certificate pinning for service-to-service</li>
+          <li><strong>Key hierarchy:</strong> AWS KMS master key &rarr; district KEK &rarr; table-level DEK</li>
+          <li><strong>Rotation:</strong> Automatic annual key rotation with re-encryption pipeline</li>
+          <li><strong>HSM backing:</strong> FIPS 140-2 Level 3 validated hardware security modules</li>
+          <li><strong>Field-level:</strong> SSN, medical records encrypted at field level with separate keys</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Crypto-Shredding Process</summary>
+      <div class="deep-body">
+        <ul style="margin:16px 0;padding-left:20px;font-size:14px">
+          <li><strong>Trigger:</strong> District contract termination or right-to-delete request</li>
+          <li><strong>Step 1:</strong> Revoke district KEK from KMS (immediate access cut-off)</li>
+          <li><strong>Step 2:</strong> Queue async deletion of all encrypted data blocks</li>
+          <li><strong>Step 3:</strong> Purge derived data (features, embeddings, model weights)</li>
+          <li><strong>Step 4:</strong> Generate cryptographic proof of deletion (Merkle tree audit)</li>
+          <li><strong>Step 5:</strong> Third-party attestation report delivered to district</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <div class="g3 reveal" style="gap:20px;margin-top:24px">
+    <div class="card" style="padding:24px;text-align:center">
+      <div style="font-size:36px;font-weight:800;color:var(--purple)">AES-256</div>
+      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Encryption Standard</p>
+    </div>
+    <div class="card" style="padding:24px;text-align:center">
+      <div style="font-size:36px;font-weight:800;color:var(--purple)">FIPS 140-2</div>
+      <p style="font-size:13px;color:var(--tx2);margin-top:8px">HSM Certification</p>
+    </div>
+    <div class="card" style="padding:24px;text-align:center">
+      <div style="font-size:36px;font-weight:800;color:var(--purple)">&lt;72h</div>
+      <p style="font-size:13px;color:var(--tx2);margin-top:8px">Crypto-Shred SLA</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ AUDIT & LOGGING ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--orange)">Audit &amp; Logging</p>
+  <h2 class="sec-title reveal">Immutable <span class="grad-orange">audit trail</span></h2>
+  <p class="sec-sub reveal">Every data access, model prediction, and recommendation is logged with full provenance. Tamper-evident logs support compliance audits and incident investigation.</p>
+
+  <table class="tbl reveal">
+    <thead>
+      <tr><th>Log Type</th><th>Contents</th><th>Retention</th><th>Storage</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Access Log</strong></td><td>Who accessed what record, when, from where, why</td><td>7 years</td><td>Immutable append-only (S3 Object Lock)</td></tr>
+      <tr><td><strong>Decision Log</strong></td><td>Model inputs, outputs, confidence scores, explanation chain</td><td>7 years</td><td>XTDB bitemporality (queryable)</td></tr>
+      <tr><td><strong>Change Log</strong></td><td>All data mutations with before/after snapshots</td><td>7 years</td><td>Kafka + XTDB event store</td></tr>
+      <tr><td><strong>Auth Log</strong></td><td>Login attempts, token grants, permission evaluations</td><td>3 years</td><td>Elasticsearch (SIEM integration)</td></tr>
+      <tr><td><strong>System Log</strong></td><td>Service health, errors, performance metrics</td><td>1 year</td><td>OpenTelemetry &rarr; Grafana</td></tr>
+    </tbody>
+  </table>
+
+  <div class="g2 reveal" style="gap:20px;margin-top:24px">
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--orange)">Tamper Evidence</h4>
+      <p style="font-size:14px;color:var(--tx2)">Log entries are hash-chained (SHA-256) with periodic Merkle root publication. Any modification to historical entries breaks the chain, making tampering immediately detectable.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--orange)">Real-Time Alerting</h4>
+      <p style="font-size:14px;color:var(--tx2)">Anomalous access patterns (bulk exports, off-hours access, unusual query scope) trigger real-time alerts to security team via PagerDuty integration.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ DEFENSE STACK ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Security Stack</p>
+  <h2 class="sec-title reveal">Defense in <span class="grad-red">depth</span></h2>
+  <p class="sec-sub reveal">Seven layers of security controls from network perimeter to application logic.</p>
+
+  <div class="defense-stack reveal">
+    <div class="defense-layer" style="--layer-color:var(--red)">
+      <div class="defense-num">1</div>
+      <div>
+        <strong>Network</strong>
+        <p style="font-size:13px;color:var(--tx2)">VPC isolation, WAF, DDoS protection, private subnets, zero-trust network policies</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--orange)">
+      <div class="defense-num">2</div>
+      <div>
+        <strong>Identity</strong>
+        <p style="font-size:13px;color:var(--tx2)">SSO (SAML/OIDC), MFA enforcement, short-lived JWT tokens, service mesh mTLS</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--orange)">
+      <div class="defense-num">3</div>
+      <div>
+        <strong>Authorization</strong>
+        <p style="font-size:13px;color:var(--tx2)">ABAC + ReBAC dual-gate, OPA Rego policies, per-request evaluation, deny-by-default</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--blue)">
+      <div class="defense-num">4</div>
+      <div>
+        <strong>Data</strong>
+        <p style="font-size:13px;color:var(--tx2)">AES-256 encryption at rest, TLS 1.3 in transit, field-level encryption, per-district keys</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--blue)">
+      <div class="defense-num">5</div>
+      <div>
+        <strong>Application</strong>
+        <p style="font-size:13px;color:var(--tx2)">Input validation, parameterized queries, CSRF protection, Content Security Policy, rate limiting</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--purple)">
+      <div class="defense-num">6</div>
+      <div>
+        <strong>AI/ML</strong>
+        <p style="font-size:13px;color:var(--tx2)">LLM output validation, hallucination detection, prompt injection defense, model access controls</p>
+      </div>
+    </div>
+    <div class="defense-layer" style="--layer-color:var(--green)">
+      <div class="defense-num">7</div>
+      <div>
+        <strong>Audit</strong>
+        <p style="font-size:13px;color:var(--tx2)">Immutable logs, hash-chain integrity, real-time SIEM, annual third-party penetration testing</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ IMPLEMENTATION ROADMAP ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">Implementation Roadmap</p>
+  <h2 class="sec-title reveal">30 weeks, <span class="grad-green">6 phases</span></h2>
+  <p class="sec-sub reveal">A phased rollout from infrastructure foundation to full autonomous operation, with clear gates between each phase.</p>
+
+  <div class="journey reveal">
+    <div class="journey-step" style="border-left:3px solid var(--red)">
+      <div class="journey-num" style="background:var(--red)">1</div>
+      <div>
+        <strong>Foundation (Weeks 1&ndash;5)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">Infrastructure provisioning, data store deployment, CI/CD pipeline, identity provider integration, base ontology schema.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:var(--red-bg);color:var(--red);font-size:11px">Kubernetes</span>
+          <span class="mp" style="background:var(--red-bg);color:var(--red);font-size:11px">Terraform</span>
+          <span class="mp" style="background:var(--red-bg);color:var(--red);font-size:11px">Neo4j</span>
+          <span class="mp" style="background:var(--red-bg);color:var(--red);font-size:11px">PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step" style="border-left:3px solid var(--orange)">
+      <div class="journey-num" style="background:var(--orange)">2</div>
+      <div>
+        <strong>Data Integration (Weeks 6&ndash;10)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">Source connectors for SIS, LMS, and assessment platforms. Entity resolution pipeline. Initial knowledge graph population. Data quality dashboards.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:var(--orange-bg);color:var(--orange);font-size:11px">Kafka</span>
+          <span class="mp" style="background:var(--orange-bg);color:var(--orange);font-size:11px">Splink</span>
+          <span class="mp" style="background:var(--orange-bg);color:var(--orange);font-size:11px">dbt</span>
+          <span class="mp" style="background:var(--orange-bg);color:var(--orange);font-size:11px">Airbyte</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step" style="border-left:3px solid var(--blue)">
+      <div class="journey-num" style="background:var(--blue)">3</div>
+      <div>
+        <strong>Signal Detection (Weeks 11&ndash;15)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">Feature engineering pipeline. LightGBM risk model training. Five signal detection methods. Alert routing and notification system. Dashboard MVP.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:var(--blue-bg);color:var(--blue);font-size:11px">LightGBM</span>
+          <span class="mp" style="background:var(--blue-bg);color:var(--blue);font-size:11px">CUSUM</span>
+          <span class="mp" style="background:var(--blue-bg);color:var(--blue);font-size:11px">MLflow</span>
+          <span class="mp" style="background:var(--blue-bg);color:var(--blue);font-size:11px">Grafana</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step" style="border-left:3px solid var(--purple)">
+      <div class="journey-num" style="background:var(--purple)">4</div>
+      <div>
+        <strong>Intelligence Layer (Weeks 16&ndash;20)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">LangGraph agent deployment. Governed tool registry. System prompt tuning. Optimization model integration (scheduling, routing). eROI engine v1.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:var(--purple-bg);color:var(--purple);font-size:11px">LangGraph</span>
+          <span class="mp" style="background:var(--purple-bg);color:var(--purple);font-size:11px">OR-Tools</span>
+          <span class="mp" style="background:var(--purple-bg);color:var(--purple);font-size:11px">OPA</span>
+          <span class="mp" style="background:var(--purple-bg);color:var(--purple);font-size:11px">Z3</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step" style="border-left:3px solid var(--green)">
+      <div class="journey-num" style="background:var(--green)">5</div>
+      <div>
+        <strong>Causal &amp; Feedback (Weeks 21&ndash;25)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">Causal inference methods. Bayesian growth modeling. Intervention outcome tracking. Closed-loop model updates. Fairness monitoring deployment.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:var(--green-bg);color:var(--green);font-size:11px">Stan</span>
+          <span class="mp" style="background:var(--green-bg);color:var(--green);font-size:11px">DoWhy</span>
+          <span class="mp" style="background:var(--green-bg);color:var(--green);font-size:11px">CausalML</span>
+          <span class="mp" style="background:var(--green-bg);color:var(--green);font-size:11px">Fairlearn</span>
+        </div>
+      </div>
+    </div>
+    <div class="journey-step" style="border-left:3px solid var(--tx)">
+      <div class="journey-num" style="background:var(--tx)">6</div>
+      <div>
+        <strong>Autonomy &amp; Scale (Weeks 26&ndash;30)</strong>
+        <p style="font-size:13px;color:var(--tx2);margin-top:4px">Full autonomous loop activation. Multi-district onboarding automation. Performance hardening. Disaster recovery testing. SOC 2 Type II audit preparation.</p>
+        <div style="margin-top:8px">
+          <span class="mp" style="background:#f0f0f0;color:var(--tx);font-size:11px">Auto-scaling</span>
+          <span class="mp" style="background:#f0f0f0;color:var(--tx);font-size:11px">DR Testing</span>
+          <span class="mp" style="background:#f0f0f0;color:var(--tx);font-size:11px">SOC 2</span>
+          <span class="mp" style="background:#f0f0f0;color:var(--tx);font-size:11px">Runbooks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ PHASE GATES ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--purple)">Phase Gates</p>
+  <h2 class="sec-title reveal">Quality gates between <span class="grad-purple">every phase</span></h2>
+  <p class="sec-sub reveal">No phase advances without meeting its exit criteria. These gates prevent accumulation of technical debt and ensure each layer is solid before building on top of it.</p>
+
+  <table class="tbl reveal">
+    <thead>
+      <tr><th>Gate</th><th>Exit Criteria</th><th>Verification</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>G1: Foundation</strong></td><td>All data stores pass load test at 2&times; projected capacity</td><td>k6 load test report</td></tr>
+      <tr><td><strong>G2: Data</strong></td><td>Entity resolution F1 &ge; 0.95, zero PII in logs</td><td>Splink validation + log audit</td></tr>
+      <tr><td><strong>G3: Signals</strong></td><td>Risk model AUC &ge; 0.85, false positive rate &lt; 5%</td><td>Hold-out test set evaluation</td></tr>
+      <tr><td><strong>G4: Intelligence</strong></td><td>Agent passes 200-case evaluation suite, no hallucinated data</td><td>Automated eval harness</td></tr>
+      <tr><td><strong>G5: Causal</strong></td><td>Causal estimates within 10% of published benchmarks</td><td>Replication of known effects</td></tr>
+      <tr><td><strong>G6: Autonomy</strong></td><td>DR failover completes in &lt; 4 hours, SOC 2 readiness confirmed</td><td>Tabletop exercise + auditor review</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ TEAM & GOVERNANCE ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Team Structure</p>
+  <h2 class="sec-title reveal">Cross-functional <span class="grad-blue">delivery teams</span></h2>
+  <p class="sec-sub reveal">Four specialized squads aligned to the architecture tiers, plus cross-cutting security and data science functions.</p>
+
+  <div class="g3 reveal" style="gap:20px">
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--blue)">Platform Squad</h4>
+      <p style="font-size:13px;color:var(--tx2)">Infrastructure, Kubernetes, CI/CD, observability, database administration. Owns the foundation and ingestion tiers.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--purple)">Intelligence Squad</h4>
+      <p style="font-size:13px;color:var(--tx2)">ML engineers, data scientists, LLM specialists. Owns feature engineering, risk models, LangGraph agents, and optimization solvers.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--green)">Product Squad</h4>
+      <p style="font-size:13px;color:var(--tx2)">Frontend engineers, UX designers, product managers. Owns dashboards, educator workflows, and persona-specific interfaces.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--red)">Security &amp; Compliance</h4>
+      <p style="font-size:13px;color:var(--tx2)">Security engineers, compliance officers. Own ABAC/ReBAC policies, encryption, audit systems, and regulatory filings.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--orange)">Data Engineering</h4>
+      <p style="font-size:13px;color:var(--tx2)">Pipeline engineers, ETL specialists. Own source connectors, entity resolution, knowledge graph maintenance, and data quality.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--tx)">Education Domain</h4>
+      <p style="font-size:13px;color:var(--tx2)">Former educators, curriculum specialists, psychometricians. Own ontology design, intervention catalog curation, and causal study design.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ BACK TO HOME ═══════════════════════════════════ -->
+<section style="padding:60px 0">
+<div class="con">
+  <a href="index.html" class="next-topic reveal">
+    <div>
+      <div class="next-label">Back to Start</div>
+      <div class="next-title">ATLAS Home &rarr; Education Operating System Overview</div>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
+</div>
+</section>
+
+<footer>
+<div class="con">
+  <div class="footer-grid">
+    <a href="index.html" class="footer-pill">Home</a>
+    <a href="architecture.html" class="footer-pill">Architecture</a>
+    <a href="ontology.html" class="footer-pill">Ontology</a>
+    <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
+    <a href="optimization.html" class="footer-pill">Optimization</a>
+    <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+  </div>
+  <div class="footer-bottom">ATLAS Education Operating System</div>
+</div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
+const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});
+document.querySelectorAll('details.deep').forEach(d=>{d.addEventListener('toggle',()=>{if(d.open)setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),120)})});
+</script>
+</body>
+</html>

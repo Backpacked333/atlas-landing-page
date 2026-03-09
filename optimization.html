@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intelligence &amp; Optimization — ATLAS</title>
+<link rel="stylesheet" href="atlas-design-system.css">
+</head>
+<body>
+<div id="progress" style="width:0%"></div>
+
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo">ATLAS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="data-intelligence.html">Data &amp; Signals</a>
+    <a href="optimization.html" class="active">Optimization</a>
+    <a href="causal-monitoring.html">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html">Security &amp; Roadmap</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<section class="page-hero" style="background:var(--bg2)">
+<div class="page-bg" style="background:radial-gradient(ellipse at 50% 40%, rgba(175,82,222,.12) 0%, transparent 60%),radial-gradient(ellipse at 30% 60%, rgba(0,122,255,.08) 0%, transparent 50%);"></div>
+<div class="con">
+  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Optimization</div>
+  <h1 class="page-title reveal">Intelligence &amp; <span class="grad-purple">Optimization</span></h1>
+  <p class="page-sub reveal">LangGraph-orchestrated LLM agents reason over the knowledge graph while 12 mathematical optimization models solve scheduling, routing, and resource-matching problems at district scale.</p>
+  <div class="pills reveal">
+    <span class="mp" style="background:var(--purple-bg);color:var(--purple)">11-Node State Graph</span>
+    <span class="mp" style="background:var(--blue-bg);color:var(--blue)">8+ Governed Tools</span>
+    <span class="mp" style="background:var(--orange-bg);color:var(--orange)">12 Optimization Models</span>
+    <span class="mp" style="background:var(--green-bg);color:var(--green)">eROI Engine</span>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ AGENT ARCHITECTURE ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--purple)">LLM Agent Layer</p>
+  <h2 class="sec-title reveal">LangGraph <span class="grad-purple">agent orchestration</span></h2>
+  <p class="sec-sub reveal">An 11-node state graph coordinates LLM reasoning with tool execution. The architecture enforces governance at every step &mdash; no unchecked model output reaches downstream systems.</p>
+
+  <div class="dia dia-lg reveal">
+    <svg viewBox="0 0 1060 500" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:1060px">
+      <!-- Background -->
+      <rect width="1060" height="500" rx="16" fill="#fafafa" stroke="#e5e5e5"/>
+
+      <!-- Title -->
+      <text x="530" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#1d1d1f">LangGraph 11-Node State Machine</text>
+
+      <!-- START -->
+      <circle cx="80" cy="120" r="22" fill="#007AFF" opacity="0.15"/>
+      <circle cx="80" cy="120" r="14" fill="#007AFF"/>
+      <text x="80" y="125" text-anchor="middle" font-size="10" fill="#fff" font-weight="700">START</text>
+
+      <!-- Node 1: Intake -->
+      <rect x="140" y="55" width="130" height="50" rx="10" fill="#007AFF" opacity="0.08" stroke="#007AFF" stroke-width="1.5"/>
+      <text x="205" y="75" text-anchor="middle" font-size="11" font-weight="600" fill="#007AFF">1. Intake</text>
+      <text x="205" y="92" text-anchor="middle" font-size="9" fill="#666">Parse &amp; classify query</text>
+
+      <!-- Node 2: Plan -->
+      <rect x="140" y="125" width="130" height="50" rx="10" fill="#007AFF" opacity="0.08" stroke="#007AFF" stroke-width="1.5"/>
+      <text x="205" y="145" text-anchor="middle" font-size="11" font-weight="600" fill="#007AFF">2. Plan</text>
+      <text x="205" y="162" text-anchor="middle" font-size="9" fill="#666">Select tools &amp; strategy</text>
+
+      <!-- Node 3: Gather -->
+      <rect x="140" y="195" width="130" height="50" rx="10" fill="#007AFF" opacity="0.08" stroke="#007AFF" stroke-width="1.5"/>
+      <text x="205" y="215" text-anchor="middle" font-size="11" font-weight="600" fill="#007AFF">3. Gather</text>
+      <text x="205" y="232" text-anchor="middle" font-size="9" fill="#666">Execute graph queries</text>
+
+      <!-- Arrows left column -->
+      <line x1="94" y1="120" x2="138" y2="80" stroke="#007AFF" stroke-width="1.5" marker-end="url(#arrow-b)"/>
+      <line x1="94" y1="120" x2="138" y2="150" stroke="#007AFF" stroke-width="1.5"/>
+      <line x1="205" y1="105" x2="205" y2="123" stroke="#007AFF" stroke-width="1.5" marker-end="url(#arrow-b)"/>
+      <line x1="205" y1="175" x2="205" y2="193" stroke="#007AFF" stroke-width="1.5" marker-end="url(#arrow-b)"/>
+
+      <!-- Node 4: Analyze -->
+      <rect x="310" y="55" width="130" height="50" rx="10" fill="#AF52DE" opacity="0.08" stroke="#AF52DE" stroke-width="1.5"/>
+      <text x="375" y="75" text-anchor="middle" font-size="11" font-weight="600" fill="#AF52DE">4. Analyze</text>
+      <text x="375" y="92" text-anchor="middle" font-size="9" fill="#666">Root-cause reasoning</text>
+
+      <!-- Node 5: Hypothesize -->
+      <rect x="310" y="125" width="130" height="50" rx="10" fill="#AF52DE" opacity="0.08" stroke="#AF52DE" stroke-width="1.5"/>
+      <text x="375" y="145" text-anchor="middle" font-size="11" font-weight="600" fill="#AF52DE">5. Hypothesize</text>
+      <text x="375" y="162" text-anchor="middle" font-size="9" fill="#666">Generate intervention plans</text>
+
+      <!-- Node 6: Validate -->
+      <rect x="310" y="195" width="130" height="50" rx="10" fill="#AF52DE" opacity="0.08" stroke="#AF52DE" stroke-width="1.5"/>
+      <text x="375" y="215" text-anchor="middle" font-size="11" font-weight="600" fill="#AF52DE">6. Validate</text>
+      <text x="375" y="232" text-anchor="middle" font-size="9" fill="#666">Constraint &amp; policy check</text>
+
+      <!-- Arrows mid column -->
+      <line x1="270" y1="80" x2="308" y2="80" stroke="#AF52DE" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+      <line x1="375" y1="105" x2="375" y2="123" stroke="#AF52DE" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+      <line x1="375" y1="175" x2="375" y2="193" stroke="#AF52DE" stroke-width="1.5" marker-end="url(#arrow-p)"/>
+
+      <!-- Node 7: Optimize -->
+      <rect x="480" y="55" width="130" height="50" rx="10" fill="#FF9500" opacity="0.08" stroke="#FF9500" stroke-width="1.5"/>
+      <text x="545" y="75" text-anchor="middle" font-size="11" font-weight="600" fill="#FF9500">7. Optimize</text>
+      <text x="545" y="92" text-anchor="middle" font-size="9" fill="#666">Run solver models</text>
+
+      <!-- Node 8: Simulate -->
+      <rect x="480" y="125" width="130" height="50" rx="10" fill="#FF9500" opacity="0.08" stroke="#FF9500" stroke-width="1.5"/>
+      <text x="545" y="145" text-anchor="middle" font-size="11" font-weight="600" fill="#FF9500">8. Simulate</text>
+      <text x="545" y="162" text-anchor="middle" font-size="9" fill="#666">What-if counterfactuals</text>
+
+      <!-- Node 9: Explain -->
+      <rect x="480" y="195" width="130" height="50" rx="10" fill="#FF9500" opacity="0.08" stroke="#FF9500" stroke-width="1.5"/>
+      <text x="545" y="215" text-anchor="middle" font-size="11" font-weight="600" fill="#FF9500">9. Explain</text>
+      <text x="545" y="232" text-anchor="middle" font-size="9" fill="#666">Natural-language output</text>
+
+      <!-- Arrows right column -->
+      <line x1="440" y1="80" x2="478" y2="80" stroke="#FF9500" stroke-width="1.5" marker-end="url(#arrow-o)"/>
+      <line x1="545" y1="105" x2="545" y2="123" stroke="#FF9500" stroke-width="1.5" marker-end="url(#arrow-o)"/>
+      <line x1="545" y1="175" x2="545" y2="193" stroke="#FF9500" stroke-width="1.5" marker-end="url(#arrow-o)"/>
+
+      <!-- Node 10: Guard -->
+      <rect x="650" y="100" width="130" height="60" rx="10" fill="#FF3B30" opacity="0.08" stroke="#FF3B30" stroke-width="1.5"/>
+      <text x="715" y="125" text-anchor="middle" font-size="11" font-weight="600" fill="#FF3B30">10. Guard</text>
+      <text x="715" y="142" text-anchor="middle" font-size="9" fill="#666">Hallucination check</text>
+
+      <!-- Node 11: Respond -->
+      <rect x="820" y="100" width="130" height="60" rx="10" fill="#34C759" opacity="0.08" stroke="#34C759" stroke-width="1.5"/>
+      <text x="885" y="125" text-anchor="middle" font-size="11" font-weight="600" fill="#34C759">11. Respond</text>
+      <text x="885" y="142" text-anchor="middle" font-size="9" fill="#666">Deliver to user</text>
+
+      <!-- Final arrows -->
+      <line x1="610" y1="130" x2="648" y2="130" stroke="#FF3B30" stroke-width="1.5" marker-end="url(#arrow-r)"/>
+      <line x1="780" y1="130" x2="818" y2="130" stroke="#34C759" stroke-width="1.5" marker-end="url(#arrow-g)"/>
+
+      <!-- Loop-back arrow from Guard -->
+      <path d="M715 162 L715 280 L205 280 L205 247" stroke="#FF3B30" stroke-width="1.2" stroke-dasharray="5,4" fill="none" marker-end="url(#arrow-r)"/>
+      <text x="460" y="275" text-anchor="middle" font-size="9" fill="#FF3B30" font-style="italic">retry on hallucination or policy violation</text>
+
+      <!-- Governance bar -->
+      <rect x="40" y="320" width="980" height="65" rx="12" fill="#1d1d1f" opacity="0.04" stroke="#e5e5e5"/>
+      <text x="530" y="345" text-anchor="middle" font-size="12" font-weight="700" fill="#1d1d1f">Governance Layer</text>
+      <text x="160" y="370" text-anchor="middle" font-size="10" fill="#666">OPA Rego Policies</text>
+      <text x="370" y="370" text-anchor="middle" font-size="10" fill="#666">Tool Allowlists</text>
+      <text x="550" y="370" text-anchor="middle" font-size="10" fill="#666">Token Budgets</text>
+      <text x="720" y="370" text-anchor="middle" font-size="10" fill="#666">Audit Trail</text>
+      <text x="900" y="370" text-anchor="middle" font-size="10" fill="#666">Rate Limits</text>
+
+      <!-- Legend -->
+      <rect x="40" y="410" width="980" height="70" rx="10" fill="none"/>
+      <rect x="70" y="430" width="14" height="14" rx="3" fill="#007AFF" opacity="0.2"/>
+      <text x="92" y="442" font-size="10" fill="#666">Retrieval Phase</text>
+      <rect x="240" y="430" width="14" height="14" rx="3" fill="#AF52DE" opacity="0.2"/>
+      <text x="262" y="442" font-size="10" fill="#666">Reasoning Phase</text>
+      <rect x="420" y="430" width="14" height="14" rx="3" fill="#FF9500" opacity="0.2"/>
+      <text x="442" y="442" font-size="10" fill="#666">Solution Phase</text>
+      <rect x="600" y="430" width="14" height="14" rx="3" fill="#FF3B30" opacity="0.2"/>
+      <text x="622" y="442" font-size="10" fill="#666">Safety Gate</text>
+      <rect x="760" y="430" width="14" height="14" rx="3" fill="#34C759" opacity="0.2"/>
+      <text x="782" y="442" font-size="10" fill="#666">Output</text>
+
+      <!-- Arrow markers -->
+      <defs>
+        <marker id="arrow-b" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#007AFF" stroke-width="1.5"/></marker>
+        <marker id="arrow-p" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#AF52DE" stroke-width="1.5"/></marker>
+        <marker id="arrow-o" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#FF9500" stroke-width="1.5"/></marker>
+        <marker id="arrow-r" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#FF3B30" stroke-width="1.5"/></marker>
+        <marker id="arrow-g" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M1 1 L7 4 L1 7" fill="none" stroke="#34C759" stroke-width="1.5"/></marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ TOOL REGISTRY ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Governed Tool Registry</p>
+  <h2 class="sec-title reveal">8 tools, <span class="grad-blue">zero free-text SQL</span></h2>
+  <p class="sec-sub reveal">Every tool the agent can invoke is whitelisted, schema-validated, and rate-limited. The LLM never writes raw queries &mdash; it selects parameterized operations from a governed registry.</p>
+
+  <div class="g2 reveal" style="gap:20px">
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128269;</div>
+      <h4 style="margin-bottom:8px;color:var(--blue)">graph_query</h4>
+      <p style="font-size:14px;color:var(--tx2)">Parameterized Cypher templates for traversing the knowledge graph. Supports learner context, cohort analysis, and relationship discovery.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128200;</div>
+      <h4 style="margin-bottom:8px;color:var(--blue)">time_series_fetch</h4>
+      <p style="font-size:14px;color:var(--tx2)">Retrieves temporal feature vectors from XTDB v2 bitemporality. Supports sliding windows, YoY comparison, and trend extraction.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#9888;&#65039;</div>
+      <h4 style="margin-bottom:8px;color:var(--orange)">signal_lookup</h4>
+      <p style="font-size:14px;color:var(--tx2)">Fetches active signals for a learner or cohort, including severity, detection method, contributing features, and trend trajectory.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128736;</div>
+      <h4 style="margin-bottom:8px;color:var(--orange)">intervention_catalog</h4>
+      <p style="font-size:14px;color:var(--tx2)">Searches the intervention registry by signal type, tier, grade band, and resource requirements. Returns evidence levels and historical eROI.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128170;</div>
+      <h4 style="margin-bottom:8px;color:var(--purple)">constraint_check</h4>
+      <p style="font-size:14px;color:var(--tx2)">Validates a proposed action against policy constraints (class sizes, certification requirements, budget caps, scheduling conflicts).</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#127919;</div>
+      <h4 style="margin-bottom:8px;color:var(--purple)">optimization_solve</h4>
+      <p style="font-size:14px;color:var(--tx2)">Dispatches a problem to the appropriate solver (CP-SAT, Z3, Timefold, or Gurobi) and returns the optimal or near-optimal solution.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128202;</div>
+      <h4 style="margin-bottom:8px;color:var(--green)">eroi_calculate</h4>
+      <p style="font-size:14px;color:var(--tx2)">Computes the expected Return on Investment for a proposed intervention using the multi-factor eROI model with confidence intervals.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div style="font-size:28px;margin-bottom:12px">&#128221;</div>
+      <h4 style="margin-bottom:8px;color:var(--green)">explain_generate</h4>
+      <p style="font-size:14px;color:var(--tx2)">Produces natural-language explanations with citations to data points, graph paths, and confidence scores for decision provenance.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ SYSTEM PROMPTS ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--purple)">Reasoning Patterns</p>
+  <h2 class="sec-title reveal">Two core <span class="grad-purple">system prompts</span></h2>
+  <p class="sec-sub reveal">Specialized system prompts guide the LLM through structured reasoning chains, ensuring consistent and auditable analysis.</p>
+
+  <div class="g2 reveal" style="gap:24px">
+    <details class="deep">
+      <summary>Root-Cause Analysis Prompt</summary>
+      <div class="deep-body">
+        <p>The root-cause analysis prompt guides the agent through a 5-step reasoning chain:</p>
+        <div style="margin:20px 0">
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--purple)">
+            <strong>Step 1: Signal Decomposition</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Break down the composite signal into contributing features with attribution weights.</p>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--purple)">
+            <strong>Step 2: Temporal Analysis</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Examine feature trajectories over time. Identify inflection points and rate-of-change anomalies.</p>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--purple)">
+            <strong>Step 3: Graph Context</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Traverse the knowledge graph to find related entities, peer comparisons, and environmental factors.</p>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--purple)">
+            <strong>Step 4: Hypothesis Formation</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Generate ranked hypotheses with confidence scores, citing specific data points as evidence.</p>
+          </div>
+          <div class="card" style="padding:16px;border-left:3px solid var(--purple)">
+            <strong>Step 5: Intervention Matching</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Map each hypothesis to evidence-based interventions from the catalog, computing eROI for each.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Intervention Matching Prompt</summary>
+      <div class="deep-body">
+        <p>The intervention matching prompt ensures recommendations are feasible, evidence-based, and equitable:</p>
+        <div style="margin:20px 0">
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--blue)">
+            <strong>Constraint Awareness</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Check staff availability, budget remaining, caseload limits, and scheduling conflicts before recommending.</p>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--blue)">
+            <strong>Evidence Hierarchy</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Prefer interventions with Tier 1 (strong) or Tier 2 (moderate) evidence from What Works Clearinghouse.</p>
+          </div>
+          <div class="card" style="padding:16px;margin-bottom:12px;border-left:3px solid var(--blue)">
+            <strong>Equity Check</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Verify proportional representation across demographic groups. Flag disparate impact exceeding threshold.</p>
+          </div>
+          <div class="card" style="padding:16px;border-left:3px solid var(--blue)">
+            <strong>eROI Ranking</strong>
+            <p style="font-size:13px;color:var(--tx2);margin-top:4px">Rank all viable interventions by expected ROI, presenting top 3 with confidence intervals and trade-offs.</p>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ 12 OPTIMIZATION MODELS ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--orange)">Mathematical Optimization</p>
+  <h2 class="sec-title reveal">12 models, <span class="grad-orange">4 solver engines</span></h2>
+  <p class="sec-sub reveal">From master bell scheduling to bus routing and staff assignment, each model is formulated as a constrained optimization problem and dispatched to the appropriate solver.</p>
+
+  <table class="tbl reveal">
+    <thead>
+      <tr><th>#</th><th>Model</th><th>Solver</th><th>Type</th><th>Key Constraints</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Master Bell Schedule</strong></td><td>OR-Tools CP-SAT</td><td>Constraint Programming</td><td>Room capacity, teacher certs, period conflicts, lunch windows</td></tr>
+      <tr><td>2</td><td><strong>BiRD Bus Routing</strong></td><td>OR-Tools + Gurobi</td><td>Vehicle Routing (CVRP)</td><td>Capacity, time windows, max ride time, special needs</td></tr>
+      <tr><td>3</td><td><strong>VRPTW Staff Routing</strong></td><td>OR-Tools VRPTW</td><td>Vehicle Routing</td><td>Travel time, caseload, certification match, equity</td></tr>
+      <tr><td>4</td><td><strong>Student-Intervention Match</strong></td><td>OR-Tools CP-SAT</td><td>Assignment Problem</td><td>Signal severity, intervention capacity, evidence tier, eROI</td></tr>
+      <tr><td>5</td><td><strong>Substitute Teacher Assign</strong></td><td>Timefold</td><td>Resource Scheduling</td><td>Cert match, school preference, travel distance, fairness</td></tr>
+      <tr><td>6</td><td><strong>Budget Allocation</strong></td><td>Gurobi</td><td>Mixed-Integer Linear</td><td>Title I/IDEA compliance, per-pupil floors, program minimums</td></tr>
+      <tr><td>7</td><td><strong>Section Balancing</strong></td><td>CP-SAT</td><td>Bin Packing</td><td>Class-size caps, teacher load, demographic balance</td></tr>
+      <tr><td>8</td><td><strong>Assessment Calendar</strong></td><td>CP-SAT</td><td>Constraint Programming</td><td>Testing windows, no same-day double-test, proctor availability</td></tr>
+      <tr><td>9</td><td><strong>Space Utilization</strong></td><td>CP-SAT</td><td>Scheduling</td><td>Room features, ADA compliance, utilization targets</td></tr>
+      <tr><td>10</td><td><strong>Professional Dev Scheduling</strong></td><td>Timefold</td><td>Resource Scheduling</td><td>Coverage requirements, topic prerequisites, budget</td></tr>
+      <tr><td>11</td><td><strong>Enrollment Projection</strong></td><td>Z3</td><td>SMT Solver</td><td>Capacity bounds, demographic trends, policy scenarios</td></tr>
+      <tr><td>12</td><td><strong>Multi-Year Capital Planning</strong></td><td>Gurobi</td><td>MILP</td><td>Bond constraints, facility condition index, growth zones</td></tr>
+    </tbody>
+  </table>
+
+  <div class="co reveal" style="margin-top:32px;border-left-color:var(--orange)">
+    <strong>Solver Selection Logic:</strong> The system automatically dispatches each problem to the optimal solver based on problem structure. CP-SAT handles discrete feasibility, Gurobi tackles large-scale linear/integer programs, Timefold manages dynamic rescheduling, and Z3 verifies logical satisfiability for policy constraints.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ SOLVER DEEP DIVES ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Solver Engines</p>
+  <h2 class="sec-title reveal">Four solvers, <span class="grad-blue">one dispatch layer</span></h2>
+  <p class="sec-sub reveal">Each solver is containerized with standardized input/output schemas. The dispatch layer handles serialization, timeout management, and solution caching.</p>
+
+  <div class="g2 reveal" style="gap:24px">
+    <details class="deep">
+      <summary>OR-Tools CP-SAT</summary>
+      <div class="deep-body">
+        <p><strong>Google&rsquo;s constraint programming solver</strong> &mdash; the workhorse for ATLAS scheduling problems.</p>
+        <ul style="margin:16px 0;padding-left:20px">
+          <li>Handles 6 of the 12 models (master schedule, student matching, section balancing, assessment calendar, space utilization)</li>
+          <li>Supports Boolean, integer, and interval variables with global constraints</li>
+          <li>Parallel search with portfolio of strategies (default, fixed, random)</li>
+          <li>Typical solve time: &lt; 30s for a 2,000-student school&rsquo;s master schedule</li>
+          <li>Warm-start from previous solutions for incremental re-optimization</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Gurobi Optimizer</summary>
+      <div class="deep-body">
+        <p><strong>Commercial-grade MILP solver</strong> for large-scale linear and integer programming.</p>
+        <ul style="margin:16px 0;padding-left:20px">
+          <li>Budget allocation with 100+ constraint rows per district</li>
+          <li>Multi-year capital planning with stochastic demand scenarios</li>
+          <li>Bus routing sub-problems when OR-Tools hits scalability limits</li>
+          <li>Lazy constraints for iterative cut generation</li>
+          <li>Cloud-hosted with per-district license isolation</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Timefold (OptaPlanner)</summary>
+      <div class="deep-body">
+        <p><strong>Java-based constraint solver</strong> optimized for dynamic planning with frequent re-scheduling.</p>
+        <ul style="margin:16px 0;padding-left:20px">
+          <li>Substitute teacher assignment with real-time availability updates</li>
+          <li>Professional development scheduling with rolling enrollment</li>
+          <li>Late-acceptance and tabu search metaheuristics</li>
+          <li>Continuous planning mode &mdash; re-optimizes as constraints change</li>
+          <li>Score director provides incremental constraint evaluation</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="deep">
+      <summary>Z3 SMT Solver</summary>
+      <div class="deep-body">
+        <p><strong>Microsoft&rsquo;s Satisfiability Modulo Theories solver</strong> for logical constraint verification.</p>
+        <ul style="margin:16px 0;padding-left:20px">
+          <li>Enrollment projection feasibility under policy change scenarios</li>
+          <li>Validates that proposed schedules satisfy all hard constraints before deployment</li>
+          <li>Unsat core extraction pinpoints the minimal set of conflicting constraints</li>
+          <li>Theory combination: linear arithmetic + bit vectors + arrays</li>
+          <li>Used as a verification layer after heuristic solvers produce candidate solutions</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ eROI ENGINE ═══════════════════════════════════ -->
+<section style="background:var(--bg2)">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">Expected Return on Investment</p>
+  <h2 class="sec-title reveal">The <span class="grad-green">eROI engine</span></h2>
+  <p class="sec-sub reveal">Every recommendation carries an expected ROI score computed from historical outcomes, implementation costs, and opportunity costs. This moves education decisions from intuition to evidence.</p>
+
+  <div class="g3 reveal" style="gap:20px">
+    <div class="card" style="padding:28px;text-align:center">
+      <div style="font-size:42px;font-weight:800;color:var(--green)">P(s)</div>
+      <h4 style="margin:12px 0 8px">Success Probability</h4>
+      <p style="font-size:13px;color:var(--tx2)">LightGBM-predicted likelihood of positive outcome given learner features and intervention type. Calibrated via Platt scaling.</p>
+    </div>
+    <div class="card" style="padding:28px;text-align:center">
+      <div style="font-size:42px;font-weight:800;color:var(--blue)">&Delta;O</div>
+      <h4 style="margin:12px 0 8px">Expected Outcome Gain</h4>
+      <p style="font-size:13px;color:var(--tx2)">Projected improvement in target metric (attendance points, grade-level proficiency, behavior incidents avoided).</p>
+    </div>
+    <div class="card" style="padding:28px;text-align:center">
+      <div style="font-size:42px;font-weight:800;color:var(--orange)">C<sub>t</sub></div>
+      <h4 style="margin:12px 0 8px">Total Cost</h4>
+      <p style="font-size:13px;color:var(--tx2)">Staff time + materials + opportunity cost of displaced alternatives. Amortized over the intervention duration window.</p>
+    </div>
+  </div>
+
+  <div class="card reveal" style="padding:28px;margin-top:24px;text-align:center;background:var(--bg)">
+    <p style="font-size:14px;color:var(--tx2);margin-bottom:12px">eROI Formula</p>
+    <div style="font-size:24px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--tx)">
+      eROI = P(s) &times; &Delta;O &frasl; C<sub>t</sub>
+    </div>
+    <p style="font-size:13px;color:var(--tx2);margin-top:12px">Confidence interval derived from bootstrap resampling of historical intervention outcomes (n &ge; 30 required).</p>
+  </div>
+
+  <div class="g2 reveal" style="gap:20px;margin-top:24px">
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--green)">Portfolio Optimization</h4>
+      <p style="font-size:14px;color:var(--tx2)">Given a fixed budget, the system selects the portfolio of interventions that maximizes total eROI across all flagged learners, subject to staff and scheduling constraints.</p>
+    </div>
+    <div class="card" style="padding:24px">
+      <h4 style="margin-bottom:8px;color:var(--green)">Feedback Loop</h4>
+      <p style="font-size:14px;color:var(--tx2)">Actual outcomes feed back into the eROI model quarterly. Interventions that consistently underperform their predicted eROI are flagged for review and potential deprecation.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ CONSTRAINT ENGINE ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Constraint Engine</p>
+  <h2 class="sec-title reveal">Guardrails that <span class="grad-red">never bend</span></h2>
+  <p class="sec-sub reveal">Hard constraints encoded in Z3, Drools, and OR-Tools ensure that no optimization output violates legal, policy, or safety requirements.</p>
+
+  <div class="g3 reveal" style="gap:20px">
+    <div class="card" style="padding:24px;border-top:3px solid var(--red)">
+      <h4 style="margin-bottom:8px">Legal Constraints</h4>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>FERPA data access boundaries</li>
+        <li>IDEA service minute minimums</li>
+        <li>Title I funding allocation rules</li>
+        <li>State certification requirements</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:24px;border-top:3px solid var(--orange)">
+      <h4 style="margin-bottom:8px">Policy Constraints</h4>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Maximum class size by grade band</li>
+        <li>Minimum planning periods for teachers</li>
+        <li>Consecutive period teaching limits</li>
+        <li>Equity distribution thresholds</li>
+      </ul>
+    </div>
+    <div class="card" style="padding:24px;border-top:3px solid var(--blue)">
+      <h4 style="margin-bottom:8px">Operational Constraints</h4>
+      <ul style="font-size:13px;color:var(--tx2);padding-left:16px">
+        <li>Bus route time windows</li>
+        <li>Room feature requirements (ADA, lab)</li>
+        <li>Staff travel time between sites</li>
+        <li>Budget ceiling enforcement</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="co reveal" style="margin-top:24px;border-left-color:var(--red)">
+    <strong>Unsat Core Reporting:</strong> When constraints conflict and no feasible solution exists, the Z3 solver extracts the minimal unsatisfiable core &mdash; the smallest set of constraints causing the conflict. This is presented to administrators in natural language so they can decide which soft constraint to relax.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ NEXT ═══════════════════════════════════ -->
+<section style="padding:60px 0">
+<div class="con">
+  <a href="causal-monitoring.html" class="next-topic reveal">
+    <div>
+      <div class="next-label">Next Chapter</div>
+      <div class="next-title">Causal Analysis &amp; Monitoring &rarr; 5 Causal Methods + CUSUM</div>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
+</div>
+</section>
+
+<footer>
+<div class="con">
+  <div class="footer-grid">
+    <a href="index.html" class="footer-pill">Home</a>
+    <a href="architecture.html" class="footer-pill">Architecture</a>
+    <a href="ontology.html" class="footer-pill">Ontology</a>
+    <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
+    <a href="optimization.html" class="footer-pill">Optimization</a>
+    <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+  </div>
+  <div class="footer-bottom">ATLAS Education Operating System</div>
+</div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
+const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});
+document.querySelectorAll('details.deep').forEach(d=>{d.addEventListener('toggle',()=>{if(d.open)setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),120)})});
+</script>
+</body>
+</html>

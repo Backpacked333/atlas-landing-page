@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Architecture — ATLAS</title>
+<link rel="stylesheet" href="atlas-design-system.css">
+</head>
+<body>
+<div id="progress" style="width:0%"></div>
+
+<!-- ═══════════════════════════════════ NAVIGATION ═══════════════════════════════════ -->
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo">ATLAS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="architecture.html" class="active">Architecture</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="data-intelligence.html">Data &amp; Signals</a>
+    <a href="optimization.html">Optimization</a>
+    <a href="causal-monitoring.html">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html">Security &amp; Roadmap</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<!-- ═══════════════════════════════════ PAGE HERO ═══════════════════════════════════ -->
+<section class="page-hero" style="background:var(--bg2)">
+<div class="page-bg" style="background:radial-gradient(ellipse at 40% 30%, rgba(88,86,214,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 70%, rgba(0,122,255,.08) 0%, transparent 50%);"></div>
+<div class="con">
+  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Architecture</div>
+  <h1 class="page-title reveal">System <span class="grad-purple">Architecture</span></h1>
+  <p class="page-sub reveal">Polyglot persistence, event-driven microservices, and a knowledge graph at the center of everything. 12 services, 5 database engines, one unified reasoning substrate.</p>
+  <div class="pills reveal">
+    <span class="mp" style="background:var(--indigo-bg);color:var(--indigo)">12 Microservices</span>
+    <span class="mp" style="background:var(--blue-bg);color:var(--blue)">5 Storage Engines</span>
+    <span class="mp" style="background:var(--green-bg);color:var(--green)">Event-Driven</span>
+    <span class="mp" style="background:var(--orange-bg);color:var(--orange)">Multi-Tenant</span>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ PHILOSOPHY ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--indigo)">Design Principles</p>
+  <h2 class="sec-title reveal">Five <span class="grad-purple">architectural axioms</span></h2>
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card">
+      <div class="card-icon" style="background:var(--indigo-bg)">&#128218;</div>
+      <h3>Ontology Is the API</h3>
+      <p>Application code never queries databases directly. Everything flows through the semantic layer, which routes to the right storage engine and applies access control.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--blue-bg)">&#9889;</div>
+      <h3>Events Are Truth</h3>
+      <p>The event log (Kafka + XTDB) is authoritative. Current state is a materialized view. Any state can be reconstructed from the event history.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--red-bg)">&#128274;</div>
+      <h3>Security Is Structural</h3>
+      <p>Access control is evaluated on every graph traversal, not just at the API boundary. ABAC + ReBAC enforced at every layer.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--green-bg)">&#129504;</div>
+      <h3>Intelligence Is Layered</h3>
+      <p>Deterministic algorithms (constraints, optimization) run first. ML and LLM reasoning augment, never replace, the algorithmic foundation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--orange-bg)">&#129309;</div>
+      <h3>Human Authority Is Absolute</h3>
+      <p>The system proposes; humans decide. No action affecting a student executes without explicit human approval through a governed workflow.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ LOGICAL ARCHITECTURE ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Logical View</p>
+  <h2 class="sec-title reveal">End-to-end <span class="grad-blue">system diagram</span></h2>
+  <p class="sec-sub reveal">From client request to storage engine to intelligence layer &mdash; how data flows through the platform.</p>
+
+  <div class="dia dia-lg reveal">
+    <svg viewBox="0 0 1060 520" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".06"/></filter>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+          <path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/>
+        </marker>
+      </defs>
+      <rect width="1060" height="520" rx="20" fill="#FAFAFA"/>
+
+      <!-- Client Layer -->
+      <g class="svg-fade-in stagger-1" filter="url(#ds)">
+        <rect x="200" y="16" width="660" height="40" rx="12" fill="#FFF" stroke="#5856D6" stroke-width="1.5"/>
+        <text x="530" y="42" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#5856D6">CLIENT LAYER &mdash; React / React Native / API Consumers</text>
+      </g>
+
+      <!-- API Gateway -->
+      <g class="svg-fade-in stagger-2" filter="url(#ds)">
+        <rect x="300" y="76" width="460" height="40" rx="12" fill="#FFF" stroke="#007AFF" stroke-width="1.5"/>
+        <text x="530" y="101" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#007AFF">API GATEWAY &mdash; GraphQL Federation + JWT/OPA Auth + Rate Limiting</text>
+      </g>
+      <line x1="530" y1="56" x2="530" y2="76" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Three core services -->
+      <g class="svg-fade-in stagger-3" filter="url(#ds)">
+        <rect x="40" y="140" width="280" height="60" rx="14" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
+        <text x="180" y="165" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">QUERY SERVICE (Read Path)</text>
+        <text x="180" y="183" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Graph queries &middot; Search &middot; Temporal &middot; Permissions</text>
+      </g>
+      <g class="svg-fade-in stagger-3" filter="url(#ds)">
+        <rect x="390" y="140" width="280" height="60" rx="14" fill="#FFF" stroke="#FF9500" stroke-width="1.5"/>
+        <text x="530" y="165" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF9500">ACTION SERVICE (Write Path)</text>
+        <text x="530" y="183" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Mutations &middot; Validation &middot; Events &middot; Audit</text>
+      </g>
+      <g class="svg-fade-in stagger-3" filter="url(#ds)">
+        <rect x="740" y="140" width="280" height="60" rx="14" fill="#FFF" stroke="#AF52DE" stroke-width="1.5"/>
+        <text x="880" y="165" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#AF52DE">INGESTION SERVICE</text>
+        <text x="880" y="183" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Connectors &middot; CDC &middot; Entity Resolution</text>
+      </g>
+      <line x1="400" y1="116" x2="180" y2="140" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="530" y1="116" x2="530" y2="140" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="660" y1="116" x2="880" y2="140" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+
+      <!-- Kafka Event Bus -->
+      <g class="svg-fade-in stagger-4" filter="url(#ds)">
+        <rect x="200" y="230" width="660" height="40" rx="12" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
+        <text x="530" y="255" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF3B30">APACHE KAFKA EVENT BUS &mdash; Domain Events &middot; CDC Streams &middot; Audit &middot; Provenance</text>
+      </g>
+      <line x1="530" y1="200" x2="530" y2="230" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="880" y1="200" x2="860" y2="230" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+
+      <!-- Storage engines -->
+      <g class="svg-fade-in stagger-5" filter="url(#ds)">
+        <rect x="40" y="296" width="180" height="55" rx="12" fill="#E8F9ED" stroke="#34C759" stroke-width="1"/>
+        <text x="130" y="318" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">Neo4j</text>
+        <text x="130" y="336" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Knowledge Graph</text>
+      </g>
+      <g class="svg-fade-in stagger-5" filter="url(#ds)">
+        <rect x="240" y="296" width="180" height="55" rx="12" fill="#EBF5FF" stroke="#007AFF" stroke-width="1"/>
+        <text x="330" y="318" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#007AFF">PostgreSQL</text>
+        <text x="330" y="336" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">OLTP &middot; Users &middot; Config</text>
+      </g>
+      <g class="svg-fade-in stagger-6" filter="url(#ds)">
+        <rect x="440" y="296" width="180" height="55" rx="12" fill="#F5EAFA" stroke="#AF52DE" stroke-width="1"/>
+        <text x="530" y="318" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#AF52DE">XTDB v2</text>
+        <text x="530" y="336" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Bitemporal Compliance</text>
+      </g>
+      <g class="svg-fade-in stagger-6" filter="url(#ds)">
+        <rect x="640" y="296" width="180" height="55" rx="12" fill="#FFF3E0" stroke="#FF9500" stroke-width="1"/>
+        <text x="730" y="318" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF9500">Elasticsearch</text>
+        <text x="730" y="336" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Full-Text Search</text>
+      </g>
+      <g class="svg-fade-in stagger-7" filter="url(#ds)">
+        <rect x="840" y="296" width="180" height="55" rx="12" fill="#E6F6FE" stroke="#5AC8FA" stroke-width="1"/>
+        <text x="930" y="318" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#5AC8FA">Redis</text>
+        <text x="930" y="336" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Cache &middot; Sessions</text>
+      </g>
+
+      <!-- Lines from Kafka to storage -->
+      <line x1="300" y1="270" x2="130" y2="296" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="400" y1="270" x2="330" y2="296" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="530" y1="270" x2="530" y2="296" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="660" y1="270" x2="730" y2="296" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+      <line x1="760" y1="270" x2="930" y2="296" stroke="#AEAEB2" stroke-width="1" marker-end="url(#arr)"/>
+
+      <!-- Intelligence Layer -->
+      <g class="svg-fade-in stagger-8" filter="url(#ds)">
+        <rect x="40" y="380" width="980" height="120" rx="16" fill="#FFF" stroke="#5856D6" stroke-width="1.5"/>
+        <text x="530" y="405" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#5856D6">INTELLIGENCE LAYER</text>
+        <rect x="70" y="418" width="210" height="34" rx="8" fill="#EEEDF9"/>
+        <text x="175" y="440" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#5856D6">Signal Detection &middot; LightGBM</text>
+        <rect x="300" y="418" width="210" height="34" rx="8" fill="#EEEDF9"/>
+        <text x="405" y="440" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#5856D6">LangGraph Reasoning &middot; RAG</text>
+        <rect x="530" y="418" width="210" height="34" rx="8" fill="#EEEDF9"/>
+        <text x="635" y="440" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#5856D6">OR-Tools &middot; Z3 &middot; Timefold</text>
+        <rect x="760" y="418" width="230" height="34" rx="8" fill="#EEEDF9"/>
+        <text x="875" y="440" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#5856D6">Leiden &middot; DoWhy &middot; PrefixSpan</text>
+        <text x="175" y="476" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Signal Detection</text>
+        <text x="405" y="476" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Reasoning Engine</text>
+        <text x="635" y="476" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Optimization Engine</text>
+        <text x="875" y="476" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Discovery Engine</text>
+      </g>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ STORAGE ENGINES ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">Polyglot Persistence</p>
+  <h2 class="sec-title reveal">Five storage engines, <span class="grad-green">one semantic layer</span></h2>
+  <p class="sec-sub reveal">Each engine is selected for the query patterns it handles best. The ontology layer unifies them into a single API.</p>
+
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card">
+      <div class="card-icon" style="background:var(--green-bg)">&#128200;</div>
+      <h3>Neo4j Enterprise 5.x</h3>
+      <p>Primary graph store. Index-free adjacency delivers 10&ndash;50ms for 6+ hop traversals. Composite Databases enable per-district sharding. 65+ GDS algorithms built in.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--blue-bg)">&#128451;</div>
+      <h3>PostgreSQL 16.x</h3>
+      <p>Transactional OLTP for user accounts, configuration, constraint registry, and entity crossrefs. ACID guarantees with Row-Level Security for tenant isolation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-bg)">&#128338;</div>
+      <h3>XTDB v2</h3>
+      <p>Native bitemporality on all tables &mdash; valid-time + system-time. SQL:2011 superset with Postgres wire protocol. Enables point-in-time graph reconstruction for auditing.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--orange-bg)">&#128269;</div>
+      <h3>Elasticsearch 8.x</h3>
+      <p>Sub-50ms full-text search with faceted navigation, autocomplete, and nested object queries. Index-per-tenant isolation for secure multi-tenancy.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-bg)">&#9889;</div>
+      <h3>Redis 7.x</h3>
+      <p>Sub-1ms cache reads for query results, session state, and rate limiting. Pub/sub for event-driven cache invalidation across services.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ MICROSERVICES ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--orange)">Service Decomposition</p>
+  <h2 class="sec-title reveal">Twelve <span class="grad-orange">microservices</span> in four tiers</h2>
+
+  <details class="deep reveal">
+    <summary><span class="tag" style="background:var(--blue-bg);color:var(--blue)">Tier 1</span> Foundation Services (build first)</summary>
+    <div class="deep-body">
+      <h4>1. Ontology Metadata Service</h4>
+      <p>Schema registry, entity type definitions, version control. Powers schema evolution without downtime. PostgreSQL + Redis.</p>
+      <h4>2. Auth &amp; Security Service</h4>
+      <p>Authentication (Keycloak/Auth0), authorization (OPA Rego policies), tenant management. Evaluates ABAC + ReBAC on every request. PostgreSQL.</p>
+      <h4>3. Object Storage Service</h4>
+      <p>CRUD operations on ontology objects, graph writes, relationship management. The primary interface to Neo4j for all application code.</p>
+    </div>
+  </details>
+
+  <details class="deep reveal">
+    <summary><span class="tag" style="background:var(--green-bg);color:var(--green)">Tier 2</span> Data Services (build second)</summary>
+    <div class="deep-body">
+      <h4>4. Ingestion Service</h4>
+      <p>Source system connectors (Clever, PowerSchool, SEIS, MAP, Star), CDC consumers via Debezium, batch ETL, raw data landing zone in S3.</p>
+      <h4>5. Entity Resolution Service</h4>
+      <p>Splink probabilistic matching pipeline, golden record construction, crossref management. Resolves &ldquo;Johnathan Smith&rdquo; across 5 systems. Python + DuckDB.</p>
+      <h4>6. Search Service</h4>
+      <p>Full-text indexing, faceted filtering, autocomplete. Elasticsearch with index-per-tenant isolation.</p>
+    </div>
+  </details>
+
+  <details class="deep reveal">
+    <summary><span class="tag" style="background:var(--purple-bg);color:var(--purple)">Tier 3</span> Intelligence Services (build third)</summary>
+    <div class="deep-body">
+      <h4>7. Signal Detection Service</h4>
+      <p>Feature engineering (48+ features per learner), threshold/trend/anomaly/convergent detection, LightGBM risk scoring. Python.</p>
+      <h4>8. Reasoning Service</h4>
+      <p>LLM agent orchestration via LangGraph, Think-on-Graph traversal, Graph-RAG, Graph-Constrained Reasoning, explanation generation. Python + Claude/GPT.</p>
+      <h4>9. Constraint &amp; Optimization Service</h4>
+      <p>Z3 real-time validation (&lt;100ms), OR-Tools scheduling, Timefold assignment, Drools rule engine. Python + Java.</p>
+    </div>
+  </details>
+
+  <details class="deep reveal">
+    <summary><span class="tag" style="background:var(--orange-bg);color:var(--orange)">Tier 4</span> Operational Services (build fourth)</summary>
+    <div class="deep-body">
+      <h4>10. Case &amp; Workflow Service</h4>
+      <p>Case state machine (12 states), task management, Playbook execution engine. The operational backbone for managing student support cases.</p>
+      <h4>11. Monitoring &amp; Adaptation Service</h4>
+      <p>Bayesian growth projections, CUSUM divergence detection, adaptation triggers, Impact Ledger. The closed-loop intelligence layer.</p>
+      <h4>12. Discovery Service</h4>
+      <p>Leiden community detection, GraMi subgraph mining, PrefixSpan temporal patterns, causal analysis (DoWhy + EconML). Python + Neo4j GDS.</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ MULTI-TENANCY ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Tenant Isolation</p>
+  <h2 class="sec-title reveal">Multi-tenancy that <span class="grad-pink">never leaks</span></h2>
+  <p class="sec-sub reveal">Every entity, event, query, log entry, and cache key carries a tenant ID. The Query Service injects tenant filters at the query planning layer.</p>
+
+  <table class="tbl reveal">
+    <thead>
+      <tr><th>Engine</th><th>Isolation Model</th><th>Mechanism</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Neo4j</strong></td><td>Physical</td><td>Composite Database with per-tenant constituent databases</td></tr>
+      <tr><td><strong>PostgreSQL</strong></td><td>Logical</td><td>Row-Level Security with <code>tenant_id</code> policies</td></tr>
+      <tr><td><strong>Kafka</strong></td><td>Logical</td><td>Tenant-prefixed topics (e.g., <code>org_abc.learner.assessment</code>)</td></tr>
+      <tr><td><strong>Elasticsearch</strong></td><td>Physical</td><td>Index-per-tenant with filtered aliases</td></tr>
+      <tr><td><strong>Redis</strong></td><td>Logical</td><td>Key prefixing (e.g., <code>org_abc:cache:learner:456</code>)</td></tr>
+      <tr><td><strong>XTDB</strong></td><td>Logical</td><td>Tenant column on all tables with query-time filtering</td></tr>
+    </tbody>
+  </table>
+
+  <div class="co co-blue reveal">
+    <strong>Tenant Identifier Format:</strong> <code>org_{uuid}</code> &mdash; globally unique, opaque, not derived from district name. Application code NEVER constructs unfiltered queries.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ PERFORMANCE ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--teal)">Performance Targets</p>
+  <h2 class="sec-title reveal">Built for <span class="grad-blue">speed at scale</span></h2>
+
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--blue);letter-spacing:-.03em">&lt;100ms</div>
+      <p>API response (p50)</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--green);letter-spacing:-.03em">&lt;50ms</div>
+      <p>6-hop graph traversal</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--purple);letter-spacing:-.03em">&lt;100ms</div>
+      <p>Constraint validation (Z3)</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--orange);letter-spacing:-.03em">&lt;30s</div>
+      <p>Proposal generation (LLM)</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--red);letter-spacing:-.03em">&lt;5min</div>
+      <p>Entity resolution (50K records)</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div style="font-size:36px;font-weight:900;color:var(--teal);letter-spacing:-.03em">99.9%</div>
+      <p>System availability</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ DATA FLOW ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">Data Flow</p>
+  <h2 class="sec-title reveal">Three paths <span class="grad-green">through the system</span></h2>
+
+  <details class="deep reveal">
+    <summary>Write Path &mdash; Data In</summary>
+    <div class="deep-body">
+      <p>Source System &rarr; Connector &rarr; Raw Landing (S3) &rarr; Processing Pipeline (Kafka Streams) &rarr; Parse &amp; Validate &rarr; Normalize &rarr; Enrich &rarr; Entity Resolution &rarr; Graph Write</p>
+      <p>Every write produces: a <strong>domain event</strong> on Kafka, a <strong>bitemporal record</strong> in XTDB, an <strong>audit log entry</strong>, and a <strong>search index update</strong> in Elasticsearch.</p>
+    </div>
+  </details>
+
+  <details class="deep reveal">
+    <summary>Read Path &mdash; Data Out</summary>
+    <div class="deep-body">
+      <p>Client Request &rarr; API Gateway &rarr; Auth Check (OPA) &rarr; Query Service &rarr; Route to appropriate store (Neo4j for graph traversal, Elasticsearch for search, XTDB for temporal, Redis for cache) &rarr; Apply field-level access control &rarr; Return.</p>
+    </div>
+  </details>
+
+  <details class="deep reveal">
+    <summary>Intelligence Path &mdash; Reasoning</summary>
+    <div class="deep-body">
+      <p>Signal Detected &rarr; Case created &rarr; LangGraph agent invoked &rarr; Agent queries ontology via governed tools &rarr; Think-on-Graph traversal &rarr; Constraint evaluation (Z3) &rarr; Resource matching &rarr; Proposal generation &rarr; Human review (LangGraph interrupt) &rarr; Action plan &rarr; Monitoring setup &rarr; CUSUM tracking.</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ NEXT ═══════════════════════════════════ -->
+<section style="padding:60px 0">
+<div class="con">
+  <a href="ontology.html" class="next-topic reveal">
+    <div>
+      <div class="next-label">Next Chapter</div>
+      <div class="next-title">Semantic Ontology &rarr; 9 Domains, 200+ Entities</div>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+<footer>
+<div class="con">
+  <div class="footer-grid">
+    <a href="index.html" class="footer-pill">Home</a>
+    <a href="architecture.html" class="footer-pill">Architecture</a>
+    <a href="ontology.html" class="footer-pill">Ontology</a>
+    <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
+    <a href="optimization.html" class="footer-pill">Optimization</a>
+    <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+  </div>
+  <div class="footer-bottom">ATLAS Education Operating System</div>
+</div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
+const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});
+document.querySelectorAll('details.deep').forEach(d=>{d.addEventListener('toggle',()=>{if(d.open)setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),120)})});
+</script>
+</body>
+</html>

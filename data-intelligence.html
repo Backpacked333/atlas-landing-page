@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data &amp; Signal Detection — ATLAS</title>
+<link rel="stylesheet" href="atlas-design-system.css">
+</head>
+<body>
+<div id="progress" style="width:0%"></div>
+
+<nav>
+<div class="nav-inner">
+  <a href="index.html" class="nav-logo">ATLAS</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="architecture.html">Architecture</a>
+    <a href="ontology.html">Ontology</a>
+    <a href="data-intelligence.html" class="active">Data &amp; Signals</a>
+    <a href="optimization.html">Optimization</a>
+    <a href="causal-monitoring.html">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html">Security &amp; Roadmap</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
+</div>
+</nav>
+
+<section class="page-hero" style="background:var(--bg2)">
+<div class="page-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(0,122,255,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 30%, rgba(255,59,48,.08) 0%, transparent 50%);"></div>
+<div class="con">
+  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Data &amp; Signals</div>
+  <h1 class="page-title reveal">Data Pipeline &amp; <span class="grad-blue">Signal Detection</span></h1>
+  <p class="page-sub reveal">From raw CSV exports and REST APIs to a unified knowledge graph. Entity resolution, feature engineering, and 5 signal detection methods that catch issues before they become crises.</p>
+  <div class="pills reveal">
+    <span class="mp" style="background:var(--red-bg);color:var(--red)">7+ Source Systems</span>
+    <span class="mp" style="background:var(--blue-bg);color:var(--blue)">5-Stage Pipeline</span>
+    <span class="mp" style="background:var(--purple-bg);color:var(--purple)">48+ Features</span>
+    <span class="mp" style="background:var(--green-bg);color:var(--green)">5 Detection Methods</span>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ PROCESSING PIPELINE ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">Data Pipeline</p>
+  <h2 class="sec-title reveal">Five stages from <span class="grad-blue">chaos to clarity</span></h2>
+  <p class="sec-sub reveal">Raw data arrives in wildly inconsistent formats. The pipeline transforms it into clean, normalized, interconnected ontology objects.</p>
+
+  <div class="dia dia-lg reveal">
+    <svg viewBox="0 0 1060 220" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity=".06"/></filter>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/></marker>
+      </defs>
+      <rect width="1060" height="220" rx="20" fill="#FAFAFA"/>
+      <g class="svg-fade-in stagger-1" filter="url(#ds)">
+        <rect x="30" y="50" width="160" height="120" rx="14" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
+        <text x="110" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF3B30">1. PARSE &amp; VALIDATE</text>
+        <text x="110" y="105" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CSV, XML, JSON &rarr;</text>
+        <text x="110" y="120" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">structured records</text>
+        <text x="110" y="150" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Quarantine invalid rows</text>
+      </g>
+      <line x1="195" y1="110" x2="225" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+      <g class="svg-fade-in stagger-2" filter="url(#ds)">
+        <rect x="230" y="50" width="160" height="120" rx="14" fill="#FFF" stroke="#FF9500" stroke-width="1.5"/>
+        <text x="310" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF9500">2. NORMALIZE</text>
+        <text x="310" y="105" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Map fields to ontology</text>
+        <text x="310" y="120" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Normalize dates, names</text>
+        <text x="310" y="150" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Apply source transforms</text>
+      </g>
+      <line x1="395" y1="110" x2="425" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+      <g class="svg-fade-in stagger-3" filter="url(#ds)">
+        <rect x="430" y="50" width="160" height="120" rx="14" fill="#FFF" stroke="#007AFF" stroke-width="1.5"/>
+        <text x="510" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#007AFF">3. ENRICH</text>
+        <text x="510" y="105" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Cross-reference lookup</text>
+        <text x="510" y="120" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Compute derived fields</text>
+        <text x="510" y="150" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Apply tenant context</text>
+      </g>
+      <line x1="595" y1="110" x2="625" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+      <g class="svg-fade-in stagger-4" filter="url(#ds)">
+        <rect x="630" y="50" width="160" height="120" rx="14" fill="#FFF" stroke="#AF52DE" stroke-width="1.5"/>
+        <text x="710" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#AF52DE">4. RESOLVE</text>
+        <text x="710" y="105" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Splink entity matching</text>
+        <text x="710" y="120" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Fellegi-Sunter model</text>
+        <text x="710" y="150" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Golden record merge</text>
+      </g>
+      <line x1="795" y1="110" x2="825" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+      <g class="svg-fade-in stagger-5" filter="url(#ds)">
+        <rect x="830" y="50" width="190" height="120" rx="14" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
+        <text x="925" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">5. GRAPH WRITE</text>
+        <text x="925" y="105" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Neo4j + XTDB + ES</text>
+        <text x="925" y="120" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Domain events &rarr; Kafka</text>
+        <text x="925" y="150" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Audit log entry</text>
+      </g>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ SOURCE CONNECTORS ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Source Systems</p>
+  <h2 class="sec-title reveal">Connectors for <span class="grad-orange">every school system</span></h2>
+
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card">
+      <div class="card-icon" style="background:var(--blue-bg)">&#128279;</div>
+      <h3>Clever (Priority 1)</h3>
+      <p>REST API v3.1 with OAuth 2.0. Covers 95K+ schools. Students, teachers, sections, courses, schools. Events API for change detection.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--green-bg)">&#127979;</div>
+      <h3>PowerSchool (Priority 2)</h3>
+      <p>Plugin-based OAuth 2.0. PowerQuery for bulk extraction. CDC via Debezium for real-time change capture from on-premise databases.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-bg)">&#128203;</div>
+      <h3>SEIS / Frontline (Priority 3)</h3>
+      <p>CSV/SFTP export. The most valuable and most difficult integration &mdash; contains IEP goals, service minutes, provider assignments, progress notes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--orange-bg)">&#128202;</div>
+      <h3>NWEA MAP Growth</h3>
+      <p>CSV via Data Export Scheduler. RIT scores, percentiles, growth projections, subdomain breakdowns across up to 8 goal areas.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-bg)">&#11088;</div>
+      <h3>Renaissance Star</h3>
+      <p>CSV extract. Scaled scores, percentile ranks, Student Growth Percentiles, zone of proximal development, instructional reading levels.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--red-bg)">&#128214;</div>
+      <h3>Acadience (DIBELS)</h3>
+      <p>CSV from Acadience Data Management. Composite scores, risk levels, subtests varying by grade (ORF, NWF, PSF, Letter Naming).</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ ENTITY RESOLUTION ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--purple)">Entity Resolution</p>
+  <h2 class="sec-title reveal">One student, <span class="grad-purple">five systems, one record</span></h2>
+  <p class="sec-sub reveal">When &ldquo;Johnathan Smith&rdquo; in the SIS is &ldquo;John Smith Jr.&rdquo; in SEIS and &ldquo;Johnathan A. Smith&rdquo; in MAP &mdash; Splink resolves them probabilistically.</p>
+
+  <div class="ba reveal">
+    <div class="ba-before">
+      <h4>Before Resolution</h4>
+      <ul>
+        <li>Student appears in 5+ systems with inconsistent IDs</li>
+        <li>Name spellings differ across systems</li>
+        <li>Assessment data disconnected from IEP data</li>
+        <li>No cross-system picture possible</li>
+      </ul>
+    </div>
+    <div class="ba-after">
+      <h4>After Resolution</h4>
+      <ul>
+        <li>Golden record with canonical identity</li>
+        <li>Cross-reference table linking all source IDs</li>
+        <li>Assessment + IEP + attendance unified</li>
+        <li>Full-picture reasoning enabled</li>
+      </ul>
+    </div>
+  </div>
+
+  <details class="deep reveal">
+    <summary>Splink Configuration Details</summary>
+    <div class="deep-body">
+      <h4>Blocking Strategy (reduce 2.5B comparisons to manageable candidates)</h4>
+      <p><strong>Rule 1:</strong> Exact DOB + first 3 chars of last name</p>
+      <p><strong>Rule 2:</strong> Exact last name + first 3 chars of first name + same school</p>
+      <p><strong>Rule 3:</strong> Exact district student ID (deterministic)</p>
+      <p><strong>Rule 4:</strong> Exact state student ID (deterministic)</p>
+      <p><strong>Rule 5:</strong> Soundex of last name + DOB year + gender (phonetic matching)</p>
+      <h4>Match Thresholds</h4>
+      <p><strong>&ge;0.95:</strong> Auto-link (no human review). <strong>0.70&ndash;0.95:</strong> Human review queue. <strong>&lt;0.70:</strong> Create as new entity.</p>
+      <h4>Survivorship Rules</h4>
+      <p>SIS is authoritative for identity and enrollment. SPED system is authoritative for IEP/services. Assessment platform is authoritative for scores. Program flags use union strategy across all sources.</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ FEATURE ENGINEERING ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">Feature Engineering</p>
+  <h2 class="sec-title reveal">48+ features <span class="grad-green">per learner, nightly</span></h2>
+
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card">
+      <div class="card-icon" style="background:var(--blue-bg)">&#128218;</div>
+      <h3>Academic (14 features)</h3>
+      <p>GPA trend, courses failing, grade-vs-assessment discrepancy, growth rate, standards mastery, missing assignment acceleration.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--green-bg)">&#128197;</div>
+      <h3>Attendance (12 features)</h3>
+      <p>Attendance rate (YTD, 30d, 14d), trend slope, consecutive absences, day-of-week patterns, period patterns, absence-after-event correlation.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--orange-bg)">&#128227;</div>
+      <h3>Behavioral (7 features)</h3>
+      <p>Incident counts (30d, 90d), trend direction, severity escalation flag, new behavior type flag, positive behavior trend.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-bg)">&#128187;</div>
+      <h3>Engagement (4 features)</h3>
+      <p>LMS login frequency, login trend, assignment submission timeliness, extracurricular count changes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--indigo-bg)">&#127919;</div>
+      <h3>Intervention (5 features)</h3>
+      <p>Active count, dosage compliance, session attendance, response rate, prior intervention success rate.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--red-bg)">&#128203;</div>
+      <h3>Compliance (6+ features)</h3>
+      <p>Active IEP/504, annual review days until, service minutes compliance %, overdue evaluations, overdue meetings.</p>
+    </div>
+  </div>
+
+  <div class="co co-red reveal">
+    <strong>Bias Mitigation:</strong> Race, ethnicity, gender, and disability status are NEVER included as model features. The risk model predicts from behavioral and academic signals, not from identity. Post-hoc fairness audits verify calibration across demographic groups.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ SIGNAL DETECTION ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--red)">Signal Detection</p>
+  <h2 class="sec-title reveal">Five methods, <span class="grad-pink">zero blind spots</span></h2>
+
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card">
+      <div class="card-icon" style="background:var(--red-bg)">&#9888;&#65039;</div>
+      <h3>1. Threshold</h3>
+      <p>Deterministic rules that fire when values cross boundaries. Fastest and most explainable. &ldquo;Attendance below 90%&rdquo;, &ldquo;Failing 2+ courses.&rdquo;</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--blue-bg)">&#128200;</div>
+      <h3>2. Trend</h3>
+      <p>OLS regression detects statistically significant slope changes. Catches declining trajectories even when no threshold is crossed. Tests prior vs. recent window slopes.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-bg)">&#128301;</div>
+      <h3>3. Anomaly</h3>
+      <p>Isolation Forest detects data points inconsistent with the learner&rsquo;s own history and peer group. Identifies which specific features are driving the anomaly.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--orange-bg)">&#127758;</div>
+      <h3>4. Convergent</h3>
+      <p>The most powerful type. Detects when multiple weak signals from different domains converge on the same learner within a 14-day window. A tardy + grade drop + missed session = action.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--green-bg)">&#129504;</div>
+      <h3>5. GNN-Based</h3>
+      <p>Graph Neural Networks trained on the student similarity graph detect community-level patterns invisible to individual-level analysis.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ RISK MODEL ═══════════════════════════════════ -->
+<section>
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--indigo)">Risk Prediction</p>
+  <h2 class="sec-title reveal">LightGBM <span class="grad-purple">composite risk scoring</span></h2>
+  <p class="sec-sub reveal">Predicts probability of negative outcomes to prioritize which students the system analyzes first. Never used to make decisions &mdash; only to set analysis priority.</p>
+
+  <table class="tbl reveal">
+    <thead><tr><th>Outcome Predicted</th><th>Weight</th><th>Description</th></tr></thead>
+    <tbody>
+      <tr><td>Course failure</td><td>20%</td><td>Will the student fail a course within 90 days?</td></tr>
+      <tr><td>Chronic absence</td><td>25%</td><td>Will attendance cross the 10% threshold?</td></tr>
+      <tr><td>Suspension</td><td>15%</td><td>Will the student receive a suspension?</td></tr>
+      <tr><td>IEP non-compliance</td><td>25%</td><td>Will service delivery fall below compliance?</td></tr>
+      <tr><td>Dropout</td><td>15%</td><td>Will the student withdraw within the year?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="co co-blue reveal">
+    <strong>Explainability:</strong> Every prediction includes SHAP feature importance values showing which specific features are driving the risk score for each individual student.
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ NEXT ═══════════════════════════════════ -->
+<section style="padding:60px 0">
+<div class="con">
+  <a href="optimization.html" class="next-topic reveal">
+    <div>
+      <div class="next-label">Next Chapter</div>
+      <div class="next-title">Intelligence &amp; Optimization &rarr; LLM Agents + 12 Models</div>
+    </div>
+    <span class="next-arrow">&rarr;</span>
+  </a>
+</div>
+</section>
+
+<footer>
+<div class="con">
+  <div class="footer-grid">
+    <a href="index.html" class="footer-pill">Home</a>
+    <a href="architecture.html" class="footer-pill">Architecture</a>
+    <a href="ontology.html" class="footer-pill">Ontology</a>
+    <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
+    <a href="optimization.html" class="footer-pill">Optimization</a>
+    <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
+    <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+  </div>
+  <div class="footer-bottom">ATLAS Education Operating System</div>
+</div>
+</footer>
+
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
+
+<script>
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.08,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let t=false;window.addEventListener('scroll',()=>{if(!t){requestAnimationFrame(()=>{const h=document.documentElement.scrollHeight-window.innerHeight;if(h>0)document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';t=false});t=true}});
+const topBtn=document.getElementById('top-btn');let tt=false;window.addEventListener('scroll',()=>{if(!tt){requestAnimationFrame(()=>{topBtn.classList.toggle('show',window.scrollY>600);tt=false});tt=true}});
+document.querySelectorAll('details.deep').forEach(d=>{d.addEventListener('toggle',()=>{if(d.open)setTimeout(()=>d.scrollIntoView({behavior:'smooth',block:'nearest'}),120)})});
+</script>
+</body>
+</html>

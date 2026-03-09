@@ -5,86 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ATLAS — Education Operating System</title>
 <link rel="stylesheet" href="atlas-design-system.css">
-<style>
-/* ── Homepage-specific overrides ── */
-.hero { padding: 160px 0 100px; }
-.hero-title { max-width: 800px; }
-
-/* Stat pills on hero */
-.hero-stats {
-  display: flex; flex-wrap: wrap; gap: 14px; margin: 32px 0 56px;
-}
-.hero-stat {
-  display: flex; align-items: center; gap: 8px;
-  padding: 10px 18px; border-radius: 100px;
-  background: rgba(255,255,255,.7); backdrop-filter: blur(8px);
-  border: 1px solid var(--border); font-size: 14px; font-weight: 600;
-  color: var(--text);
-}
-.hero-stat .num { font-weight: 800; }
-.hero-stat .dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  animation: dotPulse 2s ease-in-out infinite;
-}
-@keyframes dotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: .6; transform: scale(1.3); }
-}
-
-/* What is section */
-.what-section { padding: 100px 0; background: var(--bg); }
-.what-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-.what-text h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.03em; line-height: 1.15; margin-bottom: 20px; }
-.what-text p { font-size: 17px; color: var(--text2); line-height: 1.7; margin-bottom: 16px; }
-@media (max-width: 900px) { .what-grid { grid-template-columns: 1fr; gap: 40px; } }
-
-/* How it works flow */
-.flow-section { padding: 100px 0; background: var(--bg2); }
-.flow-steps { display: flex; gap: 0; align-items: flex-start; margin: 56px 0; position: relative; }
-.flow-step { flex: 1; text-align: center; position: relative; padding: 0 16px; }
-.flow-step-icon {
-  width: 64px; height: 64px; border-radius: 20px; margin: 0 auto 16px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 28px; position: relative; z-index: 1;
-}
-.flow-step h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-.flow-step p { font-size: 13px; color: var(--text2); line-height: 1.5; }
-.flow-arrow {
-  position: absolute; top: 32px; right: -12px; z-index: 2;
-  color: var(--text3); font-size: 16px;
-  animation: arrowBounce 2s ease-in-out infinite;
-}
-@keyframes arrowBounce {
-  0%, 100% { transform: translateX(0); opacity: .5; }
-  50%      { transform: translateX(4px); opacity: 1; }
-}
-@media (max-width: 900px) {
-  .flow-steps { flex-direction: column; gap: 24px; }
-  .flow-arrow { display: none; }
-}
-
-/* Persona section */
-.persona-section { padding: 100px 0; }
-
-/* Previews section */
-.previews-section { padding: 100px 0; background: var(--bg2); }
-
-/* Number circles in previews */
-.preview-num {
-  position: absolute; top: 16px; left: 16px;
-  width: 28px; height: 28px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 12px; font-weight: 700; color: #fff; z-index: 1;
-}
-
-/* Trust section */
-.trust-section { padding: 80px 0; background: var(--bg); }
-.trust-logos {
-  display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 32px; margin-top: 32px; opacity: .5;
-}
-.trust-item { font-size: 14px; font-weight: 600; color: var(--text2); letter-spacing: .02em; }
-</style>
 </head>
 <body>
 <div id="progress" style="width:0%"></div>
@@ -102,551 +22,629 @@
     <a href="causal-monitoring.html">Causal &amp; Monitoring</a>
     <a href="security-roadmap.html">Security &amp; Roadmap</a>
   </div>
-  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+  <button class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">&#9776;</button>
 </div>
 </nav>
 
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
 <section class="hero" id="hero">
-<div class="hero-bg"></div>
+<div class="hero-bg" style="background:
+  radial-gradient(ellipse at 25% 20%, rgba(0,122,255,.12) 0%, transparent 50%),
+  radial-gradient(ellipse at 75% 70%, rgba(123,97,255,.1) 0%, transparent 50%),
+  radial-gradient(ellipse at 60% 20%, rgba(52,199,89,.06) 0%, transparent 40%);">
+</div>
 <div class="con">
   <div class="hero-badge reveal">Education Operating System</div>
-  <h1 class="hero-title reveal">
-    <span class="grad-blue">One platform</span> that connects<br>
-    every student, every system,<br>
-    every decision.
+  <h1 class="hero-title reveal reveal-d1">
+    See every student.<br>
+    <span class="grad-multi">Miss nothing.</span>
   </h1>
-  <p class="hero-sub reveal">
-    Schools run on 47+ disconnected systems. ATLAS unifies them into a single reasoning engine that helps educators make better decisions — faster, fairer, and backed by evidence.
+  <p class="hero-sub reveal reveal-d2">
+    47+ disconnected school systems, unified into one intelligent platform. Evidence-backed insights for every educator, every decision, every child.
   </p>
-
-  <div class="hero-stats reveal">
-    <div class="hero-stat"><span class="dot" style="background:var(--blue)"></span><span class="num">12</span> Microservices</div>
-    <div class="hero-stat"><span class="dot" style="background:var(--green)"></span><span class="num">9</span> Data Domains</div>
-    <div class="hero-stat"><span class="dot" style="background:var(--purple)"></span><span class="num">48+</span> Signal Features</div>
-    <div class="hero-stat"><span class="dot" style="background:var(--orange)"></span><span class="num">12</span> Optimization Models</div>
-    <div class="hero-stat"><span class="dot" style="background:var(--red)"></span><span class="num">5</span> Causal Methods</div>
-    <div class="hero-stat"><span class="dot" style="background:var(--teal)"></span><span class="num">47+</span> Constraint Rules</div>
+  <div class="hero-actions reveal reveal-d3">
+    <a href="#how" class="cta-btn cta-primary">See how it works</a>
+    <a href="#explore" class="cta-btn cta-secondary">Explore the blueprint</a>
   </div>
 
-  <!-- Hero Animated Pipeline SVG -->
-  <div class="dia dia-lg reveal">
-    <svg viewBox="0 0 1060 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hero Illustration — Animated student data constellation -->
+  <div class="hero-illustration reveal reveal-d4">
+    <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".06"/></filter>
-        <linearGradient id="g-flow" x1="0%" y1="0%" x2="100%" y2="0%">
+        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <linearGradient id="grad-flow" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stop-color="#007AFF"/>
-          <stop offset="50%" stop-color="#AF52DE"/>
+          <stop offset="50%" stop-color="#7B61FF"/>
           <stop offset="100%" stop-color="#34C759"/>
         </linearGradient>
-        <marker id="arrow-hero" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-          <path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/>
-        </marker>
+        <linearGradient id="grad-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#007AFF" stop-opacity=".3"/>
+          <stop offset="100%" stop-color="#7B61FF" stop-opacity=".1"/>
+        </linearGradient>
       </defs>
+      <rect width="1120" height="420" fill="#FAFAFA"/>
 
-      <!-- Background -->
-      <rect width="1060" height="300" rx="20" fill="#FAFAFA"/>
-
-      <!-- Stage 1: Source Systems -->
-      <g class="svg-fade-in stagger-1" filter="url(#ds)">
-        <rect x="30" y="40" width="150" height="220" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="105" y="72" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF3B30">SOURCE SYSTEMS</text>
-        <rect x="48" y="90" width="114" height="28" rx="8" fill="#FFECEB"/>
-        <text x="105" y="109" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#FF3B30">PowerSchool SIS</text>
-        <rect x="48" y="126" width="114" height="28" rx="8" fill="#FFF3E0"/>
-        <text x="105" y="145" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#FF9500">NWEA MAP</text>
-        <rect x="48" y="162" width="114" height="28" rx="8" fill="#F5EAFA"/>
-        <text x="105" y="181" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#AF52DE">SEIS (SPED)</text>
-        <rect x="48" y="198" width="114" height="28" rx="8" fill="#E6F6FE"/>
-        <text x="105" y="217" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#5AC8FA">Clever + More</text>
+      <!-- Central Student Node -->
+      <g filter="url(#glow)">
+        <circle cx="560" cy="200" r="52" fill="#EBF5FF" stroke="#007AFF" stroke-width="2"/>
+        <text x="560" y="190" text-anchor="middle" font-size="32">&#127891;</text>
+        <text x="560" y="215" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#007AFF">Student</text>
       </g>
 
-      <!-- Arrow 1 -->
-      <line x1="190" y1="150" x2="230" y2="150" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arrow-hero)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite"/>
+      <!-- Pulsing rings -->
+      <circle cx="560" cy="200" r="72" fill="none" stroke="url(#grad-ring)" stroke-width="1.5">
+        <animate attributeName="r" values="72;85;72" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".3;.08;.3" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="560" cy="200" r="95" fill="none" stroke="url(#grad-ring)" stroke-width="1">
+        <animate attributeName="r" values="95;110;95" dur="4s" begin=".5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".15;.03;.15" dur="4s" begin=".5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Data source nodes — orbiting constellation -->
+      <!-- Grades (top-left) -->
+      <line x1="290" y1="95" x2="515" y2="170" stroke="#007AFF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" repeatCount="indefinite"/>
       </line>
-
-      <!-- Stage 2: Data Pipeline -->
-      <g class="svg-fade-in stagger-2" filter="url(#ds)">
-        <rect x="240" y="60" width="170" height="180" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="325" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#007AFF">DATA PIPELINE</text>
-        <rect x="258" y="108" width="134" height="24" rx="6" fill="#EBF5FF"/>
-        <text x="325" y="125" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#007AFF">Parse &amp; Validate</text>
-        <rect x="258" y="138" width="134" height="24" rx="6" fill="#EBF5FF"/>
-        <text x="325" y="155" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#007AFF">Normalize</text>
-        <rect x="258" y="168" width="134" height="24" rx="6" fill="#EBF5FF"/>
-        <text x="325" y="185" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#007AFF">Entity Resolution</text>
-        <rect x="258" y="198" width="134" height="24" rx="6" fill="#EBF5FF"/>
-        <text x="325" y="215" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#007AFF">Enrich &amp; Write</text>
+      <g class="svg-fade stagger-1">
+        <rect x="210" y="65" width="160" height="56" rx="16" fill="#FFF" stroke="#007AFF" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="255" y="89" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF">&#128218;</text>
+        <text x="270" y="89" font-family="Inter" font-size="12" font-weight="700" fill="#007AFF">Grades</text>
+        <text x="270" y="107" font-family="Inter" font-size="10" fill="#AEAEB2">PowerSchool SIS</text>
       </g>
 
-      <!-- Arrow 2 -->
-      <line x1="420" y1="150" x2="460" y2="150" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arrow-hero)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="0.4s" repeatCount="indefinite"/>
+      <!-- Assessments (top-right) -->
+      <line x1="830" y1="95" x2="605" y2="170" stroke="#7B61FF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin=".5s" repeatCount="indefinite"/>
       </line>
-
-      <!-- Stage 3: Knowledge Graph -->
-      <g class="svg-fade-in stagger-3" filter="url(#ds)">
-        <rect x="470" y="60" width="170" height="180" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="555" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">KNOWLEDGE GRAPH</text>
-        <!-- Mini graph nodes -->
-        <circle cx="520" cy="140" r="14" fill="#E8F9ED" stroke="#34C759" stroke-width="1.5"/>
-        <text x="520" y="144" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#34C759">S</text>
-        <circle cx="555" cy="115" r="10" fill="#EEEDF9" stroke="#5856D6" stroke-width="1"/>
-        <circle cx="590" cy="140" r="10" fill="#EBF5FF" stroke="#007AFF" stroke-width="1"/>
-        <circle cx="555" cy="165" r="10" fill="#FFF3E0" stroke="#FF9500" stroke-width="1"/>
-        <circle cx="520" cy="185" r="10" fill="#FFE5EB" stroke="#FF2D55" stroke-width="1"/>
-        <circle cx="590" cy="185" r="10" fill="#E6F6FE" stroke="#5AC8FA" stroke-width="1"/>
-        <line x1="534" y1="136" x2="545" y2="120" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="534" y1="144" x2="580" y2="140" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="528" y1="152" x2="545" y2="162" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="520" y1="154" x2="520" y2="175" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="565" y1="165" x2="580" y2="180" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="555" y="220" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">9 domains · 200+ entities</text>
+      <g class="svg-fade stagger-2">
+        <rect x="750" y="65" width="160" height="56" rx="16" fill="#FFF" stroke="#7B61FF" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="795" y="89" font-family="Inter" font-size="10" font-weight="700" fill="#7B61FF">&#128202;</text>
+        <text x="810" y="89" font-family="Inter" font-size="12" font-weight="700" fill="#7B61FF">Assessments</text>
+        <text x="810" y="107" font-family="Inter" font-size="10" fill="#AEAEB2">NWEA / DIBELS</text>
       </g>
 
-      <!-- Arrow 3 -->
-      <line x1="650" y1="150" x2="690" y2="150" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arrow-hero)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="0.8s" repeatCount="indefinite"/>
+      <!-- Attendance (left) -->
+      <line x1="190" y1="220" x2="508" y2="200" stroke="#34C759" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="1s" repeatCount="indefinite"/>
       </line>
-
-      <!-- Stage 4: Intelligence -->
-      <g class="svg-fade-in stagger-4" filter="url(#ds)">
-        <rect x="700" y="60" width="150" height="180" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="775" y="92" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#5856D6">INTELLIGENCE</text>
-        <rect x="718" y="108" width="114" height="24" rx="6" fill="#EEEDF9"/>
-        <text x="775" y="125" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#5856D6">Signal Detection</text>
-        <rect x="718" y="138" width="114" height="24" rx="6" fill="#EEEDF9"/>
-        <text x="775" y="155" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#5856D6">Graph Reasoning</text>
-        <rect x="718" y="168" width="114" height="24" rx="6" fill="#EEEDF9"/>
-        <text x="775" y="185" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#5856D6">Optimization</text>
-        <rect x="718" y="198" width="114" height="24" rx="6" fill="#EEEDF9"/>
-        <text x="775" y="215" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#5856D6">Causal Analysis</text>
+      <g class="svg-fade stagger-3">
+        <rect x="30" y="192" width="160" height="56" rx="16" fill="#FFF" stroke="#34C759" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="75" y="216" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">&#128197;</text>
+        <text x="90" y="216" font-family="Inter" font-size="12" font-weight="700" fill="#34C759">Attendance</text>
+        <text x="90" y="234" font-family="Inter" font-size="10" fill="#AEAEB2">Clever / SIS</text>
       </g>
 
-      <!-- Arrow 4 -->
-      <line x1="860" y1="150" x2="900" y2="150" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arrow-hero)">
-        <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+      <!-- IEP / 504 (right) -->
+      <line x1="930" y1="220" x2="612" y2="200" stroke="#FF9F0A" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="1.5s" repeatCount="indefinite"/>
       </line>
-
-      <!-- Stage 5: Outcomes -->
-      <g class="svg-fade-in stagger-5" filter="url(#ds)">
-        <rect x="910" y="70" width="120" height="160" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="970" y="102" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FF9500">OUTCOMES</text>
-        <rect x="926" y="118" width="88" height="24" rx="6" fill="#FFF3E0"/>
-        <text x="970" y="135" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#FF9500">Insights</text>
-        <rect x="926" y="148" width="88" height="24" rx="6" fill="#FFF3E0"/>
-        <text x="970" y="165" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#FF9500">Actions</text>
-        <rect x="926" y="178" width="88" height="24" rx="6" fill="#FFF3E0"/>
-        <text x="970" y="195" text-anchor="middle" font-family="Inter" font-size="10" font-weight="500" fill="#FF9500">Learning</text>
+      <g class="svg-fade stagger-4">
+        <rect x="930" y="192" width="160" height="56" rx="16" fill="#FFF" stroke="#FF9F0A" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="975" y="216" font-family="Inter" font-size="10" font-weight="700" fill="#FF9F0A">&#128221;</text>
+        <text x="990" y="216" font-family="Inter" font-size="12" font-weight="700" fill="#FF9F0A">IEP / 504</text>
+        <text x="990" y="234" font-family="Inter" font-size="10" fill="#AEAEB2">SEIS / Frontline</text>
       </g>
 
-      <!-- Learning loop arrow (curved) -->
-      <path d="M970,235 Q970,275 555,275 Q140,275 140,235" fill="none" stroke="url(#g-flow)" stroke-width="1.5" stroke-dasharray="6,4" opacity=".4">
-        <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
-      </path>
-      <text x="555" y="292" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#AEAEB2">Continuous Learning Loop</text>
+      <!-- Behavior (bottom-left) -->
+      <line x1="290" y1="325" x2="525" y2="235" stroke="#FF3B30" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="2s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-5">
+        <rect x="210" y="297" width="160" height="56" rx="16" fill="#FFF" stroke="#FF3B30" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="255" y="321" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">&#128276;</text>
+        <text x="270" y="321" font-family="Inter" font-size="12" font-weight="700" fill="#FF3B30">Behavior</text>
+        <text x="270" y="339" font-family="Inter" font-size="10" fill="#AEAEB2">PBIS / MTSS</text>
+      </g>
+
+      <!-- Scheduling (bottom-right) -->
+      <line x1="830" y1="325" x2="595" y2="235" stroke="#5AC8FA" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="2.5s" repeatCount="indefinite"/>
+      </line>
+      <g class="svg-fade stagger-6">
+        <rect x="750" y="297" width="160" height="56" rx="16" fill="#FFF" stroke="#5AC8FA" stroke-width="1.2" filter="url(#glow)"/>
+        <text x="795" y="321" font-family="Inter" font-size="10" font-weight="700" fill="#5AC8FA">&#128338;</text>
+        <text x="810" y="321" font-family="Inter" font-size="12" font-weight="700" fill="#5AC8FA">Schedules</text>
+        <text x="810" y="339" font-family="Inter" font-size="10" fill="#AEAEB2">Bell / Bus / Staff</text>
+      </g>
+
+      <!-- Bottom label -->
+      <text x="560" y="400" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#AEAEB2">6 data systems &#8594; 1 unified knowledge graph &#8594; actionable insights</text>
     </svg>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ WHAT IS ATLAS ═══════════════════════════════════ -->
-<section class="what-section" id="what">
+<!-- ═══════════════════════════════════ THE PROBLEM ═══════════════════════════════════ -->
+<section class="section-alt" id="problem">
 <div class="con">
-  <div class="what-grid">
-    <div class="what-text reveal">
-      <p class="sec-label" style="color:var(--blue)">What is ATLAS?</p>
-      <h2>Think of it as a <span class="grad-blue">brain for your school district.</span></h2>
-      <p>
-        Right now, student grades live in one system, attendance in another, IEPs in a third, and test scores in a fourth. Nobody can see the full picture — so problems go unnoticed and interventions come too late.
-      </p>
-      <p>
-        ATLAS connects all of these systems into one unified view. It uses the same kinds of algorithms that power logistics at Amazon and player analytics in professional sports — except applied to the thing that matters most: student success.
-      </p>
-      <p>
-        <strong>The system never makes decisions on its own.</strong> It surfaces insights, proposes evidence-backed actions, and lets educators decide. Every recommendation is traceable, explainable, and grounded in real data.
-      </p>
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--red)">The Problem</p>
+    <h2 class="sec-title reveal" style="max-width:700px;margin-left:auto;margin-right:auto">Schools run on <span class="grad-red">disconnected silos</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Student data is scattered across dozens of systems. No one can see the full picture &mdash; so problems go unnoticed until it&rsquo;s too late.</p>
+  </div>
+
+  <div class="problem-grid reveal">
+    <div class="problem-side problem-before">
+      <h3>&#10060; Today&rsquo;s Reality</h3>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128466;</div>
+        <div>
+          <strong>47+ disconnected systems</strong>
+          <p>Grades in one system, attendance in another, IEPs in a third. Teachers toggle between 8+ apps daily.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128683;</div>
+        <div>
+          <strong>No cross-system visibility</strong>
+          <p>A counselor can&rsquo;t see that a student&rsquo;s grades dropped, attendance dipped, and behavior referrals increased &mdash; all in the same two weeks.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#9200;</div>
+        <div>
+          <strong>Interventions come too late</strong>
+          <p>By the time patterns are noticed manually, students have been struggling for months. Reactive, not proactive.</p>
+        </div>
+      </div>
+      <div class="problem-item" style="margin-bottom:0">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128176;</div>
+        <div>
+          <strong>Resources allocated by gut feel</strong>
+          <p>Scheduling, budgets, and staffing decisions based on intuition rather than evidence of what actually works.</p>
+        </div>
+      </div>
     </div>
-    <div class="reveal reveal-delay-2">
-      <!-- Mini concept SVG -->
-      <svg viewBox="0 0 440 360" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="ds2"><feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity=".06"/></filter>
-        </defs>
-        <rect width="440" height="360" rx="20" fill="#FAFAFA"/>
-
-        <!-- Center: Student -->
-        <g filter="url(#ds2)">
-          <circle cx="220" cy="170" r="44" fill="#EBF5FF" stroke="#007AFF" stroke-width="2"/>
-          <text x="220" y="164" text-anchor="middle" font-family="Inter" font-size="24">🎓</text>
-          <text x="220" y="186" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF">Student</text>
-        </g>
-
-        <!-- Surrounding data sources -->
-        <g class="svg-fade-in stagger-1" filter="url(#ds2)">
-          <rect x="50" y="40" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="100" y="57" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#FF3B30">Grades</text>
-          <text x="100" y="72" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">PowerSchool</text>
-        </g>
-        <line x1="150" y1="72" x2="185" y2="140" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <g class="svg-fade-in stagger-2" filter="url(#ds2)">
-          <rect x="290" y="40" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="340" y="57" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#FF9500">Assessments</text>
-          <text x="340" y="72" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">NWEA MAP</text>
-        </g>
-        <line x1="290" y1="72" x2="255" y2="140" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <g class="svg-fade-in stagger-3" filter="url(#ds2)">
-          <rect x="15" y="155" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="65" y="172" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AF52DE">IEP / 504</text>
-          <text x="65" y="187" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">SEIS</text>
-        </g>
-        <line x1="115" y1="177" x2="176" y2="170" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <g class="svg-fade-in stagger-4" filter="url(#ds2)">
-          <rect x="325" y="155" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="375" y="172" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#5856D6">Attendance</text>
-          <text x="375" y="187" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">SIS / Clever</text>
-        </g>
-        <line x1="325" y1="177" x2="264" y2="170" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <g class="svg-fade-in stagger-5" filter="url(#ds2)">
-          <rect x="80" y="270" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="130" y="287" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#34C759">Behavior</text>
-          <text x="130" y="302" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">PBIS / MTSS</text>
-        </g>
-        <line x1="150" y1="270" x2="200" y2="210" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <g class="svg-fade-in stagger-6" filter="url(#ds2)">
-          <rect x="260" y="270" width="100" height="44" rx="10" fill="#FFF" stroke="#E8E8ED"/>
-          <text x="310" y="287" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#5AC8FA">Schedules</text>
-          <text x="310" y="302" text-anchor="middle" font-family="Inter" font-size="8" fill="#6E6E73">Bell / Bus</text>
-        </g>
-        <line x1="290" y1="270" x2="240" y2="210" stroke="#E8E8ED" stroke-width="1.5" stroke-dasharray="4,3"/>
-
-        <!-- Pulsing connection ring -->
-        <circle cx="220" cy="170" r="62" fill="none" stroke="var(--blue)" stroke-width="1" opacity=".15">
-          <animate attributeName="r" values="62;72;62" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".15;.05;.15" dur="3s" repeatCount="indefinite"/>
-        </circle>
-      </svg>
+    <div class="problem-side problem-after">
+      <h3>&#9989; With ATLAS</h3>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#128279;</div>
+        <div>
+          <strong>One unified knowledge graph</strong>
+          <p>Every student record, across every system, linked into a single coherent picture with 200+ entity types.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#128161;</div>
+        <div>
+          <strong>Cross-domain pattern detection</strong>
+          <p>48+ features automatically monitor every student. The system sees what humans can&rsquo;t &mdash; connections across data silos.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#9889;</div>
+        <div>
+          <strong>Early warnings, not late reports</strong>
+          <p>CUSUM detection catches trajectory changes 3&ndash;5 weeks earlier than threshold alerts. Proactive, not reactive.</p>
+        </div>
+      </div>
+      <div class="problem-item" style="margin-bottom:0">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#127919;</div>
+        <div>
+          <strong>Evidence-backed optimization</strong>
+          <p>12 mathematical models optimize scheduling, routing, budgets, and intervention matching &mdash; with measured ROI.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
-<section class="flow-section" id="how">
+<section id="how">
 <div class="con text-center">
-  <p class="sec-label reveal" style="color:var(--green)">How It Works</p>
-  <h2 class="sec-title reveal">From raw data to <span class="grad-green">actionable insight</span></h2>
-  <p class="sec-sub mx-auto reveal" style="text-align:center">ATLAS follows a five-stage process — each one automated, auditable, and transparent.</p>
+  <p class="sec-label reveal" style="color:var(--blue)">How It Works</p>
+  <h2 class="sec-title reveal" style="max-width:700px;margin-left:auto;margin-right:auto">Five steps from <span class="grad-blue">raw data</span> to action</h2>
+  <p class="sec-sub mx-auto reveal" style="text-align:center">Fully automated, auditable, and transparent. Humans always make the final call.</p>
 </div>
 <div class="con">
   <div class="flow-steps reveal">
     <div class="flow-step">
-      <div class="flow-step-icon" style="background:var(--red-bg)">📥</div>
+      <div class="flow-icon" style="background:var(--red-bg)">&#128229;</div>
       <h4>Ingest</h4>
-      <p>Pull data from every school system in real time via connectors and CDC</p>
-      <span class="flow-arrow">→</span>
+      <p>Pull data from every school system in real-time via secure connectors</p>
+      <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-step-icon" style="background:var(--blue-bg)">🔗</div>
+      <div class="flow-icon" style="background:var(--blue-bg)">&#128279;</div>
       <h4>Unify</h4>
-      <p>Match records, resolve identities, build the knowledge graph</p>
-      <span class="flow-arrow">→</span>
+      <p>Match records across systems and build the knowledge graph</p>
+      <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-step-icon" style="background:var(--purple-bg)">🔍</div>
+      <div class="flow-icon" style="background:var(--purple-bg)">&#128269;</div>
       <h4>Detect</h4>
-      <p>48+ features monitor every student for emerging patterns and risks</p>
-      <span class="flow-arrow">→</span>
+      <p>48+ features continuously monitor every student for emerging risks</p>
+      <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-step-icon" style="background:var(--indigo-bg)">🧠</div>
+      <div class="flow-icon" style="background:rgba(123,97,255,.08)">&#129504;</div>
       <h4>Reason</h4>
-      <p>Graph traversal + causal analysis + constraint-aware optimization</p>
-      <span class="flow-arrow">→</span>
+      <p>Causal analysis and constraint-aware optimization find root causes</p>
+      <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-step-icon" style="background:var(--green-bg)">✅</div>
+      <div class="flow-icon" style="background:var(--green-bg)">&#9989;</div>
       <h4>Act</h4>
-      <p>Present traceable recommendations — humans always make the final call</p>
+      <p>Present traceable recommendations &mdash; educators make the final call</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ PERSONAS ═══════════════════════════════════ -->
-<section class="persona-section" id="who">
+<!-- ═══════════════════════════════════ WHO IT'S FOR ═══════════════════════════════════ -->
+<section class="section-alt" id="who">
 <div class="con">
   <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--indigo)">Who It's For</p>
+    <p class="sec-label reveal" style="color:var(--purple)">Who It&rsquo;s For</p>
     <h2 class="sec-title reveal">Built for <span class="grad-purple">everyone</span> in education</h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Whether you're in a classroom, a district office, or a board meeting — ATLAS speaks your language.</p>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Whether you&rsquo;re in a classroom, a district office, or a board meeting &mdash; ATLAS speaks your language.</p>
   </div>
 
-  <div class="g2 reveal" style="margin-top:48px">
+  <div class="g2 reveal" style="margin-top:56px">
     <div class="persona-card blue">
-      <span class="persona-emoji">👩‍🏫</span>
+      <span class="persona-emoji">&#128105;&#8205;&#127979;</span>
       <h3>Teachers</h3>
-      <p>See every student's full picture — grades, attendance, behavior, supports — in one place. Get early warnings when a student starts to struggle, with specific, evidence-backed suggestions for what to try next.</p>
+      <p>See every student&rsquo;s full picture &mdash; grades, attendance, behavior, supports &mdash; in one place. Get early warnings when a student starts to struggle, with specific, evidence-backed next steps.</p>
     </div>
-    <div class="persona-card indigo">
-      <span class="persona-emoji">👨‍💼</span>
+    <div class="persona-card purple">
+      <span class="persona-emoji">&#128104;&#8205;&#128188;</span>
       <h3>Administrators</h3>
-      <p>Optimize scheduling, staffing, and resource allocation with the same algorithms Fortune 500 companies use. See district-wide patterns, predict outcomes, and allocate budgets based on measured impact.</p>
+      <p>Optimize scheduling, staffing, and budgets with the same algorithms Fortune 500 companies use. See district-wide patterns, predict outcomes, and allocate resources based on measured impact.</p>
     </div>
     <div class="persona-card green">
-      <span class="persona-emoji">📋</span>
+      <span class="persona-emoji">&#128203;</span>
       <h3>Special Education Teams</h3>
-      <p>Automate IEP compliance tracking, surface students who need re-evaluation, and match students to interventions proven to work for similar profiles. Spend less time on paperwork, more time on students.</p>
+      <p>Automate IEP compliance tracking, surface students who need re-evaluation, and match them to interventions proven to work. Less paperwork, more student time.</p>
     </div>
-    <div class="persona-card orange">
-      <span class="persona-emoji">👪</span>
+    <div class="persona-card amber">
+      <span class="persona-emoji">&#128106;</span>
       <h3>Board &amp; Community</h3>
-      <p>Transparent ROI for every program and every dollar spent. See which interventions actually move the needle, with causal evidence — not just correlations. Data-driven accountability everyone can trust.</p>
+      <p>Transparent ROI for every program and dollar spent. See which interventions actually move the needle, with causal evidence &mdash; not just correlations.</p>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ SECTION PREVIEWS ═══════════════════════════════════ -->
-<section class="previews-section" id="explore">
+<!-- ═══════════════════════════════════ THE ENGINE ═══════════════════════════════════ -->
+<section id="engine">
 <div class="con">
   <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--orange)">Explore the System</p>
-    <h2 class="sec-title reveal">Six chapters. <span class="grad-orange">One complete blueprint.</span></h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Dive into the engineering behind ATLAS — from system architecture to security compliance.</p>
+    <p class="sec-label reveal" style="color:var(--blue)">Under the Hood</p>
+    <h2 class="sec-title reveal">A reasoning engine, <span class="grad-blue">not just a dashboard</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">ATLAS doesn&rsquo;t just show data. It connects, reasons, optimizes, and monitors &mdash; then explains its thinking.</p>
   </div>
 
-  <div class="g3 reveal" style="margin-top:48px">
+  <div class="dia dia-hero reveal">
+    <svg viewBox="0 0 1120 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
+        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/></marker>
+        <marker id="arr-b" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#007AFF"/></marker>
+      </defs>
+      <rect width="1120" height="480" fill="#FAFAFA"/>
 
-    <!-- Preview 1: Architecture -->
-    <a href="architecture.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--indigo-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="10" width="220" height="28" rx="8" fill="#FFF" stroke="#5856D6" stroke-width="1"/>
-          <text x="140" y="28" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#5856D6">Client Layer</text>
-          <rect x="30" y="46" width="220" height="28" rx="8" fill="#FFF" stroke="#007AFF" stroke-width="1"/>
-          <text x="140" y="64" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#007AFF">API Gateway</text>
-          <rect x="30" y="82" width="220" height="28" rx="8" fill="#FFF" stroke="#AF52DE" stroke-width="1"/>
-          <text x="140" y="100" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AF52DE">12 Microservices</text>
-          <rect x="30" y="118" width="104" height="28" rx="8" fill="#FFF" stroke="#34C759" stroke-width="1"/>
-          <text x="82" y="136" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#34C759">Kafka</text>
-          <rect x="146" y="118" width="104" height="28" rx="8" fill="#FFF" stroke="#FF9500" stroke-width="1"/>
-          <text x="198" y="136" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#FF9500">5 Databases</text>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--indigo)">Chapter 1</p>
-        <h3>System Architecture</h3>
-        <p>12 microservices, 5 database engines, Kafka event backbone, and the multi-tenancy model that keeps districts isolated.</p>
-        <span class="cta">Explore Architecture</span>
-      </div>
-    </a>
+      <!-- Title -->
+      <text x="560" y="36" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F">ATLAS Architecture — Simplified</text>
 
-    <!-- Preview 2: Ontology -->
-    <a href="ontology.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--green-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="140" cy="80" r="22" fill="#FFF" stroke="#34C759" stroke-width="2"/>
-          <text x="140" y="84" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#34C759">Student</text>
-          <circle cx="60"  cy="40"  r="14" fill="#FFF" stroke="#007AFF" stroke-width="1"/>
-          <text x="60"  y="44" text-anchor="middle" font-family="Inter" font-size="6" font-weight="600" fill="#007AFF">Grades</text>
-          <circle cx="220" cy="40"  r="14" fill="#FFF" stroke="#FF9500" stroke-width="1"/>
-          <text x="220" y="44" text-anchor="middle" font-family="Inter" font-size="6" font-weight="600" fill="#FF9500">Tests</text>
-          <circle cx="50"  cy="110" r="14" fill="#FFF" stroke="#AF52DE" stroke-width="1"/>
-          <text x="50"  y="114" text-anchor="middle" font-family="Inter" font-size="6" font-weight="600" fill="#AF52DE">IEP</text>
-          <circle cx="230" cy="110" r="14" fill="#FFF" stroke="#5856D6" stroke-width="1"/>
-          <text x="230" y="114" text-anchor="middle" font-family="Inter" font-size="6" font-weight="600" fill="#5856D6">Staff</text>
-          <circle cx="140" cy="145" r="14" fill="#FFF" stroke="#FF2D55" stroke-width="1"/>
-          <text x="140" y="149" text-anchor="middle" font-family="Inter" font-size="6" font-weight="600" fill="#FF2D55">Ops</text>
-          <line x1="120" y1="66" x2="74" y2="48" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="160" y1="66" x2="206" y2="48" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="120" y1="94" x2="64" y2="104" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="160" y1="94" x2="216" y2="104" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="140" y1="102" x2="140" y2="131" stroke="#E8E8ED" stroke-width="1"/>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--green)">Chapter 2</p>
-        <h3>Semantic Ontology</h3>
-        <p>9 operational domains, 200+ entity types, and the knowledge graph that makes cross-domain reasoning possible.</p>
-        <span class="cta">Explore Ontology</span>
-      </div>
-    </a>
+      <!-- Layer 1: Source Systems -->
+      <g class="svg-fade stagger-1" filter="url(#ds)">
+        <rect x="40" y="65" width="1040" height="50" rx="14" fill="#FFF" stroke="#FF3B30" stroke-width="1.2"/>
+        <text x="560" y="85" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30" letter-spacing=".05em">SOURCE SYSTEMS</text>
+        <text x="560" y="103" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">PowerSchool &#183; NWEA &#183; SEIS &#183; Clever &#183; PBIS &#183; Schedules &#183; 40+ more</text>
+      </g>
 
-    <!-- Preview 3: Data & Signals -->
-    <a href="data-intelligence.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--blue-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <rect x="10" y="55" width="50" height="50" rx="10" fill="#FFF" stroke="#FF3B30" stroke-width="1"/>
-          <text x="35" y="84" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF3B30">Raw</text>
-          <rect x="72" y="55" width="50" height="50" rx="10" fill="#FFF" stroke="#FF9500" stroke-width="1"/>
-          <text x="97" y="84" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9500">Parse</text>
-          <rect x="134" y="55" width="50" height="50" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1"/>
-          <text x="159" y="84" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#007AFF">Resolve</text>
-          <rect x="196" y="55" width="50" height="50" rx="10" fill="#FFF" stroke="#34C759" stroke-width="1"/>
-          <text x="221" y="84" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Graph</text>
-          <line x1="60" y1="80" x2="72" y2="80" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="122" y1="80" x2="134" y2="80" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="184" y1="80" x2="196" y2="80" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="246" y1="80" x2="258" y2="80" stroke="#AEAEB2" stroke-width="1"/>
-          <rect x="258" y="55" width="16" height="50" rx="6" fill="#5856D6" opacity=".15"/>
-          <text x="266" y="84" text-anchor="middle" font-family="Inter" font-size="6" font-weight="700" fill="#5856D6">⚡</text>
-          <text x="140" y="130" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#6E6E73">5-stage pipeline · 48+ signal features</text>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--blue)">Chapter 3</p>
-        <h3>Data &amp; Signal Detection</h3>
-        <p>Entity resolution, CDC pipelines, and the 5 detection methods that catch issues before they become crises.</p>
-        <span class="cta">Explore Data Pipeline</span>
-      </div>
-    </a>
+      <!-- Arrow -->
+      <line x1="560" y1="117" x2="560" y2="138" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" repeatCount="indefinite"/>
+      </line>
 
-    <!-- Preview 4: Optimization -->
-    <a href="optimization.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--purple-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <text x="140" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#5856D6">12 Optimization Models</text>
-          <rect x="20" y="45" width="75" height="30" rx="8" fill="#FFF" stroke="#5856D6" stroke-width="1"/>
-          <text x="57" y="64" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#5856D6">Scheduling</text>
-          <rect x="103" y="45" width="75" height="30" rx="8" fill="#FFF" stroke="#AF52DE" stroke-width="1"/>
-          <text x="140" y="64" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#AF52DE">Bus Routing</text>
-          <rect x="186" y="45" width="75" height="30" rx="8" fill="#FFF" stroke="#007AFF" stroke-width="1"/>
-          <text x="223" y="64" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#007AFF">Caseload</text>
-          <rect x="20" y="83" width="75" height="30" rx="8" fill="#FFF" stroke="#FF9500" stroke-width="1"/>
-          <text x="57" y="102" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#FF9500">Budget</text>
-          <rect x="103" y="83" width="75" height="30" rx="8" fill="#FFF" stroke="#34C759" stroke-width="1"/>
-          <text x="140" y="102" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#34C759">Staffing</text>
-          <rect x="186" y="83" width="75" height="30" rx="8" fill="#FFF" stroke="#FF2D55" stroke-width="1"/>
-          <text x="223" y="102" text-anchor="middle" font-family="Inter" font-size="7" font-weight="500" fill="#FF2D55">eROI</text>
-          <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#6E6E73">OR-Tools · Timefold · Z3 · Gurobi</text>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--purple)">Chapter 4</p>
-        <h3>Intelligence &amp; Optimization</h3>
-        <p>LangGraph reasoning, graph-constrained AI, and 12 mathematical models for scheduling, routing, and resource allocation.</p>
-        <span class="cta">Explore Optimization</span>
-      </div>
-    </a>
+      <!-- Layer 2: Data Pipeline -->
+      <g class="svg-fade stagger-2" filter="url(#ds)">
+        <rect x="140" y="140" width="840" height="50" rx="14" fill="#FFF" stroke="#007AFF" stroke-width="1.2"/>
+        <text x="560" y="160" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF" letter-spacing=".05em">DATA PIPELINE</text>
+        <text x="560" y="178" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">Parse &#8594; Normalize &#8594; Entity Resolution &#8594; Enrich &#8594; Graph Write</text>
+      </g>
 
-    <!-- Preview 5: Causal & Monitoring -->
-    <a href="causal-monitoring.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--orange-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <!-- Mini causal DAG -->
-          <circle cx="60"  cy="50"  r="16" fill="#FFF" stroke="#FF9500" stroke-width="1.5"/>
-          <text x="60"  y="54" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9500">Cause</text>
-          <circle cx="140" cy="50"  r="16" fill="#FFF" stroke="#5856D6" stroke-width="1.5"/>
-          <text x="140" y="54" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#5856D6">Path</text>
-          <circle cx="220" cy="50"  r="16" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
-          <text x="220" y="54" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Effect</text>
-          <line x1="76" y1="50" x2="124" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
-          <line x1="156" y1="50" x2="204" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
-          <!-- Mini CUSUM chart -->
-          <polyline points="30,130 70,125 110,118 140,110 170,108 200,115 230,128 260,135" fill="none" stroke="#007AFF" stroke-width="2" stroke-linecap="round"/>
-          <polyline points="30,130 70,123 110,112 140,100 170,88 200,78 230,70 260,65" fill="none" stroke="#34C759" stroke-width="1.5" stroke-dasharray="4,3" opacity=".6"/>
-          <circle cx="170" cy="108" r="4" fill="#FF3B30"/>
-          <text x="175" y="104" font-family="Inter" font-size="7" fill="#FF3B30">Alert</text>
-          <text x="145" y="155" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#6E6E73">Causal inference + CUSUM monitoring</text>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--orange)">Chapter 5</p>
-        <h3>Causal Analysis &amp; Monitoring</h3>
-        <p>5 causal inference methods, constraint validation, CUSUM divergence detection, and the closed-loop learning cycle.</p>
-        <span class="cta">Explore Causal Engine</span>
-      </div>
-    </a>
+      <!-- Arrow -->
+      <line x1="560" y1="192" x2="560" y2="213" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".3s" repeatCount="indefinite"/>
+      </line>
 
-    <!-- Preview 6: Security & Roadmap -->
-    <a href="security-roadmap.html" class="preview-card">
-      <div class="preview-visual" style="background:var(--red-bg)">
-        <svg viewBox="0 0 280 160" xmlns="http://www.w3.org/2000/svg">
-          <!-- Shield -->
-          <path d="M140,20 L200,45 L200,85 Q200,130 140,145 Q80,130 80,85 L80,45 Z" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
-          <text x="140" y="70" text-anchor="middle" font-family="Inter" font-size="20">🛡️</text>
-          <text x="140" y="100" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#FF3B30">FERPA · COPPA</text>
-          <text x="140" y="115" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#6E6E73">ABAC+ReBAC · AES-256</text>
-          <!-- Timeline hint -->
-          <line x1="40" y1="148" x2="240" y2="148" stroke="#E8E8ED" stroke-width="1.5"/>
-          <circle cx="65" cy="148" r="4" fill="#007AFF"/>
-          <circle cx="105" cy="148" r="4" fill="#5856D6"/>
-          <circle cx="145" cy="148" r="4" fill="#AF52DE"/>
-          <circle cx="185" cy="148" r="4" fill="#34C759"/>
-          <circle cx="215" cy="148" r="4" fill="#FF9500"/>
-        </svg>
-      </div>
-      <div class="preview-body">
-        <p class="preview-label" style="color:var(--red)">Chapter 6</p>
-        <h3>Security &amp; Roadmap</h3>
-        <p>7-layer defense-in-depth, crypto-shredding, regulatory compliance, and the 30-week implementation timeline.</p>
-        <span class="cta">Explore Security</span>
-      </div>
-    </a>
+      <!-- Layer 3: Knowledge Graph (wide, prominent) -->
+      <g class="svg-fade stagger-3" filter="url(#ds)">
+        <rect x="100" y="215" width="920" height="65" rx="16" fill="#007AFF" fill-opacity=".06" stroke="#007AFF" stroke-width="1.5"/>
+        <text x="560" y="240" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#007AFF">KNOWLEDGE GRAPH</text>
+        <text x="560" y="260" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">9 domains &#183; 200+ entity types &#183; Neo4j + PostgreSQL + XTDB + Elasticsearch + Redis</text>
+        <!-- Mini node constellation -->
+        <circle cx="180" cy="248" r="6" fill="#007AFF" opacity=".3"/>
+        <circle cx="210" cy="238" r="4" fill="#7B61FF" opacity=".3"/>
+        <circle cx="200" cy="258" r="4" fill="#34C759" opacity=".3"/>
+        <line x1="186" y1="248" x2="206" y2="240" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
+        <line x1="186" y1="252" x2="196" y2="256" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
+        <circle cx="940" cy="248" r="6" fill="#007AFF" opacity=".3"/>
+        <circle cx="910" cy="238" r="4" fill="#FF9F0A" opacity=".3"/>
+        <circle cx="920" cy="258" r="4" fill="#FF3B30" opacity=".3"/>
+        <line x1="934" y1="248" x2="914" y2="240" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
+        <line x1="934" y1="252" x2="924" y2="256" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
+      </g>
 
+      <!-- Arrows down to intelligence services -->
+      <line x1="340" y1="282" x2="340" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".6s" repeatCount="indefinite"/>
+      </line>
+      <line x1="560" y1="282" x2="560" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".8s" repeatCount="indefinite"/>
+      </line>
+      <line x1="780" y1="282" x2="780" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </line>
+
+      <!-- Layer 4: Intelligence Services (3 boxes) -->
+      <g class="svg-fade stagger-4" filter="url(#ds)">
+        <rect x="210" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#7B61FF" stroke-width="1.2"/>
+        <text x="340" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#7B61FF">SIGNAL DETECTION</text>
+        <text x="340" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">LightGBM &#183; 5 methods &#183; 48+ features</text>
+      </g>
+      <g class="svg-fade stagger-5" filter="url(#ds)">
+        <rect x="430" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#5856D6" stroke-width="1.2"/>
+        <text x="560" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#5856D6">REASONING ENGINE</text>
+        <text x="560" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">LangGraph &#183; 11 nodes &#183; 8 tools</text>
+      </g>
+      <g class="svg-fade stagger-6" filter="url(#ds)">
+        <rect x="650" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#34C759" stroke-width="1.2"/>
+        <text x="780" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">OPTIMIZATION</text>
+        <text x="780" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">12 models &#183; OR-Tools &#183; Z3 &#183; Gurobi</text>
+      </g>
+
+      <!-- Arrow to outcomes -->
+      <line x1="560" y1="370" x2="560" y2="398" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
+        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin="1.2s" repeatCount="indefinite"/>
+      </line>
+
+      <!-- Layer 5: Outcomes -->
+      <g class="svg-fade stagger-7" filter="url(#ds)">
+        <rect x="300" y="400" width="520" height="50" rx="14" fill="#FFF" stroke="#FF9F0A" stroke-width="1.2"/>
+        <text x="560" y="420" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF9F0A" letter-spacing=".05em">ACTIONABLE INSIGHTS</text>
+        <text x="560" y="438" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">Early warnings &#183; Root cause explanations &#183; Ranked recommendations &#183; eROI scores</text>
+      </g>
+
+      <!-- Feedback loop -->
+      <path d="M820,425 Q920,425 920,340 Q920,248 1025,248" fill="none" stroke="url(#grad-flow)" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
+      </path>
+      <path d="M300,425 Q200,425 200,340 Q200,248 95,248" fill="none" stroke="url(#grad-flow)" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
+        <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" begin=".5s" repeatCount="indefinite"/>
+      </path>
+      <text x="560" y="470" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#AEAEB2">&#8634; Continuous Learning Loop &#8212; outcomes feed back into detection models</text>
+    </svg>
   </div>
 </div>
 </section>
 
 <!-- ═══════════════════════════════════ KEY NUMBERS ═══════════════════════════════════ -->
-<section style="padding:80px 0;background:var(--bg)">
+<section class="section-alt" id="numbers" style="padding:100px 0">
 <div class="con">
   <div class="stat-row reveal">
     <div class="stat-item">
-      <div class="stat-num grad-blue">47+</div>
+      <div class="stat-num grad-blue" data-target="47" data-suffix="+">47+</div>
       <div class="stat-label">Systems Unified</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-purple">200+</div>
+      <div class="stat-num grad-purple" data-target="200" data-suffix="+">200+</div>
       <div class="stat-label">Entity Types</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-green">12</div>
+      <div class="stat-num grad-green" data-target="12">12</div>
       <div class="stat-label">Optimization Models</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-orange">30</div>
+      <div class="stat-num grad-amber" data-target="30">30</div>
       <div class="stat-label">Weeks to Deploy</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-pink">$5M+</div>
-      <div class="stat-label">Proven Savings (BPS)</div>
+      <div class="stat-num grad-red" data-target="5" data-prefix="$" data-suffix="M+">$5M+</div>
+      <div class="stat-label">Projected Savings</div>
     </div>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ PRINCIPLES ═══════════════════════════════════ -->
-<section style="padding:100px 0;background:var(--bg2)" id="principles">
+<!-- ═══════════════════════════════════ CORE PRINCIPLES ═══════════════════════════════════ -->
+<section id="principles">
 <div class="con">
   <div class="text-center">
     <p class="sec-label reveal" style="color:var(--red)">Core Principles</p>
-    <h2 class="sec-title reveal">What ATLAS will <span class="grad-pink">never</span> do</h2>
+    <h2 class="sec-title reveal">What ATLAS will <span class="grad-red">never</span> do</h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Three non-negotiable commitments baked into the architecture, not just the policy.</p>
   </div>
 
-  <div class="g3 reveal" style="margin-top:48px">
-    <div class="card" style="text-align:center">
-      <div class="card-icon" style="background:var(--red-bg);margin:0 auto 16px;font-size:28px">🚫</div>
+  <div class="g3 reveal" style="margin-top:56px">
+    <div class="card" style="text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--red)"></div>
+      <div class="card-icon" style="background:var(--red-bg);margin:0 auto 20px;font-size:28px">&#128683;</div>
       <h3>Never Rank Students</h3>
-      <p>ATLAS identifies needs and matches resources. It never produces student rankings, scores for comparison, or labels that follow students across contexts.</p>
+      <p>ATLAS identifies needs and matches resources. It never produces student rankings, comparison scores, or labels that follow students across contexts.</p>
     </div>
-    <div class="card" style="text-align:center">
-      <div class="card-icon" style="background:var(--orange-bg);margin:0 auto 16px;font-size:28px">🤝</div>
+    <div class="card" style="text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
+      <div class="card-icon" style="background:var(--amber-bg);margin:0 auto 20px;font-size:28px">&#129309;</div>
       <h3>Never Replace Teachers</h3>
-      <p>Every recommendation requires human approval. ATLAS proposes — educators decide. The system augments professional judgment, never overrides it.</p>
+      <p>Every recommendation requires human approval. ATLAS proposes &mdash; educators decide. The system augments professional judgment, never overrides it.</p>
     </div>
-    <div class="card" style="text-align:center">
-      <div class="card-icon" style="background:var(--purple-bg);margin:0 auto 16px;font-size:28px">🔒</div>
+    <div class="card" style="text-align:center;position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
+      <div class="card-icon" style="background:var(--purple-bg);margin:0 auto 20px;font-size:28px">&#128274;</div>
       <h3>Never Sell Data</h3>
-      <p>Student data belongs to students and their districts. Period. No advertising, no third-party sales, no secondary uses. Privacy is structural, not a policy.</p>
+      <p>Student data belongs to students and districts. No advertising, no third-party sales, no secondary uses. Privacy is structural, not just a policy.</p>
     </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ EXPLORE DEEP DIVES ═══════════════════════════════════ -->
+<section class="section-alt" id="explore">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--blue)">Deep Dives</p>
+    <h2 class="sec-title reveal">Six chapters. <span class="grad-blue">One complete blueprint.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Explore the engineering behind ATLAS &mdash; from system architecture to security compliance.</p>
+  </div>
+
+  <div class="g3 reveal" style="margin-top:56px">
+
+    <!-- Chapter 1: Architecture -->
+    <a href="architecture.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(88,86,214,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="15" width="220" height="30" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1.2"/>
+          <text x="140" y="35" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#5856D6">Client Layer</text>
+          <rect x="30" y="53" width="220" height="30" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1.2"/>
+          <text x="140" y="73" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#007AFF">API Gateway + Auth</text>
+          <rect x="30" y="91" width="70" height="30" rx="8" fill="#7B61FF" fill-opacity=".08" stroke="#7B61FF" stroke-width="1"/>
+          <text x="65" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#7B61FF">Query</text>
+          <rect x="105" y="91" width="70" height="30" rx="8" fill="#FF9F0A" fill-opacity=".08" stroke="#FF9F0A" stroke-width="1"/>
+          <text x="140" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9F0A">Action</text>
+          <rect x="180" y="91" width="70" height="30" rx="8" fill="#34C759" fill-opacity=".08" stroke="#34C759" stroke-width="1"/>
+          <text x="215" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Ingest</text>
+          <rect x="30" y="129" width="220" height="26" rx="8" fill="#FF3B30" fill-opacity=".06" stroke="#FF3B30" stroke-width="1"/>
+          <text x="140" y="147" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#FF3B30">Kafka Event Bus</text>
+          <text x="140" y="172" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">12 services &#183; 5 databases</text>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--indigo)">Chapter 1</p>
+        <h3>System Architecture</h3>
+        <p>12 microservices, 5 database engines, event-driven backbone, and multi-tenant isolation.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
+    <!-- Chapter 2: Ontology -->
+    <a href="ontology.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(52,199,89,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="140" cy="85" r="24" fill="#FFF" stroke="#34C759" stroke-width="2"/>
+          <text x="140" y="90" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#34C759">Student</text>
+          <circle cx="65"  cy="45"  r="15" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="65"  y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#007AFF">Grades</text>
+          <circle cx="215" cy="45"  r="15" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="215" y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#7B61FF">Tests</text>
+          <circle cx="45"  cy="110" r="15" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="45"  y="114" text-anchor="middle" font-size="6" font-weight="600" fill="#FF9F0A">IEP</text>
+          <circle cx="235" cy="110" r="15" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="235" y="114" text-anchor="middle" font-size="6" font-weight="600" fill="#FF3B30">Staff</text>
+          <circle cx="140" cy="155" r="15" fill="#FFF" stroke="#5AC8FA" stroke-width="1"/><text x="140" y="159" text-anchor="middle" font-size="6" font-weight="600" fill="#5AC8FA">Time</text>
+          <line x1="120" y1="68" x2="78" y2="52" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="160" y1="68" x2="202" y2="52" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="120" y1="98" x2="58" y2="104" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="160" y1="98" x2="222" y2="104" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="140" y1="109" x2="140" y2="140" stroke="#E8E8ED" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--green)">Chapter 2</p>
+        <h3>Semantic Ontology</h3>
+        <p>9 operational domains, 200+ entity types, and the knowledge graph powering cross-domain reasoning.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
+    <!-- Chapter 3: Data & Signals -->
+    <a href="data-intelligence.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(0,122,255,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="12" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="36" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF3B30">Raw</text>
+          <rect x="72" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="96" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Parse</text>
+          <rect x="132" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="156" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#007AFF">Resolve</text>
+          <rect x="192" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="216" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Graph</text>
+          <rect x="252" y="65" width="20" height="48" rx="8" fill="#7B61FF" opacity=".12"/>
+          <text x="262" y="93" text-anchor="middle" font-size="7" font-weight="800" fill="#7B61FF">&#9889;</text>
+          <line x1="60" y1="89" x2="72" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="120" y1="89" x2="132" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="180" y1="89" x2="192" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="240" y1="89" x2="252" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">5 stages &#183; 48+ features</text>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--blue)">Chapter 3</p>
+        <h3>Data &amp; Signal Detection</h3>
+        <p>Entity resolution, 5-stage pipeline, and 5 detection methods that catch issues before they become crises.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
+    <!-- Chapter 4: Optimization -->
+    <a href="optimization.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(123,97,255,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <text x="140" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#7B61FF">12 Optimization Models</text>
+          <rect x="22" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="59" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#7B61FF">Scheduling</text>
+          <rect x="103" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1"/><text x="140" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#5856D6">Routing</text>
+          <rect x="184" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="221" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#007AFF">Matching</text>
+          <rect x="22" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="59" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#FF9F0A">Budget</text>
+          <rect x="103" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="140" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#34C759">Staffing</text>
+          <rect x="184" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="221" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#FF3B30">eROI</text>
+          <text x="140" y="145" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">OR-Tools &#183; Timefold &#183; Z3 &#183; Gurobi</text>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--purple)">Chapter 4</p>
+        <h3>Intelligence &amp; Optimization</h3>
+        <p>LangGraph agent orchestration and 12 mathematical models for scheduling, routing, and resource allocation.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
+    <!-- Chapter 5: Causal & Monitoring -->
+    <a href="causal-monitoring.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(255,159,10,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="60" cy="50" r="18" fill="#FFF" stroke="#FF9F0A" stroke-width="1.5"/>
+          <text x="60" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Cause</text>
+          <circle cx="140" cy="50" r="18" fill="#FFF" stroke="#7B61FF" stroke-width="1.5"/>
+          <text x="140" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#7B61FF">Path</text>
+          <circle cx="220" cy="50" r="18" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
+          <text x="220" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Effect</text>
+          <line x1="78" y1="50" x2="122" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
+          <line x1="158" y1="50" x2="202" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
+          <polyline points="30,140 70,134 110,126 140,116 170,112 200,120 230,132 260,140" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="30,140 70,132 110,120 140,106 170,92 200,82 230,74 260,68" fill="none" stroke="#34C759" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
+          <circle cx="170" cy="112" r="5" fill="#FF3B30"/>
+          <text x="180" y="106" font-family="Inter" font-size="7" font-weight="600" fill="#FF3B30">Alert</text>
+          <text x="145" y="168" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">5 causal methods &#183; CUSUM</text>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--amber)">Chapter 5</p>
+        <h3>Causal Analysis &amp; Monitoring</h3>
+        <p>5 causal inference methods, CUSUM divergence detection, and the closed-loop learning cycle.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
+    <!-- Chapter 6: Security & Roadmap -->
+    <a href="security-roadmap.html" class="preview-card">
+      <div class="preview-visual" style="background:rgba(255,59,48,.06)">
+        <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+          <path d="M140,20 L200,48 L200,90 Q200,135 140,150 Q80,135 80,90 L80,48 Z" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
+          <text x="140" y="72" text-anchor="middle" font-size="22">&#128737;</text>
+          <text x="140" y="102" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#FF3B30">FERPA &#183; COPPA</text>
+          <text x="140" y="118" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#AEAEB2">ABAC+ReBAC &#183; AES-256</text>
+          <line x1="40" y1="160" x2="240" y2="160" stroke="#E8E8ED" stroke-width="2"/>
+          <circle cx="60"  cy="160" r="5" fill="#FF3B30"/>
+          <circle cx="100" cy="160" r="5" fill="#FF9F0A"/>
+          <circle cx="140" cy="160" r="5" fill="#007AFF"/>
+          <circle cx="180" cy="160" r="5" fill="#7B61FF"/>
+          <circle cx="220" cy="160" r="5" fill="#34C759"/>
+        </svg>
+      </div>
+      <div class="preview-body">
+        <p class="preview-label" style="color:var(--red)">Chapter 6</p>
+        <h3>Security &amp; Roadmap</h3>
+        <p>7-layer defense-in-depth, crypto-shredding, and the 30-week phased implementation timeline.</p>
+        <span class="preview-cta">Explore</span>
+      </div>
+    </a>
+
   </div>
 </div>
 </section>
@@ -664,28 +662,24 @@
     <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
   </div>
   <div class="footer-bottom">
-    ATLAS Education Operating System — 12 microservices · 9 domains · 200+ entities · 12 optimization models · 5 causal methods · 47+ constraints
+    ATLAS Education Operating System &mdash; See every student. Miss nothing.
   </div>
 </div>
 </footer>
 
-<!-- ═══════════════════════════════════ BACK TO TOP ═══════════════════════════════════ -->
-<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
 
 <!-- ═══════════════════════════════════ JAVASCRIPT ═══════════════════════════════════ -->
 <script>
-// ── Scroll Reveal with stagger awareness ──
+// ── Scroll Reveal ──
 const obs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      obs.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
   });
-}, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
+}, { threshold: 0.06, rootMargin: '0px 0px -80px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ── Progress Bar (throttled) ──
+// ── Progress Bar ──
 let ticking = false;
 window.addEventListener('scroll', () => {
   if (!ticking) {
@@ -698,100 +692,67 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// ── Active Nav ──
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav a');
-let navTicking = false;
-window.addEventListener('scroll', () => {
-  if (!navTicking) {
-    requestAnimationFrame(() => {
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 120) current = s.id;
-      });
-      navLinks.forEach(a => {
-        const href = a.getAttribute('href');
-        if (href === 'index.html') {
-          a.classList.toggle('active', current === 'hero' || current === '');
-        }
-      });
-      navTicking = false;
-    });
-    navTicking = true;
-  }
-});
-
-// ── Back to Top (smooth show/hide) ──
+// ── Back to Top ──
 const topBtn = document.getElementById('top-btn');
-let topTicking = false;
+let topT = false;
 window.addEventListener('scroll', () => {
-  if (!topTicking) {
-    requestAnimationFrame(() => {
-      topBtn.classList.toggle('show', window.scrollY > 600);
-      topTicking = false;
-    });
-    topTicking = true;
+  if (!topT) {
+    requestAnimationFrame(() => { topBtn.classList.toggle('show', window.scrollY > 600); topT = false; });
+    topT = true;
   }
 });
 
-// ── Counter Animation with easeOutExpo ──
-function easeOutExpo(t) {
-  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-}
-
+// ── Counter Animation ──
+function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
 const animateCounters = () => {
   document.querySelectorAll('.stat-num').forEach(el => {
-    const text = el.textContent;
-    const match = text.match(/(\d+)/);
-    if (!match) return;
-    const target = parseInt(match[1]);
-    const prefix = text.slice(0, text.indexOf(match[1]));
-    const suffix = text.slice(text.indexOf(match[1]) + match[1].length);
-    const duration = 1800;
+    const target = parseInt(el.dataset.target);
+    if (!target) return;
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = 2000;
     const start = performance.now();
     function step(now) {
       const t = Math.min((now - start) / duration, 1);
-      const val = Math.round(easeOutExpo(t) * target);
-      el.textContent = prefix + val + suffix;
+      el.textContent = prefix + Math.round(easeOutExpo(t) * target) + suffix;
       if (t < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
   });
 };
-
-// Trigger counter animation when stat row is visible
 const statObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { animateCounters(); statObs.unobserve(e.target); }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statObs.unobserve(e.target); } });
 }, { threshold: 0.3 });
 const statRow = document.querySelector('.stat-row');
 if (statRow) statObs.observe(statRow);
 
-// ── Subtle parallax on hero background ──
+// ── Hero Parallax ──
 const heroBg = document.querySelector('.hero-bg');
 if (heroBg) {
-  let heroTicking = false;
+  let heroT = false;
   window.addEventListener('scroll', () => {
-    if (!heroTicking) {
+    if (!heroT) {
       requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (y < 900) {
-          heroBg.style.transform = `translateY(${y * 0.12}px)`;
-        }
-        heroTicking = false;
+        if (window.scrollY < 1000) heroBg.style.transform = `translateY(${window.scrollY * 0.1}px)`;
+        heroT = false;
       });
-      heroTicking = true;
+      heroT = true;
     }
   });
 }
 
-// ── Details auto-scroll on open ──
+// ── Smooth anchor scrolling ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+// ── Details auto-scroll ──
 document.querySelectorAll('details.deep').forEach(d => {
   d.addEventListener('toggle', () => {
-    if (d.open) {
-      setTimeout(() => d.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
-    }
+    if (d.open) setTimeout(() => d.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 120);
   });
 });
 </script>

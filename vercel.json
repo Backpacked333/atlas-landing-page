@@ -1,4 +1,28 @@
 {
+  "buildCommand": "",
+  "outputDirectory": ".",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/architecture", "destination": "/architecture.html" },
+    { "source": "/ontology", "destination": "/ontology.html" },
+    { "source": "/data-intelligence", "destination": "/data-intelligence.html" },
+    { "source": "/optimization", "destination": "/optimization.html" },
+    { "source": "/causal-monitoring", "destination": "/causal-monitoring.html" },
+    { "source": "/security-roadmap", "destination": "/security-roadmap.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    },
+    {
+      "source": "/atlas.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400" }
+      ]
+    }
+  ]
 }

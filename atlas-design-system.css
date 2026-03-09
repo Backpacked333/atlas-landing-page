@@ -907,7 +907,80 @@ section:not(.hero):not(.page-hero) {
   contain-intrinsic-size: auto 800px;
 }
 
-/* ── 34. Homepage-Specific ───────────────────────────── */
+/* ── 34. Dark Sections (Apple-style) ─────────────────── */
+.section-dark {
+  background: #000; color: #F5F5F7;
+}
+.section-dark .sec-label { color: rgba(255,255,255,.45); }
+.section-dark .sec-title { color: #F5F5F7; }
+.section-dark .sec-sub { color: rgba(255,255,255,.55); }
+.section-dark .card {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.1);
+  backdrop-filter: none;
+}
+.section-dark .card:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 12px 48px rgba(0,0,0,.4);
+}
+.section-dark .card h3 { color: #F5F5F7; }
+.section-dark .card p { color: rgba(255,255,255,.55); }
+.section-dark .persona-card {
+  background: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.1);
+  backdrop-filter: none;
+}
+.section-dark .persona-card:hover {
+  background: rgba(255,255,255,.1);
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+}
+.section-dark .persona-card h3 { color: #F5F5F7; }
+.section-dark .persona-card p { color: rgba(255,255,255,.55); }
+.section-dark .stat-num { color: #F5F5F7; }
+.section-dark .stat-label { color: rgba(255,255,255,.45); }
+.section-dark .flow-step h4 { color: #F5F5F7; }
+.section-dark .flow-step p { color: rgba(255,255,255,.5); }
+.section-dark .flow-arrow { color: rgba(255,255,255,.25); }
+.section-dark .flow-icon {
+  background: rgba(255,255,255,.08);
+}
+
+/* Dark hero (homepage) */
+.hero-dark {
+  background: #000; color: #F5F5F7;
+}
+.hero-dark .hero-sub { color: rgba(255,255,255,.55); }
+.hero-dark .hero-badge {
+  background: rgba(0,122,255,.15);
+  border-color: rgba(0,122,255,.25);
+  color: #5AC8FA;
+}
+.hero-dark .cta-primary {
+  background: #F5F5F7; color: #000;
+}
+.hero-dark .cta-secondary {
+  color: #5AC8FA;
+  border-color: rgba(90,200,250,.3);
+}
+.hero-dark .cta-secondary:hover {
+  background: rgba(90,200,250,.1);
+  border-color: #5AC8FA;
+}
+.hero-dark .hero-illustration {
+  border-color: rgba(255,255,255,.08);
+  box-shadow: 0 24px 80px rgba(0,0,0,.6);
+}
+
+/* Gradient text on dark backgrounds — brighter variants */
+.section-dark .grad-blue   { background: linear-gradient(135deg, #5AC8FA, #007AFF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-dark .grad-purple { background: linear-gradient(135deg, #BF5AF2, #7B61FF); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-dark .grad-green  { background: linear-gradient(135deg, #30D158, #34C759); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-dark .grad-amber  { background: linear-gradient(135deg, #FFD60A, #FF9F0A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-dark .grad-multi  { background: linear-gradient(135deg, #5AC8FA, #BF5AF2, #30D158); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-dark .grad-multi     { background: linear-gradient(135deg, #5AC8FA, #BF5AF2, #30D158); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ── 35. Homepage-Specific ───────────────────────────── */
 
 /* Hero stat pills */
 .hero-stats {

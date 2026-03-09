@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ATLAS — Education Operating System</title>
-<meta name="description" content="ATLAS is a next-generation education operating system combining causal AI, semantic ontology, and multi-engine optimization to transform student outcomes.">
+<title>ATLAS — See Every Student. Miss Nothing.</title>
+<meta name="description" content="ATLAS unifies 47+ disconnected school systems into one intelligent platform, giving educators a complete picture of every student and evidence-backed recommendations.">
 <link rel="stylesheet" href="atlas-design-system.css">
 </head>
 <body>
@@ -30,129 +30,129 @@
 
 <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
 <main id="main">
-<section class="hero" id="hero">
+<section class="hero hero-dark" id="hero">
 <div class="hero-bg" style="background:
-  radial-gradient(ellipse at 25% 20%, rgba(0,122,255,.12) 0%, transparent 50%),
-  radial-gradient(ellipse at 75% 70%, rgba(123,97,255,.1) 0%, transparent 50%),
-  radial-gradient(ellipse at 60% 20%, rgba(52,199,89,.06) 0%, transparent 40%);">
+  radial-gradient(ellipse at 30% 40%, rgba(0,122,255,.2) 0%, transparent 50%),
+  radial-gradient(ellipse at 70% 60%, rgba(123,97,255,.15) 0%, transparent 50%),
+  radial-gradient(ellipse at 50% 80%, rgba(52,199,89,.08) 0%, transparent 40%);">
 </div>
-<div class="con">
+<div class="con" style="text-align:center">
   <div class="hero-badge reveal">Education Operating System</div>
-  <h1 class="hero-title reveal reveal-d1">
+  <h1 class="hero-title reveal reveal-d1" style="max-width:none;margin-left:auto;margin-right:auto">
     See every student.<br>
     <span class="grad-multi">Miss nothing.</span>
   </h1>
-  <p class="hero-sub reveal reveal-d2">
-    47+ disconnected school systems, unified into one intelligent platform. Evidence-backed insights for every educator, every decision, every child.
+  <p class="hero-sub reveal reveal-d2" style="max-width:620px;margin-left:auto;margin-right:auto">
+    Schools use dozens of disconnected systems. Student data lives in silos. ATLAS connects it all &mdash; so every educator can see the full picture and act before problems become crises.
   </p>
-  <div class="hero-actions reveal reveal-d3">
+  <div class="hero-actions reveal reveal-d3" style="justify-content:center">
     <a href="#how" class="cta-btn cta-primary">See how it works</a>
     <a href="#explore" class="cta-btn cta-secondary">Explore the blueprint</a>
   </div>
 
   <!-- Hero Illustration — Animated student data constellation -->
   <div class="hero-illustration reveal reveal-d4">
-    <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1120 400" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         <linearGradient id="grad-flow" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#007AFF"/>
-          <stop offset="50%" stop-color="#7B61FF"/>
-          <stop offset="100%" stop-color="#34C759"/>
+          <stop offset="0%" stop-color="#5AC8FA"/>
+          <stop offset="50%" stop-color="#BF5AF2"/>
+          <stop offset="100%" stop-color="#30D158"/>
         </linearGradient>
         <linearGradient id="grad-ring" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#007AFF" stop-opacity=".3"/>
-          <stop offset="100%" stop-color="#7B61FF" stop-opacity=".1"/>
+          <stop offset="0%" stop-color="#5AC8FA" stop-opacity=".4"/>
+          <stop offset="100%" stop-color="#BF5AF2" stop-opacity=".15"/>
         </linearGradient>
       </defs>
-      <rect width="1120" height="420" fill="#FAFAFA"/>
+      <rect width="1120" height="400" fill="#0A0A0A" rx="20"/>
 
       <!-- Central Student Node -->
       <g filter="url(#glow)">
-        <circle cx="560" cy="200" r="52" fill="#EBF5FF" stroke="#007AFF" stroke-width="2"/>
-        <text x="560" y="190" text-anchor="middle" font-size="32">&#127891;</text>
-        <text x="560" y="215" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#007AFF">Student</text>
+        <circle cx="560" cy="190" r="56" fill="rgba(0,122,255,.12)" stroke="#5AC8FA" stroke-width="2"/>
+        <text x="560" y="178" text-anchor="middle" font-size="36">&#127891;</text>
+        <text x="560" y="206" text-anchor="middle" font-family="Inter" font-size="13" font-weight="800" fill="#5AC8FA">Student</text>
       </g>
 
       <!-- Pulsing rings -->
-      <circle cx="560" cy="200" r="72" fill="none" stroke="url(#grad-ring)" stroke-width="1.5">
-        <animate attributeName="r" values="72;85;72" dur="3.5s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".3;.08;.3" dur="3.5s" repeatCount="indefinite"/>
+      <circle cx="560" cy="190" r="78" fill="none" stroke="url(#grad-ring)" stroke-width="1.5">
+        <animate attributeName="r" values="78;92;78" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".35;.08;.35" dur="3.5s" repeatCount="indefinite"/>
       </circle>
-      <circle cx="560" cy="200" r="95" fill="none" stroke="url(#grad-ring)" stroke-width="1">
-        <animate attributeName="r" values="95;110;95" dur="4s" begin=".5s" repeatCount="indefinite"/>
-        <animate attributeName="opacity" values=".15;.03;.15" dur="4s" begin=".5s" repeatCount="indefinite"/>
+      <circle cx="560" cy="190" r="100" fill="none" stroke="url(#grad-ring)" stroke-width="1">
+        <animate attributeName="r" values="100;118;100" dur="4s" begin=".5s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".18;.03;.18" dur="4s" begin=".5s" repeatCount="indefinite"/>
       </circle>
 
-      <!-- Data source nodes — orbiting constellation -->
+      <!-- Data source nodes -->
       <!-- Grades (top-left) -->
-      <line x1="290" y1="95" x2="515" y2="170" stroke="#007AFF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" repeatCount="indefinite"/>
+      <line x1="300" y1="90" x2="510" y2="162" stroke="#5AC8FA" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-1">
-        <rect x="210" y="65" width="160" height="56" rx="16" fill="#FFF" stroke="#007AFF" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="255" y="89" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF">&#128218;</text>
-        <text x="270" y="89" font-family="Inter" font-size="12" font-weight="700" fill="#007AFF">Grades</text>
-        <text x="270" y="107" font-family="Inter" font-size="10" fill="#AEAEB2">PowerSchool SIS</text>
+        <rect x="185" y="60" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(90,200,250,.4)" stroke-width="1.2"/>
+        <text x="235" y="84" font-family="Inter" font-size="11" font-weight="700" fill="#5AC8FA">&#128218;</text>
+        <text x="252" y="84" font-family="Inter" font-size="12" font-weight="700" fill="#5AC8FA">Grades &amp; GPA</text>
+        <text x="252" y="103" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">PowerSchool &middot; Infinite Campus</text>
       </g>
 
       <!-- Assessments (top-right) -->
-      <line x1="830" y1="95" x2="605" y2="170" stroke="#7B61FF" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin=".5s" repeatCount="indefinite"/>
+      <line x1="820" y1="90" x2="610" y2="162" stroke="#BF5AF2" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" begin=".5s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-2">
-        <rect x="750" y="65" width="160" height="56" rx="16" fill="#FFF" stroke="#7B61FF" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="795" y="89" font-family="Inter" font-size="10" font-weight="700" fill="#7B61FF">&#128202;</text>
-        <text x="810" y="89" font-family="Inter" font-size="12" font-weight="700" fill="#7B61FF">Assessments</text>
-        <text x="810" y="107" font-family="Inter" font-size="10" fill="#AEAEB2">NWEA / DIBELS</text>
+        <rect x="765" y="60" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(191,90,242,.4)" stroke-width="1.2"/>
+        <text x="815" y="84" font-family="Inter" font-size="11" font-weight="700" fill="#BF5AF2">&#128202;</text>
+        <text x="832" y="84" font-family="Inter" font-size="12" font-weight="700" fill="#BF5AF2">Assessments</text>
+        <text x="832" y="103" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">NWEA MAP &middot; DIBELS &middot; SAT</text>
       </g>
 
       <!-- Attendance (left) -->
-      <line x1="190" y1="220" x2="508" y2="200" stroke="#34C759" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="1s" repeatCount="indefinite"/>
+      <line x1="195" y1="210" x2="504" y2="190" stroke="#30D158" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" begin="1s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-3">
-        <rect x="30" y="192" width="160" height="56" rx="16" fill="#FFF" stroke="#34C759" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="75" y="216" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">&#128197;</text>
-        <text x="90" y="216" font-family="Inter" font-size="12" font-weight="700" fill="#34C759">Attendance</text>
-        <text x="90" y="234" font-family="Inter" font-size="10" fill="#AEAEB2">Clever / SIS</text>
+        <rect x="25" y="182" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(48,209,88,.4)" stroke-width="1.2"/>
+        <text x="75" y="206" font-family="Inter" font-size="11" font-weight="700" fill="#30D158">&#128197;</text>
+        <text x="92" y="206" font-family="Inter" font-size="12" font-weight="700" fill="#30D158">Attendance</text>
+        <text x="92" y="225" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">Daily &middot; Tardies &middot; Patterns</text>
       </g>
 
-      <!-- IEP / 504 (right) -->
-      <line x1="930" y1="220" x2="612" y2="200" stroke="#FF9F0A" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="1.5s" repeatCount="indefinite"/>
+      <!-- Special Ed (right) -->
+      <line x1="925" y1="210" x2="616" y2="190" stroke="#FFD60A" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" begin="1.5s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-4">
-        <rect x="930" y="192" width="160" height="56" rx="16" fill="#FFF" stroke="#FF9F0A" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="975" y="216" font-family="Inter" font-size="10" font-weight="700" fill="#FF9F0A">&#128221;</text>
-        <text x="990" y="216" font-family="Inter" font-size="12" font-weight="700" fill="#FF9F0A">IEP / 504</text>
-        <text x="990" y="234" font-family="Inter" font-size="10" fill="#AEAEB2">SEIS / Frontline</text>
+        <rect x="925" y="182" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,214,10,.4)" stroke-width="1.2"/>
+        <text x="975" y="206" font-family="Inter" font-size="11" font-weight="700" fill="#FFD60A">&#128221;</text>
+        <text x="992" y="206" font-family="Inter" font-size="12" font-weight="700" fill="#FFD60A">IEP / 504</text>
+        <text x="992" y="225" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">Goals &middot; Services &middot; Progress</text>
       </g>
 
       <!-- Behavior (bottom-left) -->
-      <line x1="290" y1="325" x2="525" y2="235" stroke="#FF3B30" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="2s" repeatCount="indefinite"/>
+      <line x1="300" y1="320" x2="525" y2="225" stroke="#FF453A" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" begin="2s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-5">
-        <rect x="210" y="297" width="160" height="56" rx="16" fill="#FFF" stroke="#FF3B30" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="255" y="321" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">&#128276;</text>
-        <text x="270" y="321" font-family="Inter" font-size="12" font-weight="700" fill="#FF3B30">Behavior</text>
-        <text x="270" y="339" font-family="Inter" font-size="10" fill="#AEAEB2">PBIS / MTSS</text>
+        <rect x="185" y="293" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(255,69,58,.4)" stroke-width="1.2"/>
+        <text x="235" y="317" font-family="Inter" font-size="11" font-weight="700" fill="#FF453A">&#128276;</text>
+        <text x="252" y="317" font-family="Inter" font-size="12" font-weight="700" fill="#FF453A">Behavior</text>
+        <text x="252" y="336" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">Referrals &middot; PBIS &middot; MTSS</text>
       </g>
 
       <!-- Scheduling (bottom-right) -->
-      <line x1="830" y1="325" x2="595" y2="235" stroke="#5AC8FA" stroke-width="1.2" stroke-dasharray="5,4" opacity=".25">
-        <animate attributeName="opacity" values=".15;.4;.15" dur="3s" begin="2.5s" repeatCount="indefinite"/>
+      <line x1="820" y1="320" x2="595" y2="225" stroke="#64D2FF" stroke-width="1" stroke-dasharray="5,4" opacity=".25">
+        <animate attributeName="opacity" values=".12;.4;.12" dur="3s" begin="2.5s" repeatCount="indefinite"/>
       </line>
       <g class="svg-fade stagger-6">
-        <rect x="750" y="297" width="160" height="56" rx="16" fill="#FFF" stroke="#5AC8FA" stroke-width="1.2" filter="url(#glow)"/>
-        <text x="795" y="321" font-family="Inter" font-size="10" font-weight="700" fill="#5AC8FA">&#128338;</text>
-        <text x="810" y="321" font-family="Inter" font-size="12" font-weight="700" fill="#5AC8FA">Schedules</text>
-        <text x="810" y="339" font-family="Inter" font-size="10" fill="#AEAEB2">Bell / Bus / Staff</text>
+        <rect x="765" y="293" width="170" height="56" rx="16" fill="rgba(255,255,255,.05)" stroke="rgba(100,210,255,.4)" stroke-width="1.2"/>
+        <text x="815" y="317" font-family="Inter" font-size="11" font-weight="700" fill="#64D2FF">&#128338;</text>
+        <text x="832" y="317" font-family="Inter" font-size="12" font-weight="700" fill="#64D2FF">Schedules</text>
+        <text x="832" y="336" font-family="Inter" font-size="10" fill="rgba(255,255,255,.35)">Classes &middot; Buses &middot; Staff</text>
       </g>
 
       <!-- Bottom label -->
-      <text x="560" y="400" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="#AEAEB2">6 data systems &#8594; 1 unified knowledge graph &#8594; actionable insights</text>
+      <text x="560" y="385" text-anchor="middle" font-family="Inter" font-size="12" font-weight="600" fill="rgba(255,255,255,.3)">47+ data systems &#8594; 1 unified student profile &#8594; actionable insights</text>
     </svg>
   </div>
 </div>
@@ -163,39 +163,32 @@
 <div class="con">
   <div class="text-center">
     <p class="sec-label reveal" style="color:var(--red)">The Problem</p>
-    <h2 class="sec-title reveal" style="max-width:700px;margin-left:auto;margin-right:auto">Schools run on <span class="grad-red">disconnected silos</span></h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Student data is scattered across dozens of systems. No one can see the full picture &mdash; so problems go unnoticed until it&rsquo;s too late.</p>
+    <h2 class="sec-title reveal" style="max-width:800px;margin-left:auto;margin-right:auto">Student data is everywhere.<br><span class="grad-red">The full picture is nowhere.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">The average school district runs 47+ separate software systems. A student&rsquo;s grades live in one place, attendance in another, behavior in a third, and special education records in a fourth. No one &mdash; not teachers, counselors, or principals &mdash; can see the complete story of any single student.</p>
   </div>
 
   <div class="problem-grid reveal">
     <div class="problem-side problem-before">
-      <h3>&#10060; Today&rsquo;s Reality</h3>
+      <h3>&#10060; Without ATLAS</h3>
       <div class="problem-item">
         <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128466;</div>
         <div>
-          <strong>47+ disconnected systems</strong>
-          <p>Grades in one system, attendance in another, IEPs in a third. Teachers toggle between 8+ apps daily.</p>
+          <strong>Teachers toggle between 8+ apps daily</strong>
+          <p>Checking grades in one system, attendance in another, IEP goals in a third. Critical context gets lost in the shuffle.</p>
         </div>
       </div>
       <div class="problem-item">
         <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128683;</div>
         <div>
-          <strong>No cross-system visibility</strong>
-          <p>A counselor can&rsquo;t see that a student&rsquo;s grades dropped, attendance dipped, and behavior referrals increased &mdash; all in the same two weeks.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#9200;</div>
-        <div>
-          <strong>Interventions come too late</strong>
-          <p>By the time patterns are noticed manually, students have been struggling for months. Reactive, not proactive.</p>
+          <strong>Warning signs go unnoticed for months</strong>
+          <p>A student&rsquo;s grades dip, attendance drops, and behavior referrals spike &mdash; all in the same two weeks. But no one connects the dots because the data lives in different systems.</p>
         </div>
       </div>
       <div class="problem-item" style="margin-bottom:0">
         <div class="problem-icon" style="background:rgba(255,59,48,.1)">&#128176;</div>
         <div>
           <strong>Resources allocated by gut feel</strong>
-          <p>Scheduling, budgets, and staffing decisions based on intuition rather than evidence of what actually works.</p>
+          <p>Which interventions actually work? Which tutoring programs produce results? Without unified data, districts spend millions on programs they can&rsquo;t measure.</p>
         </div>
       </div>
     </div>
@@ -204,29 +197,22 @@
       <div class="problem-item">
         <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#128279;</div>
         <div>
-          <strong>One unified knowledge graph</strong>
-          <p>Every student record, across every system, linked into a single coherent picture with 200+ entity types.</p>
-        </div>
-      </div>
-      <div class="problem-item">
-        <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#128161;</div>
-        <div>
-          <strong>Cross-domain pattern detection</strong>
-          <p>48+ features automatically monitor every student. The system sees what humans can&rsquo;t &mdash; connections across data silos.</p>
+          <strong>One complete profile for every student</strong>
+          <p>Grades, attendance, behavior, assessments, IEPs, and services &mdash; all linked together in a single view. Open it up and see everything that matters.</p>
         </div>
       </div>
       <div class="problem-item">
         <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#9889;</div>
         <div>
-          <strong>Early warnings, not late reports</strong>
-          <p>CUSUM detection catches trajectory changes 3&ndash;5 weeks earlier than threshold alerts. Proactive, not reactive.</p>
+          <strong>Early warnings, weeks before anyone would notice</strong>
+          <p>ATLAS continuously monitors every student across every data source. When a trajectory changes, the system alerts the right person &mdash; with context and suggested next steps.</p>
         </div>
       </div>
       <div class="problem-item" style="margin-bottom:0">
         <div class="problem-icon" style="background:rgba(52,199,89,.1)">&#127919;</div>
         <div>
-          <strong>Evidence-backed optimization</strong>
-          <p>12 mathematical models optimize scheduling, routing, budgets, and intervention matching &mdash; with measured ROI.</p>
+          <strong>Evidence-backed decisions with measured ROI</strong>
+          <p>Know which interventions work, for which students, and why. Allocate budgets, staff, and programs based on actual outcomes &mdash; not assumptions.</p>
         </div>
       </div>
     </div>
@@ -235,220 +221,217 @@
 </section>
 
 <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
-<section id="how">
+<section class="section-dark" id="how">
 <div class="con text-center">
-  <p class="sec-label reveal" style="color:var(--blue)">How It Works</p>
-  <h2 class="sec-title reveal" style="max-width:700px;margin-left:auto;margin-right:auto">Five steps from <span class="grad-blue">raw data</span> to action</h2>
-  <p class="sec-sub mx-auto reveal" style="text-align:center">Fully automated, auditable, and transparent. Humans always make the final call.</p>
+  <p class="sec-label reveal">How It Works</p>
+  <h2 class="sec-title reveal" style="max-width:800px;margin-left:auto;margin-right:auto">From scattered data to<br><span class="grad-multi">clear action.</span></h2>
+  <p class="sec-sub mx-auto reveal" style="text-align:center">ATLAS works in the background, automatically. No manual data entry. No spreadsheets. No busywork. Here&rsquo;s what happens:</p>
 </div>
 <div class="con">
-  <div class="flow-steps reveal">
+  <div class="flow-steps reveal" style="max-width:1000px;margin-left:auto;margin-right:auto">
     <div class="flow-step">
-      <div class="flow-icon" style="background:var(--red-bg)">&#128229;</div>
-      <h4>Ingest</h4>
-      <p>Pull data from every school system in real-time via secure connectors</p>
+      <div class="flow-icon" style="background:rgba(90,200,250,.12);font-size:28px">&#128229;</div>
+      <div>
+        <h4>Connect</h4>
+        <p>ATLAS securely connects to every system your district already uses &mdash; SIS, LMS, assessment platforms, IEP software, PBIS tools &mdash; and pulls data in real time.</p>
+      </div>
       <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-icon" style="background:var(--blue-bg)">&#128279;</div>
-      <h4>Unify</h4>
-      <p>Match records across systems and build the knowledge graph</p>
+      <div class="flow-icon" style="background:rgba(191,90,242,.12);font-size:28px">&#129504;</div>
+      <div>
+        <h4>Understand</h4>
+        <p>The system matches records across platforms, resolves duplicate identities, and builds a unified knowledge graph &mdash; a complete, connected picture of every student, teacher, course, and intervention.</p>
+      </div>
       <span class="flow-arrow">&rarr;</span>
     </div>
     <div class="flow-step">
-      <div class="flow-icon" style="background:var(--purple-bg)">&#128269;</div>
-      <h4>Detect</h4>
-      <p>48+ features continuously monitor every student for emerging risks</p>
-      <span class="flow-arrow">&rarr;</span>
+      <div class="flow-icon" style="background:rgba(48,209,88,.12);font-size:28px">&#128161;</div>
+      <div>
+        <h4>Alert &amp; Recommend</h4>
+        <p>When a student&rsquo;s trajectory changes, ATLAS detects it early and alerts the right educator &mdash; with root cause analysis and specific, evidence-ranked recommendations. Humans always make the final call.</p>
+      </div>
     </div>
-    <div class="flow-step">
-      <div class="flow-icon" style="background:rgba(123,97,255,.08)">&#129504;</div>
-      <h4>Reason</h4>
-      <p>Causal analysis and constraint-aware optimization find root causes</p>
-      <span class="flow-arrow">&rarr;</span>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ A REAL EXAMPLE ═══════════════════════════════════ -->
+<section id="example">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--blue)">What This Looks Like</p>
+    <h2 class="sec-title reveal" style="max-width:800px;margin-left:auto;margin-right:auto">The kind of moment<br><span class="grad-blue">ATLAS is built for.</span></h2>
+  </div>
+
+  <div class="dia dia-hero reveal" style="margin-top:56px">
+    <svg viewBox="0 0 1120 480" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".06"/></filter>
+      </defs>
+      <rect width="1120" height="480" fill="#FAFAFA" rx="0"/>
+
+      <!-- Timeline header -->
+      <text x="560" y="36" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="#AEAEB2" letter-spacing=".06em">WHAT ATLAS DETECTS THAT HUMANS MISS</text>
+
+      <!-- Week labels -->
+      <text x="160" y="72" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#AEAEB2">WEEK 1</text>
+      <text x="380" y="72" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#AEAEB2">WEEK 2</text>
+      <text x="600" y="72" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#FF453A">WEEK 3 &mdash; ATLAS ALERT</text>
+      <text x="850" y="72" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#AEAEB2">WEEK 6</text>
+
+      <!-- Timeline line -->
+      <line x1="60" y1="86" x2="1060" y2="86" stroke="#E8E8ED" stroke-width="2"/>
+      <circle cx="160" cy="86" r="5" fill="#E8E8ED"/>
+      <circle cx="380" cy="86" r="5" fill="#E8E8ED"/>
+      <circle cx="600" cy="86" r="7" fill="#FF453A"/>
+      <circle cx="850" cy="86" r="5" fill="#E8E8ED"/>
+
+      <!-- Week 1: Grades dip -->
+      <g class="svg-fade stagger-1" filter="url(#ds)">
+        <rect x="60" y="108" width="200" height="100" rx="16" fill="#FFF" stroke="#5AC8FA" stroke-width="1.2"/>
+        <text x="80" y="133" font-family="Inter" font-size="11" font-weight="700" fill="#5AC8FA">&#128202; Grades</text>
+        <text x="80" y="153" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Math grade drops B+ &#8594; C</text>
+        <text x="80" y="172" font-family="Inter" font-size="11" fill="#AEAEB2">Missed 2 homework assignments</text>
+        <text x="80" y="195" font-family="Inter" font-size="10" font-weight="600" fill="#AEAEB2">&#128064; Noticed by: Nobody</text>
+      </g>
+
+      <!-- Week 2: Attendance dip -->
+      <g class="svg-fade stagger-2" filter="url(#ds)">
+        <rect x="280" y="108" width="200" height="100" rx="16" fill="#FFF" stroke="#30D158" stroke-width="1.2"/>
+        <text x="300" y="133" font-family="Inter" font-size="11" font-weight="700" fill="#30D158">&#128197; Attendance</text>
+        <text x="300" y="153" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">3 tardies in 5 days</text>
+        <text x="300" y="172" font-family="Inter" font-size="11" fill="#AEAEB2">1 unexcused absence</text>
+        <text x="300" y="195" font-family="Inter" font-size="10" font-weight="600" fill="#AEAEB2">&#128064; Noticed by: Nobody</text>
+      </g>
+
+      <!-- Week 3: ATLAS Alert -->
+      <g class="svg-fade stagger-3" filter="url(#ds)">
+        <rect x="500" y="108" width="200" height="155" rx="16" fill="#FFF" stroke="#FF453A" stroke-width="2"/>
+        <rect x="500" y="108" width="200" height="36" rx="16" fill="#FF453A" style="clip-path:inset(0 0 50% 0)"/>
+        <rect x="500" y="108" width="200" height="36" rx="0" fill="#FF453A"/>
+        <rect x="500" y="128" width="200" height="16" rx="0" fill="#FF453A"/>
+        <text x="600" y="131" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#FFF">&#9888; ATLAS EARLY WARNING</text>
+        <text x="520" y="163" font-family="Inter" font-size="11" font-weight="700" fill="#FF453A">Cross-system pattern detected:</text>
+        <text x="520" y="182" font-family="Inter" font-size="11" fill="#1D1D1F">Grade decline + attendance drop</text>
+        <text x="520" y="198" font-family="Inter" font-size="11" fill="#1D1D1F">+ new behavior referral</text>
+        <text x="520" y="218" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF">&#128073; Recommended: Counselor check-in</text>
+        <text x="520" y="250" font-family="Inter" font-size="10" font-weight="600" fill="#34C759">&#9989; Sent to: Ms. Rodriguez, Counselor</text>
+      </g>
+
+      <!-- Week 6: Without ATLAS vs With -->
+      <g class="svg-fade stagger-4" filter="url(#ds)">
+        <rect x="750" y="108" width="200" height="80" rx="16" fill="rgba(255,59,48,.06)" stroke="rgba(255,59,48,.2)" stroke-width="1"/>
+        <text x="770" y="130" font-family="Inter" font-size="10" font-weight="700" fill="#FF453A">WITHOUT ATLAS</text>
+        <text x="770" y="148" font-family="Inter" font-size="11" fill="#6E6E73">Student now failing 2 classes.</text>
+        <text x="770" y="166" font-family="Inter" font-size="11" fill="#6E6E73">Referral finally happens week 8.</text>
+      </g>
+      <g class="svg-fade stagger-5" filter="url(#ds)">
+        <rect x="750" y="200" width="200" height="80" rx="16" fill="rgba(52,199,89,.06)" stroke="rgba(52,199,89,.2)" stroke-width="1"/>
+        <text x="770" y="222" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">WITH ATLAS</text>
+        <text x="770" y="240" font-family="Inter" font-size="11" fill="#6E6E73">Counselor intervened week 3.</text>
+        <text x="770" y="258" font-family="Inter" font-size="11" fill="#6E6E73">Student back on track by week 5.</text>
+      </g>
+
+      <!-- Bottom insight -->
+      <rect x="160" y="320" width="800" height="120" rx="20" fill="#F0F0F5" stroke="#E8E8ED" stroke-width="1"/>
+      <text x="200" y="352" font-family="Inter" font-size="13" font-weight="800" fill="#1D1D1F">Why this matters</text>
+      <text x="200" y="376" font-family="Inter" font-size="12" fill="#6E6E73">Each signal alone &mdash; one missed assignment, a few tardies &mdash; looks minor. No single system would flag it.</text>
+      <text x="200" y="396" font-family="Inter" font-size="12" fill="#6E6E73">But ATLAS sees <tspan font-weight="700" fill="#1D1D1F">across</tspan> systems. It detects the <tspan font-weight="700" fill="#1D1D1F">pattern</tspan>, identifies the <tspan font-weight="700" fill="#1D1D1F">trajectory change</tspan>,</text>
+      <text x="200" y="416" font-family="Inter" font-size="12" fill="#6E6E73">and recommends action <tspan font-weight="700" fill="#FF453A">3&ndash;5 weeks earlier</tspan> than traditional threshold-based alerts.</text>
+    </svg>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════ THE ENGINE ═══════════════════════════════════ -->
+<section class="section-dark" id="engine">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal">Under the Hood</p>
+    <h2 class="sec-title reveal" style="max-width:800px;margin-left:auto;margin-right:auto">Not a dashboard.<br><span class="grad-multi">A reasoning engine.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Most education tools just display data. ATLAS connects, reasons, optimizes, and explains &mdash; using the same AI and operations research techniques that power logistics at FedEx and scheduling at airlines.</p>
+  </div>
+
+  <div class="g3 reveal" style="margin-top:64px">
+    <div class="card" style="text-align:center">
+      <div class="card-icon" style="background:rgba(90,200,250,.12);margin:0 auto 20px;font-size:28px">&#128279;</div>
+      <h3>Knowledge Graph</h3>
+      <p>Every student, teacher, course, assessment, intervention, and outcome &mdash; linked together in a single connected data model with 200+ entity types across 9 domains.</p>
     </div>
-    <div class="flow-step">
-      <div class="flow-icon" style="background:var(--green-bg)">&#9989;</div>
-      <h4>Act</h4>
-      <p>Present traceable recommendations &mdash; educators make the final call</p>
+    <div class="card" style="text-align:center">
+      <div class="card-icon" style="background:rgba(191,90,242,.12);margin:0 auto 20px;font-size:28px">&#129504;</div>
+      <h3>Causal Reasoning</h3>
+      <p>ATLAS doesn&rsquo;t just find correlations. It uses 5 causal inference methods to determine <em>why</em> a student is struggling &mdash; and what will actually help.</p>
+    </div>
+    <div class="card" style="text-align:center">
+      <div class="card-icon" style="background:rgba(48,209,88,.12);margin:0 auto 20px;font-size:28px">&#127919;</div>
+      <h3>Optimization Engine</h3>
+      <p>12 mathematical models optimize scheduling, bus routes, staffing, budgets, and intervention matching &mdash; with measured ROI for every recommendation.</p>
     </div>
   </div>
 </div>
 </section>
 
 <!-- ═══════════════════════════════════ WHO IT'S FOR ═══════════════════════════════════ -->
-<section class="section-alt" id="who">
+<section id="who">
 <div class="con">
   <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--purple)">Who It&rsquo;s For</p>
-    <h2 class="sec-title reveal">Built for <span class="grad-purple">everyone</span> in education</h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Whether you&rsquo;re in a classroom, a district office, or a board meeting &mdash; ATLAS speaks your language.</p>
+    <p class="sec-label reveal" style="color:var(--purple)">Built For Everyone</p>
+    <h2 class="sec-title reveal">One platform.<br><span class="grad-purple">Every role.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Whether you&rsquo;re in a classroom, a counselor&rsquo;s office, or a board meeting &mdash; ATLAS gives you exactly the view you need.</p>
   </div>
 
   <div class="g2 reveal" style="margin-top:56px">
     <div class="persona-card blue">
       <span class="persona-emoji">&#128105;&#8205;&#127979;</span>
       <h3>Teachers</h3>
-      <p>See every student&rsquo;s full picture &mdash; grades, attendance, behavior, supports &mdash; in one place. Get early warnings when a student starts to struggle, with specific, evidence-backed next steps.</p>
+      <p>See every student&rsquo;s full picture in one place. Get early warnings when someone starts struggling, with specific next steps &mdash; not just a red flag.</p>
     </div>
     <div class="persona-card purple">
       <span class="persona-emoji">&#128104;&#8205;&#128188;</span>
       <h3>Administrators</h3>
-      <p>Optimize scheduling, staffing, and budgets with the same algorithms Fortune 500 companies use. See district-wide patterns, predict outcomes, and allocate resources based on measured impact.</p>
+      <p>Optimize scheduling, staffing, and budgets with mathematical models. See district-wide patterns and allocate resources based on measured impact, not guesswork.</p>
     </div>
     <div class="persona-card green">
       <span class="persona-emoji">&#128203;</span>
-      <h3>Special Education Teams</h3>
-      <p>Automate IEP compliance tracking, surface students who need re-evaluation, and match them to interventions proven to work. Less paperwork, more student time.</p>
+      <h3>Special Ed Teams</h3>
+      <p>Track IEP goals across systems automatically. Surface students who need re-evaluation. Match students to interventions proven to work for their specific profile.</p>
     </div>
     <div class="persona-card amber">
       <span class="persona-emoji">&#128106;</span>
       <h3>Board &amp; Community</h3>
-      <p>Transparent ROI for every program and dollar spent. See which interventions actually move the needle, with causal evidence &mdash; not just correlations.</p>
+      <p>Transparent ROI for every program and dollar spent. See which interventions actually move outcomes, with causal evidence &mdash; not just correlations.</p>
     </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ THE ENGINE ═══════════════════════════════════ -->
-<section id="engine">
-<div class="con">
-  <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--blue)">Under the Hood</p>
-    <h2 class="sec-title reveal">A reasoning engine, <span class="grad-blue">not just a dashboard</span></h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">ATLAS doesn&rsquo;t just show data. It connects, reasons, optimizes, and monitors &mdash; then explains its thinking.</p>
-  </div>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 480" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/></marker>
-        <marker id="arr-b" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#007AFF"/></marker>
-      </defs>
-      <rect width="1120" height="480" fill="#FAFAFA"/>
-
-      <!-- Title -->
-      <text x="560" y="36" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F">ATLAS Architecture — Simplified</text>
-
-      <!-- Layer 1: Source Systems -->
-      <g class="svg-fade stagger-1" filter="url(#ds)">
-        <rect x="40" y="65" width="1040" height="50" rx="14" fill="#FFF" stroke="#FF3B30" stroke-width="1.2"/>
-        <text x="560" y="85" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30" letter-spacing=".05em">SOURCE SYSTEMS</text>
-        <text x="560" y="103" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">PowerSchool &#183; NWEA &#183; SEIS &#183; Clever &#183; PBIS &#183; Schedules &#183; 40+ more</text>
-      </g>
-
-      <!-- Arrow -->
-      <line x1="560" y1="117" x2="560" y2="138" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" repeatCount="indefinite"/>
-      </line>
-
-      <!-- Layer 2: Data Pipeline -->
-      <g class="svg-fade stagger-2" filter="url(#ds)">
-        <rect x="140" y="140" width="840" height="50" rx="14" fill="#FFF" stroke="#007AFF" stroke-width="1.2"/>
-        <text x="560" y="160" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#007AFF" letter-spacing=".05em">DATA PIPELINE</text>
-        <text x="560" y="178" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">Parse &#8594; Normalize &#8594; Entity Resolution &#8594; Enrich &#8594; Graph Write</text>
-      </g>
-
-      <!-- Arrow -->
-      <line x1="560" y1="192" x2="560" y2="213" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".3s" repeatCount="indefinite"/>
-      </line>
-
-      <!-- Layer 3: Knowledge Graph (wide, prominent) -->
-      <g class="svg-fade stagger-3" filter="url(#ds)">
-        <rect x="100" y="215" width="920" height="65" rx="16" fill="#007AFF" fill-opacity=".06" stroke="#007AFF" stroke-width="1.5"/>
-        <text x="560" y="240" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#007AFF">KNOWLEDGE GRAPH</text>
-        <text x="560" y="260" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">9 domains &#183; 200+ entity types &#183; Neo4j + PostgreSQL + XTDB + Elasticsearch + Redis</text>
-        <!-- Mini node constellation -->
-        <circle cx="180" cy="248" r="6" fill="#007AFF" opacity=".3"/>
-        <circle cx="210" cy="238" r="4" fill="#7B61FF" opacity=".3"/>
-        <circle cx="200" cy="258" r="4" fill="#34C759" opacity=".3"/>
-        <line x1="186" y1="248" x2="206" y2="240" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
-        <line x1="186" y1="252" x2="196" y2="256" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
-        <circle cx="940" cy="248" r="6" fill="#007AFF" opacity=".3"/>
-        <circle cx="910" cy="238" r="4" fill="#FF9F0A" opacity=".3"/>
-        <circle cx="920" cy="258" r="4" fill="#FF3B30" opacity=".3"/>
-        <line x1="934" y1="248" x2="914" y2="240" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
-        <line x1="934" y1="252" x2="924" y2="256" stroke="#007AFF" stroke-width=".8" opacity=".3"/>
-      </g>
-
-      <!-- Arrows down to intelligence services -->
-      <line x1="340" y1="282" x2="340" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".6s" repeatCount="indefinite"/>
-      </line>
-      <line x1="560" y1="282" x2="560" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin=".8s" repeatCount="indefinite"/>
-      </line>
-      <line x1="780" y1="282" x2="780" y2="310" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin="1s" repeatCount="indefinite"/>
-      </line>
-
-      <!-- Layer 4: Intelligence Services (3 boxes) -->
-      <g class="svg-fade stagger-4" filter="url(#ds)">
-        <rect x="210" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#7B61FF" stroke-width="1.2"/>
-        <text x="340" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#7B61FF">SIGNAL DETECTION</text>
-        <text x="340" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">LightGBM &#183; 5 methods &#183; 48+ features</text>
-      </g>
-      <g class="svg-fade stagger-5" filter="url(#ds)">
-        <rect x="430" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#5856D6" stroke-width="1.2"/>
-        <text x="560" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#5856D6">REASONING ENGINE</text>
-        <text x="560" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">LangGraph &#183; 11 nodes &#183; 8 tools</text>
-      </g>
-      <g class="svg-fade stagger-6" filter="url(#ds)">
-        <rect x="650" y="312" width="260" height="56" rx="14" fill="#FFF" stroke="#34C759" stroke-width="1.2"/>
-        <text x="780" y="335" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#34C759">OPTIMIZATION</text>
-        <text x="780" y="355" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">12 models &#183; OR-Tools &#183; Z3 &#183; Gurobi</text>
-      </g>
-
-      <!-- Arrow to outcomes -->
-      <line x1="560" y1="370" x2="560" y2="398" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)">
-        <animate attributeName="opacity" values=".3;.8;.3" dur="2s" begin="1.2s" repeatCount="indefinite"/>
-      </line>
-
-      <!-- Layer 5: Outcomes -->
-      <g class="svg-fade stagger-7" filter="url(#ds)">
-        <rect x="300" y="400" width="520" height="50" rx="14" fill="#FFF" stroke="#FF9F0A" stroke-width="1.2"/>
-        <text x="560" y="420" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF9F0A" letter-spacing=".05em">ACTIONABLE INSIGHTS</text>
-        <text x="560" y="438" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">Early warnings &#183; Root cause explanations &#183; Ranked recommendations &#183; eROI scores</text>
-      </g>
-
-      <!-- Feedback loop -->
-      <path d="M820,425 Q920,425 920,340 Q920,248 1025,248" fill="none" stroke="url(#grad-flow)" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
-        <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" repeatCount="indefinite"/>
-      </path>
-      <path d="M300,425 Q200,425 200,340 Q200,248 95,248" fill="none" stroke="url(#grad-flow)" stroke-width="1.2" stroke-dasharray="5,4" opacity=".3">
-        <animate attributeName="stroke-dashoffset" values="0;-20" dur="2s" begin=".5s" repeatCount="indefinite"/>
-      </path>
-      <text x="560" y="470" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#AEAEB2">&#8634; Continuous Learning Loop &#8212; outcomes feed back into detection models</text>
-    </svg>
   </div>
 </div>
 </section>
 
 <!-- ═══════════════════════════════════ KEY NUMBERS ═══════════════════════════════════ -->
-<section class="section-alt" id="numbers" style="padding:100px 0">
-<div class="con">
+<section class="section-dark" id="numbers" style="padding:120px 0">
+<div class="con text-center">
+  <h2 class="sec-title reveal" style="margin-bottom:8px">By the numbers.</h2>
+  <p class="sec-sub mx-auto reveal" style="text-align:center;margin-bottom:72px">The scale of what ATLAS connects and optimizes.</p>
   <div class="stat-row reveal">
     <div class="stat-item">
-      <div class="stat-num grad-blue" data-target="47" data-suffix="+">47+</div>
+      <div class="stat-num" data-target="47" data-suffix="+" style="color:#5AC8FA">47+</div>
       <div class="stat-label">Systems Unified</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-purple" data-target="200" data-suffix="+">200+</div>
+      <div class="stat-num" data-target="200" data-suffix="+" style="color:#BF5AF2">200+</div>
       <div class="stat-label">Entity Types</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-green" data-target="12">12</div>
+      <div class="stat-num" data-target="48" data-suffix="+" style="color:#30D158">48+</div>
+      <div class="stat-label">Risk Features Monitored</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" data-target="12" style="color:#FFD60A">12</div>
       <div class="stat-label">Optimization Models</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num grad-amber" data-target="30">30</div>
-      <div class="stat-label">Weeks to Deploy</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num grad-red" data-target="5" data-prefix="$" data-suffix="M+">$5M+</div>
-      <div class="stat-label">Projected Savings</div>
+      <div class="stat-num" data-target="5" data-prefix="$" data-suffix="M+" style="color:#FF453A">$5M+</div>
+      <div class="stat-label">Projected Annual Savings</div>
     </div>
   </div>
 </div>
@@ -458,9 +441,9 @@
 <section id="principles">
 <div class="con">
   <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--red)">Core Principles</p>
-    <h2 class="sec-title reveal">What ATLAS will <span class="grad-red">never</span> do</h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Three non-negotiable commitments baked into the architecture, not just the policy.</p>
+    <p class="sec-label reveal" style="color:var(--red)">Trust &amp; Safety</p>
+    <h2 class="sec-title reveal">Three commitments baked into<br><span class="grad-red">the architecture itself.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">Not just policies. These are structural constraints enforced by code.</p>
   </div>
 
   <div class="g3 reveal" style="margin-top:56px">
@@ -468,19 +451,19 @@
       <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--red)"></div>
       <div class="card-icon" style="background:var(--red-bg);margin:0 auto 20px;font-size:28px">&#128683;</div>
       <h3>Never Rank Students</h3>
-      <p>ATLAS identifies needs and matches resources. It never produces student rankings, comparison scores, or labels that follow students across contexts.</p>
+      <p>ATLAS identifies needs and matches resources. It never produces student rankings or comparison scores. Every child is evaluated against their own trajectory, not their peers.</p>
     </div>
     <div class="card" style="text-align:center;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
       <div class="card-icon" style="background:var(--amber-bg);margin:0 auto 20px;font-size:28px">&#129309;</div>
-      <h3>Never Replace Teachers</h3>
-      <p>Every recommendation requires human approval. ATLAS proposes &mdash; educators decide. The system augments professional judgment, never overrides it.</p>
+      <h3>Humans Always Decide</h3>
+      <p>Every recommendation requires human approval before action. ATLAS proposes and explains its reasoning &mdash; educators decide. The system augments judgment, never replaces it.</p>
     </div>
     <div class="card" style="text-align:center;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
       <div class="card-icon" style="background:var(--purple-bg);margin:0 auto 20px;font-size:28px">&#128274;</div>
-      <h3>Never Sell Data</h3>
-      <p>Student data belongs to students and districts. No advertising, no third-party sales, no secondary uses. Privacy is structural, not just a policy.</p>
+      <h3>Privacy Is Structural</h3>
+      <p>FERPA and COPPA compliance built into the data model, not bolted on. AES-256 encryption, crypto-shredding for data deletion, and role-based access at every layer. No data sales. Ever.</p>
     </div>
   </div>
 </div>
@@ -490,9 +473,9 @@
 <section class="section-alt" id="explore">
 <div class="con">
   <div class="text-center">
-    <p class="sec-label reveal" style="color:var(--blue)">Deep Dives</p>
-    <h2 class="sec-title reveal">Six chapters. <span class="grad-blue">One complete blueprint.</span></h2>
-    <p class="sec-sub mx-auto reveal" style="text-align:center">Explore the engineering behind ATLAS &mdash; from system architecture to security compliance.</p>
+    <p class="sec-label reveal" style="color:var(--blue)">The Blueprint</p>
+    <h2 class="sec-title reveal">Six chapters.<br><span class="grad-blue">Every technical detail.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">For engineers, architects, and curious administrators who want to understand exactly how ATLAS works under the hood.</p>
   </div>
 
   <div class="g3 reveal" style="margin-top:56px">
@@ -519,8 +502,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--indigo)">Chapter 1</p>
         <h3>System Architecture</h3>
-        <p>12 microservices, 5 database engines, event-driven backbone, and multi-tenant isolation.</p>
-        <span class="preview-cta">Explore</span>
+        <p>How 12 microservices and 5 database engines work together with an event-driven backbone.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 
@@ -545,8 +528,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--green)">Chapter 2</p>
         <h3>Semantic Ontology</h3>
-        <p>9 operational domains, 200+ entity types, and the knowledge graph powering cross-domain reasoning.</p>
-        <span class="preview-cta">Explore</span>
+        <p>The knowledge graph that connects 200+ entity types across 9 operational domains.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 
@@ -570,8 +553,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--blue)">Chapter 3</p>
         <h3>Data &amp; Signal Detection</h3>
-        <p>Entity resolution, 5-stage pipeline, and 5 detection methods that catch issues before they become crises.</p>
-        <span class="preview-cta">Explore</span>
+        <p>Entity resolution, the 5-stage pipeline, and 5 detection methods that catch issues early.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 
@@ -592,8 +575,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--purple)">Chapter 4</p>
         <h3>Intelligence &amp; Optimization</h3>
-        <p>LangGraph agent orchestration and 12 mathematical models for scheduling, routing, and resource allocation.</p>
-        <span class="preview-cta">Explore</span>
+        <p>The LangGraph reasoning agent and 12 mathematical models for resource allocation.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 
@@ -619,8 +602,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--amber)">Chapter 5</p>
         <h3>Causal Analysis &amp; Monitoring</h3>
-        <p>5 causal inference methods, CUSUM divergence detection, and the closed-loop learning cycle.</p>
-        <span class="preview-cta">Explore</span>
+        <p>How ATLAS determines <em>why</em> something is happening, not just <em>that</em> it&rsquo;s happening.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 
@@ -631,7 +614,7 @@
           <path d="M140,20 L200,48 L200,90 Q200,135 140,150 Q80,135 80,90 L80,48 Z" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
           <text x="140" y="72" text-anchor="middle" font-size="22">&#128737;</text>
           <text x="140" y="102" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#FF3B30">FERPA &#183; COPPA</text>
-          <text x="140" y="118" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#AEAEB2">ABAC+ReBAC &#183; AES-256</text>
+          <text x="140" y="118" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#AEAEB2">7-layer defense in depth</text>
           <line x1="40" y1="160" x2="240" y2="160" stroke="#E8E8ED" stroke-width="2"/>
           <circle cx="60"  cy="160" r="5" fill="#FF3B30"/>
           <circle cx="100" cy="160" r="5" fill="#FF9F0A"/>
@@ -643,8 +626,8 @@
       <div class="preview-body">
         <p class="preview-label" style="color:var(--red)">Chapter 6</p>
         <h3>Security &amp; Roadmap</h3>
-        <p>7-layer defense-in-depth, crypto-shredding, and the 30-week phased implementation timeline.</p>
-        <span class="preview-cta">Explore</span>
+        <p>7-layer security, FERPA/COPPA compliance, and the 30-week implementation timeline.</p>
+        <span class="preview-cta">Read chapter</span>
       </div>
     </a>
 

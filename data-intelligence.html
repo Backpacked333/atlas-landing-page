@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Data &amp; Signal Detection — ATLAS</title>
-<meta name="description" content="ATLAS data intelligence pipeline: entity resolution, probabilistic signal detection, and risk prediction across 40+ data sources for early student intervention.">
+<meta name="description" content="From messy spreadsheets to clean knowledge. Entity resolution, the 5-stage pipeline, and signal detection methods that catch issues early.">
 <link rel="stylesheet" href="atlas-design-system.css">
 </head>
 <body>
@@ -28,13 +28,14 @@
 </nav>
 
 <main id="main">
-<!-- ═══════════════════════════════════ PAGE HERO ═══════════════════════════════════ -->
+
+<!-- ═══════════════════════════ PAGE HERO ═══════════════════════════ -->
 <section class="page-hero" style="background:var(--bg2)">
 <div class="page-bg" style="background:radial-gradient(ellipse at 40% 50%, rgba(0,122,255,.1) 0%, transparent 60%),radial-gradient(ellipse at 70% 30%, rgba(255,159,10,.08) 0%, transparent 50%);"></div>
 <div class="con">
-  <div class="breadcrumb reveal"><a href="index.html">Home</a> <span class="sep">/</span> Data &amp; Signals</div>
-  <h1 class="page-title reveal">Data Pipeline &amp; <span class="grad-blue">Signal Detection</span></h1>
-  <p class="page-sub reveal">From raw CSV exports and REST APIs to a unified knowledge graph. Entity resolution, feature engineering, and 5 signal detection methods that catch issues before they become crises.</p>
+  <p class="sec-label reveal" style="color:var(--blue)">Data Integration</p>
+  <h1 class="page-title reveal" style="max-width:800px">From <span class="grad-blue">messy spreadsheets</span> to clean knowledge</h1>
+  <p class="page-sub reveal" style="max-width:700px">Raw data arrives from district systems in wildly inconsistent formats &mdash; CSV exports from 1990s platforms, REST APIs from modern SIS, XML dumps from SPED tools, manually entered spreadsheets. ATLAS transforms it all into interconnected ontology objects.</p>
   <div class="pills reveal">
     <span class="mp" style="background:var(--amber-bg);color:var(--amber)">7+ Source Systems</span>
     <span class="mp" style="background:var(--blue-bg);color:var(--blue)">5-Stage Pipeline</span>
@@ -44,544 +45,202 @@
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ PROCESSING PIPELINE ═══════════════════════════════════ -->
+<!-- ═══════════════════════════ BEFORE / AFTER ═══════════════════════════ -->
 <section>
 <div class="con">
-  <p class="sec-label reveal" style="color:var(--blue)">Data Pipeline</p>
-  <h2 class="sec-title reveal">Five stages from <span class="grad-blue">chaos to clarity</span></h2>
-  <p class="sec-sub reveal">Raw data arrives in wildly inconsistent formats. The pipeline transforms it into clean, normalized, interconnected ontology objects.</p>
+  <div class="ba reveal">
+    <div class="ba-col ba-before">
+      <div class="ba-label">Before ATLAS</div>
+      <ul>
+        <li>47 disconnected systems</li>
+        <li>&ldquo;John Smith Jr.&rdquo; in SIS, &ldquo;Johnathan A. Smith&rdquo; in SPED</li>
+        <li>CSV exports emailed monthly</li>
+        <li>6 different logins to check one student</li>
+        <li>Data conflicts discovered by accident</li>
+      </ul>
+    </div>
+    <div class="ba-col ba-after">
+      <div class="ba-label">After ATLAS</div>
+      <ul>
+        <li>One unified knowledge graph</li>
+        <li>Probabilistic entity resolution (Splink)</li>
+        <li>Real-time CDC + nightly batch sync</li>
+        <li>Single query traverses all data</li>
+        <li>Conflicts flagged automatically</li>
+      </ul>
+    </div>
+  </div>
 
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- 5-Stage Pipeline Diagram -->
+  <div class="dia dia-hero reveal" style="margin-top:40px">
+    <svg viewBox="0 0 1120 380" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-        <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/></marker>
       </defs>
-      <rect width="1120" height="260" rx="20" fill="#FAFAFA"/>
-      <!-- Stage 1: Parse & Validate -->
-      <g class="svg-fade stagger-1" filter="url(#ds)">
-        <rect x="20" y="40" width="180" height="140" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="110" cy="72" r="18" fill="rgba(255,159,10,.1)" stroke="var(--amber)" stroke-width="1"/>
-        <text x="110" y="77" text-anchor="middle" font-family="Inter" font-size="14">&#128230;</text>
-        <text x="110" y="106" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">1. PARSE</text>
-        <text x="110" y="125" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">CSV, XML, JSON &rarr;</text>
-        <text x="110" y="140" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">structured records</text>
-        <text x="110" y="162" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Quarantine invalid rows</text>
+      <rect width="1120" height="380" fill="#FAFAFA"/>
+
+      <!-- Stage 1: Parse -->
+      <g filter="url(#ds)">
+        <rect x="20" y="24" width="196" height="280" rx="14" fill="rgba(255,59,48,.04)" stroke="rgba(255,59,48,.2)" stroke-width="1.2"/>
+        <text x="118" y="52" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#FF3B30" letter-spacing=".04em">STAGE 1: PARSE</text>
+        <text x="36" y="80" font-family="Inter" font-size="11" fill="#6E6E73">Raw CSV/JSON/XML</text>
+        <text x="36" y="100" font-family="Inter" font-size="11" fill="#6E6E73">Schema validation</text>
+        <text x="36" y="120" font-family="Inter" font-size="11" fill="#6E6E73">Type checking</text>
+        <rect x="40" y="148" width="152" height="36" rx="8" fill="rgba(255,59,48,.08)" stroke="rgba(255,59,48,.15)" stroke-width="1"/>
+        <text x="116" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#FF3B30">QUARANTINE</text>
+        <text x="116" y="202" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Invalid &rarr; human review</text>
+        <text x="118" y="288" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">validated_records</text>
       </g>
-      <line x1="205" y1="110" x2="225" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Arrow 1 -->
+      <polygon points="224,160 238,154 238,166" fill="#007AFF"/>
+
       <!-- Stage 2: Normalize -->
-      <g class="svg-fade stagger-2" filter="url(#ds)">
-        <rect x="230" y="40" width="180" height="140" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="320" cy="72" r="18" fill="rgba(255,159,10,.1)" stroke="var(--amber)" stroke-width="1"/>
-        <text x="320" y="77" text-anchor="middle" font-family="Inter" font-size="14">&#128260;</text>
-        <text x="320" y="106" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">2. NORMALIZE</text>
-        <text x="320" y="125" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Map to ontology fields</text>
-        <text x="320" y="140" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Normalize dates, names</text>
-        <text x="320" y="162" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Apply source transforms</text>
+      <g filter="url(#ds)">
+        <rect x="244" y="24" width="196" height="280" rx="14" fill="rgba(255,159,10,.04)" stroke="rgba(255,159,10,.2)" stroke-width="1.2"/>
+        <text x="342" y="52" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#FF9F0A" letter-spacing=".04em">STAGE 2: NORMALIZE</text>
+        <text x="260" y="80" font-family="Inter" font-size="11" fill="#6E6E73">Field name mapping</text>
+        <text x="260" y="100" font-family="Inter" font-size="11" fill="#6E6E73">Enum normalization</text>
+        <text x="260" y="120" font-family="Inter" font-size="11" fill="#6E6E73">Date standardization</text>
+        <text x="260" y="140" font-family="Inter" font-size="11" fill="#6E6E73">Name cleaning</text>
+        <rect x="264" y="160" width="152" height="36" rx="8" fill="rgba(255,214,10,.1)" stroke="rgba(255,214,10,.25)" stroke-width="1"/>
+        <text x="340" y="176" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#FF9F0A">STUDENT_NUMBER &rarr;</text>
+        <text x="340" y="190" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#FF9F0A">primaryExternalId</text>
+        <text x="342" y="288" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">normalized_records</text>
       </g>
-      <line x1="415" y1="110" x2="435" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Arrow 2 -->
+      <polygon points="448,160 462,154 462,166" fill="#007AFF"/>
+
       <!-- Stage 3: Enrich -->
-      <g class="svg-fade stagger-3" filter="url(#ds)">
-        <rect x="440" y="40" width="180" height="140" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <circle cx="530" cy="72" r="18" fill="rgba(0,122,255,.08)" stroke="var(--blue)" stroke-width="1"/>
-        <text x="530" y="77" text-anchor="middle" font-family="Inter" font-size="14">&#128269;</text>
-        <text x="530" y="106" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">3. ENRICH</text>
-        <text x="530" y="125" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Cross-reference lookup</text>
-        <text x="530" y="140" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Compute derived fields</text>
-        <text x="530" y="162" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Apply tenant context</text>
+      <g filter="url(#ds)">
+        <rect x="468" y="24" width="196" height="280" rx="14" fill="rgba(52,199,89,.04)" stroke="rgba(52,199,89,.2)" stroke-width="1.2"/>
+        <text x="566" y="52" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#34C759" letter-spacing=".04em">STAGE 3: ENRICH</text>
+        <text x="484" y="80" font-family="Inter" font-size="11" fill="#6E6E73">Cross-reference lookup</text>
+        <text x="484" y="100" font-family="Inter" font-size="11" fill="#6E6E73">Derived field compute</text>
+        <text x="484" y="120" font-family="Inter" font-size="11" fill="#6E6E73">Context application</text>
+        <rect x="488" y="156" width="152" height="36" rx="8" fill="rgba(52,199,89,.08)" stroke="rgba(52,199,89,.15)" stroke-width="1"/>
+        <text x="564" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#34C759">attendance_rate: 87.3%</text>
+        <text x="564" y="186" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#34C759">compliance_pct: 92%</text>
+        <text x="566" y="288" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">enriched_records</text>
       </g>
-      <line x1="625" y1="110" x2="645" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Arrow 3 -->
+      <polygon points="672,160 686,154 686,166" fill="#007AFF"/>
+
       <!-- Stage 4: Resolve -->
-      <g class="svg-fade stagger-4" filter="url(#ds)">
-        <rect x="650" y="40" width="180" height="140" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <circle cx="740" cy="72" r="18" fill="rgba(123,97,255,.08)" stroke="var(--purple)" stroke-width="1"/>
-        <text x="740" y="77" text-anchor="middle" font-family="Inter" font-size="14">&#128279;</text>
-        <text x="740" y="106" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">4. RESOLVE</text>
-        <text x="740" y="125" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Splink entity matching</text>
-        <text x="740" y="140" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Fellegi-Sunter model</text>
-        <text x="740" y="162" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Golden record merge</text>
+      <g filter="url(#ds)">
+        <rect x="692" y="24" width="196" height="280" rx="14" fill="rgba(0,122,255,.04)" stroke="rgba(0,122,255,.2)" stroke-width="1.2"/>
+        <text x="790" y="52" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#007AFF" letter-spacing=".04em">STAGE 4: RESOLVE</text>
+        <text x="708" y="80" font-family="Inter" font-size="11" fill="#6E6E73">Splink probabilistic</text>
+        <text x="708" y="100" font-family="Inter" font-size="11" fill="#6E6E73">Fellegi-Sunter model</text>
+        <text x="708" y="120" font-family="Inter" font-size="11" fill="#6E6E73">Golden record build</text>
+        <rect x="712" y="156" width="152" height="36" rx="8" fill="rgba(0,122,255,.06)" stroke="rgba(0,122,255,.15)" stroke-width="1"/>
+        <text x="788" y="172" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#007AFF">P(match) = 0.97</text>
+        <text x="788" y="186" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="500" fill="#007AFF">&rarr; AUTO-LINK</text>
+        <text x="790" y="288" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">resolved_entities</text>
       </g>
-      <line x1="835" y1="110" x2="855" y2="110" stroke="#AEAEB2" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- Arrow 4 -->
+      <polygon points="896,160 910,154 910,166" fill="#007AFF"/>
+
       <!-- Stage 5: Graph Write -->
-      <g class="svg-fade stagger-5" filter="url(#ds)">
-        <rect x="860" y="40" width="240" height="140" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <circle cx="980" cy="72" r="18" fill="rgba(52,199,89,.08)" stroke="var(--green)" stroke-width="1"/>
-        <text x="980" y="77" text-anchor="middle" font-family="Inter" font-size="14">&#128230;</text>
-        <text x="980" y="106" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">5. GRAPH WRITE</text>
-        <text x="980" y="125" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Neo4j + XTDB + Elasticsearch</text>
-        <text x="980" y="140" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Domain events &rarr; Kafka</text>
-        <text x="980" y="162" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Immutable audit log entry</text>
+      <g filter="url(#ds)">
+        <rect x="916" y="24" width="184" height="280" rx="14" fill="rgba(123,97,255,.04)" stroke="rgba(123,97,255,.2)" stroke-width="1.2"/>
+        <text x="1008" y="52" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#7B61FF" letter-spacing=".04em">STAGE 5: GRAPH WRITE</text>
+        <text x="932" y="80" font-family="Inter" font-size="11" fill="#6E6E73">Neo4j node/edge ops</text>
+        <text x="932" y="100" font-family="Inter" font-size="11" fill="#6E6E73">XTDB bitemporal write</text>
+        <text x="932" y="120" font-family="Inter" font-size="11" fill="#6E6E73">ES index update</text>
+        <text x="932" y="140" font-family="Inter" font-size="11" fill="#6E6E73">Domain event publish</text>
+        <text x="932" y="160" font-family="Inter" font-size="11" fill="#6E6E73">Audit log entry</text>
+        <text x="1008" y="288" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">knowledge_graph</text>
       </g>
-      <!-- Data flow animation -->
-      <circle r="4" fill="var(--blue)" opacity=".6">
-        <animateMotion dur="4s" repeatCount="indefinite" path="M110,200 L320,200 L530,200 L740,200 L980,200" />
-      </circle>
-      <circle r="3" fill="var(--purple)" opacity=".4">
-        <animateMotion dur="4s" repeatCount="indefinite" begin="1.3s" path="M110,200 L320,200 L530,200 L740,200 L980,200" />
-      </circle>
-      <circle r="3" fill="var(--green)" opacity=".4">
-        <animateMotion dur="4s" repeatCount="indefinite" begin="2.6s" path="M110,200 L320,200 L530,200 L740,200 L980,200" />
-      </circle>
-      <!-- Pipeline base line -->
-      <line x1="60" y1="220" x2="1060" y2="220" stroke="#E5E5EA" stroke-width="1" stroke-dasharray="4,4"/>
-      <text x="560" y="245" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Records flow through all 5 stages sequentially &mdash; invalid records quarantined at each gate</text>
-    </svg>
-  </div>
-</div>
-</section>
 
-<!-- ═══════════════════════════════════ SOURCE CONNECTORS ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--amber)">Source Systems</p>
-  <h2 class="sec-title reveal">Connectors for <span class="grad-blue">every school system</span></h2>
-  <p class="sec-sub reveal">Pluggable adapters pull data from 7+ source systems. Each connector handles the source&rsquo;s specific format, auth method, and change detection strategy.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 420" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds2"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-        <marker id="arr2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#AEAEB2"/></marker>
-      </defs>
-      <rect width="1120" height="420" rx="20" fill="#FAFAFA"/>
-      <!-- Central hub -->
-      <g class="svg-fade stagger-1">
-        <rect x="440" y="150" width="240" height="120" rx="18" fill="#FFF" stroke="var(--blue)" stroke-width="2" filter="url(#ds2)"/>
-        <text x="560" y="195" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="var(--blue)">ATLAS Ingestion Hub</text>
-        <text x="560" y="215" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Adaptive connectors</text>
-        <text x="560" y="232" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Format detection &bull; Schema mapping</text>
-        <text x="560" y="258" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Rate-limited &bull; Retry-aware &bull; Idempotent</text>
-        <!-- Pulsing ring -->
-        <rect x="436" y="146" width="248" height="128" rx="22" fill="none" stroke="var(--blue)" stroke-width="1" opacity=".3">
-          <animate attributeName="opacity" values=".3;.1;.3" dur="3s" repeatCount="indefinite"/>
-        </rect>
-      </g>
-      <!-- Source: Clever -->
-      <g class="svg-fade stagger-2" filter="url(#ds2)">
-        <rect x="30" y="30" width="170" height="80" rx="14" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="115" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Clever</text>
-        <text x="115" y="78" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">REST API &bull; OAuth 2.0</text>
-        <text x="115" y="98" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">95K+ schools</text>
-      </g>
-      <line x1="200" y1="70" x2="440" y2="180" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Source: PowerSchool -->
-      <g class="svg-fade stagger-2" filter="url(#ds2)">
-        <rect x="30" y="150" width="170" height="80" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <text x="115" y="180" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">PowerSchool</text>
-        <text x="115" y="198" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">Plugin OAuth &bull; PowerQuery</text>
-        <text x="115" y="218" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">CDC via Debezium</text>
-      </g>
-      <line x1="200" y1="190" x2="440" y2="200" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Source: SEIS / Frontline -->
-      <g class="svg-fade stagger-3" filter="url(#ds2)">
-        <rect x="30" y="270" width="170" height="80" rx="14" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <text x="115" y="300" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">SEIS / Frontline</text>
-        <text x="115" y="318" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CSV / SFTP export</text>
-        <text x="115" y="338" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">IEPs, services, progress</text>
-      </g>
-      <line x1="200" y1="310" x2="440" y2="230" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Source: NWEA MAP -->
-      <g class="svg-fade stagger-3" filter="url(#ds2)">
-        <rect x="920" y="30" width="170" height="80" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <text x="1005" y="60" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">NWEA MAP</text>
-        <text x="1005" y="78" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CSV &bull; Data Export</text>
-        <text x="1005" y="98" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">RIT scores, growth</text>
-      </g>
-      <line x1="920" y1="70" x2="680" y2="180" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Source: Renaissance Star -->
-      <g class="svg-fade stagger-4" filter="url(#ds2)">
-        <rect x="920" y="150" width="170" height="80" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <text x="1005" y="180" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Renaissance Star</text>
-        <text x="1005" y="198" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CSV extract</text>
-        <text x="1005" y="218" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">Scaled scores, SGP, ZPD</text>
-      </g>
-      <line x1="920" y1="190" x2="680" y2="210" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Source: Acadience -->
-      <g class="svg-fade stagger-4" filter="url(#ds2)">
-        <rect x="920" y="270" width="170" height="80" rx="14" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="1005" y="300" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Acadience</text>
-        <text x="1005" y="318" text-anchor="middle" font-family="Inter" font-size="9" fill="#6E6E73">CSV &bull; DIBELS data</text>
-        <text x="1005" y="338" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ORF, NWF, risk levels</text>
-      </g>
-      <line x1="920" y1="310" x2="680" y2="230" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
-      <!-- Output arrow -->
-      <line x1="560" y1="270" x2="560" y2="370" stroke="var(--blue)" stroke-width="1.5" marker-end="url(#arr2)"/>
-      <g class="svg-fade stagger-5">
-        <rect x="430" y="370" width="260" height="36" rx="10" fill="rgba(0,122,255,.06)" stroke="var(--blue)" stroke-width="1"/>
-        <text x="560" y="394" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="var(--blue)">&rarr; 5-Stage Processing Pipeline &rarr;</text>
-      </g>
+      <!-- Footer -->
+      <text x="560" y="340" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">Powered by Kafka Streams &middot; Apache Flink &middot; S3 Raw Landing Zone</text>
     </svg>
   </div>
 
-  <div class="g3 reveal" style="margin-top:40px">
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <div class="card-icon" style="background:var(--blue-bg)">&#128279;</div>
-      <h3>Clever (Priority 1)</h3>
-      <p>REST API v3.1 with OAuth 2.0. Covers 95K+ schools. Students, teachers, sections, courses, schools. Events API for real-time change detection.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <div class="card-icon" style="background:var(--green-bg)">&#127979;</div>
-      <h3>PowerSchool (Priority 2)</h3>
-      <p>Plugin-based OAuth 2.0. PowerQuery for bulk extraction. CDC via Debezium for real-time change capture from on-premise databases.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
-      <div class="card-icon" style="background:var(--purple-bg)">&#128203;</div>
-      <h3>SEIS / Frontline (Priority 3)</h3>
-      <p>CSV/SFTP export. The most valuable and most difficult integration &mdash; contains IEP goals, service minutes, provider assignments, progress notes.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
-      <div class="card-icon" style="background:var(--amber-bg)">&#128202;</div>
-      <h3>NWEA MAP Growth</h3>
-      <p>CSV via Data Export Scheduler. RIT scores, percentiles, growth projections, subdomain breakdowns across up to 8 goal areas.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <div class="card-icon" style="background:var(--green-bg)">&#11088;</div>
-      <h3>Renaissance Star</h3>
-      <p>CSV extract. Scaled scores, percentile ranks, Student Growth Percentiles, zone of proximal development, instructional reading levels.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <div class="card-icon" style="background:var(--blue-bg)">&#128214;</div>
-      <h3>Acadience (DIBELS)</h3>
-      <p>CSV from Acadience Data Management. Composite scores, risk levels, subtests varying by grade (ORF, NWF, PSF, Letter Naming).</p>
-    </div>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ ENTITY RESOLUTION ═══════════════════════════════════ -->
-<section>
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--purple)">Entity Resolution</p>
-  <h2 class="sec-title reveal">One student, <span class="grad-purple">five systems, one record</span></h2>
-  <p class="sec-sub reveal">When &ldquo;Johnathan Smith&rdquo; in the SIS is &ldquo;John Smith Jr.&rdquo; in SEIS and &ldquo;Johnathan A. Smith&rdquo; in MAP &mdash; Splink resolves them probabilistically.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 400" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds3"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="400" rx="20" fill="#FAFAFA"/>
-      <!-- Before: scattered records -->
-      <text x="240" y="30" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#8E8E93">BEFORE RESOLUTION</text>
-      <g class="svg-fade stagger-1" filter="url(#ds3)">
-        <rect x="60" y="50" width="180" height="50" rx="10" fill="#FFF" stroke="#AEAEB2" stroke-width="1"/>
-        <text x="150" y="72" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">SIS: &ldquo;Johnathan Smith&rdquo;</text>
-        <text x="150" y="90" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ID: SIS-4821</text>
-      </g>
-      <g class="svg-fade stagger-1" filter="url(#ds3)">
-        <rect x="60" y="115" width="180" height="50" rx="10" fill="#FFF" stroke="#AEAEB2" stroke-width="1"/>
-        <text x="150" y="137" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">SEIS: &ldquo;John Smith Jr.&rdquo;</text>
-        <text x="150" y="155" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ID: SEIS-7713</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds3)">
-        <rect x="60" y="180" width="180" height="50" rx="10" fill="#FFF" stroke="#AEAEB2" stroke-width="1"/>
-        <text x="150" y="202" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">MAP: &ldquo;Johnathan A. Smith&rdquo;</text>
-        <text x="150" y="220" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ID: MAP-2209</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds3)">
-        <rect x="60" y="245" width="180" height="50" rx="10" fill="#FFF" stroke="#AEAEB2" stroke-width="1"/>
-        <text x="150" y="267" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Star: &ldquo;John Smith&rdquo;</text>
-        <text x="150" y="285" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ID: STAR-3391</text>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds3)">
-        <rect x="60" y="310" width="180" height="50" rx="10" fill="#FFF" stroke="#AEAEB2" stroke-width="1"/>
-        <text x="150" y="332" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Acadience: &ldquo;J. Smith&rdquo;</text>
-        <text x="150" y="350" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">ID: ACE-8847</text>
-      </g>
-      <!-- Splink engine in the middle -->
-      <g class="svg-fade stagger-3">
-        <rect x="380" y="120" width="200" height="160" rx="18" fill="#FFF" stroke="var(--purple)" stroke-width="2" filter="url(#ds3)"/>
-        <text x="480" y="165" text-anchor="middle" font-family="Inter" font-size="13" font-weight="700" fill="var(--purple)">Splink Engine</text>
-        <text x="480" y="188" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Fellegi-Sunter model</text>
-        <text x="480" y="208" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">Probabilistic matching</text>
-        <text x="480" y="228" text-anchor="middle" font-family="Inter" font-size="10" fill="#6E6E73">5 blocking rules</text>
-        <text x="480" y="258" text-anchor="middle" font-family="Inter" font-size="9" fill="var(--purple)">Match score: 0.97</text>
-        <!-- Pulsing ring -->
-        <rect x="376" y="116" width="208" height="168" rx="22" fill="none" stroke="var(--purple)" stroke-width="1" opacity=".25">
-          <animate attributeName="opacity" values=".25;.08;.25" dur="2.5s" repeatCount="indefinite"/>
-        </rect>
-      </g>
-      <!-- Arrows from records to engine -->
-      <line x1="240" y1="75" x2="380" y2="170" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="240" y1="140" x2="380" y2="185" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="240" y1="205" x2="380" y2="200" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="240" y1="270" x2="380" y2="215" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-      <line x1="240" y1="335" x2="380" y2="230" stroke="#AEAEB2" stroke-width="1" stroke-dasharray="4,3"/>
-      <!-- After: golden record -->
-      <text x="860" y="30" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">AFTER RESOLUTION</text>
-      <line x1="580" y1="200" x2="680" y2="200" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <g class="svg-fade stagger-4" filter="url(#ds3)">
-        <rect x="700" y="80" width="380" height="240" rx="18" fill="#FFF" stroke="var(--green)" stroke-width="2"/>
-        <!-- Golden badge -->
-        <circle cx="720" cy="100" r="10" fill="var(--green)"/>
-        <text x="720" y="104" text-anchor="middle" font-family="Inter" font-size="10" fill="#FFF">&#10003;</text>
-        <text x="740" y="104" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Golden Record</text>
-        <text x="720" y="130" font-family="Inter" font-size="11" font-weight="600" fill="var(--tx)">Johnathan Smith</text>
-        <text x="720" y="150" font-family="Inter" font-size="10" fill="#6E6E73">ATLAS ID: ATL-00482109</text>
-        <line x1="720" y1="165" x2="1060" y2="165" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="720" y="185" font-family="Inter" font-size="9" font-weight="600" fill="#8E8E93">CROSS-REFERENCES</text>
-        <text x="720" y="205" font-family="Inter" font-size="10" fill="#6E6E73">SIS-4821 &bull; SEIS-7713 &bull; MAP-2209 &bull; STAR-3391 &bull; ACE-8847</text>
-        <line x1="720" y1="220" x2="1060" y2="220" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="720" y="240" font-family="Inter" font-size="9" font-weight="600" fill="#8E8E93">UNIFIED DATA</text>
-        <text x="720" y="260" font-family="Inter" font-size="10" fill="#6E6E73">&#10003; Demographics (SIS authoritative)</text>
-        <text x="720" y="278" font-family="Inter" font-size="10" fill="#6E6E73">&#10003; IEP &amp; Services (SEIS authoritative)</text>
-        <text x="720" y="296" font-family="Inter" font-size="10" fill="#6E6E73">&#10003; Assessment scores (MAP, Star, Acadience)</text>
-      </g>
-    </svg>
-  </div>
-
-  <details class="deep reveal">
-    <summary>Splink Configuration Details</summary>
+  <!-- Entity Resolution Accordion -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Entity resolution &mdash; the Splink pipeline</summary>
     <div class="deep-body">
-      <h4>Blocking Strategy (reduce 2.5B comparisons to manageable candidates)</h4>
-      <p><strong>Rule 1:</strong> Exact DOB + first 3 chars of last name</p>
-      <p><strong>Rule 2:</strong> Exact last name + first 3 chars of first name + same school</p>
-      <p><strong>Rule 3:</strong> Exact district student ID (deterministic)</p>
-      <p><strong>Rule 4:</strong> Exact state student ID (deterministic)</p>
-      <p><strong>Rule 5:</strong> Soundex of last name + DOB year + gender (phonetic matching)</p>
+      <p>This is the most critical and error-prone step. When NWEA MAP has &ldquo;Johnathan Smith&rdquo; and the SIS has &ldquo;John Smith Jr.&rdquo; and the SPED system has &ldquo;Johnathan A. Smith&rdquo; &mdash; are these the same student? Getting this wrong means a student&rsquo;s assessment data disconnects from their IEP.</p>
+      <h4>Blocking Strategy</h4>
+      <p>Without blocking, 50K students &times; 50K = 2.5 billion comparisons. Blocking rules reduce to plausible candidate pairs:</p>
+      <div class="code-block"># Rule 1: Exact DOB + first 3 chars of last name
+l.date_of_birth = r.date_of_birth AND substr(l.last_name,1,3) = substr(r.last_name,1,3)
+
+# Rule 2: Exact last name + first 3 chars first name + same school
+l.last_name = r.last_name AND substr(l.first_name,1,3) = substr(r.first_name,1,3) AND l.school_id = r.school_id
+
+# Rule 3: Exact district student ID (strongest when available)
+l.district_student_id = r.district_student_id AND l.district_student_id IS NOT NULL
+
+# Rule 4: Soundex of last name + DOB year + gender (phonetic variations)
+soundex(l.last_name) = soundex(r.last_name) AND substr(l.dob,1,4) = substr(r.dob,1,4)</div>
+      <h4>Comparison Columns (Fellegi-Sunter)</h4>
+      <p>Each field is compared using appropriate string similarity: Jaro-Winkler for names (handles &ldquo;John&rdquo; vs &ldquo;Johnathan&rdquo;), exact match for DOB (strongest signal), date-diff with tolerances for data entry errors, term frequency adjustments (rare names provide stronger match evidence).</p>
       <h4>Match Thresholds</h4>
-      <p><strong>&ge;0.95:</strong> Auto-link (no human review). <strong>0.70&ndash;0.95:</strong> Human review queue. <strong>&lt;0.70:</strong> Create as new entity.</p>
-      <h4>Survivorship Rules</h4>
-      <p>SIS is authoritative for identity and enrollment. SPED system is authoritative for IEP/services. Assessment platform is authoritative for scores. Program flags use union strategy across all sources.</p>
+      <table class="tbl">
+        <thead><tr><th>Probability</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>&ge; 0.95</td><td>Auto-link (no human review needed)</td></tr>
+          <tr><td>0.70 &ndash; 0.95</td><td>Send to human review queue</td></tr>
+          <tr><td>&lt; 0.70</td><td>Auto-reject (create as new entity)</td></tr>
+        </tbody>
+      </table>
+      <h4>Survivorship Rules (Golden Record)</h4>
+      <p>When records match, which source wins for each field? SIS is authoritative for identity/enrollment fields. SPED system is authoritative for support plan data. Assessment platforms are authoritative for assessment events. Program flags use union strategy (merge from all sources).</p>
+    </div>
+  </details>
+
+  <!-- Signal Detection Accordion -->
+  <details class="deep reveal">
+    <summary>Signal detection &mdash; 5 methods, 48+ features</summary>
+    <div class="deep-body">
+      <p>Once data flows into the graph, the Signal Detection Service continuously monitors every learner across 48+ computed features. Five complementary detection methods run in parallel:</p>
+      <h4>1. Threshold-Based</h4>
+      <p>Simple but effective: attendance below 90%, GPA below 2.0, more than 3 referrals in 30 days. Configurable per district via InstitutionalContext.</p>
+      <h4>2. Trend Detection</h4>
+      <p>Detects trajectory changes using regression analysis. A student dropping from B+ to C over 6 weeks triggers before they hit any absolute threshold.</p>
+      <h4>3. Anomaly Detection</h4>
+      <p>Statistical outlier detection relative to the student&rsquo;s own baseline and peer cohort. Uses Isolation Forest and z-score methods.</p>
+      <h4>4. Convergent Signal</h4>
+      <p>The most powerful method: detects when multiple weak signals across different domains converge. Grade dip + attendance drop + behavior referral = high-confidence alert even when no single metric triggers.</p>
+      <h4>5. GNN-Based (Graph Neural Network)</h4>
+      <p>Leverages the graph structure itself. Uses GraphSAGE embeddings to detect when a student&rsquo;s neighborhood pattern resembles students who previously needed intervention.</p>
+    </div>
+  </details>
+
+  <!-- Feature Engineering Accordion -->
+  <details class="deep reveal">
+    <summary>Feature engineering &mdash; 48+ learner features</summary>
+    <div class="deep-body">
+      <p>Each learner has a continuously updated feature vector computed from graph traversals. Key feature categories:</p>
+      <table class="tbl">
+        <thead><tr><th>Category</th><th>Example Features</th><th>Count</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Academic</strong></td><td>GPA, grade trend slope, assignment completion rate, assessment growth percentile</td><td>12</td></tr>
+          <tr><td><strong>Attendance</strong></td><td>Rate, trend, consecutive absences, tardy pattern, period-specific patterns</td><td>8</td></tr>
+          <tr><td><strong>Behavioral</strong></td><td>Referral count/trend, PBIS points, suspension days, SEL assessment scores</td><td>8</td></tr>
+          <tr><td><strong>Engagement</strong></td><td>LMS login frequency, assignment submission timing, extracurricular participation</td><td>6</td></tr>
+          <tr><td><strong>Support Plan</strong></td><td>Service delivery fidelity, goal progress rate, accommodation utilization</td><td>6</td></tr>
+          <tr><td><strong>Contextual</strong></td><td>Schedule changes, teacher changes, school transfers, household instability indicators</td><td>8+</td></tr>
+        </tbody>
+      </table>
     </div>
   </details>
 </div>
 </section>
 
-<!-- ═══════════════════════════════════ FEATURE ENGINEERING ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--green)">Feature Engineering</p>
-  <h2 class="sec-title reveal">48+ features <span class="grad-green">per learner, nightly</span></h2>
-  <p class="sec-sub reveal">Every night the pipeline computes a rich feature vector for each student, powering signal detection and risk prediction without ever using demographic identity.</p>
-
-  <div class="g3 reveal" style="margin-top:40px">
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <div class="card-icon" style="background:var(--blue-bg)">&#128218;</div>
-      <h3>Academic (14 features)</h3>
-      <p>GPA trend, courses failing, grade-vs-assessment discrepancy, growth rate, standards mastery, missing assignment acceleration.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--green)"></div>
-      <div class="card-icon" style="background:var(--green-bg)">&#128197;</div>
-      <h3>Attendance (12 features)</h3>
-      <p>Attendance rate (YTD, 30d, 14d), trend slope, consecutive absences, day-of-week patterns, period patterns, absence-after-event correlation.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
-      <div class="card-icon" style="background:var(--amber-bg)">&#128227;</div>
-      <h3>Behavioral (7 features)</h3>
-      <p>Incident counts (30d, 90d), trend direction, severity escalation flag, new behavior type flag, positive behavior trend.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--purple)"></div>
-      <div class="card-icon" style="background:var(--purple-bg)">&#128187;</div>
-      <h3>Engagement (4 features)</h3>
-      <p>LMS login frequency, login trend, assignment submission timeliness, extracurricular count changes.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--blue)"></div>
-      <div class="card-icon" style="background:var(--blue-bg)">&#127919;</div>
-      <h3>Intervention (5 features)</h3>
-      <p>Active count, dosage compliance, session attendance, response rate, prior intervention success rate.</p>
-    </div>
-    <div class="card" style="position:relative;overflow:hidden">
-      <div style="position:absolute;top:0;left:24px;right:24px;height:3px;border-radius:0 0 3px 3px;background:var(--amber)"></div>
-      <div class="card-icon" style="background:var(--amber-bg)">&#128203;</div>
-      <h3>Compliance (6+ features)</h3>
-      <p>Active IEP/504, annual review days until, service minutes compliance %, overdue evaluations, overdue meetings.</p>
-    </div>
-  </div>
-
-  <div style="margin-top:28px;padding:20px 28px;border-radius:16px;background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.15)" class="reveal">
-    <strong style="color:var(--amber)">Bias Mitigation:</strong> Race, ethnicity, gender, and disability status are NEVER included as model features. The risk model predicts from behavioral and academic signals, not from identity. Post-hoc fairness audits verify calibration across demographic groups.
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ SIGNAL DETECTION ═══════════════════════════════════ -->
-<section>
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--amber)">Signal Detection</p>
-  <h2 class="sec-title reveal">Five methods, <span class="grad-blue">zero blind spots</span></h2>
-  <p class="sec-sub reveal">Each method catches patterns the others miss. Together they ensure that no student falls through the cracks.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 480" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds4"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="480" rx="20" fill="#FAFAFA"/>
-      <!-- Central signal aggregator -->
-      <g class="svg-fade stagger-3">
-        <circle cx="560" cy="240" r="60" fill="rgba(0,122,255,.06)" stroke="var(--blue)" stroke-width="2"/>
-        <text x="560" y="232" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Signal</text>
-        <text x="560" y="250" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Aggregator</text>
-        <circle cx="560" cy="240" r="70" fill="none" stroke="var(--blue)" stroke-width=".75" opacity=".3">
-          <animate attributeName="r" values="70;78;70" dur="3s" repeatCount="indefinite"/>
-          <animate attributeName="opacity" values=".3;.1;.3" dur="3s" repeatCount="indefinite"/>
-        </circle>
-      </g>
-      <!-- Method 1: Threshold -->
-      <g class="svg-fade stagger-1" filter="url(#ds4)">
-        <rect x="40" y="40" width="220" height="130" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="80" cy="74" r="18" fill="rgba(255,159,10,.1)"/>
-        <text x="80" y="79" text-anchor="middle" font-family="Inter" font-size="16">&#9888;&#65039;</text>
-        <text x="115" y="74" font-family="Inter" font-size="12" font-weight="700" fill="var(--amber)">1. Threshold</text>
-        <text x="60" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Deterministic rules that fire when</text>
-        <text x="60" y="115" font-family="Inter" font-size="9.5" fill="#6E6E73">values cross boundaries. Fastest</text>
-        <text x="60" y="130" font-family="Inter" font-size="9.5" fill="#6E6E73">and most explainable.</text>
-        <text x="60" y="155" font-family="Inter" font-size="9" fill="#8E8E93">&ldquo;Attendance &lt; 90%&rdquo; &bull; &ldquo;Failing 2+ courses&rdquo;</text>
-      </g>
-      <line x1="260" y1="105" x2="500" y2="220" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-      <!-- Method 2: Trend -->
-      <g class="svg-fade stagger-1" filter="url(#ds4)">
-        <rect x="40" y="230" width="220" height="130" rx="16" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <circle cx="80" cy="264" r="18" fill="rgba(0,122,255,.08)"/>
-        <text x="80" y="269" text-anchor="middle" font-family="Inter" font-size="16">&#128200;</text>
-        <text x="115" y="264" font-family="Inter" font-size="12" font-weight="700" fill="var(--blue)">2. Trend</text>
-        <text x="60" y="290" font-family="Inter" font-size="9.5" fill="#6E6E73">OLS regression detects significant</text>
-        <text x="60" y="305" font-family="Inter" font-size="9.5" fill="#6E6E73">slope changes. Catches declining</text>
-        <text x="60" y="320" font-family="Inter" font-size="9.5" fill="#6E6E73">trajectories before thresholds fire.</text>
-        <text x="60" y="345" font-family="Inter" font-size="9" fill="#8E8E93">Prior vs. recent window slope comparison</text>
-      </g>
-      <line x1="260" y1="295" x2="500" y2="250" stroke="var(--blue)" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-      <!-- Method 3: Anomaly -->
-      <g class="svg-fade stagger-2" filter="url(#ds4)">
-        <rect x="860" y="40" width="220" height="130" rx="16" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <circle cx="900" cy="74" r="18" fill="rgba(123,97,255,.08)"/>
-        <text x="900" y="79" text-anchor="middle" font-family="Inter" font-size="16">&#128301;</text>
-        <text x="935" y="74" font-family="Inter" font-size="12" font-weight="700" fill="var(--purple)">3. Anomaly</text>
-        <text x="880" y="100" font-family="Inter" font-size="9.5" fill="#6E6E73">Isolation Forest detects points</text>
-        <text x="880" y="115" font-family="Inter" font-size="9.5" fill="#6E6E73">inconsistent with history and</text>
-        <text x="880" y="130" font-family="Inter" font-size="9.5" fill="#6E6E73">peer group.</text>
-        <text x="880" y="155" font-family="Inter" font-size="9" fill="#8E8E93">Feature attribution for each anomaly</text>
-      </g>
-      <line x1="860" y1="105" x2="620" y2="220" stroke="var(--purple)" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-      <!-- Method 4: Convergent -->
-      <g class="svg-fade stagger-2" filter="url(#ds4)">
-        <rect x="860" y="230" width="220" height="130" rx="16" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <circle cx="900" cy="264" r="18" fill="rgba(255,159,10,.1)"/>
-        <text x="900" y="269" text-anchor="middle" font-family="Inter" font-size="16">&#127758;</text>
-        <text x="935" y="264" font-family="Inter" font-size="12" font-weight="700" fill="var(--amber)">4. Convergent</text>
-        <text x="880" y="290" font-family="Inter" font-size="9.5" fill="#6E6E73">Multiple weak signals from</text>
-        <text x="880" y="305" font-family="Inter" font-size="9.5" fill="#6E6E73">different domains converge</text>
-        <text x="880" y="320" font-family="Inter" font-size="9.5" fill="#6E6E73">within a 14-day window.</text>
-        <text x="880" y="345" font-family="Inter" font-size="9" fill="#8E8E93">Tardy + grade drop + missed session = action</text>
-      </g>
-      <line x1="860" y1="295" x2="620" y2="250" stroke="var(--amber)" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-      <!-- Method 5: GNN -->
-      <g class="svg-fade stagger-3" filter="url(#ds4)">
-        <rect x="400" y="400" width="320" height="60" rx="16" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <text x="560" y="428" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="var(--green)">5. GNN-Based &mdash; Graph Neural Network</text>
-        <text x="560" y="448" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Community-level patterns invisible to individual-level analysis</text>
-      </g>
-      <line x1="560" y1="300" x2="560" y2="400" stroke="var(--green)" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
-    </svg>
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ RISK MODEL ═══════════════════════════════════ -->
-<section class="section-alt">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--purple)">Risk Prediction</p>
-  <h2 class="sec-title reveal">LightGBM <span class="grad-purple">composite risk scoring</span></h2>
-  <p class="sec-sub reveal">Predicts probability of negative outcomes to prioritize which students the system analyzes first. Never used to make decisions &mdash; only to set analysis priority.</p>
-
-  <div class="dia dia-hero reveal">
-    <svg viewBox="0 0 1120 320" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds5"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="320" rx="20" fill="#FAFAFA"/>
-      <!-- 5 outcome columns -->
-      <g class="svg-fade stagger-1" filter="url(#ds5)">
-        <rect x="40" y="50" width="180" height="220" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <text x="130" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Course Failure</text>
-        <text x="130" y="105" text-anchor="middle" font-family="Inter" font-size="28" font-weight="700" fill="var(--tx)">20%</text>
-        <text x="130" y="125" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">weight</text>
-        <line x1="70" y1="140" x2="190" y2="140" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="130" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Will the student fail</text>
-        <text x="130" y="180" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">a course within</text>
-        <text x="130" y="195" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">90 days?</text>
-        <!-- Weight bar -->
-        <rect x="60" y="230" width="140" height="6" rx="3" fill="#E5E5EA"/>
-        <rect x="60" y="230" width="28" height="6" rx="3" fill="var(--amber)"/>
-      </g>
-      <g class="svg-fade stagger-2" filter="url(#ds5)">
-        <rect x="250" y="50" width="180" height="220" rx="14" fill="#FFF" stroke="var(--blue)" stroke-width="1.5"/>
-        <text x="340" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--blue)">Chronic Absence</text>
-        <text x="340" y="105" text-anchor="middle" font-family="Inter" font-size="28" font-weight="700" fill="var(--tx)">25%</text>
-        <text x="340" y="125" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">weight</text>
-        <line x1="280" y1="140" x2="400" y2="140" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="340" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Will attendance cross</text>
-        <text x="340" y="180" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">the 10% absence</text>
-        <text x="340" y="195" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">threshold?</text>
-        <rect x="270" y="230" width="140" height="6" rx="3" fill="#E5E5EA"/>
-        <rect x="270" y="230" width="35" height="6" rx="3" fill="var(--blue)"/>
-      </g>
-      <g class="svg-fade stagger-3" filter="url(#ds5)">
-        <rect x="460" y="50" width="180" height="220" rx="14" fill="#FFF" stroke="var(--amber)" stroke-width="1.5"/>
-        <text x="550" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--amber)">Suspension</text>
-        <text x="550" y="105" text-anchor="middle" font-family="Inter" font-size="28" font-weight="700" fill="var(--tx)">15%</text>
-        <text x="550" y="125" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">weight</text>
-        <line x1="490" y1="140" x2="610" y2="140" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="550" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Will the student</text>
-        <text x="550" y="180" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">receive a</text>
-        <text x="550" y="195" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">suspension?</text>
-        <rect x="480" y="230" width="140" height="6" rx="3" fill="#E5E5EA"/>
-        <rect x="480" y="230" width="21" height="6" rx="3" fill="var(--amber)"/>
-      </g>
-      <g class="svg-fade stagger-4" filter="url(#ds5)">
-        <rect x="670" y="50" width="180" height="220" rx="14" fill="#FFF" stroke="var(--purple)" stroke-width="1.5"/>
-        <text x="760" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--purple)">IEP Non-Compliance</text>
-        <text x="760" y="105" text-anchor="middle" font-family="Inter" font-size="28" font-weight="700" fill="var(--tx)">25%</text>
-        <text x="760" y="125" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">weight</text>
-        <line x1="700" y1="140" x2="820" y2="140" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="760" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Will service delivery</text>
-        <text x="760" y="180" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">fall below</text>
-        <text x="760" y="195" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">compliance?</text>
-        <rect x="690" y="230" width="140" height="6" rx="3" fill="#E5E5EA"/>
-        <rect x="690" y="230" width="35" height="6" rx="3" fill="var(--purple)"/>
-      </g>
-      <g class="svg-fade stagger-5" filter="url(#ds5)">
-        <rect x="880" y="50" width="180" height="220" rx="14" fill="#FFF" stroke="var(--green)" stroke-width="1.5"/>
-        <text x="970" y="80" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="var(--green)">Dropout</text>
-        <text x="970" y="105" text-anchor="middle" font-family="Inter" font-size="28" font-weight="700" fill="var(--tx)">15%</text>
-        <text x="970" y="125" text-anchor="middle" font-family="Inter" font-size="9" fill="#8E8E93">weight</text>
-        <line x1="910" y1="140" x2="1030" y2="140" stroke="#E5E5EA" stroke-width="1"/>
-        <text x="970" y="165" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">Will the student</text>
-        <text x="970" y="180" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">withdraw within</text>
-        <text x="970" y="195" text-anchor="middle" font-family="Inter" font-size="9.5" fill="#6E6E73">the year?</text>
-        <rect x="900" y="230" width="140" height="6" rx="3" fill="#E5E5EA"/>
-        <rect x="900" y="230" width="21" height="6" rx="3" fill="var(--green)"/>
-      </g>
-      <!-- Bottom label -->
-      <text x="560" y="305" text-anchor="middle" font-family="Inter" font-size="10" fill="#8E8E93">Composite = weighted sum &mdash; sets analysis priority, never makes decisions</text>
-    </svg>
-  </div>
-
-  <div style="margin-top:28px;padding:20px 28px;border-radius:16px;background:rgba(0,122,255,.05);border:1px solid rgba(0,122,255,.12)" class="reveal">
-    <strong style="color:var(--blue)">Explainability:</strong> Every prediction includes SHAP feature importance values showing which specific features are driving the risk score for each individual student. No black boxes.
-  </div>
-</div>
-</section>
-
-<!-- ═══════════════════════════════════ NEXT ═══════════════════════════════════ -->
+<!-- ═══════════════════════════ NEXT ═══════════════════════════ -->
 <section style="padding:60px 0">
 <div class="con">
   <a href="optimization.html" class="next-topic reveal">
     <div>
       <div class="next-label">Next Chapter</div>
-      <div class="next-title">Intelligence &amp; Optimization &rarr; LLM Agents + 12 Models</div>
+      <div class="next-title">Intelligence &amp; Optimization &rarr; 12 Models, LangGraph Agent</div>
     </div>
     <span class="next-arrow">&rarr;</span>
   </a>
@@ -601,12 +260,11 @@
     <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
     <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
   </div>
-  <div class="footer-bottom">ATLAS Education Operating System &mdash; See every student. Miss nothing.</div>
+  <div class="footer-bottom">ATLAS Education Operating System &mdash; From 47 disconnected systems to one intelligence layer.</div>
 </div>
 </footer>
 
 <button id="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">&uarr;</button>
-
 <script src="atlas.js" defer></script>
 </body>
 </html>

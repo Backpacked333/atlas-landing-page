@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   ATLAS — Enhanced Runtime v2
-   Scroll reveal · Progress bar · Back-to-top · Parallax
-   Counter animations · Scroll-driven effects · Smooth interactions
+   ATLAS — Shared Runtime
+   Scroll reveal · Progress bar · Back-to-top · Details auto-scroll
    ═══════════════════════════════════════════════════════════════ */
 
 // ── Scroll Reveal (IntersectionObserver) ──
@@ -27,15 +26,13 @@ window.addEventListener('scroll', () => {
 
 // ── Back to Top ──
 const topBtn = document.getElementById('top-btn');
-if (topBtn) {
-  let topT = false;
-  window.addEventListener('scroll', () => {
-    if (!topT) {
-      requestAnimationFrame(() => { topBtn.classList.toggle('show', window.scrollY > 600); topT = false; });
-      topT = true;
-    }
-  });
-}
+let topT = false;
+window.addEventListener('scroll', () => {
+  if (!topT) {
+    requestAnimationFrame(() => { topBtn.classList.toggle('show', window.scrollY > 600); topT = false; });
+    topT = true;
+  }
+});
 
 // ── Details Auto-scroll ──
 document.querySelectorAll('details.deep').forEach(d => {
@@ -44,13 +41,12 @@ document.querySelectorAll('details.deep').forEach(d => {
   });
 });
 
-// ── Counter Animation ──
+// ── Counter Animation (homepage) ──
 function easeOutExpo(t) { return t === 1 ? 1 : 1 - Math.pow(2, -10 * t); }
 const animateCounters = () => {
   document.querySelectorAll('.stat-num').forEach(el => {
     const target = parseInt(el.dataset.target);
-    if (!target || el.dataset.animated) return;
-    el.dataset.animated = '1';
+    if (!target) return;
     const prefix = el.dataset.prefix || '';
     const suffix = el.dataset.suffix || '';
     const duration = 2000;
@@ -63,66 +59,28 @@ const animateCounters = () => {
     requestAnimationFrame(step);
   });
 };
-
-// Observe all stat rows for counter animation
-document.querySelectorAll('.stat-row').forEach(row => {
+const statRow = document.querySelector('.stat-row');
+if (statRow) {
   const statObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { animateCounters(); statObs.unobserve(e.target); }
-    });
+    entries.forEach(e => { if (e.isIntersecting) { animateCounters(); statObs.unobserve(e.target); } });
   }, { threshold: 0.3 });
-  statObs.observe(row);
-});
+  statObs.observe(statRow);
+}
 
-// ── Hero Parallax ──
+// ── Hero Parallax (homepage) ──
 const heroBg = document.querySelector('.hero-bg');
-const heroOrbs = document.querySelectorAll('.hero-orb');
 if (heroBg) {
   let heroT = false;
   window.addEventListener('scroll', () => {
     if (!heroT) {
       requestAnimationFrame(() => {
-        const y = window.scrollY;
-        if (y < 1200) {
-          heroBg.style.transform = `translateY(${y * 0.08}px)`;
-          // Parallax orbs at different speeds
-          heroOrbs.forEach((orb, i) => {
-            const speed = 0.03 + (i * 0.02);
-            orb.style.transform = `translateY(${y * speed}px)`;
-          });
-        }
+        if (window.scrollY < 1000) heroBg.style.transform = `translateY(${window.scrollY * 0.1}px)`;
         heroT = false;
       });
       heroT = true;
     }
   });
 }
-
-// ── Nav background opacity on scroll ──
-const nav = document.querySelector('nav');
-if (nav) {
-  let navT = false;
-  window.addEventListener('scroll', () => {
-    if (!navT) {
-      requestAnimationFrame(() => {
-        const scrolled = window.scrollY > 20;
-        nav.style.boxShadow = scrolled ? '0 1px 8px rgba(0,0,0,.06)' : 'none';
-        navT = false;
-      });
-      navT = true;
-    }
-  });
-}
-
-// ── Engine Layer hover glow ──
-document.querySelectorAll('.engine-layer').forEach((layer, i) => {
-  layer.addEventListener('mouseenter', () => {
-    layer.style.zIndex = '2';
-  });
-  layer.addEventListener('mouseleave', () => {
-    layer.style.zIndex = '';
-  });
-});
 
 // ── Smooth Anchor Scrolling ──
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -131,17 +89,3 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
   });
 });
-
-// ── Pipeline connector animation on reveal ──
-const pipelineEl = document.querySelector('.pipeline');
-if (pipelineEl) {
-  const pipeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        pipelineEl.classList.add('pipeline-animate');
-        pipeObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.2 });
-  pipeObs.observe(pipelineEl);
-}

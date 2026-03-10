@@ -28,409 +28,683 @@
 </div>
 </nav>
 
-<!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     Full-viewport cinematic opener with animated orbs and data flow
+     ═══════════════════════════════════════════════════════════════════ -->
 <main id="main">
 <section class="hero" id="hero">
 <div class="hero-bg" style="background:
-  radial-gradient(ellipse at 20% 50%, rgba(191,90,242,.12) 0%, transparent 50%),
-  radial-gradient(ellipse at 50% 30%, rgba(0,122,255,.08) 0%, transparent 50%),
-  radial-gradient(ellipse at 80% 50%, rgba(52,199,89,.08) 0%, transparent 50%);"></div>
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--blue)">Education Operating System</p>
-  <h1 class="hero-title reveal reveal-d1" style="max-width:900px">
-    From <span class="grad-purple">47 disconnected systems</span><br>
-    to <span class="grad-blue">one intelligence layer</span>
-  </h1>
-  <p class="hero-sub reveal reveal-d2" style="max-width:640px">
-    ATLAS is a Palantir-grade semantic reasoning platform for K-12 education. It ingests messy data from every school system, reasons about what it finds, and recommends actions &mdash; with humans always in control.
-  </p>
+  radial-gradient(ellipse at 20% 50%, rgba(123,97,255,.10) 0%, transparent 50%),
+  radial-gradient(ellipse at 50% 20%, rgba(0,122,255,.07) 0%, transparent 50%),
+  radial-gradient(ellipse at 80% 60%, rgba(52,199,89,.07) 0%, transparent 50%),
+  radial-gradient(ellipse at 60% 80%, rgba(255,159,10,.05) 0%, transparent 40%);"></div>
 
-  <!-- Stat badges -->
-  <div class="pills reveal reveal-d3">
-    <span class="mp" style="color:#007AFF;border:1.5px solid rgba(0,122,255,.25)">5 Storage Engines</span>
-    <span class="mp" style="color:#FF3B30;border:1.5px solid rgba(255,59,48,.25)">12 Microservices</span>
-    <span class="mp" style="color:#34C759;border:1.5px solid rgba(52,199,89,.25)">9 Operational Domains</span>
-    <span class="mp" style="color:#FF9F0A;border:1.5px solid rgba(255,159,10,.25)">12 Optimization Models</span>
-    <span class="mp" style="color:#FF3B30;border:1.5px solid rgba(255,59,48,.25)">48+ Learner Features</span>
-    <span class="mp" style="color:#007AFF;border:1.5px solid rgba(0,122,255,.25)">5 Causal Methods</span>
+<!-- Floating orbs -->
+<div class="hero-orbs" aria-hidden="true">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-orb hero-orb-3"></div>
+</div>
+
+<div class="con">
+  <div class="hero-content">
+    <div class="hero-badge reveal">
+      <span class="hero-badge-dot"></span>
+      Education Operating System
+    </div>
+    <h1 class="hero-title reveal reveal-d1">
+      See every student.<br>
+      <span class="grad-multi">Miss nothing.</span>
+    </h1>
+    <p class="hero-sub reveal reveal-d2">
+      ATLAS unifies 47 disconnected school systems into one intelligence layer.
+      It ingests messy data, reasons about what it finds, and recommends actions &mdash;
+      with humans always in control.
+    </p>
+    <div class="hero-actions reveal reveal-d3">
+      <a href="#how" class="cta-btn cta-primary">See how it works <span class="cta-arrow">&rarr;</span></a>
+      <a href="#explore" class="cta-btn cta-secondary">Explore the blueprint</a>
+    </div>
   </div>
 
-  <!-- System Architecture Flow Diagram -->
-  <div class="dia dia-hero reveal reveal-d4" style="margin-top:56px">
-    <svg viewBox="0 0 1120 440" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hero metrics strip -->
+  <div class="hero-metrics reveal reveal-d4">
+    <div class="hero-metric">
+      <span class="hero-metric-num">47</span>
+      <span class="hero-metric-label">Systems Unified</span>
+    </div>
+    <div class="hero-metric-sep"></div>
+    <div class="hero-metric">
+      <span class="hero-metric-num">200+</span>
+      <span class="hero-metric-label">Entity Types</span>
+    </div>
+    <div class="hero-metric-sep"></div>
+    <div class="hero-metric">
+      <span class="hero-metric-num">12</span>
+      <span class="hero-metric-label">Optimization Models</span>
+    </div>
+    <div class="hero-metric-sep"></div>
+    <div class="hero-metric">
+      <span class="hero-metric-num">5</span>
+      <span class="hero-metric-label">Storage Engines</span>
+    </div>
+    <div class="hero-metric-sep"></div>
+    <div class="hero-metric">
+      <span class="hero-metric-num">&lt;50ms</span>
+      <span class="hero-metric-label">Query Latency</span>
+    </div>
+  </div>
+
+  <!-- Hero illustration — animated data flow -->
+  <div class="hero-illustration reveal reveal-d5">
+    <svg viewBox="0 0 1120 400" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity=".06"/></filter>
+        <filter id="glow-blue"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#007AFF" flood-opacity=".25"/></filter>
+        <filter id="glow-purple"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#7B61FF" flood-opacity=".25"/></filter>
+        <filter id="glow-green"><feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#34C759" flood-opacity=".25"/></filter>
+        <filter id="ds"><feDropShadow dx="0" dy="2" stdDeviation="6" flood-opacity=".06"/></filter>
+        <linearGradient id="flow-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#007AFF" stop-opacity=".6"/>
+          <stop offset="50%" stop-color="#7B61FF" stop-opacity=".8"/>
+          <stop offset="100%" stop-color="#34C759" stop-opacity=".6"/>
+        </linearGradient>
+        <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#FFFFFF"/>
+          <stop offset="100%" stop-color="#F8F8FA"/>
+        </linearGradient>
       </defs>
-      <rect width="1120" height="440" fill="#FAFAFA" rx="0"/>
+      <rect width="1120" height="400" fill="#FAFAFA" rx="0"/>
 
-      <!-- SOURCE SYSTEMS -->
-      <g filter="url(#ds)">
-        <rect x="24" y="32" width="160" height="340" rx="14" fill="#FFF" stroke="#E8E8ED" stroke-width="1.2"/>
-        <text x="104" y="58" text-anchor="middle" font-family="Inter" font-size="11" font-weight="700" fill="#1D1D1F" letter-spacing=".04em">SOURCE SYSTEMS</text>
-        <rect x="42" y="74" width="124" height="30" rx="8" fill="rgba(255,149,0,.08)" stroke="rgba(255,149,0,.25)" stroke-width="1"/>
-        <text x="104" y="94" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#FF9500">PowerSchool SIS</text>
-        <rect x="42" y="112" width="124" height="30" rx="8" fill="rgba(255,59,48,.08)" stroke="rgba(255,59,48,.25)" stroke-width="1"/>
-        <text x="104" y="132" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#FF3B30">NWEA MAP</text>
-        <rect x="42" y="150" width="124" height="30" rx="8" fill="rgba(0,122,255,.08)" stroke="rgba(0,122,255,.25)" stroke-width="1"/>
-        <text x="104" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#007AFF">SEIS (SPED)</text>
-        <rect x="42" y="188" width="124" height="30" rx="8" fill="rgba(52,199,89,.08)" stroke="rgba(52,199,89,.25)" stroke-width="1"/>
-        <text x="104" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#34C759">Star 360</text>
-        <rect x="42" y="226" width="124" height="30" rx="8" fill="rgba(88,86,214,.08)" stroke="rgba(88,86,214,.25)" stroke-width="1"/>
-        <text x="104" y="246" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#5856D6">Clever</text>
-        <rect x="42" y="264" width="124" height="30" rx="8" fill="rgba(90,200,250,.08)" stroke="rgba(90,200,250,.25)" stroke-width="1"/>
-        <text x="104" y="284" text-anchor="middle" font-family="JetBrains Mono" font-size="10" font-weight="600" fill="#5AC8FA">Frontline</text>
-        <text x="104" y="330" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">CSV &middot; REST &middot; SFTP &middot; CDC</text>
+      <!-- Animated flow lines (background) -->
+      <path d="M 184 200 C 280 200 280 120 400 120" fill="none" stroke="url(#flow-grad)" stroke-width="2" stroke-dasharray="8,6" opacity=".3" class="svg-draw"/>
+      <path d="M 184 200 C 280 200 280 200 400 200" fill="none" stroke="url(#flow-grad)" stroke-width="2" stroke-dasharray="8,6" opacity=".4" class="svg-draw"/>
+      <path d="M 184 200 C 280 200 280 280 400 280" fill="none" stroke="url(#flow-grad)" stroke-width="2" stroke-dasharray="8,6" opacity=".3" class="svg-draw"/>
+      <path d="M 540 200 C 620 200 620 200 710 200" fill="none" stroke="url(#flow-grad)" stroke-width="2.5" stroke-dasharray="8,6" opacity=".5" class="svg-draw"/>
+      <path d="M 850 200 C 920 200 920 200 980 200" fill="none" stroke="url(#flow-grad)" stroke-width="2" stroke-dasharray="8,6" opacity=".4" class="svg-draw"/>
+
+      <!-- SOURCE SYSTEMS (left cluster) -->
+      <g filter="url(#ds)" class="svg-fade stagger-1">
+        <rect x="24" y="44" width="160" height="312" rx="20" fill="url(#card-grad)" stroke="#E8E8ED" stroke-width="1.2"/>
+        <text x="104" y="76" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#1D1D1F" letter-spacing=".06em">SOURCE SYSTEMS</text>
+        <rect x="44" y="96" width="120" height="32" rx="10" fill="rgba(255,149,0,.07)" stroke="rgba(255,149,0,.2)" stroke-width="1"/>
+        <text x="104" y="117" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#FF9500">PowerSchool SIS</text>
+        <rect x="44" y="138" width="120" height="32" rx="10" fill="rgba(255,59,48,.07)" stroke="rgba(255,59,48,.2)" stroke-width="1"/>
+        <text x="104" y="159" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#FF3B30">NWEA MAP</text>
+        <rect x="44" y="180" width="120" height="32" rx="10" fill="rgba(0,122,255,.07)" stroke="rgba(0,122,255,.2)" stroke-width="1"/>
+        <text x="104" y="201" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#007AFF">SEIS (SPED)</text>
+        <rect x="44" y="222" width="120" height="32" rx="10" fill="rgba(52,199,89,.07)" stroke="rgba(52,199,89,.2)" stroke-width="1"/>
+        <text x="104" y="243" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#34C759">Star 360</text>
+        <rect x="44" y="264" width="120" height="32" rx="10" fill="rgba(88,86,214,.07)" stroke="rgba(88,86,214,.2)" stroke-width="1"/>
+        <text x="104" y="285" text-anchor="middle" font-family="Inter" font-size="10" font-weight="600" fill="#5856D6">Clever SSO</text>
+        <text x="104" y="332" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">CSV &middot; REST &middot; SFTP &middot; CDC</text>
       </g>
 
-      <!-- Arrow 1 -->
-      <polygon points="196,200 210,194 210,206" fill="#007AFF"/>
-
-      <!-- DATA PIPELINE -->
-      <g filter="url(#ds)">
-        <rect x="220" y="60" width="180" height="290" rx="14" fill="#FFF" stroke="rgba(0,122,255,.2)" stroke-width="1.5"/>
-        <text x="310" y="86" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#007AFF">DATA PIPELINE</text>
-        <text x="248" y="120" font-family="Inter" font-size="11" font-weight="600" fill="#007AFF">1. Parse &amp; Validate</text>
-        <text x="248" y="148" font-family="Inter" font-size="11" font-weight="600" fill="#007AFF">2. Normalize</text>
-        <text x="248" y="176" font-family="Inter" font-size="11" font-weight="600" fill="#007AFF">3. Enrich</text>
-        <text x="248" y="204" font-family="Inter" font-size="11" font-weight="600" fill="#007AFF">4. Entity Resolution</text>
-        <text x="248" y="232" font-family="Inter" font-size="11" font-weight="600" fill="#007AFF">5. Graph Write</text>
-        <text x="310" y="310" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Kafka Streams &middot; SpLink</text>
+      <!-- DATA PIPELINE (center-left) -->
+      <g filter="url(#ds)" class="svg-fade stagger-3">
+        <rect x="400" y="74" width="140" height="252" rx="20" fill="url(#card-grad)" stroke="rgba(0,122,255,.2)" stroke-width="1.5"/>
+        <rect x="400" y="74" width="140" height="44" rx="20" fill="rgba(0,122,255,.06)"/>
+        <text x="470" y="102" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#007AFF" letter-spacing=".04em">PIPELINE</text>
+        <g font-family="Inter" font-size="10.5" font-weight="600" fill="#007AFF">
+          <circle cx="424" cy="142" r="4" fill="rgba(0,122,255,.2)"/>
+          <text x="436" y="146">Parse</text>
+          <circle cx="424" cy="172" r="4" fill="rgba(0,122,255,.25)"/>
+          <text x="436" y="176">Normalize</text>
+          <circle cx="424" cy="202" r="4" fill="rgba(0,122,255,.3)"/>
+          <text x="436" y="206">Enrich</text>
+          <circle cx="424" cy="232" r="4" fill="rgba(0,122,255,.35)"/>
+          <text x="436" y="236">Resolve</text>
+          <circle cx="424" cy="262" r="4" fill="rgba(0,122,255,.4)"/>
+          <text x="436" y="266">Persist</text>
+        </g>
+        <text x="470" y="308" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#AEAEB2">Kafka Streams &middot; SpLink</text>
       </g>
 
-      <!-- Arrow 2 -->
-      <polygon points="412,200 426,194 426,206" fill="#007AFF"/>
-
-      <!-- KNOWLEDGE GRAPH -->
-      <g filter="url(#ds)">
-        <rect x="436" y="60" width="170" height="290" rx="14" fill="#FFF" stroke="rgba(123,97,255,.2)" stroke-width="1.5"/>
-        <text x="521" y="86" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#7B61FF">KNOWLEDGE GRAPH</text>
-        <!-- Graph visualization -->
-        <circle cx="521" cy="155" r="22" fill="rgba(0,122,255,.08)" stroke="#007AFF" stroke-width="1.5"/>
-        <text x="521" y="159" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#007AFF">Student</text>
-        <circle cx="475" cy="210" r="16" fill="rgba(255,59,48,.08)" stroke="#FF3B30" stroke-width="1"/>
-        <text x="475" y="214" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF3B30">Attend</text>
-        <circle cx="567" cy="210" r="16" fill="rgba(52,199,89,.08)" stroke="#34C759" stroke-width="1"/>
-        <text x="567" y="214" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Grade</text>
-        <circle cx="521" cy="250" r="16" fill="rgba(255,159,10,.08)" stroke="#FF9F0A" stroke-width="1"/>
-        <text x="521" y="254" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9F0A">Teacher</text>
-        <line x1="505" y1="170" x2="485" y2="197" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="537" y1="170" x2="557" y2="197" stroke="#E8E8ED" stroke-width="1"/>
-        <line x1="521" y1="177" x2="521" y2="234" stroke="#E8E8ED" stroke-width="1"/>
-        <text x="521" y="300" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Neo4j &middot; XTDB &middot; Postgres</text>
-        <text x="521" y="316" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Elasticsearch &middot; Redis</text>
-        <text x="521" y="340" text-anchor="middle" font-family="Inter" font-size="9" font-weight="500" fill="#AEAEB2">Polyglot Persistence</text>
+      <!-- KNOWLEDGE GRAPH (center) -->
+      <g filter="url(#ds)" class="svg-fade stagger-5">
+        <rect x="710" y="74" width="140" height="252" rx="20" fill="url(#card-grad)" stroke="rgba(123,97,255,.2)" stroke-width="1.5"/>
+        <rect x="710" y="74" width="140" height="44" rx="20" fill="rgba(123,97,255,.06)"/>
+        <text x="780" y="102" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#7B61FF" letter-spacing=".04em">GRAPH</text>
+        <!-- Mini knowledge graph -->
+        <circle cx="780" cy="168" r="20" fill="rgba(0,122,255,.08)" stroke="#007AFF" stroke-width="1.5" filter="url(#glow-blue)"/>
+        <text x="780" y="172" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="#007AFF">Student</text>
+        <circle cx="740" cy="220" r="13" fill="rgba(255,59,48,.08)" stroke="#FF3B30" stroke-width="1"/>
+        <text x="740" y="224" text-anchor="middle" font-family="Inter" font-size="6.5" font-weight="600" fill="#FF3B30">Attend</text>
+        <circle cx="820" cy="220" r="13" fill="rgba(52,199,89,.08)" stroke="#34C759" stroke-width="1"/>
+        <text x="820" y="224" text-anchor="middle" font-family="Inter" font-size="6.5" font-weight="600" fill="#34C759">Grade</text>
+        <circle cx="760" cy="266" r="13" fill="rgba(255,159,10,.08)" stroke="#FF9F0A" stroke-width="1"/>
+        <text x="760" y="270" text-anchor="middle" font-family="Inter" font-size="6.5" font-weight="600" fill="#FF9F0A">Teacher</text>
+        <circle cx="800" cy="266" r="13" fill="rgba(88,86,214,.08)" stroke="#5856D6" stroke-width="1"/>
+        <text x="800" y="270" text-anchor="middle" font-family="Inter" font-size="6.5" font-weight="600" fill="#5856D6">IEP</text>
+        <line x1="766" y1="184" x2="748" y2="210" stroke="rgba(0,0,0,.08)" stroke-width="1"/>
+        <line x1="794" y1="184" x2="812" y2="210" stroke="rgba(0,0,0,.08)" stroke-width="1"/>
+        <line x1="748" y1="232" x2="760" y2="254" stroke="rgba(0,0,0,.08)" stroke-width="1"/>
+        <line x1="812" y1="232" x2="800" y2="254" stroke="rgba(0,0,0,.08)" stroke-width="1"/>
+        <text x="780" y="308" text-anchor="middle" font-family="Inter" font-size="8.5" fill="#AEAEB2">Neo4j &middot; 200+ types</text>
       </g>
 
-      <!-- Arrow 3 -->
-      <polygon points="618,200 632,194 632,206" fill="#007AFF"/>
-
-      <!-- INTELLIGENCE -->
-      <g filter="url(#ds)">
-        <rect x="642" y="32" width="200" height="360" rx="14" fill="rgba(52,199,89,.04)" stroke="rgba(52,199,89,.3)" stroke-width="1.5"/>
-        <text x="742" y="58" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#34C759">INTELLIGENCE</text>
-        <!-- Items -->
-        <rect x="658" y="72" width="168" height="44" rx="8" fill="#FFF" stroke="rgba(52,199,89,.15)" stroke-width="1"/>
-        <text x="670" y="90" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">Signal Detection</text>
-        <text x="670" y="106" font-family="Inter" font-size="8" fill="#AEAEB2">5 methods &middot; 48+ features</text>
-
-        <rect x="658" y="124" width="168" height="44" rx="8" fill="#FFF" stroke="rgba(52,199,89,.15)" stroke-width="1"/>
-        <text x="670" y="142" font-family="Inter" font-size="11" font-weight="700" fill="#34C759">LangGraph Agent</text>
-        <text x="670" y="158" font-family="Inter" font-size="8" fill="#AEAEB2">11 nodes &middot; Think-on-Graph</text>
-
-        <rect x="658" y="176" width="168" height="44" rx="8" fill="#FFF" stroke="rgba(255,159,10,.15)" stroke-width="1"/>
-        <text x="670" y="194" font-family="Inter" font-size="11" font-weight="700" fill="#FF9F0A">Optimization</text>
-        <text x="670" y="210" font-family="Inter" font-size="8" fill="#AEAEB2">12 models &middot; OR-Tools &middot; Z3</text>
-
-        <rect x="658" y="228" width="168" height="44" rx="8" fill="#FFF" stroke="rgba(255,59,48,.15)" stroke-width="1"/>
-        <text x="670" y="246" font-family="Inter" font-size="11" font-weight="700" fill="#FF3B30">Constraint Engine</text>
-        <text x="670" y="262" font-family="Inter" font-size="8" fill="#AEAEB2">47+ rules &middot; Z3 + Drools</text>
-
-        <rect x="658" y="280" width="168" height="44" rx="8" fill="#FFF" stroke="rgba(88,86,214,.15)" stroke-width="1"/>
-        <text x="670" y="298" font-family="Inter" font-size="11" font-weight="700" fill="#5856D6">Causal Discovery</text>
-        <text x="670" y="314" font-family="Inter" font-size="8" fill="#AEAEB2">5 methods &middot; DoWhy &middot; EconML</text>
-
-        <!-- Human Approval Gate -->
-        <rect x="672" y="336" width="140" height="28" rx="8" fill="rgba(255,59,48,.1)" stroke="rgba(255,59,48,.3)" stroke-width="1"/>
-        <text x="742" y="355" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#FF3B30">HUMAN APPROVAL GATE</text>
+      <!-- OUTCOMES (right) -->
+      <g filter="url(#ds)" class="svg-fade stagger-7">
+        <rect x="980" y="94" width="116" height="212" rx="20" fill="url(#card-grad)" stroke="rgba(52,199,89,.2)" stroke-width="1.5"/>
+        <rect x="980" y="94" width="116" height="44" rx="20" fill="rgba(52,199,89,.06)"/>
+        <text x="1038" y="122" text-anchor="middle" font-family="Inter" font-size="11" font-weight="800" fill="#34C759" letter-spacing=".04em">ACTIONS</text>
+        <g font-family="Inter" font-size="10" font-weight="600" fill="#1D1D1F">
+          <text x="1002" y="164" fill="#34C759">&#10003;</text><text x="1016" y="164">Interventions</text>
+          <text x="1002" y="190" fill="#34C759">&#10003;</text><text x="1016" y="190">Scheduling</text>
+          <text x="1002" y="216" fill="#34C759">&#10003;</text><text x="1016" y="216">Compliance</text>
+          <text x="1002" y="242" fill="#34C759">&#10003;</text><text x="1016" y="242">Alerts</text>
+          <text x="1002" y="268" fill="#34C759">&#10003;</text><text x="1016" y="268">Insights</text>
+        </g>
       </g>
 
-      <!-- Arrow 4 -->
-      <polygon points="854,200 868,194 868,206" fill="#007AFF"/>
+      <!-- Animated data particles along flow paths -->
+      <circle r="3" fill="#007AFF" opacity=".8">
+        <animateMotion dur="4s" repeatCount="indefinite" path="M 184 200 C 280 200 280 200 400 200" begin="0s"/>
+      </circle>
+      <circle r="3" fill="#7B61FF" opacity=".8">
+        <animateMotion dur="4s" repeatCount="indefinite" path="M 540 200 C 620 200 620 200 710 200" begin="1.5s"/>
+      </circle>
+      <circle r="2.5" fill="#34C759" opacity=".8">
+        <animateMotion dur="3.5s" repeatCount="indefinite" path="M 850 200 C 920 200 920 200 980 200" begin="3s"/>
+      </circle>
+      <circle r="2.5" fill="#007AFF" opacity=".6">
+        <animateMotion dur="4.5s" repeatCount="indefinite" path="M 184 200 C 280 200 280 120 400 120" begin="2s"/>
+      </circle>
+      <circle r="2.5" fill="#FF9F0A" opacity=".6">
+        <animateMotion dur="4.5s" repeatCount="indefinite" path="M 184 200 C 280 200 280 280 400 280" begin="1s"/>
+      </circle>
 
-      <!-- OUTCOMES -->
-      <g filter="url(#ds)">
-        <rect x="878" y="60" width="218" height="290" rx="14" fill="rgba(52,199,89,.04)" stroke="rgba(52,199,89,.2)" stroke-width="1.5"/>
-        <text x="987" y="86" text-anchor="middle" font-family="Inter" font-size="12" font-weight="800" fill="#1D1D1F">OUTCOMES</text>
-        <text x="908" y="120" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="120" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Targeted Interventions</text>
-        <text x="908" y="150" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="150" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Optimized Schedules</text>
-        <text x="908" y="180" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="180" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Compliance Tracking</text>
-        <text x="908" y="210" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="210" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Early Warning Alerts</text>
-        <text x="908" y="240" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="240" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">Causal Insights</text>
-        <text x="908" y="270" font-family="Inter" font-size="12" fill="#34C759">&#10003;</text>
-        <text x="926" y="270" font-family="Inter" font-size="12" font-weight="600" fill="#1D1D1F">eROI Measurement</text>
-        <text x="987" y="320" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Monitor &rarr; Adapt &rarr; Learn</text>
-      </g>
-
-      <!-- LEARNING LOOP -->
-      <line x1="40" y1="410" x2="1080" y2="410" stroke="#007AFF" stroke-width="1.5" stroke-dasharray="6,4" opacity=".35"/>
-      <polygon points="555,404 560,398 565,404" fill="#007AFF" opacity=".5"/>
-      <text x="560" y="430" text-anchor="middle" font-family="Inter" font-size="10" fill="#AEAEB2">LEARNING LOOP &mdash; Every outcome improves the next recommendation</text>
+      <!-- Learning loop at bottom -->
+      <line x1="60" y1="380" x2="1060" y2="380" stroke="#007AFF" stroke-width="1.5" stroke-dasharray="6,4" opacity=".2"/>
+      <text x="560" y="395" text-anchor="middle" font-family="Inter" font-size="9.5" font-weight="500" fill="#AEAEB2">CONTINUOUS LEARNING LOOP &mdash; Every outcome improves the next recommendation</text>
     </svg>
   </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════ WHY AN OPERATING SYSTEM ═══════════════════════════ -->
-<section class="section-alt" id="why">
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 2 — THE PROBLEM
+     Dramatic before/after showing the pain and the solution
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="problem">
 <div class="con">
-  <details class="deep reveal">
-    <summary>Why does K-12 education need an operating system?</summary>
-    <div class="deep-body">
-      <p>A typical school district operates <strong>47 disconnected software systems</strong> &mdash; one for student information, another for assessments, another for special education, another for scheduling, another for behavior tracking, another for bus routing. Data lives in silos. A counselor wondering &ldquo;Is this student at risk?&rdquo; must manually check 6 different systems.</p>
-      <p>The consequences are real: IEP service minutes go undelivered because the scheduling system doesn&rsquo;t know about the SPED system&rsquo;s requirements. A student&rsquo;s reading intervention isn&rsquo;t working, but nobody notices for months because the progress monitoring data doesn&rsquo;t connect to the intervention assignment system. A bus route change causes a student to arrive late to math &mdash; their fractions scores decline, but no system connects the cause to the effect.</p>
-      <p>ATLAS solves this by creating a <strong>unified knowledge graph</strong> that connects everything: every student, teacher, course, assessment, intervention, schedule, bus route, and IEP obligation. Then it reasons about those connections using the same algorithmic approaches that transformed logistics, finance, and healthcare.</p>
-      <div class="co" style="background:rgba(0,122,255,.05);border-color:#007AFF;margin-top:24px">
-        <strong>Five architectural principles:</strong> (1) The ontology is the API &mdash; no direct database queries. (2) Events are the source of truth &mdash; current state is a materialized view. (3) Security is structural &mdash; access control on every graph traversal. (4) Intelligence is layered &mdash; deterministic algorithms first, ML/LLM augments. (5) Human authority is absolute &mdash; the system proposes, humans decide.
-      </div>
-    </div>
-  </details>
-</div>
-</section>
-
-<!-- ═══════════════════════════ SYSTEM ARCHITECTURE ═══════════════════════════ -->
-<section id="architecture">
-<div class="con">
-  <p class="sec-label reveal" style="color:var(--purple)">System Architecture</p>
-  <h2 class="sec-title reveal" style="max-width:900px">
-    <span class="grad-purple">Five layers.</span> <span style="color:var(--tx)">One reasoning substrate.</span>
-  </h2>
-  <p class="sec-sub reveal" style="max-width:700px">
-    Polyglot persistence with an event-driven microservices architecture. Five storage engines, each chosen for specific query patterns, unified by a semantic layer that presents a single model to application code.
-  </p>
-
-  <!-- Architecture Layers Diagram -->
-  <div class="dia dia-hero reveal" style="margin-top:40px">
-    <svg viewBox="0 0 1120 620" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <filter id="ds2"><feDropShadow dx="0" dy="1" stdDeviation="3" flood-opacity=".05"/></filter>
-      </defs>
-      <rect width="1120" height="620" fill="#FAFAFA" rx="0"/>
-
-      <!-- CLIENT LAYER -->
-      <g filter="url(#ds2)">
-        <rect x="60" y="24" width="1000" height="70" rx="16" fill="#FFF" stroke="#E8E8ED" stroke-width="1.2"/>
-        <text x="88" y="66" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F" letter-spacing=".02em">CLIENT LAYER</text>
-        <rect x="280" y="40" width="100" height="36" rx="10" fill="rgba(0,122,255,.06)" stroke="rgba(0,122,255,.2)" stroke-width="1"/>
-        <text x="330" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#007AFF">React/TS</text>
-        <rect x="396" y="40" width="110" height="36" rx="10" fill="rgba(0,122,255,.06)" stroke="rgba(0,122,255,.2)" stroke-width="1"/>
-        <text x="451" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#007AFF">React Native</text>
-        <rect x="522" y="40" width="100" height="36" rx="10" fill="rgba(0,122,255,.06)" stroke="rgba(0,122,255,.2)" stroke-width="1"/>
-        <text x="572" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#007AFF">GraphQL</text>
-        <rect x="638" y="40" width="80" height="36" rx="10" fill="rgba(0,122,255,.06)" stroke="rgba(0,122,255,.2)" stroke-width="1"/>
-        <text x="678" y="63" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#007AFF">REST</text>
-        <text x="940" y="65" text-anchor="end" font-family="Inter" font-size="11" fill="#AEAEB2">What users touch</text>
-      </g>
-
-      <!-- API GATEWAY -->
-      <g filter="url(#ds2)">
-        <rect x="60" y="116" width="1000" height="70" rx="16" fill="rgba(255,159,10,.03)" stroke="rgba(255,159,10,.2)" stroke-width="1.2"/>
-        <text x="88" y="158" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F" letter-spacing=".02em">API GATEWAY</text>
-        <rect x="280" y="132" width="150" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="355" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">GraphQL Federation</text>
-        <rect x="446" y="132" width="100" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="496" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">JWT + OPA</text>
-        <rect x="562" y="132" width="100" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="612" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">Rate Limit</text>
-        <rect x="678" y="132" width="80" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="718" y="155" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">Tracing</text>
-        <text x="940" y="157" text-anchor="end" font-family="Inter" font-size="11" fill="#AEAEB2">Auth, routing, observability</text>
-      </g>
-
-      <!-- 12 MICROSERVICES -->
-      <g filter="url(#ds2)">
-        <rect x="60" y="208" width="1000" height="120" rx="16" fill="rgba(52,199,89,.03)" stroke="rgba(52,199,89,.2)" stroke-width="1.2"/>
-        <text x="88" y="248" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F" letter-spacing=".02em">12 MICROSERVICES</text>
-        <!-- Tier pills -->
-        <rect x="280" y="230" width="130" height="36" rx="10" fill="rgba(52,199,89,.08)" stroke="rgba(52,199,89,.25)" stroke-width="1"/>
-        <text x="345" y="253" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#34C759">Tier 1: Foundation</text>
-        <rect x="422" y="230" width="110" height="36" rx="10" fill="rgba(255,159,10,.08)" stroke="rgba(255,159,10,.25)" stroke-width="1"/>
-        <text x="477" y="253" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#FF9F0A">Tier 2: Data</text>
-        <rect x="544" y="230" width="140" height="36" rx="10" fill="rgba(255,59,48,.08)" stroke="rgba(255,59,48,.25)" stroke-width="1"/>
-        <text x="614" y="253" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#FF3B30">Tier 3: Intelligence</text>
-        <rect x="696" y="230" width="140" height="36" rx="10" fill="rgba(88,86,214,.08)" stroke="rgba(88,86,214,.25)" stroke-width="1"/>
-        <text x="766" y="253" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#5856D6">Tier 4: Operational</text>
-        <!-- Sub-labels -->
-        <text x="345" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Ontology &middot; Auth &middot; Storage</text>
-        <text x="477" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Ingestion &middot; ER &middot; Search</text>
-        <text x="614" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Signals &middot; Reasoning &middot; Opt</text>
-        <text x="766" y="282" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Workflow &middot; Monitor &middot; Disc</text>
-        <text x="940" y="257" text-anchor="end" font-family="Inter" font-size="11" fill="#AEAEB2">Business logic</text>
-        <text x="280" y="312" font-family="JetBrains Mono" font-size="9" fill="#AEAEB2">NestJS + TypeScript &middot; Python 3.12+ &middot; Java 21</text>
-      </g>
-
-      <!-- EVENT BACKBONE -->
-      <g filter="url(#ds2)">
-        <rect x="60" y="350" width="1000" height="70" rx="16" fill="rgba(255,159,10,.03)" stroke="rgba(255,159,10,.2)" stroke-width="1.2"/>
-        <text x="88" y="392" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F" letter-spacing=".02em">EVENT BACKBONE</text>
-        <rect x="280" y="366" width="120" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="340" y="389" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">Apache Kafka</text>
-        <rect x="416" y="366" width="120" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="476" y="389" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">Debezium CDC</text>
-        <rect x="552" y="366" width="130" height="36" rx="10" fill="rgba(255,159,10,.06)" stroke="rgba(255,159,10,.2)" stroke-width="1"/>
-        <text x="617" y="389" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="500" fill="#FF9F0A">Schema Registry</text>
-        <text x="940" y="391" text-anchor="end" font-family="Inter" font-size="11" fill="#AEAEB2">Events are source of truth</text>
-      </g>
-
-      <!-- POLYGLOT STORAGE -->
-      <g filter="url(#ds2)">
-        <rect x="60" y="442" width="1000" height="80" rx="16" fill="rgba(123,97,255,.03)" stroke="rgba(123,97,255,.2)" stroke-width="1.2"/>
-        <text x="88" y="486" font-family="Inter" font-size="14" font-weight="800" fill="#1D1D1F" letter-spacing=".02em">POLYGLOT STORAGE</text>
-        <!-- DB pills -->
-        <rect x="280" y="458" width="80" height="48" rx="10" fill="rgba(123,97,255,.06)" stroke="rgba(123,97,255,.2)" stroke-width="1"/>
-        <text x="320" y="478" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#7B61FF">Neo4j</text>
-        <text x="320" y="494" text-anchor="middle" font-family="Inter" font-size="8" fill="#AEAEB2">Graph</text>
-        <rect x="376" y="458" width="100" height="48" rx="10" fill="rgba(123,97,255,.06)" stroke="rgba(123,97,255,.2)" stroke-width="1"/>
-        <text x="426" y="478" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#7B61FF">PostgreSQL</text>
-        <text x="426" y="494" text-anchor="middle" font-family="Inter" font-size="8" fill="#AEAEB2">OLTP</text>
-        <rect x="492" y="458" width="80" height="48" rx="10" fill="rgba(123,97,255,.06)" stroke="rgba(123,97,255,.2)" stroke-width="1"/>
-        <text x="532" y="478" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#7B61FF">XTDB v2</text>
-        <text x="532" y="494" text-anchor="middle" font-family="Inter" font-size="8" fill="#AEAEB2">Bitemporal</text>
-        <rect x="588" y="458" width="110" height="48" rx="10" fill="rgba(123,97,255,.06)" stroke="rgba(123,97,255,.2)" stroke-width="1"/>
-        <text x="643" y="478" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#7B61FF">Elasticsearch</text>
-        <text x="643" y="494" text-anchor="middle" font-family="Inter" font-size="8" fill="#AEAEB2">Search</text>
-        <rect x="714" y="458" width="70" height="48" rx="10" fill="rgba(123,97,255,.06)" stroke="rgba(123,97,255,.2)" stroke-width="1"/>
-        <text x="749" y="478" text-anchor="middle" font-family="JetBrains Mono" font-size="11" font-weight="600" fill="#7B61FF">Redis</text>
-        <text x="749" y="494" text-anchor="middle" font-family="Inter" font-size="8" fill="#AEAEB2">Cache</text>
-        <text x="940" y="488" text-anchor="end" font-family="Inter" font-size="11" fill="#AEAEB2">Right engine for each query</text>
-      </g>
-
-      <!-- Connecting dashes between layers -->
-      <line x1="560" y1="94" x2="560" y2="116" stroke="#E8E8ED" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="560" y1="186" x2="560" y2="208" stroke="#E8E8ED" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="560" y1="328" x2="560" y2="350" stroke="#E8E8ED" stroke-width="1" stroke-dasharray="3,3"/>
-      <line x1="560" y1="420" x2="560" y2="442" stroke="#E8E8ED" stroke-width="1" stroke-dasharray="3,3"/>
-    </svg>
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--red)">The Problem</p>
+    <h2 class="sec-title reveal">Schools drown in data.<br><span class="grad-red">Students fall through the cracks.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">
+      A typical school district runs 47 disconnected software systems. When data lives in silos, the students who need help the most are the hardest to find.
+    </p>
   </div>
 
-  <!-- Storage Engines Accordion -->
-  <details class="deep reveal" style="margin-top:32px">
-    <summary>Storage engines &mdash; why five databases?</summary>
-    <div class="deep-body">
-      <p>No single database handles graph traversal, full-text search, bitemporal queries, OLTP transactions, and sub-millisecond caching equally well. ATLAS picks the best tool for each job:</p>
-      <table class="tbl">
-        <thead>
-          <tr><th>Engine</th><th>Role</th><th>Why This One</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Neo4j Enterprise 5.x</strong></td>
-            <td>Graph store &mdash; relationships, 6+ hop traversals, GDS algorithms</td>
-            <td>Index-free adjacency gives 10-50ms for multi-hop queries. Composite Databases for per-district sharding. 65+ GDS algorithms (Leiden, PageRank, FastRP embeddings).</td>
-          </tr>
-          <tr>
-            <td><strong>PostgreSQL 16.x</strong></td>
-            <td>Transactional OLTP &mdash; accounts, config, constraint registry</td>
-            <td>ACID guarantees. Row-Level Security for tenant isolation. JSONB for flexible schema. SQL:2011 temporal tables.</td>
-          </tr>
-          <tr>
-            <td><strong>XTDB v2</strong></td>
-            <td>Bitemporal compliance &mdash; point-in-time reconstruction, audit</td>
-            <td>Native bitemporality (valid-time + system-time) on ALL tables. Postgres wire protocol. Hot/cold storage via S3.</td>
-          </tr>
-          <tr>
-            <td><strong>Elasticsearch 8.x</strong></td>
-            <td>Search &mdash; full-text, faceted filtering, autocomplete</td>
-            <td>Sub-50ms full-text search. Nested object queries. Index-per-tenant isolation.</td>
-          </tr>
-          <tr>
-            <td><strong>Redis 7.x</strong></td>
-            <td>Cache &mdash; results, sessions, rate limiting, pub/sub</td>
-            <td>Sub-1ms reads. Pub/sub for event-driven cache invalidation.</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </details>
-
-  <!-- 12 Microservices Accordion -->
-  <details class="deep reveal">
-    <summary>12 microservices across 4 tiers</summary>
-    <div class="deep-body">
-      <h4>Tier 1: Foundation (build first)</h4>
-      <div style="display:flex;flex-direction:column;gap:16px;margin:12px 0 28px">
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(0,122,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128451;</div>
-          <div><strong>Ontology Metadata Service</strong><br><span style="font-size:14px;color:var(--tx2)">Schema registry, entity type definitions, version control. PostgreSQL + Redis.</span></div>
+  <div class="problem-grid reveal">
+    <div class="problem-side problem-before">
+      <h3>Without ATLAS</h3>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(255,159,10,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128274;</div>
-          <div><strong>Auth &amp; Security Service</strong><br><span style="font-size:14px;color:var(--tx2)">Authentication (Keycloak/Auth0), authorization (OPA), tenant management. PostgreSQL.</span></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(123,97,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128190;</div>
-          <div><strong>Object Storage Service</strong><br><span style="font-size:14px;color:var(--tx2)">CRUD on ontology objects, graph writes, relationship management. Neo4j primary.</span></div>
+        <div>
+          <strong>47 disconnected systems</strong>
+          <p>SIS, LMS, SPED, assessments, behavior, transportation &mdash; all separate databases with no shared identity.</p>
         </div>
       </div>
-
-      <h4>Tier 2: Data (build second)</h4>
-      <div style="display:flex;flex-direction:column;gap:16px;margin:12px 0 28px">
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(0,122,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128230;</div>
-          <div><strong>Ingestion Service</strong><br><span style="font-size:14px;color:var(--tx2)">Source system connectors, CDC consumers, batch ETL, raw data landing. Kafka Streams.</span></div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(52,199,89,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128279;</div>
-          <div><strong>Entity Resolution Service</strong><br><span style="font-size:14px;color:var(--tx2)">Splink matching pipeline, golden record construction, crossref management. Python + DuckDB.</span></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(255,59,48,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128269;</div>
-          <div><strong>Search Service</strong><br><span style="font-size:14px;color:var(--tx2)">Full-text indexing, faceted filtering, autocomplete. Elasticsearch.</span></div>
+        <div>
+          <strong>Manual cross-referencing</strong>
+          <p>A counselor checks 6 systems to answer &ldquo;Is this student at risk?&rdquo; &mdash; if they think to ask at all.</p>
         </div>
       </div>
-
-      <h4>Tier 3: Intelligence (build third)</h4>
-      <div style="display:flex;flex-direction:column;gap:16px;margin:12px 0 28px">
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(88,86,214,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128200;</div>
-          <div><strong>Signal Detection Service</strong><br><span style="font-size:14px;color:var(--tx2)">Feature engineering, threshold/trend/anomaly/convergent/GNN detection, risk scoring. Python + LightGBM.</span></div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(255,159,10,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#129504;</div>
-          <div><strong>Reasoning Service</strong><br><span style="font-size:14px;color:var(--tx2)">LLM agent orchestration, Think-on-Graph, Graph-RAG, explanation generation. Python + LangGraph.</span></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(255,59,48,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#9881;</div>
-          <div><strong>Constraint &amp; Optimization Service</strong><br><span style="font-size:14px;color:var(--tx2)">Z3 validation, OR-Tools scheduling, Timefold assignment, Drools rules. Python + Java.</span></div>
+        <div>
+          <strong>Months of delayed detection</strong>
+          <p>An intervention isn&rsquo;t working, but nobody notices until the quarterly review because no system connects the dots.</p>
         </div>
       </div>
-
-      <h4>Tier 4: Operational (build last)</h4>
-      <div style="display:flex;flex-direction:column;gap:16px;margin:12px 0 0">
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(52,199,89,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128736;</div>
-          <div><strong>Workflow Service</strong><br><span style="font-size:14px;color:var(--tx2)">Multi-step approval flows, intervention lifecycle, notification dispatch. Temporal.</span></div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(255,59,48,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
         </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(0,122,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128202;</div>
-          <div><strong>Monitoring &amp; Causal Service</strong><br><span style="font-size:14px;color:var(--tx2)">CUSUM drift detection, causal inference pipeline, outcome tracking. Python + DoWhy.</span></div>
-        </div>
-        <div style="display:flex;gap:14px;align-items:center;padding:12px 0">
-          <div class="card-icon" style="background:rgba(123,97,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128300;</div>
-          <div><strong>Discovery &amp; Reporting Service</strong><br><span style="font-size:14px;color:var(--tx2)">Dashboard generation, eROI calculations, compliance reports. React + D3.</span></div>
+        <div>
+          <strong>Invisible causation</strong>
+          <p>A bus route change causes late arrivals to math &mdash; fractions scores decline. No system connects cause to effect.</p>
         </div>
       </div>
     </div>
-  </details>
+    <div class="problem-side problem-after">
+      <h3>With ATLAS</h3>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <strong>One unified knowledge graph</strong>
+          <p>Every student, teacher, course, assessment, IEP, and schedule connected in a single semantic model.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <strong>Automatic signal detection</strong>
+          <p>48+ features across 5 detection methods spot at-risk students before humans could &mdash; in real time.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <strong>Intelligent recommendations</strong>
+          <p>LangGraph reasons over the knowledge graph, matching students to optimal interventions and schedules.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="problem-icon" style="background:rgba(52,199,89,.1)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <div>
+          <strong>Causal understanding</strong>
+          <p>5 causal inference methods determine <em>why</em> something happened &mdash; not just that it did.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
 
-<!-- ═══════════════════════════ EXPLORE CHAPTERS ═══════════════════════════ -->
-<section class="section-alt" id="explore">
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 3 — HOW IT WORKS
+     5-step animated pipeline with large icons and scroll triggers
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-alt" id="how">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--blue)">How It Works</p>
+    <h2 class="sec-title reveal">Five steps from <span class="grad-blue">raw data</span> to <span class="grad-green">real action.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">
+      ATLAS transforms disconnected school data into a unified intelligence layer through a five-stage pipeline &mdash; each stage adding more context and understanding.
+    </p>
+  </div>
+
+  <div class="pipeline reveal">
+    <div class="pipeline-step">
+      <div class="pipeline-icon" style="background:rgba(255,149,0,.08);border-color:rgba(255,149,0,.2)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF9500" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </div>
+      <div class="pipeline-num">1</div>
+      <h4>Ingest</h4>
+      <p>Connect to any source system &mdash; SIS, LMS, SPED, assessments &mdash; via REST, SFTP, CSV, or CDC streaming. Raw data lands in Kafka.</p>
+      <div class="pipeline-tech">Kafka &middot; Debezium &middot; CDC</div>
+    </div>
+    <div class="pipeline-connector"><div class="pipeline-connector-line"></div><div class="pipeline-connector-dot"></div></div>
+    <div class="pipeline-step">
+      <div class="pipeline-icon" style="background:rgba(0,122,255,.08);border-color:rgba(0,122,255,.2)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div class="pipeline-num">2</div>
+      <h4>Parse &amp; Normalize</h4>
+      <p>Validate schemas, deduplicate records, and normalize naming conventions. Every field maps to the ATLAS ontology.</p>
+      <div class="pipeline-tech">Schema Registry &middot; Avro</div>
+    </div>
+    <div class="pipeline-connector"><div class="pipeline-connector-line"></div><div class="pipeline-connector-dot"></div></div>
+    <div class="pipeline-step">
+      <div class="pipeline-icon" style="background:rgba(123,97,255,.08);border-color:rgba(123,97,255,.2)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#7B61FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      </div>
+      <div class="pipeline-num">3</div>
+      <h4>Resolve Entities</h4>
+      <p>Probabilistic matching links &ldquo;Maria Garcia&rdquo; in the SIS to &ldquo;M. Garcia&rdquo; in SPED to student #4821 everywhere.</p>
+      <div class="pipeline-tech">SpLink &middot; DuckDB</div>
+    </div>
+    <div class="pipeline-connector"><div class="pipeline-connector-line"></div><div class="pipeline-connector-dot"></div></div>
+    <div class="pipeline-step">
+      <div class="pipeline-icon" style="background:rgba(52,199,89,.08);border-color:rgba(52,199,89,.2)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <div class="pipeline-num">4</div>
+      <h4>Build the Graph</h4>
+      <p>Resolved entities and relationships are written into a Neo4j knowledge graph with 200+ entity types across 9 domains.</p>
+      <div class="pipeline-tech">Neo4j &middot; XTDB &middot; Postgres</div>
+    </div>
+    <div class="pipeline-connector"><div class="pipeline-connector-line"></div><div class="pipeline-connector-dot"></div></div>
+    <div class="pipeline-step">
+      <div class="pipeline-icon" style="background:rgba(255,59,48,.08);border-color:rgba(255,59,48,.2)">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div class="pipeline-num">5</div>
+      <h4>Reason &amp; Act</h4>
+      <p>Signal detection, LangGraph reasoning, and 12 optimization models generate recommendations &mdash; humans approve every action.</p>
+      <div class="pipeline-tech">LangGraph &middot; OR-Tools &middot; Z3</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 4 — WHO IT'S FOR
+     4 persona cards with rich detail and hover interactions
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="personas">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--green)">Who It&rsquo;s For</p>
+    <h2 class="sec-title reveal">One platform,<br><span class="grad-green">four perspectives.</span></h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">
+      ATLAS adapts to each role &mdash; showing the right information at the right level of detail, with every recommendation grounded in the same unified data.
+    </p>
+  </div>
+
+  <div class="g2 reveal" style="margin-top:56px;gap:28px">
+    <div class="persona-card blue">
+      <div class="persona-header">
+        <span class="persona-emoji">&#128105;&#8205;&#127979;</span>
+        <div>
+          <h3>Teachers</h3>
+          <p class="persona-role">Classroom Practitioners</p>
+        </div>
+      </div>
+      <p>See a complete portrait of each student &mdash; attendance patterns, assessment trajectories, intervention history, and IEP obligations &mdash; in one view. Get proactive alerts when a student shows early warning signs, with specific, actionable recommendations.</p>
+      <div class="persona-features">
+        <span class="persona-feature">Student 360 View</span>
+        <span class="persona-feature">Early Warning Alerts</span>
+        <span class="persona-feature">Intervention Matching</span>
+        <span class="persona-feature">Progress Monitoring</span>
+      </div>
+    </div>
+    <div class="persona-card purple">
+      <div class="persona-header">
+        <span class="persona-emoji">&#128100;</span>
+        <div>
+          <h3>Administrators</h3>
+          <p class="persona-role">Building &amp; District Leaders</p>
+        </div>
+      </div>
+      <p>Optimize resource allocation across the entire district. See which interventions deliver the highest ROI, identify staffing gaps before they become crises, and track compliance obligations automatically.</p>
+      <div class="persona-features">
+        <span class="persona-feature">Resource Optimization</span>
+        <span class="persona-feature">eROI Dashboards</span>
+        <span class="persona-feature">Compliance Tracking</span>
+        <span class="persona-feature">Staff Allocation</span>
+      </div>
+    </div>
+    <div class="persona-card green">
+      <div class="persona-header">
+        <span class="persona-emoji">&#129489;&#8205;&#128300;</span>
+        <div>
+          <h3>Specialists</h3>
+          <p class="persona-role">SPED &amp; Intervention Teams</p>
+        </div>
+      </div>
+      <p>Never miss an IEP deadline or service minute again. ATLAS tracks every obligation, monitors delivery in real-time, and alerts you to scheduling conflicts before they cause compliance violations.</p>
+      <div class="persona-features">
+        <span class="persona-feature">IEP Management</span>
+        <span class="persona-feature">Service Tracking</span>
+        <span class="persona-feature">Caseload Optimization</span>
+        <span class="persona-feature">Compliance Alerts</span>
+      </div>
+    </div>
+    <div class="persona-card amber">
+      <div class="persona-header">
+        <span class="persona-emoji">&#128187;</span>
+        <div>
+          <h3>Data Teams</h3>
+          <p class="persona-role">Analysts &amp; Engineers</p>
+        </div>
+      </div>
+      <p>Access a unified data layer through GraphQL or the ontology API. Run causal analyses, build custom dashboards, and extend the platform with new detection models &mdash; all on a consistent semantic foundation.</p>
+      <div class="persona-features">
+        <span class="persona-feature">GraphQL API</span>
+        <span class="persona-feature">Causal Analysis</span>
+        <span class="persona-feature">Custom Models</span>
+        <span class="persona-feature">Data Lineage</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 5 — THE ENGINE
+     Simplified, beautiful animated architecture overview
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-alt" id="engine">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--purple)">The Engine</p>
+    <h2 class="sec-title reveal"><span class="grad-purple">Five layers.</span> One reasoning substrate.</h2>
+    <p class="sec-sub mx-auto reveal" style="text-align:center">
+      A polyglot microservices architecture with 5 storage engines, 12 services, and an event-driven backbone. Each layer does one thing extraordinarily well.
+    </p>
+  </div>
+
+  <div class="engine-stack reveal">
+    <div class="engine-layer engine-layer-1">
+      <div class="engine-layer-inner">
+        <div class="engine-layer-label">
+          <span class="engine-layer-num">1</span>
+          <div>
+            <h4>Client Layer</h4>
+            <p>React/TS web, React Native mobile, GraphQL &amp; REST APIs</p>
+          </div>
+        </div>
+        <div class="engine-layer-pills">
+          <span class="engine-pill" style="--pill-color:#007AFF">React/TS</span>
+          <span class="engine-pill" style="--pill-color:#007AFF">React Native</span>
+          <span class="engine-pill" style="--pill-color:#007AFF">GraphQL</span>
+        </div>
+      </div>
+    </div>
+    <div class="engine-layer engine-layer-2">
+      <div class="engine-layer-inner">
+        <div class="engine-layer-label">
+          <span class="engine-layer-num" style="background:var(--amber)">2</span>
+          <div>
+            <h4>API Gateway</h4>
+            <p>Authentication, authorization, rate limiting, and distributed tracing</p>
+          </div>
+        </div>
+        <div class="engine-layer-pills">
+          <span class="engine-pill" style="--pill-color:#FF9F0A">GraphQL Federation</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">JWT + OPA</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">Tracing</span>
+        </div>
+      </div>
+    </div>
+    <div class="engine-layer engine-layer-3">
+      <div class="engine-layer-inner">
+        <div class="engine-layer-label">
+          <span class="engine-layer-num" style="background:var(--green)">3</span>
+          <div>
+            <h4>12 Microservices</h4>
+            <p>Four tiers: Foundation, Data, Intelligence, and Operational</p>
+          </div>
+        </div>
+        <div class="engine-layer-pills">
+          <span class="engine-pill" style="--pill-color:#34C759">Ontology</span>
+          <span class="engine-pill" style="--pill-color:#34C759">Auth</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">Ingestion</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">ER</span>
+          <span class="engine-pill" style="--pill-color:#FF3B30">Signals</span>
+          <span class="engine-pill" style="--pill-color:#FF3B30">Reasoning</span>
+          <span class="engine-pill" style="--pill-color:#5856D6">Workflow</span>
+          <span class="engine-pill" style="--pill-color:#5856D6">Monitor</span>
+        </div>
+      </div>
+    </div>
+    <div class="engine-layer engine-layer-4">
+      <div class="engine-layer-inner">
+        <div class="engine-layer-label">
+          <span class="engine-layer-num" style="background:var(--amber)">4</span>
+          <div>
+            <h4>Event Backbone</h4>
+            <p>Events are the source of truth &mdash; current state is a materialized view</p>
+          </div>
+        </div>
+        <div class="engine-layer-pills">
+          <span class="engine-pill" style="--pill-color:#FF9F0A">Apache Kafka</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">Debezium CDC</span>
+          <span class="engine-pill" style="--pill-color:#FF9F0A">Schema Registry</span>
+        </div>
+      </div>
+    </div>
+    <div class="engine-layer engine-layer-5">
+      <div class="engine-layer-inner">
+        <div class="engine-layer-label">
+          <span class="engine-layer-num" style="background:var(--purple)">5</span>
+          <div>
+            <h4>Polyglot Storage</h4>
+            <p>The right engine for each query pattern &mdash; no compromises</p>
+          </div>
+        </div>
+        <div class="engine-layer-pills">
+          <span class="engine-pill" style="--pill-color:#7B61FF">Neo4j</span>
+          <span class="engine-pill" style="--pill-color:#7B61FF">PostgreSQL</span>
+          <span class="engine-pill" style="--pill-color:#7B61FF">XTDB v2</span>
+          <span class="engine-pill" style="--pill-color:#7B61FF">Elasticsearch</span>
+          <span class="engine-pill" style="--pill-color:#7B61FF">Redis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center reveal" style="margin-top:48px">
+    <a href="architecture.html" class="cta-btn cta-secondary">Explore the full architecture &rarr;</a>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 6 — BY THE NUMBERS
+     Large animated counter statistics
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="numbers">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--blue)">By The Numbers</p>
+    <h2 class="sec-title reveal">Built for <span class="grad-blue">scale.</span></h2>
+  </div>
+
+  <div class="stat-row reveal" style="margin-top:64px">
+    <div class="stat-item">
+      <div class="stat-num grad-blue" data-target="200" data-suffix="+">0</div>
+      <div class="stat-label">Entity Types</div>
+      <div class="stat-detail">in the knowledge graph</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-purple" data-target="12">0</div>
+      <div class="stat-label">Optimization Models</div>
+      <div class="stat-detail">for resource allocation</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-green" data-target="48" data-suffix="+">0</div>
+      <div class="stat-label">Learner Features</div>
+      <div class="stat-detail">for signal detection</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-amber" data-target="5">0</div>
+      <div class="stat-label">Causal Methods</div>
+      <div class="stat-detail">for root cause analysis</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num grad-red" data-target="9">0</div>
+      <div class="stat-label">Domains</div>
+      <div class="stat-detail">across the ontology</div>
+    </div>
+  </div>
+
+  <div class="stat-row reveal" style="margin-top:24px">
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--tx)" data-target="12">0</div>
+      <div class="stat-label">Microservices</div>
+      <div class="stat-detail">across 4 tiers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--tx)" data-target="5">0</div>
+      <div class="stat-label">Storage Engines</div>
+      <div class="stat-detail">polyglot persistence</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--tx)" data-target="47" data-suffix="+">0</div>
+      <div class="stat-label">Constraint Rules</div>
+      <div class="stat-detail">Z3 + Drools</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--tx)" data-target="11">0</div>
+      <div class="stat-label">LangGraph Nodes</div>
+      <div class="stat-detail">in the reasoning agent</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--tx)" data-target="7">0</div>
+      <div class="stat-label">Security Layers</div>
+      <div class="stat-detail">defense in depth</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 7 — CORE PRINCIPLES
+     3 architectural principles with visual presentation
+     ═══════════════════════════════════════════════════════════════════ -->
+<section class="section-alt" id="principles">
+<div class="con">
+  <div class="text-center">
+    <p class="sec-label reveal" style="color:var(--purple)">Core Principles</p>
+    <h2 class="sec-title reveal">Designed around<br><span class="grad-purple">five truths.</span></h2>
+  </div>
+
+  <div class="principles-grid reveal" style="margin-top:64px">
+    <div class="principle-card">
+      <div class="principle-icon" style="background:rgba(0,122,255,.08)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <h3>The Ontology is the API</h3>
+      <p>No direct database queries. Application code interacts with semantic entities and relationships. The ontology enforces consistency across all 5 storage engines.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon" style="background:rgba(123,97,255,.08)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7B61FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <h3>Events Are Truth</h3>
+      <p>Current state is a materialized view of the event stream. Every change is captured, ordered, and replayable &mdash; providing complete auditability and temporal reconstruction.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon" style="background:rgba(255,59,48,.08)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF3B30" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <h3>Security Is Structural</h3>
+      <p>Access control on every graph traversal, not just at the API boundary. ABAC + ReBAC policies evaluated on each query. FERPA and COPPA compliance by architecture.</p>
+    </div>
+    <div class="principle-card">
+      <div class="principle-icon" style="background:rgba(52,199,89,.08)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#34C759" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>Intelligence Is Layered</h3>
+      <p>Deterministic algorithms first. ML augments. LLMs orchestrate. Each layer adds sophistication while the previous layer provides safety bounds and explainability.</p>
+    </div>
+    <div class="principle-card principle-card-wide">
+      <div class="principle-icon" style="background:rgba(255,159,10,.08)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF9F0A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3>Human Authority Is Absolute</h3>
+      <p>The system proposes, humans decide. Every recommendation passes through an approval gate. Educators maintain full control over student-facing actions. The AI is a tool &mdash; never an authority.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════════
+     SECTION 8 — EXPLORE DEEP DIVES
+     Chapter preview cards with beautiful illustrations
+     ═══════════════════════════════════════════════════════════════════ -->
+<section id="explore">
 <div class="con">
   <div class="text-center">
     <p class="sec-label reveal" style="color:var(--blue)">The Blueprint</p>
@@ -440,21 +714,21 @@
 
   <div class="g3 reveal" style="margin-top:56px">
     <a href="architecture.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(88,86,214,.06)">
+      <div class="preview-visual" style="background:rgba(88,86,214,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <rect x="30" y="15" width="220" height="30" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1.2"/>
-          <text x="140" y="35" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#5856D6">Client Layer</text>
-          <rect x="30" y="53" width="220" height="30" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1.2"/>
-          <text x="140" y="73" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#007AFF">API Gateway + Auth</text>
-          <rect x="30" y="91" width="70" height="30" rx="8" fill="#7B61FF" fill-opacity=".08" stroke="#7B61FF" stroke-width="1"/>
-          <text x="65" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#7B61FF">Query</text>
-          <rect x="105" y="91" width="70" height="30" rx="8" fill="#FF9F0A" fill-opacity=".08" stroke="#FF9F0A" stroke-width="1"/>
-          <text x="140" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9F0A">Action</text>
-          <rect x="180" y="91" width="70" height="30" rx="8" fill="#34C759" fill-opacity=".08" stroke="#34C759" stroke-width="1"/>
-          <text x="215" y="110" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Ingest</text>
-          <rect x="30" y="129" width="220" height="26" rx="8" fill="#FF3B30" fill-opacity=".06" stroke="#FF3B30" stroke-width="1"/>
-          <text x="140" y="147" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#FF3B30">Kafka Event Bus</text>
-          <text x="140" y="172" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">12 services &#183; 5 databases</text>
+          <rect x="30" y="15" width="220" height="28" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1.2"/>
+          <text x="140" y="34" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#5856D6">Client Layer</text>
+          <rect x="30" y="51" width="220" height="28" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1.2"/>
+          <text x="140" y="70" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#007AFF">API Gateway + Auth</text>
+          <rect x="30" y="87" width="70" height="28" rx="8" fill="rgba(123,97,255,.08)" stroke="#7B61FF" stroke-width="1"/>
+          <text x="65" y="106" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#7B61FF">Query</text>
+          <rect x="105" y="87" width="70" height="28" rx="8" fill="rgba(255,159,10,.08)" stroke="#FF9F0A" stroke-width="1"/>
+          <text x="140" y="106" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#FF9F0A">Action</text>
+          <rect x="180" y="87" width="70" height="28" rx="8" fill="rgba(52,199,89,.08)" stroke="#34C759" stroke-width="1"/>
+          <text x="215" y="106" text-anchor="middle" font-family="Inter" font-size="7" font-weight="600" fill="#34C759">Ingest</text>
+          <rect x="30" y="123" width="220" height="24" rx="8" fill="rgba(255,59,48,.05)" stroke="#FF3B30" stroke-width="1"/>
+          <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#FF3B30">Kafka Event Bus</text>
+          <text x="140" y="168" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">12 services &#183; 5 databases</text>
         </svg>
       </div>
       <div class="preview-body">
@@ -465,20 +739,22 @@
       </div>
     </a>
     <a href="ontology.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(52,199,89,.06)">
+      <div class="preview-visual" style="background:rgba(52,199,89,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="140" cy="85" r="24" fill="#FFF" stroke="#34C759" stroke-width="2"/>
-          <text x="140" y="90" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#34C759">Student</text>
-          <circle cx="65" cy="45" r="15" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="65" y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#007AFF">Grades</text>
-          <circle cx="215" cy="45" r="15" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="215" y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#7B61FF">Tests</text>
-          <circle cx="45" cy="110" r="15" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="45" y="114" text-anchor="middle" font-size="6" font-weight="600" fill="#FF9F0A">IEP</text>
-          <circle cx="235" cy="110" r="15" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="235" y="114" text-anchor="middle" font-size="6" font-weight="600" fill="#FF3B30">Staff</text>
-          <circle cx="140" cy="155" r="15" fill="#FFF" stroke="#5AC8FA" stroke-width="1"/><text x="140" y="159" text-anchor="middle" font-size="6" font-weight="600" fill="#5AC8FA">Time</text>
-          <line x1="120" y1="68" x2="78" y2="52" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="160" y1="68" x2="202" y2="52" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="120" y1="98" x2="58" y2="104" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="160" y1="98" x2="222" y2="104" stroke="#E8E8ED" stroke-width="1"/>
-          <line x1="140" y1="109" x2="140" y2="140" stroke="#E8E8ED" stroke-width="1"/>
+          <circle cx="140" cy="82" r="22" fill="#FFF" stroke="#34C759" stroke-width="2"/>
+          <text x="140" y="87" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#34C759">Student</text>
+          <circle cx="68" cy="45" r="14" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="68" y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#007AFF">Grades</text>
+          <circle cx="212" cy="45" r="14" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="212" y="49" text-anchor="middle" font-size="6" font-weight="600" fill="#7B61FF">Tests</text>
+          <circle cx="48" cy="108" r="14" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="48" y="112" text-anchor="middle" font-size="6" font-weight="600" fill="#FF9F0A">IEP</text>
+          <circle cx="232" cy="108" r="14" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="232" y="112" text-anchor="middle" font-size="6" font-weight="600" fill="#FF3B30">Staff</text>
+          <circle cx="95" cy="145" r="14" fill="#FFF" stroke="#5AC8FA" stroke-width="1"/><text x="95" y="149" text-anchor="middle" font-size="6" font-weight="600" fill="#5AC8FA">Time</text>
+          <circle cx="185" cy="145" r="14" fill="#FFF" stroke="#5856D6" stroke-width="1"/><text x="185" y="149" text-anchor="middle" font-size="6" font-weight="600" fill="#5856D6">Bus</text>
+          <line x1="122" y1="67" x2="80" y2="52" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="158" y1="67" x2="200" y2="52" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="122" y1="95" x2="60" y2="102" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="158" y1="95" x2="220" y2="102" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="128" y1="100" x2="105" y2="134" stroke="#E8E8ED" stroke-width="1"/>
+          <line x1="152" y1="100" x2="175" y2="134" stroke="#E8E8ED" stroke-width="1"/>
         </svg>
       </div>
       <div class="preview-body">
@@ -489,18 +765,18 @@
       </div>
     </a>
     <a href="data-intelligence.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(0,122,255,.06)">
+      <div class="preview-visual" style="background:rgba(0,122,255,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <rect x="12" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="36" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF3B30">Raw</text>
-          <rect x="72" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="96" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Parse</text>
-          <rect x="132" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="156" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#007AFF">Resolve</text>
-          <rect x="192" y="65" width="48" height="48" rx="12" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="216" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Graph</text>
-          <rect x="252" y="65" width="20" height="48" rx="8" fill="#7B61FF" opacity=".12"/>
-          <text x="262" y="93" text-anchor="middle" font-size="7" font-weight="800" fill="#7B61FF">&#9889;</text>
-          <line x1="60" y1="89" x2="72" y2="89" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="120" y1="89" x2="132" y2="89" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="180" y1="89" x2="192" y2="89" stroke="#AEAEB2" stroke-width="1"/>
-          <line x1="240" y1="89" x2="252" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <rect x="14" y="66" width="46" height="46" rx="12" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="37" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF3B30">Raw</text>
+          <rect x="74" y="66" width="46" height="46" rx="12" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="97" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Parse</text>
+          <rect x="134" y="66" width="46" height="46" rx="12" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="157" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#007AFF">Resolve</text>
+          <rect x="194" y="66" width="46" height="46" rx="12" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="217" y="94" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Graph</text>
+          <rect x="254" y="66" width="20" height="46" rx="8" fill="rgba(123,97,255,.1)"/>
+          <text x="264" y="93" text-anchor="middle" font-size="7" font-weight="800" fill="#7B61FF">&#9889;</text>
+          <line x1="60" y1="89" x2="74" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="120" y1="89" x2="134" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="180" y1="89" x2="194" y2="89" stroke="#AEAEB2" stroke-width="1"/>
+          <line x1="240" y1="89" x2="254" y2="89" stroke="#AEAEB2" stroke-width="1"/>
           <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">5 stages &#183; 48+ features</text>
         </svg>
       </div>
@@ -512,16 +788,16 @@
       </div>
     </a>
     <a href="optimization.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(123,97,255,.06)">
+      <div class="preview-visual" style="background:rgba(123,97,255,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <text x="140" y="30" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#7B61FF">12 Optimization Models</text>
-          <rect x="22" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="59" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#7B61FF">Scheduling</text>
-          <rect x="103" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1"/><text x="140" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#5856D6">Routing</text>
-          <rect x="184" y="45" width="74" height="32" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="221" y="66" text-anchor="middle" font-size="7" font-weight="600" fill="#007AFF">Matching</text>
-          <rect x="22" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="59" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#FF9F0A">Budget</text>
-          <rect x="103" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="140" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#34C759">Staffing</text>
-          <rect x="184" y="85" width="74" height="32" rx="10" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="221" y="106" text-anchor="middle" font-size="7" font-weight="600" fill="#FF3B30">eROI</text>
-          <text x="140" y="145" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">OR-Tools &#183; Timefold &#183; Z3 &#183; Gurobi</text>
+          <text x="140" y="28" text-anchor="middle" font-family="Inter" font-size="10" font-weight="800" fill="#7B61FF">12 Optimization Models</text>
+          <rect x="22" y="42" width="74" height="30" rx="10" fill="#FFF" stroke="#7B61FF" stroke-width="1"/><text x="59" y="62" text-anchor="middle" font-size="7" font-weight="600" fill="#7B61FF">Scheduling</text>
+          <rect x="103" y="42" width="74" height="30" rx="10" fill="#FFF" stroke="#5856D6" stroke-width="1"/><text x="140" y="62" text-anchor="middle" font-size="7" font-weight="600" fill="#5856D6">Routing</text>
+          <rect x="184" y="42" width="74" height="30" rx="10" fill="#FFF" stroke="#007AFF" stroke-width="1"/><text x="221" y="62" text-anchor="middle" font-size="7" font-weight="600" fill="#007AFF">Matching</text>
+          <rect x="22" y="80" width="74" height="30" rx="10" fill="#FFF" stroke="#FF9F0A" stroke-width="1"/><text x="59" y="100" text-anchor="middle" font-size="7" font-weight="600" fill="#FF9F0A">Budget</text>
+          <rect x="103" y="80" width="74" height="30" rx="10" fill="#FFF" stroke="#34C759" stroke-width="1"/><text x="140" y="100" text-anchor="middle" font-size="7" font-weight="600" fill="#34C759">Staffing</text>
+          <rect x="184" y="80" width="74" height="30" rx="10" fill="#FFF" stroke="#FF3B30" stroke-width="1"/><text x="221" y="100" text-anchor="middle" font-size="7" font-weight="600" fill="#FF3B30">eROI</text>
+          <text x="140" y="140" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">OR-Tools &#183; Timefold &#183; Z3 &#183; Gurobi</text>
         </svg>
       </div>
       <div class="preview-body">
@@ -532,21 +808,21 @@
       </div>
     </a>
     <a href="causal-monitoring.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(255,159,10,.06)">
+      <div class="preview-visual" style="background:rgba(255,159,10,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="50" r="18" fill="#FFF" stroke="#FF9F0A" stroke-width="1.5"/>
-          <text x="60" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Cause</text>
-          <circle cx="140" cy="50" r="18" fill="#FFF" stroke="#7B61FF" stroke-width="1.5"/>
-          <text x="140" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#7B61FF">Path</text>
-          <circle cx="220" cy="50" r="18" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
-          <text x="220" y="55" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Effect</text>
-          <line x1="78" y1="50" x2="122" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
-          <line x1="158" y1="50" x2="202" y2="50" stroke="#AEAEB2" stroke-width="1.5"/>
-          <polyline points="30,140 70,134 110,126 140,116 170,112 200,120 230,132 260,140" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round"/>
-          <polyline points="30,140 70,132 110,120 140,106 170,92 200,82 230,74 260,68" fill="none" stroke="#34C759" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
-          <circle cx="170" cy="112" r="5" fill="#FF3B30"/>
-          <text x="180" y="106" font-family="Inter" font-size="7" font-weight="600" fill="#FF3B30">Alert</text>
-          <text x="145" y="168" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">5 causal methods &#183; CUSUM</text>
+          <circle cx="60" cy="48" r="16" fill="#FFF" stroke="#FF9F0A" stroke-width="1.5"/>
+          <text x="60" y="52" text-anchor="middle" font-size="7" font-weight="700" fill="#FF9F0A">Cause</text>
+          <circle cx="140" cy="48" r="16" fill="#FFF" stroke="#7B61FF" stroke-width="1.5"/>
+          <text x="140" y="52" text-anchor="middle" font-size="7" font-weight="700" fill="#7B61FF">Path</text>
+          <circle cx="220" cy="48" r="16" fill="#FFF" stroke="#34C759" stroke-width="1.5"/>
+          <text x="220" y="52" text-anchor="middle" font-size="7" font-weight="700" fill="#34C759">Effect</text>
+          <line x1="76" y1="48" x2="124" y2="48" stroke="#AEAEB2" stroke-width="1.5"/>
+          <line x1="156" y1="48" x2="204" y2="48" stroke="#AEAEB2" stroke-width="1.5"/>
+          <polyline points="30,138 70,132 110,124 140,114 170,110 200,118 230,130 260,138" fill="none" stroke="#007AFF" stroke-width="2.5" stroke-linecap="round"/>
+          <polyline points="30,138 70,130 110,118 140,104 170,90 200,80 230,72 260,66" fill="none" stroke="#34C759" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
+          <circle cx="170" cy="110" r="5" fill="#FF3B30"/>
+          <text x="180" y="104" font-family="Inter" font-size="7" font-weight="600" fill="#FF3B30">Alert</text>
+          <text x="145" y="165" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#AEAEB2">5 causal methods &#183; CUSUM</text>
         </svg>
       </div>
       <div class="preview-body">
@@ -557,18 +833,18 @@
       </div>
     </a>
     <a href="security-roadmap.html" class="preview-card">
-      <div class="preview-visual" style="background:rgba(255,59,48,.06)">
+      <div class="preview-visual" style="background:rgba(255,59,48,.05)">
         <svg viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
-          <path d="M140,20 L200,48 L200,90 Q200,135 140,150 Q80,135 80,90 L80,48 Z" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
-          <text x="140" y="72" text-anchor="middle" font-size="22">&#128737;</text>
-          <text x="140" y="102" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#FF3B30">FERPA &#183; COPPA</text>
-          <text x="140" y="118" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#AEAEB2">7-layer defense in depth</text>
-          <line x1="40" y1="160" x2="240" y2="160" stroke="#E8E8ED" stroke-width="2"/>
-          <circle cx="60" cy="160" r="5" fill="#FF3B30"/>
-          <circle cx="100" cy="160" r="5" fill="#FF9F0A"/>
-          <circle cx="140" cy="160" r="5" fill="#007AFF"/>
-          <circle cx="180" cy="160" r="5" fill="#7B61FF"/>
-          <circle cx="220" cy="160" r="5" fill="#34C759"/>
+          <path d="M140,18 L198,45 L198,85 Q198,130 140,146 Q82,130 82,85 L82,45 Z" fill="#FFF" stroke="#FF3B30" stroke-width="1.5"/>
+          <text x="140" y="70" text-anchor="middle" font-size="20">&#128737;</text>
+          <text x="140" y="98" text-anchor="middle" font-family="Inter" font-size="8" font-weight="800" fill="#FF3B30">FERPA &#183; COPPA</text>
+          <text x="140" y="114" text-anchor="middle" font-family="Inter" font-size="8" font-weight="600" fill="#AEAEB2">7-layer defense in depth</text>
+          <line x1="40" y1="158" x2="240" y2="158" stroke="#E8E8ED" stroke-width="2"/>
+          <circle cx="60" cy="158" r="4.5" fill="#FF3B30"/>
+          <circle cx="100" cy="158" r="4.5" fill="#FF9F0A"/>
+          <circle cx="140" cy="158" r="4.5" fill="#007AFF"/>
+          <circle cx="180" cy="158" r="4.5" fill="#7B61FF"/>
+          <circle cx="220" cy="158" r="4.5" fill="#34C759"/>
         </svg>
       </div>
       <div class="preview-body">
@@ -584,17 +860,23 @@
 
 </main>
 
-<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════════════════════ FOOTER ═══════════════════════════════════════════════════════════════════ -->
 <footer>
 <div class="con">
-  <div class="footer-grid">
-    <a href="index.html" class="footer-pill">Home</a>
-    <a href="architecture.html" class="footer-pill">Architecture</a>
-    <a href="ontology.html" class="footer-pill">Ontology</a>
-    <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
-    <a href="optimization.html" class="footer-pill">Optimization</a>
-    <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
-    <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">ATLAS</span>
+      <p>Education Operating System</p>
+    </div>
+    <div class="footer-grid">
+      <a href="index.html" class="footer-pill">Home</a>
+      <a href="architecture.html" class="footer-pill">Architecture</a>
+      <a href="ontology.html" class="footer-pill">Ontology</a>
+      <a href="data-intelligence.html" class="footer-pill">Data &amp; Signals</a>
+      <a href="optimization.html" class="footer-pill">Optimization</a>
+      <a href="causal-monitoring.html" class="footer-pill">Causal &amp; Monitoring</a>
+      <a href="security-roadmap.html" class="footer-pill">Security &amp; Roadmap</a>
+    </div>
   </div>
   <div class="footer-bottom">
     ATLAS Education Operating System &mdash; From 47 disconnected systems to one intelligence layer.

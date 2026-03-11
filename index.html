@@ -640,44 +640,211 @@
   <details class="deep reveal" style="margin-top:32px">
     <summary>Complete entity catalog &mdash; Learner domain</summary>
     <div class="deep-body">
-      <p>The Learner domain is the gravitational center of the ATLAS ontology. Every other domain connects through the learner node. Key entities include:</p>
+      <h4>Learner (central entity)</h4>
+      <p>The gravitational center of the ontology. Not a database row &mdash; a rich, evolving, multi-dimensional representation of a student PK-12.</p>
       <table class="tbl">
         <thead>
-          <tr><th>Entity</th><th>Key Attributes</th><th>Relationships</th></tr>
+          <tr><th>Property</th><th>Type</th><th>Description</th></tr>
         </thead>
         <tbody>
-          <tr>
-            <td><strong>Learner</strong></td>
-            <td>Demographics, grade level, enrollment status, risk scores</td>
-            <td>ENROLLED_IN, ASSESSED_BY, RECEIVES_SERVICE, HAS_PLAN, ATTENDS</td>
-          </tr>
-          <tr>
-            <td><strong>Enrollment</strong></td>
-            <td>Entry/exit dates, status, type (regular, transfer, dual)</td>
-            <td>AT_SCHOOL, IN_PROGRAM, DURING_TERM</td>
-          </tr>
-          <tr>
-            <td><strong>Attendance</strong></td>
-            <td>Date, status, minutes, reason code, period</td>
-            <td>FOR_LEARNER, AT_SECTION, ON_DATE</td>
-          </tr>
-          <tr>
-            <td><strong>Assessment Event</strong></td>
-            <td>Instrument, date, raw/scaled scores, percentile, growth</td>
-            <td>MEASURES_LEARNER, USING_INSTRUMENT, IN_WINDOW</td>
-          </tr>
-          <tr>
-            <td><strong>Behavior Event</strong></td>
-            <td>Type, severity, context, response, PBIS points</td>
-            <td>INVOLVES_LEARNER, REPORTED_BY, AT_LOCATION</td>
-          </tr>
-          <tr>
-            <td><strong>Service Record</strong></td>
-            <td>Intervention, dosage, fidelity, start/end dates</td>
-            <td>DELIVERS_TO_LEARNER, PROVIDED_BY, PART_OF_PLAN</td>
-          </tr>
+          <tr><td><code>learnerId</code></td><td>UUID</td><td>System-generated unique ID (not district local ID)</td></tr>
+          <tr><td><code>externalIds[]</code></td><td>Array</td><td>Identity mappings to source systems (SIS ID, state ID, SPED ID, assessment platform ID). Entity resolution anchor.</td></tr>
+          <tr><td><code>demographicProfile</code></td><td>Object</td><td>Age, grade level, enrollment date, language profile. Stored with purpose-limitation metadata per FERPA.</td></tr>
+          <tr><td><code>programAssociations[]</code></td><td>Array</td><td>Current program memberships: SPED, gifted, EL, Title I, 504, McKinney-Vento, foster care. Each with effective dates and status.</td></tr>
+          <tr><td><code>enrollmentHistory[]</code></td><td>Array</td><td>Chronological record of every school/program enrollment with entry/exit dates and reasons.</td></tr>
         </tbody>
       </table>
+
+      <h4 style="margin-top:32px">LearnerAcademicProfile</h4>
+      <table class="tbl">
+        <thead>
+          <tr><th>Property</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>domainMasteryMap</code></td><td>Decomposed proficiency across every academic domain and subdomain. Not a single &quot;reading level&quot; but phonemic awareness, decoding, fluency, vocabulary, comprehension.</td></tr>
+          <tr><td><code>assessmentHistory[]</code></td><td>Every assessment event linked to standards measured, instrument used, score, and date.</td></tr>
+          <tr><td><code>gradeHistory[]</code></td><td>Course grades by term, linked to section and grading scale. Handles A-F, standards-based, narrative, mastery, hybrid.</td></tr>
+          <tr><td><code>creditAccumulation</code></td><td>Credits earned, required for graduation, pathway progress.</td></tr>
+          <tr><td><code>growthTrajectory</code></td><td>Computed: rate of progress over time with projected future performance.</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top:32px">LearnerSupportPlan (universal abstraction)</h4>
+      <p>Encompasses IEPs, 504 plans, intervention plans, gifted plans, EL plans, BIPs, and custom plans. Each has: <code>planType</code>, <code>governingAuthority</code>, <code>effectivePeriod</code>, <code>goals[]</code>, <code>serviceObligations[]</code>, <code>accommodations[]</code>, <code>progressMonitoring</code>, <code>complianceRequirements</code>.</p>
+    </div>
+  </details>
+
+  <!-- Relationship Types Accordion -->
+  <details class="deep reveal">
+    <summary>Relationship types &mdash; how domains connect</summary>
+    <div class="deep-body">
+      <p>The value of ATLAS lies in connections between domains. Key relationships:</p>
+      <table class="tbl">
+        <thead>
+          <tr><th>Edge Type</th><th>Source &rarr; Target</th><th>Cardinality</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>ENROLLED_IN</code></td><td>Learner &rarr; CourseSection</td><td>M:N (temporal)</td></tr>
+          <tr><td><code>ASSESSED_BY</code></td><td>Learner &rarr; AssessmentEvent</td><td>1:N</td></tr>
+          <tr><td><code>GOVERNED_BY</code></td><td>Learner &rarr; SupportPlan</td><td>1:N (temporal)</td></tr>
+          <tr><td><code>RECEIVES_SERVICE</code></td><td>Learner &rarr; ServiceDelivery</td><td>1:N</td></tr>
+          <tr><td><code>ASSIGNED_TO</code></td><td>Learner &rarr; Staff</td><td>M:N (advisor, counselor, case mgr)</td></tr>
+          <tr><td><code>TAUGHT_BY</code></td><td>CourseSection &rarr; Staff</td><td>N:1</td></tr>
+          <tr><td><code>MEETS_AT</code></td><td>CourseSection &rarr; ScheduleBlock</td><td>1:N</td></tr>
+          <tr><td><code>LOCATED_IN</code></td><td>CourseSection &rarr; Space</td><td>N:1</td></tr>
+          <tr><td><code>MEASURES</code></td><td>AssessmentInstrument &rarr; Standard</td><td>M:N</td></tr>
+          <tr><td><code>FUNDED_BY</code></td><td>Program &rarr; FundingSource</td><td>M:N</td></tr>
+          <tr><td><code>ADDRESSES</code></td><td>InstructionalMaterial &rarr; Standard</td><td>M:N</td></tr>
+          <tr><td><code>MEMBER_OF</code></td><td>Learner &rarr; Household</td><td>M:N</td></tr>
+        </tbody>
+      </table>
+      <div style="background:linear-gradient(135deg, rgba(52,199,89,.06), rgba(52,199,89,.12));border-left:4px solid #34C759;border-radius:0 16px 16px 0;padding:24px 28px;margin-top:24px">
+        <p style="margin:0"><strong style="color:#34C759"><em>Cross-domain query example:</em></strong> &quot;For a student with declining math scores, find: their current math teacher, the curriculum materials being used, any recent attendance changes, any active interventions, and whether their IEP specifies math service minutes.&quot; &mdash; This is a single graph traversal across 5 domains.</p>
+      </div>
+    </div>
+  </details>
+
+  <!-- Temporal Modeling Accordion -->
+  <details class="deep reveal">
+    <summary>Temporal modeling &mdash; bitemporal everything</summary>
+    <div class="deep-body">
+      <p>ATLAS maintains two time dimensions for every fact using XTDB v2:</p>
+      <p><strong><em>Valid-time:</em></strong> When a fact was true in the real world (e.g., student enrolled on Sept 1).</p>
+      <p><strong><em>System-time:</em></strong> When the system learned about it (e.g., data ingested on Sept 3).</p>
+      <p>This enables &quot;as-of&quot; queries: &quot;What did the system know about this student on October 15?&quot; &mdash; critical for FERPA compliance, audit trails, and understanding how decisions were made with the information available at the time.</p>
+      <div style="background:#F5F5F7;border-radius:16px;padding:24px;margin-top:20px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8">
+        <span style="color:var(--tx3)">-- XTDB temporal query: what was true at a specific moment</span><br>
+        SELECT * FROM learner_enrollment<br>
+        FOR VALID_TIME AS OF DATE '2025-10-15'<br>
+        FOR SYSTEM_TIME AS OF TIMESTAMP '2025-10-16T09:00:00Z'<br>
+        WHERE learner_id = 'abc123'
+      </div>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════ DATA INTEGRATION ═══════════════════════════ -->
+<section class="section" id="data-integration" style="padding:80px 0">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--blue)">DATA INTEGRATION</p>
+  <h2 class="sec-title reveal">From <span class="grad-blue">messy spreadsheets</span> to clean knowledge</h2>
+  <p class="sec-sub reveal" style="max-width:720px">Raw data arrives from district systems in wildly inconsistent formats &mdash; CSV exports from 1990s platforms, REST APIs from modern SIS, XML dumps from SPED tools, manually entered spreadsheets. ATLAS transforms it all into interconnected ontology objects.</p>
+
+  <!-- Before / After comparison -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px" class="reveal">
+    <div class="card" style="padding:32px;background:linear-gradient(135deg, rgba(255,59,48,.04), rgba(255,59,48,.08));border-color:rgba(255,59,48,.15)">
+      <p style="font-weight:800;font-size:12px;letter-spacing:1.5px;color:#FF3B30;margin-bottom:16px">BEFORE ATLAS</p>
+      <p style="color:var(--tx2);line-height:2;font-size:15px">
+        &rarr; 47 disconnected systems<br>
+        &rarr; &quot;John Smith Jr.&quot; in SIS, &quot;Johnathan A. Smith&quot; in SPED<br>
+        &rarr; CSV exports emailed monthly<br>
+        &rarr; 6 different logins to check one student<br>
+        &rarr; Data conflicts discovered by accident
+      </p>
+    </div>
+    <div class="card" style="padding:32px;background:linear-gradient(135deg, rgba(52,199,89,.04), rgba(52,199,89,.08));border-color:rgba(52,199,89,.15)">
+      <p style="font-weight:800;font-size:12px;letter-spacing:1.5px;color:#34C759;margin-bottom:16px">AFTER ATLAS</p>
+      <p style="color:var(--tx2);line-height:2;font-size:15px">
+        &rarr; One unified knowledge graph<br>
+        &rarr; Probabilistic entity resolution (Splink)<br>
+        &rarr; Real-time CDC + nightly batch sync<br>
+        &rarr; Single query traverses all data<br>
+        &rarr; Conflicts flagged automatically
+      </p>
+    </div>
+  </div>
+
+  <!-- 5-Stage Pipeline -->
+  <div class="card reveal" style="margin-top:32px;padding:40px 24px;overflow-x:auto">
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;min-width:900px">
+      <!-- Stage 1: Parse -->
+      <div style="background:rgba(255,59,48,.05);border:1px solid rgba(255,59,48,.15);border-radius:16px;padding:20px;position:relative">
+        <p style="font-weight:800;font-size:11px;letter-spacing:1px;color:#FF3B30;margin-bottom:12px">STAGE 1: PARSE</p>
+        <p style="font-size:13px;color:var(--tx2);line-height:1.6">Raw CSV/JSON/XML<br>Schema validation<br>Type checking</p>
+        <div style="background:rgba(255,59,48,.1);border-radius:8px;padding:6px 10px;margin-top:14px;text-align:center">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FF3B30;font-weight:600">QUARANTINE</span><br>
+          <span style="font-size:9px;color:var(--tx3)">Invalid &rarr; human review</span>
+        </div>
+        <p style="font-size:10px;color:var(--tx3);margin-top:12px;font-family:'JetBrains Mono',monospace">validated_records</p>
+      </div>
+      <!-- Arrow -->
+      <!-- Stage 2: Normalize -->
+      <div style="background:rgba(255,159,10,.05);border:1px solid rgba(255,159,10,.15);border-radius:16px;padding:20px;position:relative">
+        <p style="font-weight:800;font-size:11px;letter-spacing:1px;color:#FF9F0A;margin-bottom:12px">STAGE 2: NORMALIZE</p>
+        <p style="font-size:13px;color:var(--tx2);line-height:1.6">Field name mapping<br>Enum normalization<br>Date standardization<br>Name cleaning</p>
+        <div style="background:rgba(255,204,0,.12);border-radius:8px;padding:6px 10px;margin-top:14px;text-align:center">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FF9F0A;font-weight:600">STUDENT_NUMBER &rarr;</span><br>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#FF9F0A">primaryExternalId</span>
+        </div>
+        <p style="font-size:10px;color:var(--tx3);margin-top:12px;font-family:'JetBrains Mono',monospace">normalized_records</p>
+      </div>
+      <!-- Stage 3: Enrich -->
+      <div style="background:rgba(52,199,89,.05);border:1px solid rgba(52,199,89,.15);border-radius:16px;padding:20px;position:relative">
+        <p style="font-weight:800;font-size:11px;letter-spacing:1px;color:#34C759;margin-bottom:12px">STAGE 3: ENRICH</p>
+        <p style="font-size:13px;color:var(--tx2);line-height:1.6">Cross-reference lookup<br>Derived field compute<br>Context application</p>
+        <div style="background:rgba(52,199,89,.08);border-radius:8px;padding:6px 10px;margin-top:14px;text-align:center">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#34C759;font-weight:600">attendance_rate: 87.3%</span><br>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#34C759">compliance_pct: 92%</span>
+        </div>
+        <p style="font-size:10px;color:var(--tx3);margin-top:12px;font-family:'JetBrains Mono',monospace">enriched_records</p>
+      </div>
+      <!-- Stage 4: Resolve -->
+      <div style="background:rgba(0,122,255,.05);border:1px solid rgba(0,122,255,.15);border-radius:16px;padding:20px;position:relative">
+        <p style="font-weight:800;font-size:11px;letter-spacing:1px;color:#007AFF;margin-bottom:12px">STAGE 4: RESOLVE</p>
+        <p style="font-size:13px;color:var(--tx2);line-height:1.6">Splink probabilistic<br>Fellegi-Sunter model<br>Golden record build</p>
+        <div style="background:rgba(0,122,255,.08);border-radius:8px;padding:6px 10px;margin-top:14px;text-align:center">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#007AFF;font-weight:600">P(match) = 0.97</span><br>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#007AFF">&rarr; AUTO-LINK</span>
+        </div>
+        <p style="font-size:10px;color:var(--tx3);margin-top:12px;font-family:'JetBrains Mono',monospace">resolved_entities</p>
+      </div>
+      <!-- Stage 5: Graph Write -->
+      <div style="background:rgba(123,97,255,.05);border:1px solid rgba(123,97,255,.15);border-radius:16px;padding:20px;position:relative">
+        <p style="font-weight:800;font-size:11px;letter-spacing:1px;color:#7B61FF;margin-bottom:12px">STAGE 5: GRAPH WRITE</p>
+        <p style="font-size:13px;color:var(--tx2);line-height:1.6">Neo4j node/edge ops<br>XTDB bitemporal write<br>ES index update<br>Domain event publish<br>Audit log entry</p>
+        <p style="font-size:10px;color:var(--tx3);margin-top:12px;font-family:'JetBrains Mono',monospace">knowledge_graph</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--tx3);font-size:13px;margin-top:20px">Powered by Kafka Streams &middot; Apache Flink &middot; S3 Raw Landing Zone</p>
+  </div>
+
+  <!-- Entity Resolution Accordion -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Entity resolution &mdash; the Splink pipeline</summary>
+    <div class="deep-body">
+      <p>This is the most critical and error-prone step. When NWEA MAP has &quot;Johnathan Smith&quot; and the SIS has &quot;John Smith Jr.&quot; and the SPED system has &quot;Johnathan A. Smith&quot; &mdash; are these the same student? Getting this wrong means a student&rsquo;s assessment data disconnects from their IEP.</p>
+
+      <h4>Blocking Strategy</h4>
+      <p>Without blocking, 50K students &times; 50K = 2.5 billion comparisons. Blocking rules reduce to plausible candidate pairs:</p>
+      <div style="background:#F5F5F7;border-radius:16px;padding:24px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2">
+        <span style="color:var(--tx3)"># Rule 1: Exact DOB + first 3 chars of last name</span><br>
+        l.date_of_birth = r.date_of_birth AND substr(l.last_name,1,3) = substr(r.last_name,1,3)<br><br>
+        <span style="color:var(--tx3)"># Rule 2: Exact last name + first 3 chars first name + same school</span><br>
+        l.last_name = r.last_name AND substr(l.first_name,1,3) = substr(r.first_name,1,3) AND l.school_id = r.school_id<br><br>
+        <span style="color:var(--tx3)"># Rule 3: Exact district student ID (strongest when available)</span><br>
+        l.district_student_id = r.district_student_id AND l.district_student_id IS NOT NULL<br><br>
+        <span style="color:var(--tx3)"># Rule 4: Soundex of last name + DOB year + gender (phonetic variations)</span><br>
+        soundex(l.last_name) = soundex(r.last_name) AND substr(l.dob,1,4) = substr(r.dob,1,4)
+      </div>
+
+      <h4>Comparison Columns (Fellegi-Sunter)</h4>
+      <p>Each field is compared using appropriate string similarity: Jaro-Winkler for names (handles &quot;John&quot; vs &quot;Johnathan&quot;), exact match for DOB (strongest signal), date-diff with tolerances for data entry errors, term frequency adjustments (rare names provide stronger match evidence).</p>
+
+      <h4>Match Thresholds</h4>
+      <table class="tbl">
+        <thead>
+          <tr><th>Probability</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>&ge; 0.95</td><td>Auto-link (no human review needed)</td></tr>
+          <tr><td>0.70 &ndash; 0.95</td><td>Send to human review queue</td></tr>
+          <tr><td>&lt; 0.70</td><td>Auto-reject (create as new entity)</td></tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top:24px">Survivorship Rules (Golden Record)</h4>
+      <p>When records match, which source wins for each field? SIS is authoritative for identity/enrollment fields. SPED system is authoritative for support plan data. Assessment platforms are authoritative for assessment events. Program flags use union strategy (merge from all sources).</p>
     </div>
   </details>
 </div>

@@ -850,6 +850,198 @@
 </div>
 </section>
 
+<!-- ═══════════════════════════ SIGNAL DETECTION & INTELLIGENCE ═══════════════════════════ -->
+<section class="section-alt" id="signal-detection" style="padding:80px 0">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--indigo)">SIGNAL DETECTION &amp; INTELLIGENCE</p>
+  <h2 class="sec-title reveal">From data to <span class="grad-purple">actionable signals</span></h2>
+  <p class="sec-sub reveal" style="max-width:720px">ATLAS doesn&rsquo;t just store data &mdash; it reasons about it. 48+ learner features feed five detection methods, which trigger an 11-node LangGraph reasoning agent that proposes actions for human review.</p>
+
+  <!-- 48+ Learner Features Accordion -->
+  <details class="deep reveal" style="margin-top:40px">
+    <summary>48+ learner features &mdash; complete feature engineering</summary>
+    <div class="deep-body">
+      <h4>Academic Features (13)</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--tx2);line-height:1.8">current_gpa, gpa_trend_slope, courses_failing_count, courses_below_c_count, grade_vs_assessment_discrepancy (inflated/deflated grades), assessment_composite_percentile, assessment_growth_rate (pts/month), assessment_growth_vs_peers, standards_mastered_pct, standards_below_grade_count, missing_assignment_rate_14d, missing_assignment_rate_30d, missing_assignment_acceleration</p>
+
+      <h4 style="margin-top:24px">Attendance Features (10)</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--tx2);line-height:1.8">attendance_rate_ytd, attendance_rate_30d, attendance_rate_14d, attendance_trend_slope, unexcused_absence_count_30d, tardy_count_30d, consecutive_absences_current, chronic_absence_risk_score (ML-predicted), day_of_week_pattern, absence_after_event_correlation</p>
+
+      <h4 style="margin-top:24px">Behavioral Features (9)</h4>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--tx2);line-height:1.8">behavior_incident_count_30d, behavior_incident_count_90d, behavior_incident_trend, behavior_severity_escalation, behavior_new_type_flag, suspension_count_ytd, suspension_days_ytd, positive_behavior_points_30d, positive_behavior_trend</p>
+
+      <h4 style="margin-top:24px">Engagement, Intervention, Compliance, Circumstantial</h4>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.8">LMS login frequency/trends, assignment submission timeliness, extracurricular involvement, active intervention count, dosage compliance, intervention response rate, IEP/504 status, service minutes compliance, overdue evaluations, new enrollment flag, school transfers, homelessness, foster care, free/reduced lunch status.</p>
+
+      <div style="background:linear-gradient(135deg, rgba(123,97,255,.06), rgba(191,90,242,.08));border-left:4px solid #7B61FF;border-radius:0 16px 16px 0;padding:24px 28px;margin-top:24px">
+        <p style="margin:0"><strong style="color:#7B61FF"><em>Composite Risk Score:</em></strong> Weighted combination via gradient-boosted model (LightGBM). SHAP values explain which features contribute most to each student&rsquo;s risk score &mdash; making the model interpretable for educators.</p>
+      </div>
+    </div>
+  </details>
+
+  <!-- LangGraph Agent Accordion -->
+  <details class="deep reveal">
+    <summary>LangGraph agent &mdash; 11-node state machine</summary>
+    <div class="deep-body">
+      <p>When a signal creates a case, the LangGraph agent orchestrates a multi-step reasoning process:</p>
+      <h4>Agent Phases</h4>
+      <table class="tbl">
+        <thead>
+          <tr><th>Phase</th><th>Node</th><th>What Happens</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Context</td><td>gather_context</td><td>Extract learner subgraph via Graph-RAG. Serialize relevant nodes, edges, properties as context for reasoning.</td></tr>
+          <tr><td>Analysis</td><td>analyze_signals</td><td>LLM analyzes converging signals. Think-on-Graph beam search to explore related patterns.</td></tr>
+          <tr><td>Root Cause</td><td>root_cause</td><td>Identify probable causes by traversing causal edges in the graph. Generate hypotheses.</td></tr>
+          <tr><td>Search</td><td>search_interventions</td><td>Query intervention catalog, match student profile to evidence-based programs.</td></tr>
+          <tr><td>Optimize</td><td>optimize_match</td><td>Run optimization models (OR-Tools) to find best assignment respecting constraints.</td></tr>
+          <tr><td>Validate</td><td>validate_constraints</td><td>Z3 checks: does the proposal violate any hard constraints? If yes, backtrack.</td></tr>
+          <tr><td>Explain</td><td>generate_explanation</td><td>Generate 3-level explanations: technical (for data team), professional (for educators), plain language (for parents).</td></tr>
+          <tr><td>Review</td><td><strong>HUMAN INTERRUPT</strong></td><td>Proposal presented to human reviewer. Agent pauses until approval/rejection/modification.</td></tr>
+          <tr><td>Execute</td><td>create_action_plan</td><td>Create ActionPlan, Tasks, Assignments. Publish to action bus.</td></tr>
+          <tr><td>Monitor</td><td>setup_monitoring</td><td>Set Bayesian projection + CUSUM monitoring on target metrics.</td></tr>
+          <tr><td>Record</td><td>record_provenance</td><td>Write complete reasoning chain as a reified subgraph in Neo4j.</td></tr>
+        </tbody>
+      </table>
+      <div style="background:linear-gradient(135deg, rgba(0,122,255,.04), rgba(0,122,255,.08));border-left:4px solid #007AFF;border-radius:0 16px 16px 0;padding:24px 28px;margin-top:24px">
+        <p style="margin:0"><strong style="color:#007AFF"><em>Graph-Constrained Reasoning (ICML 2025):</em></strong> The LLM&rsquo;s reasoning is constrained by the knowledge graph structure &mdash; it can only reference entities and relationships that actually exist. This prevents hallucination and ensures every claim is grounded in data.</p>
+      </div>
+    </div>
+  </details>
+
+  <!-- Think-on-Graph & Graph-RAG Accordion -->
+  <details class="deep reveal">
+    <summary>Think-on-Graph &amp; Graph-RAG</summary>
+    <div class="deep-body">
+      <p><strong>Think-on-Graph (ICLR 2024):</strong> Instead of treating the KG as a static context dump, the LLM iteratively explores the graph through beam search. At each step, it selects the most promising edges to traverse based on its reasoning needs.</p>
+      <p><strong>Graph-RAG:</strong> Extract a relevant subgraph around the case entities (typically 2-3 hops), serialize it, and provide it as grounded context to the LLM. The LLM can then reference specific nodes and edges in its reasoning.</p>
+      <p><strong>Tool Registry (14 tools):</strong> The agent has governed tools for ontology queries, constraint checking, optimization invocation, evidence base search, explanation generation, and more. Each tool call is logged with full provenance.</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════ OPTIMIZATION ═══════════════════════════ -->
+<section class="section" id="optimization-preview" style="padding:80px 0">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--amber)">OPTIMIZATION &amp; OPERATIONS RESEARCH</p>
+  <h2 class="sec-title reveal">The <span class="grad-amber">Moneyball engine</span> for education</h2>
+  <p class="sec-sub reveal" style="max-width:720px">Boston Public Schools saved $5M/year by co-optimizing bus routes and bell times. That was one problem on one domain. ATLAS runs twelve optimization models continuously against the entire knowledge graph.</p>
+
+  <!-- Before / After -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px" class="reveal">
+    <div class="card" style="padding:32px;background:linear-gradient(135deg, rgba(255,59,48,.04), rgba(255,59,48,.08));border-color:rgba(255,59,48,.15)">
+      <p style="font-weight:800;font-size:12px;letter-spacing:1.5px;color:#FF3B30;margin-bottom:16px">BEFORE ATLAS</p>
+      <p style="color:var(--tx2);line-height:2;font-size:15px">
+        &rarr; 3 weeks to build a master schedule<br>
+        &rarr; Bus routes planned by hand on paper<br>
+        &rarr; Intervention matching by gut feel<br>
+        &rarr; No visibility into program ROI
+      </p>
+    </div>
+    <div class="card" style="padding:32px;background:linear-gradient(135deg, rgba(52,199,89,.04), rgba(52,199,89,.08));border-color:rgba(52,199,89,.15)">
+      <p style="font-weight:800;font-size:12px;letter-spacing:1.5px;color:#34C759;margin-bottom:16px">AFTER ATLAS</p>
+      <p style="color:var(--tx2);line-height:2;font-size:15px">
+        &rarr; 3 hours &mdash; optimized, constraint-checked<br>
+        &rarr; 50-bus reduction, $5M saved (Boston)<br>
+        &rarr; Evidence-based matching + optimization<br>
+        &rarr; eROI calculated for every program
+      </p>
+    </div>
+  </div>
+
+  <!-- 12 Optimization Model Cards -->
+  <div class="g3 reveal" style="margin-top:32px">
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);font-size:22px">&#128197;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Master Scheduling</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Assign (section, teacher, room, time slot) tuples maximizing student access. CP-SAT with hot-start from prior year. Target: 500 sections in &lt;30 min.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);font-size:22px">&#128652;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Bus Routing (BiRD)</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">5-stage co-optimization: stop assignment &rarr; single-school routing &rarr; scenario selection &rarr; bus scheduling &rarr; bell time selection. Gurobi MIP.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(88,86,214,.08);font-size:22px">&#128694;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Itinerant Staff Routing</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">VRPTW: route speech therapists and OTs across schools minimizing travel, maximizing direct service time. OR-Tools RoutingModel.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,59,48,.08);font-size:22px">&#127919;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Student-Intervention Match</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Weighted bipartite matching: predicted effectiveness &times; evidence base &times; diagnostic alignment. Thompson Sampling for exploration.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,59,48,.08);font-size:22px">&#127981;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Caseload Balancing</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Distribute students across counselors, case managers, and support staff. Balance workload, match expertise, respect relationships.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(52,199,89,.08);font-size:22px">&#128176;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Budget Allocation</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Z3 SMT multi-objective: maximize impact across programs while satisfying funding source constraints. Pareto frontier exploration.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);font-size:22px">&#128100;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Substitute Forecasting</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Predict daily substitute needs from historical patterns, weather, flu season, day-of-week effects. Proactive hiring.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);font-size:22px">&#129309;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Paraprofessional Assignment</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Match paraprofessionals to students by certification, language, schedule, and student-specific needs.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(142,142,147,.08);font-size:22px">&#127970;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Space Allocation</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Optimize room assignments: capacity utilization, accessibility, equipment needs, proximity to related services.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);font-size:22px">&#128218;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">PD Scheduling</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Professional development scheduling that minimizes classroom coverage disruption while meeting training mandates.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(142,142,147,.08);font-size:22px">&#128203;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Assessment Windows</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Schedule assessment periods minimizing instructional disruption while meeting state and district testing mandates.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,59,48,.08);font-size:22px">&#128200;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Program eROI</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Educational Return on Investment: true cost (Ingredients Method) &divide; causal impact (PSM). Expand, optimize, or terminate.</p>
+    </div>
+  </div>
+
+  <!-- Master Scheduling Formulation Accordion -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Master scheduling &mdash; mathematical formulation</summary>
+    <div class="deep-body">
+      <h4>Decision Variables</h4>
+      <div style="background:#F5F5F7;border-radius:16px;padding:20px 24px;margin:12px 0;font-family:'JetBrains Mono',monospace;font-size:14px">
+        x[c,t,r] &isin; {0,1} : course section c scheduled at time slot t in room r
+      </div>
+
+      <h4>Objective</h4>
+      <div style="background:#F5F5F7;border-radius:16px;padding:20px 24px;margin:12px 0;font-family:'JetBrains Mono',monospace;font-size:14px">
+        min &Sigma;_h w_h &middot; violation_h + &Sigma;_s w_s &middot; violation_s
+      </div>
+
+      <h4>Hard Constraints</h4>
+      <p>Teacher conflicts (one location per slot), room conflicts (one section per room per slot), room capacity (enrollment &le; capacity), student conflicts (no simultaneous sections), IEP service minutes (pull-out blocks must exist), teacher certification (valid cert for subject).</p>
+
+      <h4>Soft Constraints (weighted)</h4>
+      <p>Student preference satisfaction, teacher schedule compactness, equitable access to advanced courses, pedagogical sequencing (lab follows lecture), planning period distribution per contract.</p>
+
+      <div style="background:linear-gradient(135deg, rgba(255,159,10,.06), rgba(255,159,10,.12));border-left:4px solid #FF9F0A;border-radius:0 16px 16px 0;padding:24px 28px;margin-top:24px">
+        <p style="margin:0"><strong style="color:#FF9F0A"><em>Solver:</em></strong> Google OR-Tools CP-SAT with hot-start from prior year schedule. Decomposed into teacher assignment + room assignment + student scheduling sub-problems. Large Neighborhood Search for refinement.</p>
+      </div>
+    </div>
+  </details>
+</div>
+</section>
+
 <!-- ═══════════════════════════ EXPLORE CHAPTERS ═══════════════════════════ -->
 <section class="section-alt" id="explore">
 <div class="con">

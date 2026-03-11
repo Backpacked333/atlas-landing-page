@@ -409,21 +409,275 @@
         </div>
       </div>
 
-      <h4>Tier 4: Operational (build last)</h4>
+      <h4>Tier 4: Operational (build fourth)</h4>
       <div style="display:flex;flex-direction:column;gap:16px;margin:12px 0 0">
         <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(52,199,89,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128736;</div>
-          <div><strong>Workflow Service</strong><br><span style="font-size:14px;color:var(--tx2)">Multi-step approval flows, intervention lifecycle, notification dispatch. Temporal.</span></div>
+          <div class="card-icon" style="background:rgba(52,199,89,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128451;</div>
+          <div><strong>Case &amp; Workflow Service</strong><br><span style="font-size:14px;color:var(--tx2)">Case state machine, task management, Playbook execution engine. NestJS.</span></div>
         </div>
         <div style="display:flex;gap:14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)">
-          <div class="card-icon" style="background:rgba(0,122,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128202;</div>
-          <div><strong>Monitoring &amp; Causal Service</strong><br><span style="font-size:14px;color:var(--tx2)">CUSUM drift detection, causal inference pipeline, outcome tracking. Python + DoWhy.</span></div>
+          <div class="card-icon" style="background:rgba(255,59,48,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128200;</div>
+          <div><strong>Monitoring &amp; Adaptation Service</strong><br><span style="font-size:14px;color:var(--tx2)">Bayesian projections, CUSUM monitoring, adaptation triggers, Impact Ledger. Python.</span></div>
         </div>
         <div style="display:flex;gap:14px;align-items:center;padding:12px 0">
-          <div class="card-icon" style="background:rgba(123,97,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128300;</div>
-          <div><strong>Discovery &amp; Reporting Service</strong><br><span style="font-size:14px;color:var(--tx2)">Dashboard generation, eROI calculations, compliance reports. React + D3.</span></div>
+          <div class="card-icon" style="background:rgba(123,97,255,.08);margin:0;width:44px;height:44px;font-size:18px;border-radius:12px;flex-shrink:0">&#128270;</div>
+          <div><strong>Discovery Service</strong><br><span style="font-size:14px;color:var(--tx2)">Leiden community detection, GraMi subgraph mining, PrefixSpan temporal patterns, causal analysis. Python + Neo4j GDS.</span></div>
         </div>
       </div>
+    </div>
+  </details>
+
+  <!-- Event Backbone Accordion -->
+  <details class="deep reveal">
+    <summary>Event backbone &mdash; Kafka architecture</summary>
+    <div class="deep-body">
+      <p>Apache Kafka (KRaft mode, 3.7+) serves as the central nervous system. Every state change produces events &mdash; CDC streams from source systems, domain events from mutations, audit events from access, provenance events from reasoning.</p>
+      <h4>Communication Patterns</h4>
+      <p><strong>Synchronous (GraphQL/gRPC):</strong> Client &rarr; API Gateway &rarr; Query/Action Service for user-facing operations. Service-to-service for constraint validation.</p>
+      <p><strong>Asynchronous (Kafka):</strong> CDC from source systems &rarr; Ingestion Service. Domain events &rarr; all consumers. Signal detected &rarr; Case &amp; Workflow. Provenance &rarr; Audit + XTDB.</p>
+      <h4>Topic Taxonomy</h4>
+      <div style="background:#FAFAFA;border:1px solid var(--border);border-radius:12px;padding:20px;margin:16px 0;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2">
+        <span>org_abc123.learner.assessment</span> &nbsp;&nbsp;<span style="color:var(--tx3)">// Assessment data events</span><br>
+        <span>org_abc123.learner.attendance</span> &nbsp;&nbsp;<span style="color:var(--tx3)">// Attendance events</span><br>
+        <span>org_abc123.case.state_changed</span> &nbsp;&nbsp;<span style="color:var(--tx3)">// Case lifecycle</span><br>
+        <span>org_abc123.signal.detected</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--tx3)">// Signal detection output</span><br>
+        <span>org_abc123.action.approved</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--tx3)">// Human-approved actions</span><br>
+        <span>org_abc123.audit.access</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:var(--tx3)">// Access audit trail</span>
+      </div>
+      <p style="color:var(--tx2)">Confluent Schema Registry enforces Avro/Protobuf schema versioning on all events.</p>
+    </div>
+  </details>
+
+  <!-- Multi-tenancy Accordion -->
+  <details class="deep reveal">
+    <summary>Multi-tenancy &mdash; per-district isolation</summary>
+    <div class="deep-body">
+      <p>Every piece of data carries a <code>tenantId</code> (format: <code>org_{uuid}</code>). The Query Service injects tenant filters at the query planning layer &mdash; application code never constructs unfiltered queries.</p>
+      <table class="tbl">
+        <thead>
+          <tr><th>Engine</th><th>Isolation Method</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Neo4j</td><td>Composite Database with per-tenant constituent databases</td></tr>
+          <tr><td>PostgreSQL</td><td>Row-Level Security with <code>tenant_id</code> policies</td></tr>
+          <tr><td>Kafka</td><td>Tenant-prefixed topics</td></tr>
+          <tr><td>Elasticsearch</td><td>Index-per-tenant with filtered aliases</td></tr>
+          <tr><td>Redis</td><td>Key prefixing ( <code>org_abc123:cache:learner:456</code> )</td></tr>
+          <tr><td>XTDB</td><td>Tenant column with query-time filtering</td></tr>
+        </tbody>
+      </table>
+      <div style="background:linear-gradient(135deg, rgba(123,97,255,.06), rgba(191,90,242,.08));border-left:4px solid #7B61FF;border-radius:0 16px 16px 0;padding:24px 28px;margin-top:24px">
+        <p style="margin:0"><strong style="color:#7B61FF"><em>Institutional Context:</em></strong> Each tenant has an <code>InstitutionalContext</code> configuration driving which constraints, entity types, assessments, and reasoning behaviors are active &mdash; serving a 200-student Montessori school and an 80,000-student urban district with the same architecture.</p>
+      </div>
+    </div>
+  </details>
+
+  <!-- Performance Targets Accordion -->
+  <details class="deep reveal">
+    <summary>Performance targets &amp; reliability</summary>
+    <div class="deep-body">
+      <table class="tbl">
+        <thead>
+          <tr><th>Metric</th><th>Target</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>API response (p50 / p95 / p99)</td><td>&lt;100ms / &lt;500ms / &lt;2s</td></tr>
+          <tr><td>Graph traversal (6-hop)</td><td>&lt;50ms</td></tr>
+          <tr><td>Constraint validation (Z3)</td><td>&lt;100ms</td></tr>
+          <tr><td>Signal detection (full district)</td><td>&lt;30 min</td></tr>
+          <tr><td>Entity resolution (50K records)</td><td>&lt;5 min</td></tr>
+          <tr><td>Search query</td><td>&lt;50ms</td></tr>
+          <tr><td>System availability</td><td>99.9%</td></tr>
+        </tbody>
+      </table>
+      <p style="color:var(--tx2);margin-top:20px"><strong style="color:var(--tx2)"><em>Disaster Recovery:</em></strong> RPO &lt;1 hour, RTO &lt;4 hours. Primary in us-east-1, warm standby in us-west-2. Monthly chaos engineering tests.</p>
+    </div>
+  </details>
+</div>
+</section>
+
+<!-- ═══════════════════════════ SEMANTIC ONTOLOGY ═══════════════════════════ -->
+<section class="section-alt" id="ontology-preview" style="padding:80px 0">
+<div class="con">
+  <p class="sec-label reveal" style="color:var(--green)">SEMANTIC ONTOLOGY</p>
+  <h2 class="sec-title reveal">Everything connects to <span class="grad-green">the student</span></h2>
+  <p class="sec-sub reveal" style="max-width:620px">Nine operational domains, hundreds of entities, thousands of relationships &mdash; all centered on the learner. The ontology isn&rsquo;t a database schema. It&rsquo;s a reasoning substrate where every traversal reveals insights no single system could produce alone.</p>
+
+  <!-- Learner-Centered Knowledge Graph SVG -->
+  <div class="card reveal" style="margin-top:48px;padding:48px 24px;overflow:visible">
+    <svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:900px;margin:0 auto;display:block">
+      <!-- Connection lines (behind nodes) -->
+      <!-- Behavioral -->
+      <line x1="255" y1="148" x2="420" y2="250" stroke="#E8E8ED" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="320" y="188" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(-25 320 188)">HAS_PROFILE</text>
+      <!-- Instructional -->
+      <line x1="430" y1="100" x2="450" y2="230" stroke="#E8E8ED" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="430" y="165" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(-80 430 165)">ENROLLED_IN</text>
+      <!-- People -->
+      <line x1="630" y1="135" x2="500" y2="250" stroke="#E8E8ED" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="580" y="180" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(25 580 180)">ASSIGNED_TO</text>
+      <!-- Intervention -->
+      <line x1="200" y1="290" x2="400" y2="280" stroke="#FF9F0A" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+      <text x="290" y="278" font-family="Inter" font-size="8" fill="#FF9F0A">RECEIVES_SERVICE</text>
+      <!-- Assessment -->
+      <line x1="680" y1="280" x2="510" y2="270" stroke="#FF9F0A" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+      <text x="600" y="268" font-family="Inter" font-size="8" fill="#AEAEB2">ASSESSED_BY</text>
+      <!-- Finance -->
+      <line x1="260" y1="395" x2="420" y2="310" stroke="#E8E8ED" stroke-width="1.2" stroke-dasharray="4,3"/>
+      <text x="320" y="358" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(30 320 358)">FUNDED_BY</text>
+      <!-- Time & Space -->
+      <line x1="450" y1="430" x2="455" y2="320" stroke="#34C759" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+      <text x="440" y="375" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(-85 440 375)">MEETS_IN</text>
+      <!-- Support Plans -->
+      <line x1="640" y1="390" x2="500" y2="310" stroke="#FF3B30" stroke-width="1" stroke-dasharray="4,3" opacity=".5"/>
+      <text x="580" y="340" font-family="Inter" font-size="8" fill="#AEAEB2" transform="rotate(-30 580 340)">GOVERNED_BY</text>
+      <!-- Governance -->
+      <line x1="760" y1="350" x2="520" y2="290" stroke="#E8E8ED" stroke-width="1" stroke-dasharray="4,3"/>
+
+      <!-- Central LEARNER node -->
+      <circle cx="455" cy="275" r="52" fill="white" stroke="#5856D6" stroke-width="2.5"/>
+      <text x="455" y="270" text-anchor="middle" font-family="Inter" font-size="14" font-weight="800" fill="#5856D6">LEARNER</text>
+      <text x="455" y="290" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Gravitational Center</text>
+
+      <!-- Domain nodes -->
+      <!-- Behavioral -->
+      <rect x="180" y="105" width="130" height="58" rx="14" fill="white" stroke="#5856D6" stroke-width="1.5"/>
+      <text x="245" y="130" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#5856D6">Behavioral</text>
+      <text x="245" y="148" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Incidents &middot; SEL</text>
+
+      <!-- Instructional -->
+      <rect x="365" y="48" width="140" height="58" rx="14" fill="white" stroke="#34C759" stroke-width="1.5"/>
+      <text x="435" y="73" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#34C759">Instructional</text>
+      <text x="435" y="91" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Courses &middot; Standards</text>
+
+      <!-- People -->
+      <rect x="575" y="90" width="120" height="58" rx="14" fill="white" stroke="#007AFF" stroke-width="1.5"/>
+      <text x="635" y="115" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#007AFF">People</text>
+      <text x="635" y="133" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Staff &middot; Guardians</text>
+
+      <!-- Intervention -->
+      <rect x="100" y="250" width="140" height="58" rx="14" fill="white" stroke="#FF3B30" stroke-width="1.5"/>
+      <text x="170" y="275" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#FF3B30">Intervention</text>
+      <text x="170" y="293" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Programs &middot; Services</text>
+
+      <!-- Assessment -->
+      <rect x="620" y="240" width="140" height="58" rx="14" fill="white" stroke="#FF9F0A" stroke-width="1.5"/>
+      <text x="690" y="265" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#FF9F0A">Assessment</text>
+      <text x="690" y="283" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Scores &middot; Growth</text>
+
+      <!-- Finance -->
+      <rect x="180" y="370" width="130" height="58" rx="14" fill="white" stroke="#34C759" stroke-width="1.5"/>
+      <text x="245" y="395" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#34C759">Finance</text>
+      <text x="245" y="413" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Budget &middot; Funding</text>
+
+      <!-- Time & Space -->
+      <rect x="380" y="420" width="140" height="58" rx="14" fill="white" stroke="#FF3B30" stroke-width="1.5"/>
+      <text x="450" y="445" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#FF3B30">Time &amp; Space</text>
+      <text x="450" y="463" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Schedule &middot; Facilities</text>
+
+      <!-- Support Plans -->
+      <rect x="580" y="365" width="140" height="58" rx="14" fill="white" stroke="#FF3B30" stroke-width="1.5"/>
+      <text x="650" y="390" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#FF3B30">Support Plans</text>
+      <text x="650" y="408" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">IEP &middot; 504 &middot; MTSS</text>
+
+      <!-- Governance -->
+      <rect x="700" y="325" width="130" height="52" rx="14" fill="white" stroke="#8E8E93" stroke-width="1.2"/>
+      <text x="765" y="347" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#636366">Governance</text>
+      <text x="765" y="365" text-anchor="middle" font-family="Inter" font-size="9" fill="#AEAEB2">Compliance &middot; Audit</text>
+    </svg>
+  </div>
+
+  <!-- 9 Domain Cards -->
+  <div class="g3 reveal" style="margin-top:40px">
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(52,199,89,.08);font-size:22px">&#128218;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Instructional Program</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Courses, sections, curricular frameworks (Common Core to Montessori), assessment instruments, materials, pacing guides. Framework-agnostic &mdash; models the concept of structured learning.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);font-size:22px">&#128101;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">People</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Staff (teachers, counselors, therapists), guardians, households. Certifications, caseloads, contractual obligations, expertise areas. Every role relationship is a graph edge.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(123,97,255,.08);font-size:22px">&#128202;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Assessment</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Every formal and informal assessment event &mdash; MAP, DIBELS, state tests, teacher-created, observational. Subdomain scores, accommodations, psychometric properties, validity flags.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,59,48,.08);font-size:22px">&#128196;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Support Plans</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">IEPs, 504 plans, intervention plans, gifted service plans, EL plans, BIPs. Goals, service obligations, accommodations, progress monitoring, compliance deadlines.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(88,86,214,.08);font-size:22px">&#128336;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Time &amp; Space</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Bell schedules, calendar, facilities, rooms, capacities. Schedule blocks that connect courses to teachers to rooms to time slots.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(0,122,255,.08);font-size:22px">&#128176;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Finance</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Budgets, funding sources (Title I, IDEA, grants), expenditure tracking, cost per student, program cost allocation via Ingredients Method.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,159,10,.08);font-size:22px">&#128170;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Intervention</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Programs, evidence base ratings, assignment matching, dosage tracking, fidelity monitoring, outcome measurement.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(255,204,0,.12);font-size:22px">&#128161;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Behavioral &amp; SEL</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Behavior events (positive and negative), PBIS points, SEL assessments (DESSA, SAEBRS), engagement patterns, incident escalation tracking.</p>
+    </div>
+    <div class="card" style="padding:28px">
+      <div class="card-icon" style="background:rgba(142,142,147,.08);font-size:22px">&#129523;</div>
+      <h3 style="font-size:18px;margin:12px 0 8px">Governance</h3>
+      <p style="font-size:14px;color:var(--tx2);line-height:1.6">Decision provenance (reified reasoning subgraphs), audit trails, compliance status, regulatory requirements, constraint catalog.</p>
+    </div>
+  </div>
+
+  <!-- Complete Entity Catalog Accordion -->
+  <details class="deep reveal" style="margin-top:32px">
+    <summary>Complete entity catalog &mdash; Learner domain</summary>
+    <div class="deep-body">
+      <p>The Learner domain is the gravitational center of the ATLAS ontology. Every other domain connects through the learner node. Key entities include:</p>
+      <table class="tbl">
+        <thead>
+          <tr><th>Entity</th><th>Key Attributes</th><th>Relationships</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Learner</strong></td>
+            <td>Demographics, grade level, enrollment status, risk scores</td>
+            <td>ENROLLED_IN, ASSESSED_BY, RECEIVES_SERVICE, HAS_PLAN, ATTENDS</td>
+          </tr>
+          <tr>
+            <td><strong>Enrollment</strong></td>
+            <td>Entry/exit dates, status, type (regular, transfer, dual)</td>
+            <td>AT_SCHOOL, IN_PROGRAM, DURING_TERM</td>
+          </tr>
+          <tr>
+            <td><strong>Attendance</strong></td>
+            <td>Date, status, minutes, reason code, period</td>
+            <td>FOR_LEARNER, AT_SECTION, ON_DATE</td>
+          </tr>
+          <tr>
+            <td><strong>Assessment Event</strong></td>
+            <td>Instrument, date, raw/scaled scores, percentile, growth</td>
+            <td>MEASURES_LEARNER, USING_INSTRUMENT, IN_WINDOW</td>
+          </tr>
+          <tr>
+            <td><strong>Behavior Event</strong></td>
+            <td>Type, severity, context, response, PBIS points</td>
+            <td>INVOLVES_LEARNER, REPORTED_BY, AT_LOCATION</td>
+          </tr>
+          <tr>
+            <td><strong>Service Record</strong></td>
+            <td>Intervention, dosage, fidelity, start/end dates</td>
+            <td>DELIVERS_TO_LEARNER, PROVIDED_BY, PART_OF_PLAN</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </details>
 </div>
